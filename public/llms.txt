@@ -1,0 +1,12 @@
+# Bek 文章 — articles.bekhelpme.com
+
+> 作者 Bek（本名 Andy Tsai）。長文章站：把公司編譯成 AI 用得上的系統。
+> 版式參考 Stratechery，文字優先、單欄閱讀。語言：zh-TW。
+
+## 文章
+- 為什麼 AI 越便宜，差距越大: https://articles.bekhelpme.com/why-ai-cheaper-the-gap-widens
+  市場把「54% 沒成效」誤讀成「AI 沒效」。它真正的意思是：價值從來不在 AI，而在你有沒有把公司本身，編譯成 AI 能執行的東西。
+
+## 相關站點
+- Bek 主站: https://www.bekhelpme.com
+- 四個禮拜天 AI 創業課: https://4days.bekhelpme.com

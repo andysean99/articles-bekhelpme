@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  /* Editorial cream-paper palette (shared across 4days / www / articles) */
+  --color-paper: #faf6ef;
+  --color-paper-deep: #f1e8d9;
+  --color-ink: #221c15;
+  --color-ink-soft: #4b4137;
+  --color-ink-faint: #8a7b67;
+  --color-accent: #a8431e;
+  --color-accent-strong: #8c3415;
+  --color-rule: #e4d8c6;
+
+  --font-serif: "Noto Serif TC", Georgia, "Songti TC", serif;
+  --font-sans: "Noto Sans TC", system-ui, "Microsoft JhengHei", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background-image: radial-gradient(
+    140% 120% at 50% -10%,
+    #fdfaf4 0%,
+    var(--color-paper) 42%,
+    #f6efe3 100%
+  );
+  background-attachment: fixed;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+
+/* ---- Editorial long-form prose ---- */
+.prose-letter {
+  font-size: 1.0625rem;
+  color: var(--color-ink);
+}
+@media (min-width: 640px) {
+  .prose-letter {
+    font-size: 1.1875rem;
+  }
+}
+.prose-letter p {
+  margin-block: 1.35em;
+  line-height: 1.95;
+}
+.prose-letter strong {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.prose-letter h2 {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1.5rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  margin-block: 2.2em 0.7em;
+  color: var(--color-ink);
+}
+@media (min-width: 640px) {
+  .prose-letter h2 {
+    font-size: 1.875rem;
+  }
+}
+.prose-letter h3 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  margin-block: 1.8em 0.5em;
+  color: var(--color-ink);
+}
+.prose-letter blockquote {
+  margin-block: 1.4em;
+  padding-left: 1.1em;
+  border-left: 2px solid var(--color-rule);
+  color: var(--color-ink-soft);
+}
+.prose-letter a {
+  color: var(--color-accent);
+  text-underline-offset: 3px;
+}
+
+/* hairline section divider */
+.rule-soft {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-rule) 18%,
+    var(--color-rule) 82%,
+    transparent
+  );
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
