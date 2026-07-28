@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/posts";
+import { getAllEntries } from "@/lib/digests";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts();
+  const posts = getAllEntries();
   const articles = posts.map((p) => ({
     url: `${site.url}/${p.slug}`,
     lastModified: p.date ? new Date(p.date) : new Date(),

@@ -2,12 +2,13 @@ import Link from "next/link";
 import Masthead from "@/components/Masthead";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
-import { getAllPosts, formatDate } from "@/lib/posts";
+import { formatDate } from "@/lib/posts";
+import { getAllEntries } from "@/lib/digests";
 import { site } from "@/lib/site";
 import { safeJsonLd } from "@/lib/jsonld";
 
 export default function HomePage() {
-  const posts = getAllPosts();
+  const posts = getAllEntries();
 
   const blogJsonLd = {
     "@context": "https://schema.org",
