@@ -87,7 +87,8 @@ description: >
 ## GEO 設定
 
 **公開（預設）**：真 href、無 noindex、`make_digest_route.py` 自動注入 description／
-canonical／OG article／JSON-LD Article、登記進 `lib/digests.ts`（自動接首頁＋blog
+canonical／OG article／JSON-LD Article／GA（G-NLVESXBBMR，與站台 layout 同一 property
+——digest route 繞過 layout 所以必須 inline）、登記進 `lib/digests.ts`（自動接首頁＋blog
 JSON-LD＋sitemap.xml）、`public/llms.txt` 補一行。
 **內部（`--internal`）**：noindex,nofollow；**不**登記 digests.ts、**不**碰 llms.txt。
 

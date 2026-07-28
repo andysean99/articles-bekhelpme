@@ -44,6 +44,14 @@ export async function GET() {
 """
 SITE_URL = "https://articles.bekhelpme.com"
 AUTHOR = "Bek"
+# Same GA property as app/layout.tsx — digest routes bypass the Next.js layout,
+# so analytics must be injected inline here. No backticks/${ (String.raw-safe).
+GA_ID = "G-NLVESXBBMR"
+GA_SNIPPET = (
+    f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n'
+    "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}"
+    f"gtag('js',new Date());gtag('config','{GA_ID}');</script>"
+)
 
 
 def esc_attr(s: str) -> str:
@@ -79,6 +87,7 @@ def build_meta_block(a) -> str:
     # "</" would close the script tag early inside HTML; escape it.
     jsonld_text = json.dumps(jsonld, ensure_ascii=False).replace("</", "<\\/")
     lines.append(f'<script type="application/ld+json">{jsonld_text}</script>')
+    lines.append(GA_SNIPPET)
     return "\n" + "\n".join(lines)
 
 
