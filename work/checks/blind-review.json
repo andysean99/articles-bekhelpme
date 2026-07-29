@@ -1,0 +1,143 @@
+[
+  {
+    "card_key": "https://arxiv.org/pdf/2406.12045",
+    "verdict": "reject",
+    "offending_clauses": [
+      {
+        "clause": "pass^8低於25%",
+        "why": "來源把這個數字限定在零售場景：abstract 原文為「terribly inconsistent (pass^8 < 25% in retail)」。卡片先寫「零售與航空場景」再無限定地給出 pass^8<25%，會讓讀者以為兩個場景皆然。應寫成「零售場景 pass^8 低於 25%」。（同句「成功率不到五成」則確實是全域數字，無需限定。）"
+      }
+    ],
+    "checked_against": "work/sources/handoff-content.json（quotes 第 4 條）＋ WebSearch「tau-bench Yao 2024 pass^8 less than 25% retail domain gpt-4o inconsistent abstract」"
+  },
+  {
+    "card_key": "https://dora.dev/guides/dora-metrics/",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/handoff-content.json ＋ WebSearch 兩次（dora.dev anti-patterns 原文）：「Having siloed ownership. Sharing all five metrics across development, operations, and release teams... Isolating teams with specific metrics can lead to friction and finger-pointing.」與「Competing. The goal is to improve your team's performance over time, not to compete against other teams」與「these metrics are meant to be applied at the application or service level」三點逐項對上。卡片用「列出反模式」保住了規範性語氣，未偽裝成實證發現。"
+  },
+  {
+    "card_key": "https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/handoff-content.json ＋ WebSearch「measuring developer productivity part 2 Beck Orosz McKinsey profit revenue zero times」：確認 Part 2 本身含「McKinsey report mentions profits or revenue zero times」、effort-output-outcome-impact 模型、以及文末兩位作者各自作答（Beck：無法衡量；Orosz：真正的問題不是這個）。卡片未把 Part 1 的「wrong-headed and certain to backfire」名句掛到本 URL，避開了證據檔標示的來源身分錯配風險。"
+  },
+  {
+    "card_key": "https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/handoff-content.json（quotes：「An individual cannot fully control their performance within a system where they are just one contributor.」「applying team-level metrics to an individual is unfair」）。卡片用「在部落格主張」，與 source_type=personal blog 相符，未升格為機構研究。"
+  },
+  {
+    "card_key": "https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/handoff-content.json：弱版本（bug 追蹤數→草率關 bug）、強版本（「Even 100% honest pursuit of a metric, taken far enough, is harmful to your goals」）、測試覆蓋率目標→瑣碎測試，三項皆確認。卡片正確迴避了證據檔標為未證實的「拆成五張票」細節。"
+  },
+  {
+    "card_key": "https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/handoff-content.json（「one capability, many customers」／「one customer, many capabilities」／「move the needle on that metric」）。卡片明寫「此為公司自述定位，非外部查核」，正是證據檔 verb_strength_notes 要求的處理。"
+  },
+  {
+    "card_key": "https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/handoff-content.json（「setting impact hypotheses, baselines, and KPIs」「running pre-/post-deployment measurement and reporting to exec sponsors」）。卡片明寫「為職缺敘述，非證實已執行或有成效」，未把 job posting 讀成已驗證的實務。"
+  },
+  {
+    "card_key": "https://philschmid.de/agents-pass-at-k-pass-power-k",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/handoff-content.json（「the probability that at least one of k independent solution attempts will succeed」／「succeed on all k independent attempts」）。卡片用「philschmid部落格解釋」，維持個人部落格身分，未當成獨立研究貢獻。"
+  },
+  {
+    "card_key": "https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/handoff-content.json ＋ WebSearch「DX Core 4 DXI 14 dimensions or 14 questions」：DXI 確為「14 standardized Likert-scale survey items／research-backed 14-question survey」，卡片「14題DXI」精確；「每位工程師diff數」為 Speed 主指標、「It is critical that this metric is never used at the individual level or tied to performance evaluations」皆對上。卡片以「框架」稱之，未把廠商方法論寫成研究發現。"
+  },
+  {
+    "card_key": "https://www.gitclear.com/ai_assistant_code_quality_2025_research",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/orchestrator.json（moved lines 24.1%(2020)→9.5%(2024)、copy/paste 首度超越 moved、eightfold duplicate blocks、211M lines 2020–2024）＋ WebSearch 兩次獨立確認（含「in 2024, the frequency of duplicated code blocks increased eightfold」）。卡片標明「屬相關性分析，非對照實驗」，且未複述上游未能證實的「涵蓋 Google、微軟、Meta」。註：GitClear 自家敘述另有「25% in 2021 → under 10% in 2024」版本，卡片未把 24% 綁到特定年份，因此與 24.1%(2020) 資料點一致、不構成年份錯誤；此差異已在最終摘要向人類指出。"
+  },
+  {
+    "card_key": "https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/orchestrator.json（secondary_url 即本 PDF）。卡片只主張「同一份報告的原始PDF」＋同一組相關性觀察，並標明非控制實驗，未新增任何超出主頁卡的斷言。"
+  },
+  {
+    "card_key": "https://arxiv.org/abs/2507.09089",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/batch-a.json（matched_fields：n_developers=16、n_tasks=246、predicted=+24%、recalled=+20%、measured=-19%，兩次查詢一致）。卡片標明「預印本隨機對照試驗」，四個數字與方向（實測反而慢 19%）逐項相符。"
+  },
+  {
+    "card_key": "https://metr.org/blog/2026-02-24-uplift-update/",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/batch-a.json ＋ work/sources/orchestrator-reverify.json（純內容查詢 PASS；「自我選擇確實是 METR 自己標示的主因」）。卡片用「主因」而非「唯一原因」，與來源列出多項原因（選擇性不提交、時薪 $150→$50、多 agent 工時量測不可靠）不衝突，屬省略非矛盾。"
+  },
+  {
+    "card_key": "https://queue.acm.org/detail.cfm?id=3454124",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/batch-a.json ＋ orchestrator-reverify.json ＋ WebSearch「SPACE of Developer Productivity myths activity individual one metric」：作者機構（GitHub／微軟研究院／維多利亞大學）與三項論點（生產力不等於活動量、不只關乎個人、單一指標不夠）皆確認。"
+  },
+  {
+    "card_key": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/batch-b.json ＋ orchestrator-reverify.json（純內容查詢回傳近乎逐字原句：「two engineers reading the same spec often interpret edge cases differently. Evals resolve this ambiguity.」）。卡片用「Anthropic說明」，屬廠商工程部落格的自述方法論，語氣相符。"
+  },
+  {
+    "card_key": "https://martinfowler.com/articles/harness-engineering.html",
+    "verdict": "reject",
+    "offending_clauses": [
+      {
+        "clause": "高價值工作方式",
+        "why": "這是本文散文的評價性排序，不是這篇文章的主張。來源本身（WebSearch 確認）把 harness 定位為「cybernetic governor」——guides 是 feed-forward、sensors 是 feedback——用來把 codebase 調節到期望狀態，並說明「多數例子都是在調節 internal code quality 與 maintainability」；文章講的是「怎麼做」，未宣稱這是 AI 時代最有價值／高價值的工作。卡片應改為單純復述框架（例：「提出 harness 心智模型——guides（前饋）＋sensors（回饋）——用來把 agent 產出調節到可維護的狀態」），把價值排序留給本文自己說。附帶：可維護性的實作深度在她 2026-05-27 的後續篇〈Maintainability sensors for coding agents〉，本篇只以此為主要例子類別。"
+      }
+    ],
+    "checked_against": "work/sources/batch-b.json（matched_fields 僅到「mental model of a coding agent harness as a system of guides and sensors」）＋ orchestrator-reverify.json ＋ WebSearch 兩次（harness-engineering.html 內容與 maintainability 定義、後續篇分工）"
+  },
+  {
+    "card_key": "https://www.rand.org/pubs/research_reports/RRA2680-1.html",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/batch-b.json ＋ orchestrator-reverify.json ＋ WebSearch「RAND Root Causes of Failure for AI Projects five root causes leading cause」：確認「Misunderstandings and miscommunications ... are the most common reasons for AI project failure」，故「首要原因」不是排序上的加油添醋；受訪者確為「65 experienced data scientists and engineers」，卡片寫「65名資料科學家與工程師」比本文的「65 名工程師」更精確。卡片亦未沾染來源中「超過八成 AI 專案失敗」那個引述性估計。"
+  },
+  {
+    "card_key": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+    "verdict": "reject",
+    "offending_clauses": [
+      {
+        "clause": "Gartner根據2025年1月一場網路研討會3,412名與會者的民調，預測到2027年底將有超過四成agentic AI專案",
+        "why": "把預測的依據掛到錯誤的資料上。新聞稿裡那份 2025 年 1 月、3,412 人的網路研討會民調問的是「組織對 agentic AI 的投資程度」（19% 已大量投資、42% 保守投資、8% 未投資、31% 觀望或不確定），不是取消率的推估基礎；新聞稿對「超過四成將被取消」這個數字沒有揭露任何樣本或計算方式，它是 Gartner 分析師的預測（另以「agent washing」——數千家宣稱供應商中僅約 130 家名實相符——為論述支撐）。現在的寫法把一個沒有方法論的預測包裝成有 3,412 人樣本支撐的調查結果，正是「網路研討會民調不得讀成研究」的反向失誤，也是最會被查證讀者抓到的一句。應拆成兩句：預測歸預測（Gartner 預測、理由為成本失控／商業價值不明／風險控制不足），民調歸民調（同一份新聞稿另引 2025 年 1 月 3,412 人民調，內容為投資程度）。"
+      }
+    ],
+    "checked_against": "work/sources/batch-c.json ＋ orchestrator-reverify.json ＋ WebSearch「Gartner press release agentic AI 40% canceled 2027 January 2025 webinar poll 3412 attendees what the poll measured」（民調四項百分比與「40% 圖數與 3,412 人民調量測的是不同東西」）"
+  },
+  {
+    "card_key": "https://www.media.mit.edu/groups/nanda/overview/",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/batch-c.json ＋ orchestrator-reverify.json（G4 裁示改指此頁）＋ WebSearch：該 URL 確實存在且標題為「Group Overview ‹ NANDA – MIT Media Lab」，卡片「研究群組官方總覽頁／報告全文需再點一層」的描述成立；報告原句「Just 5% of integrated AI pilots are extracting millions in value」與卡片「僅約5%整合型AI試點產出數百萬價值」相符。卡片以「報告」稱之、未宣稱同儕審查。給人類的判斷題（非退回理由）：該報告公開時自述為 preliminary findings、非同儕審查，且 NANDA 本身推動去中心化 agent 基礎設施而遭 Futuriom 等質疑立場，若要更保守可加「初步報告」四字。"
+  },
+  {
+    "card_key": "https://sequoiacap.com/podcast/training-data-bob-mcgrew/",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/batch-c.json（逐字引語：「fix a bug, do a refactor, something that you know requires relatively little taste and has a clear outcome」；McGrew 身分為前 OpenAI Head of Research／Chief Research Officer）。卡片用「在此podcast訪談中表示」，維持個人受訪發言的語氣，未升格為研究結論。"
+  },
+  {
+    "card_key": "https://arxiv.org/abs/2107.03374",
+    "verdict": "send_to_human",
+    "offending_clauses": [],
+    "checked_against": "work/sources/orchestrator-reverify.json（E1 裁示 A 的查證：「pass@k 最早由 Kulal et al. (2019) 提出，Chen et al. 2021 的 Codex 論文（arXiv 2107.03374，同時提出 HumanEval）確立其形式與普及」）。卡片寫「確立並普及」而非「首創／提出」，與證據一致；pass@k 定義（候選解中任一通過單元測試即算解出）亦與 Codex 論文相符。給人類的判斷題（非退回理由）：本卡的 source_name 尾綴「（pass@k 出處）」與本文第 144 行「出自 Chen et al. 2021」仍略強於證據（最早出處是 Kulal et al. 2019），d／t 本身沒問題，但若要滴水不漏可改為「pass@k 定型與普及」。"
+  }
+]
