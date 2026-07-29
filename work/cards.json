@@ -1,138 +1,138 @@
 {
   "https://arxiv.org/pdf/2406.12045": {
-    "t": "τ-bench預印本論文——提出pass^k代理人可靠度指標",
-    "d": "τ-bench是零售與航空場景的AI代理人基準測試論文，提出pass^k衡量代理人多次試驗的可靠度；並回報GPT-4o代理人成功率不到五成、pass^8在零售場景低於25%。",
+    "t": "τ-bench預印本——提出pass^k可靠度指標",
+    "d": "τ-bench是測試零售與航空場景AI代理人的基準論文，提出pass^k衡量代理人多次試驗的可靠度；GPT-4o代理人成功率不到五成，pass^8低於25%。",
     "evidence_spans": [
       {
-        "clause": "τ-bench是一篇在零售與航空兩個場景測試工具型AI代理人的基準測試論文",
-        "source_text": "τ-bench (Yao et al., 2024) is a benchmark for tool-agent-user interaction in two real-world domains (retail and airline)... τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
-        "from": "work/sources/handoff-content.json，what_the_source_says 與 quotes"
+        "clause": "τ-bench是測試零售與航空場景AI代理人的基準論文",
+        "source_text": "τ-bench (Yao et al., 2024) is a benchmark for tool-agent-user interaction in two real-world domains (retail and airline)",
+        "from": "work/sources/handoff-content.json，what_the_source_says"
       },
       {
-        "clause": "提出pass^k指標衡量代理人在多次試驗中的一致可靠度",
+        "clause": "提出pass^k衡量代理人多次試驗的可靠度",
         "source_text": "proposes a new metric (pass^k) to evaluate the reliability of agent behavior over multiple trials",
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "論文回報GPT-4o代理人任務成功率不到五成，且pass^8在零售場景低於25%，顯示能力與可靠度是兩回事",
+        "clause": "GPT-4o代理人成功率不到五成，pass^8低於25%",
         "source_text": "even state-of-the-art function calling agents (gpt-4o) succeed on <50% of the tasks, and are terribly inconsistent (pass^8 < 25% in retail)",
-        "from": "work/sources/handoff-content.json，quotes 與 what_the_source_says（'which is offered as evidence that capability and reliability are different things'）"
+        "from": "work/sources/handoff-content.json，quotes"
       }
     ]
   },
   "https://dora.dev/guides/dora-metrics/": {
-    "t": "DORA官方指南——官方列出的三項反模式",
-    "d": "DORA官方指南列出四項指標的反模式：僅適用於應用或服務層級（跨系統比較會失真）、目的是改善自己團隊而非跨團隊競爭比較、以及避免指標擁有權被孤立在單一團隊（siloed ownership）。",
+    "t": "DORA官方指南——四項指標反模式",
+    "d": "DORA官方指南列出反模式：指標僅適用於應用或服務層級，目的是改善自己團隊而非跨團隊比較，並避免指標擁有權孤立在單一團隊。",
     "evidence_spans": [
       {
-        "clause": "僅適用於應用或服務層級（跨系統比較會失真）",
-        "source_text": "meant to be applied at the application or service level; making disparate comparisons (metrics 'are meant to be applied at the application or service level'; comparing e.g. a mobile app to a mainframe system is misleading)",
+        "clause": "指標僅適用於應用或服務層級",
+        "source_text": "meant to be applied at the application or service level; making disparate comparisons (comparing e.g. a mobile app to a mainframe system is misleading)",
         "from": "work/sources/handoff-content.json，quotes 與 what_the_source_says"
       },
       {
-        "clause": "目的是改善自己團隊而非跨團隊競爭比較",
+        "clause": "目的是改善自己團隊而非跨團隊比較",
         "source_text": "'competing' (the guide frames the goal as improving your own team over time, not competing against other teams — i.e., not for cross-team comparison)",
         "from": "work/sources/handoff-content.json，what_the_source_says"
       },
       {
-        "clause": "避免指標擁有權被孤立在單一團隊（siloed ownership）",
+        "clause": "避免指標擁有權孤立在單一團隊",
         "source_text": "'having siloed ownership'",
-        "from": "work/sources/handoff-content.json，quotes（僅標題層級確認，未取得完整說明文字，故卡片描述維持最小化）"
+        "from": "work/sources/handoff-content.json，quotes（僅標題層級確認，未取得完整說明文字）"
       }
     ]
   },
   "https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2": {
-    "t": "Pragmatic Engineer——McKinsey回應文之下篇（Part 2）",
-    "d": "此為Kent Beck與Gergely Orosz回應2023年McKinsey生產力報告的兩篇文章之第二篇，指出McKinsey報告完全未提及利潤或營收，並提出「投入—產出—成果—影響」的衡量分層模型，文末兩位作者分別給出各自的看法。",
+    "t": "Pragmatic Engineer電子報——McKinsey下篇",
+    "d": "此為Kent Beck與Gergely Orosz回應McKinsey的兩篇文章第二篇：批評報告未提及利潤或營收，並提出投入—產出—成果—影響模型；文末兩人各自作答。",
     "evidence_spans": [
       {
-        "clause": "此為Kent Beck與Gergely Orosz回應2023年McKinsey生產力報告的兩篇文章之第二篇",
+        "clause": "此為Kent Beck與Gergely Orosz回應McKinsey的兩篇文章第二篇",
         "source_text": "This is Part 2 of Kent Beck and Gergely Orosz's two-part response to McKinsey's 2023 article 'Yes, you can measure software developer productivity,' co-published on both the Pragmatic Engineer newsletter and Kent Beck's newsletter.",
         "from": "work/sources/handoff-content.json，what_the_source_says"
       },
       {
-        "clause": "指出McKinsey報告完全未提及利潤或營收",
+        "clause": "批評報告未提及利潤或營收",
         "source_text": "the McKinsey report mentions profits or revenue zero times",
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "並提出「投入—產出—成果—影響」的衡量分層模型",
+        "clause": "提出投入—產出—成果—影響模型",
         "source_text": "effort-output-outcome-impact",
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "文末兩位作者分別給出各自的看法",
+        "clause": "文末兩人各自作答",
         "source_text": "The two authors' voices reportedly diverge on some points within the piece, each giving their own answer.",
-        "from": "work/sources/handoff-content.json，what_the_source_says。注意：卡片刻意不引用「wrong-headed and certain to backfire」一句，因handoff-content.json標記該句出自Part 1開頭而非本URL對應的Part 2（confidence=medium on this specific attribution issue），依orchestrator裁示Part 2重申同一論點、URL不變，但卡片內容須描述Part 2自身內容，不得暗示點進去會看到那句話。"
+        "from": "work/sources/handoff-content.json，what_the_source_says。注意：卡片不引用「wrong-headed and certain to backfire」一句，因該句出自Part 1開頭而非本URL對應的Part 2。"
       }
     ]
   },
   "https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance": {
-    "t": "Laura Tacho部落格——反對個人層級指標的立場文",
-    "d": "Laura Tacho在此文主張，個人工程師無法完全掌控自己在系統中的表現，因為他只是眾多貢獻者之一；她認為用指標評量個人不公平，問題應在團隊或系統層級處理，而非歸咎個人。",
+    "t": "Laura Tacho部落格——反對個人層級指標",
+    "d": "Laura Tacho在部落格主張，個人工程師無法完全掌控自己在系統中的表現，只是眾多貢獻者之一；用指標評量個人不公平，問題應由團隊或系統層級處理。",
     "evidence_spans": [
       {
-        "clause": "個人工程師無法完全掌控自己在系統中的表現，因為他只是眾多貢獻者之一",
+        "clause": "個人工程師無法完全掌控自己在系統中的表現，只是眾多貢獻者之一",
         "source_text": "An individual cannot fully control their performance within a system where they are just one contributor.",
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "她認為用指標評量個人不公平",
-        "source_text": "Applying them to individuals is unfair at best. / This is the main reason why applying team-level metrics to an individual is unfair.",
+        "clause": "用指標評量個人不公平",
+        "source_text": "Applying them to individuals is unfair at best.",
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "問題應在團隊或系統層級處理，而非歸咎個人",
+        "clause": "問題應由團隊或系統層級處理",
         "source_text": "She argues problems surfaced by unsatisfactory metrics should be addressed at team or system level, not individual level.",
         "from": "work/sources/handoff-content.json，what_the_source_says"
       }
     ]
   },
   "https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/": {
-    "t": "Hillel Wayne部落格——Goodhart法則的強弱兩版本",
-    "d": "區分Goodhart法則弱版本（指標一旦成為目標就會被鑽營，如bug追蹤數當指標導致草率關bug）與強版本（誠實追求指標做到極致仍傷害目標，以孔雀羽毛性擇為例）；測試覆蓋率當目標也催生瑣碎測試。",
+    "t": "Hillel Wayne部落格——Goodhart法則兩版本",
+    "d": "Hillel Wayne部落格區分Goodhart法則弱版本（如bug追蹤數當指標導致草率關bug）與強版本（誠實追求指標做到極致仍傷害目標）；測試覆蓋率當目標也催生瑣碎測試。",
     "evidence_spans": [
       {
-        "clause": "弱版本（指標一旦成為目標就會被鑽營，例如把bug追蹤數當指標導致草率關閉bug）",
-        "source_text": "a 'weak version' of Goodhart's law (people have perverse incentives to game a metric once it's a target — e.g., if the metric is 'number of bugs in the bug tracker,' people start spuriously closing bugs...)",
-        "from": "work/sources/handoff-content.json，what_the_source_says 與 quotes（'number of bugs in the bug tracker'）"
+        "clause": "弱版本（如bug追蹤數當指標導致草率關bug）",
+        "source_text": "a 'weak version' of Goodhart's law (people have perverse incentives to game a metric once it's a target — e.g., if the metric is 'number of bugs in the bug tracker,' people start spuriously closing bugs)",
+        "from": "work/sources/handoff-content.json，what_the_source_says 與 quotes"
       },
       {
-        "clause": "強版本（即使誠實追求指標，做到極致仍會傷害目標本身，並以孔雀羽毛的性擇例子說明）",
-        "source_text": "Even 100% honest pursuit of a metric, taken far enough, is harmful to your goals — illustrated with the biological example of peahen plumage becoming a sexual-selection target at the cost of overall bird fitness",
-        "from": "work/sources/handoff-content.json，quotes 與 what_the_source_says"
+        "clause": "強版本（誠實追求指標做到極致仍傷害目標）",
+        "source_text": "Even 100% honest pursuit of a metric, taken far enough, is harmful to your goals",
+        "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "測試覆蓋率被當目標時也會催生驗證不到真正邏輯的瑣碎測試",
+        "clause": "測試覆蓋率當目標也催生瑣碎測試",
         "source_text": "a target of e.g. 95% coverage causes trivial tests that don't validate real logic, and that coverage alone is close to meaningless as a quality signal",
-        "from": "work/sources/handoff-content.json，what_the_source_says。注意：卡片刻意不含「一張票被拆成五張」的數字細節，因handoff-content.json明確標示此細節未能獨立確認為本頁原文（'Do not put that number in the card'，orchestrator裁示3）。"
+        "from": "work/sources/handoff-content.json，what_the_source_says。注意：卡片不含「一張票被拆成五張」的數字細節，因未能獨立確認為本頁原文。"
       }
     ]
   },
   "https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87": {
-    "t": "Palantir官方部落格——Dev與Delta工程角色的自我定義",
-    "d": "Palantir官方部落格說明兩種工程角色：Dev專注一種能力服務多位客戶，Delta專注一位客戶多種能力；文中稱Delta工程師以「對客戶目標的影響」衡量成功，此為公司自述定位，非外部查核。",
+    "t": "Palantir部落格——Dev與Delta角色定義",
+    "d": "Palantir部落格說明：Dev專注一種能力服務多客戶，Delta專注一位客戶多種能力，以「對客戶目標的影響」衡量成功；此為公司自述定位，非外部查核。",
     "evidence_spans": [
       {
-        "clause": "Dev專注「一種能力、服務多位客戶」，Delta專注「一位客戶、多種能力」",
+        "clause": "Dev專注一種能力服務多客戶，Delta專注一位客戶多種能力",
         "source_text": "one capability, many customers / one customer, many capabilities",
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "Delta工程師的成功以「對客戶目標指標的影響」衡量",
+        "clause": "以「對客戶目標的影響」衡量成功",
         "source_text": "move the needle on that metric",
         "from": "work/sources/handoff-content.json，quotes 與 what_the_source_says"
       },
       {
-        "clause": "此為公司自述的角色定位，非外部查核結果",
+        "clause": "此為公司自述定位，非外部查核",
         "source_text": "This is Palantir describing its own internal role definitions and stated evaluation philosophy — it is self-description by the company, not an independently audited account of how performance reviews actually happen.",
         "from": "work/sources/handoff-content.json，verb_strength_notes"
       }
     ]
   },
   "https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/": {
-    "t": "OpenAI徵才頁——Forward Deployed Engineering職缺要求",
-    "d": "OpenAI此職缺公告列出角色須負責：設定影響假設、基準線與KPI，執行部署前後量測，並向高層贊助者回報；此為職缺要求敘述，不代表已證實執行或有實際成效。",
+    "t": "OpenAI徵才頁——FDE職缺工作要求",
+    "d": "OpenAI此職缺要求：設定影響假設、基準線與KPI，執行部署前後量測，並向高層贊助者回報；為職缺敘述，非證實已執行或有成效。",
     "evidence_spans": [
       {
         "clause": "設定影響假設、基準線與KPI，執行部署前後量測，並向高層贊助者回報",
@@ -140,49 +140,44 @@
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "這是職缺要求的敘述，不代表已被證實執行或有實際成效",
+        "clause": "為職缺敘述，非證實已執行或有成效",
         "source_text": "This is a job posting describing role requirements and responsibilities — it describes what the role holder is expected to do, not a study finding or a guarantee those practices are followed.",
         "from": "work/sources/handoff-content.json，verb_strength_notes（source_type: job posting）"
       }
     ]
   },
   "https://philschmid.de/agents-pass-at-k-pass-power-k": {
-    "t": "philschmid個人部落格——pass@k與pass^k白話解釋",
-    "d": "Philipp Schmid在此部落格解釋，pass@k衡量k次獨立嘗試中至少一次成功的機率，pass^k（讀作pass power k）衡量k次嘗試全部成功的機率並隨k增加而下降；他建議人工審核用pass@k、自動執行的系統應看pass^k。",
+    "t": "philschmid個人部落格——pass@k／pass^k解釋",
+    "d": "philschmid部落格解釋，pass@k衡量k次嘗試中至少一次成功的機率，pass^k衡量k次全部成功的機率且隨k增加而下降。",
     "evidence_spans": [
       {
-        "clause": "pass@k衡量k次獨立嘗試中至少一次成功的機率",
+        "clause": "pass@k衡量k次嘗試中至少一次成功的機率",
         "source_text": "the probability that at least one of k independent solution attempts will succeed",
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "pass^k（讀作pass power k）衡量k次嘗試全部成功的機率並隨k增加而下降",
-        "source_text": "estimates the probability that an agent would succeed on all k independent attempts / pronounced \"pass power k\" / falls as k increases",
+        "clause": "pass^k衡量k次全部成功的機率且隨k增加而下降",
+        "source_text": "estimates the probability that an agent would succeed on all k independent attempts / falls as k increases",
         "from": "work/sources/handoff-content.json，quotes 與 what_the_source_says"
-      },
-      {
-        "clause": "他建議人工審核用pass@k、自動執行的系統應看pass^k",
-        "source_text": "use pass@k when a human reviews every output (human-in-the-loop), use pass^k when output is consumed automatically (e.g. merging code, sending messages, modifying databases) because consistency across all attempts matters there",
-        "from": "work/sources/handoff-content.json，what_the_source_says"
       }
     ]
   },
   "https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/": {
-    "t": "DX Core 4框架——四項指標與個人層級但書",
-    "d": "DX Core 4框架涵蓋速度、有效性、品質、影響四面向：速度以「每位工程師diff數」為團隊層級指標，明文警告不得個人層級測量、不得與績效考核掛勾；有效性以14題開發者體驗指數（DXI）對衝產出量。",
+    "t": "DX Core 4框架——四指標與個人層級但書",
+    "d": "DX Core 4框架含速度、有效性、品質、影響四面向：速度指標為每位工程師diff數，明文不得個人層級測量、不得掛勾績效考核；有效性以14題DXI對衝產出量。",
     "evidence_spans": [
       {
-        "clause": "速度以「每位工程師的diff數」為團隊層級指標",
+        "clause": "速度指標為每位工程師diff數",
         "source_text": "Diffs per Engineer",
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "明文警告不得在個人層級測量、也不得與績效考核掛勾",
-        "source_text": "It is critical that this metric is never used at the individual level or tied to performance evaluations. / Not to measure this at the individual level. / These metrics are not tracked at the individual level.",
+        "clause": "明文不得個人層級測量、不得掛勾績效考核",
+        "source_text": "It is critical that this metric is never used at the individual level or tied to performance evaluations. / Not to measure this at the individual level.",
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "有效性則以14題開發者體驗指數（DXI）作對衝，避免只看產出量",
+        "clause": "有效性以14題DXI對衝產出量",
         "source_text": "Effectiveness is measured via the Developer Experience Index (DXI), a 14-item Likert-scale survey score, which the framework uses as a counterbalance so that a focus on raw throughput (diffs) doesn't dominate the picture",
         "from": "work/sources/handoff-content.json，what_the_source_says"
       }
@@ -220,7 +215,7 @@
     ]
   },
   "https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf": {
-    "t": "GitClear報告PDF原文——AI Copilot程式碼品質2025",
+    "t": "GitClear報告PDF——AI程式碼品質2025",
     "d": "同一份GitClear產業分析報告的原始PDF，內容涵蓋2020至2024年2.11億行程式碼變更的重構率、複製貼上比例等相關性觀察，非控制實驗。",
     "evidence_spans": [
       {
@@ -305,18 +300,18 @@
     ]
   },
   "https://martinfowler.com/articles/harness-engineering.html": {
-    "t": "Böckeler／martinfowler.com——Coding Agent的Harness工程",
+    "t": "Böckeler——Coding Agent的Harness工程",
     "d": "Thoughtworks的Böckeler提出「harness」框架——結合指引（guides）與感測器（sensors）——作為AI時代守住程式碼可維護性的高價值工作方式。",
     "evidence_spans": [
       {
         "clause": "Thoughtworks的Böckeler提出「harness」框架——結合指引（guides）與感測器（sensors）",
         "source_text": "author (Birgitta Böckeler), publisher (martinfowler.com / Thoughtworks); mental model of a coding agent harness as a system of guides and sensors",
-        "from": "work/sources/batch-b.json，matched_fields與notes；獨立覆核見 work/sources/orchestrator-reverify.json「Guides（feed-forward）＋ Sensors（feedback）的框架」"
+        "from": "work/sources/handoff-content.json，matched_fields與notes"
       },
       {
         "clause": "作為AI時代守住程式碼可維護性的高價值工作方式",
         "source_text": "AI 時代的高價值工作是設計「harness」——指引加上感測器——並守住可維護性",
-        "from": "work/bootstrap/article.md，正文段落；可維護性後半句另有延伸文章 sensors-for-coding-agents.html，見 work/sources/orchestrator-reverify.json"
+        "from": "work/bootstrap/article.md，正文段落；延伸文章 sensors-for-coding-agents.html 涵蓋可維護性後半句"
       }
     ]
   },
@@ -346,12 +341,12 @@
         "from": "work/sources/batch-c.json，matched_fields"
       },
       {
-        "clause": "預測到2027年底將有超過四成agentic AI專案…遭取消",
+        "clause": "預測到2027年底將有超過四成agentic AI專案",
         "source_text": "40%+ cancelled by end of 2027",
         "from": "work/sources/batch-c.json，matched_fields"
       },
       {
-        "clause": "因成本失控、商業價值不明、風險控制不足",
+        "clause": "因成本失控、商業價值不明、風險控制不足而遭取消",
         "source_text": "reasons: escalating costs, unclear business value, inadequate risk controls",
         "from": "work/sources/batch-c.json，matched_fields"
       }
@@ -359,48 +354,58 @@
   },
   "https://www.media.mit.edu/groups/nanda/overview/": {
     "t": "MIT NANDA研究群組官方總覽頁",
-    "d": "此頁為MIT Media Lab NANDA研究群組的官方總覽頁；其GenAI Divide報告以300多個部署、52場訪談、153份調查發現僅約5%整合型AI試點產出數百萬價值，報告全文需由此頁再深入查閱。",
+    "d": "此頁為MIT Media Lab NANDA研究群組官方總覽頁，報告全文需再點一層；其GenAI Divide報告發現僅約5%整合型AI試點產出數百萬價值。",
     "evidence_spans": [
       {
-        "clause": "此頁為MIT Media Lab NANDA研究群組的官方總覽頁…報告全文需由此頁再深入查閱",
-        "source_text": "原記錄的報告 PDF 網址無法獨立重現…改指官方群組總覽頁…導覽卡須說明此頁為研究群組頁，報告本身需再點一層。",
+        "clause": "此頁為MIT Media Lab NANDA研究群組官方總覽頁",
+        "source_text": "原記錄的報告 PDF 網址無法獨立重現，改指官方群組總覽頁",
         "from": "work/sources/MERGED.json，該筆的 g4_note 欄位"
       },
       {
-        "clause": "以300多個部署、52場訪談、153份調查發現僅約5%整合型AI試點產出數百萬價值",
-        "source_text": "methodology: 300+ public initiatives reviewed, 52 structured interviews, 153 survey responses…core finding: \"Just 5% of integrated AI pilots are extracting millions in value, while the vast majority remain stuck with no measurable P&L impact\"",
-        "from": "work/sources/batch-c.json，matched_fields／notes；研究內容獨立覆核確認見 work/sources/orchestrator-reverify.json「研究內容本身完全確認」"
+        "clause": "報告全文需再點一層",
+        "source_text": "導覽卡須說明此頁為研究群組頁，報告本身需再點一層。",
+        "from": "work/sources/MERGED.json，該筆的 g4_note 欄位"
+      },
+      {
+        "clause": "其GenAI Divide報告發現僅約5%整合型AI試點產出數百萬價值",
+        "source_text": "core finding: \"Just 5% of integrated AI pilots are extracting millions in value, while the vast majority remain stuck with no measurable P&L impact\"",
+        "from": "work/sources/batch-c.json，matched_fields／notes；獨立覆核見 work/sources/orchestrator-reverify.json"
       }
     ]
   },
   "https://sequoiacap.com/podcast/training-data-bob-mcgrew/": {
-    "t": "Sequoia Training Data Podcast——Bob McGrew訪談",
+    "t": "Sequoia播客——Bob McGrew訪談",
     "d": "前OpenAI研究長Bob McGrew在此podcast訪談中表示，修bug、做重構這類agentic軟體工程任務所需的品味相對少，且結果明確。",
     "evidence_spans": [
       {
-        "clause": "前OpenAI研究長Bob McGrew在此podcast訪談中表示，修bug、做重構這類agentic軟體工程任務所需的品味相對少，且結果明確",
+        "clause": "前OpenAI研究長Bob McGrew在此podcast訪談中表示",
+        "source_text": "guest: Bob McGrew, former OpenAI Head of Research / Chief Research Officer",
+        "from": "work/sources/batch-c.json，matched_fields／notes"
+      },
+      {
+        "clause": "修bug、做重構這類agentic軟體工程任務所需的品味相對少，且結果明確",
         "source_text": "\"the things that your agentic software engineers can do, you can say, 'Well, fix a bug, do a refactor,' something that you know requires relatively little taste and has a clear outcome\"",
-        "from": "work/sources/batch-c.json，matched_fields／notes（guest: Bob McGrew, former OpenAI Head of Research / Chief Research Officer）"
+        "from": "work/sources/batch-c.json，matched_fields／notes"
       }
     ]
   },
   "https://arxiv.org/abs/2107.03374": {
-    "t": "Chen et al. 2021預印本——Codex／HumanEval論文",
-    "d": "此arXiv預印本提出Codex模型（後來驅動初代GitHub Copilot）與HumanEval基準，並確立並普及現今通用的pass@k指標：n個候選解中只要至少一個通過單元測試即算解出。",
+    "t": "Chen et al. 2021預印本——Codex論文",
+    "d": "此arXiv預印本提出Codex模型與HumanEval基準，並確立並普及現今通用的pass@k指標：候選解中只要有一個通過單元測試即算解出。",
     "evidence_spans": [
       {
-        "clause": "此arXiv預印本提出Codex模型（後來驅動初代GitHub Copilot）與HumanEval基準",
-        "source_text": "Chen et al. 2021, 'Evaluating Large Language Models Trained on Code' (arXiv 2107.03374). Introduced Codex (a GPT model fine-tuned on public GitHub code, which powered the original GitHub Copilot), the HumanEval benchmark, and the pass@k metric in the form now widely used.",
+        "clause": "此arXiv預印本提出Codex模型與HumanEval基準",
+        "source_text": "Chen et al. 2021, 'Evaluating Large Language Models Trained on Code' (arXiv 2107.03374). Introduced Codex (a GPT model fine-tuned on public GitHub code, which powered the original GitHub Copilot), the HumanEval benchmark",
         "from": "orchestrator 獨立查證 2026-07-29（arXiv 2107.03374）"
       },
       {
         "clause": "並確立並普及現今通用的pass@k指標",
         "source_text": "pass@k was first proposed by Kulal et al. 2019; Chen et al. established the form that got adopted... the pass@k metric in the form now widely used",
-        "from": "orchestrator 獨立查證 2026-07-29（arXiv 2107.03374）；用詞刻意採「確立並普及」而非「提出」或「首次提出」，因pass@k首次由Kulal et al. 2019提出，Chen et al. 2021確立的是後續被廣泛採用的形式"
+        "from": "orchestrator 獨立查證 2026-07-29（arXiv 2107.03374）；用詞刻意採「確立並普及」而非「提出」或「首次提出」，因pass@k首次由Kulal et al. 2019提出"
       },
       {
-        "clause": "n個候選解中只要至少一個通過單元測試即算解出",
-        "source_text": "sample n candidate solutions per problem, and the problem counts as solved if any of k sampled solutions passes the unit tests. The paper gives an unbiased estimator, pass@k := E[1 − C(n−c,k)/C(n,k)]",
+        "clause": "候選解中只要有一個通過單元測試即算解出",
+        "source_text": "sample n candidate solutions per problem, and the problem counts as solved if any of k sampled solutions passes the unit tests",
         "from": "orchestrator 獨立查證 2026-07-29（arXiv 2107.03374）"
       }
     ]
