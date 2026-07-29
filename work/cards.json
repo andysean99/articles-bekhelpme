@@ -1,7 +1,7 @@
 {
   "https://arxiv.org/pdf/2406.12045": {
     "t": "τ-bench預印本——提出pass^k可靠度指標",
-    "d": "τ-bench是測試零售與航空場景AI代理人的基準論文，提出pass^k衡量代理人多次試驗的可靠度；GPT-4o代理人成功率不到五成，pass^8低於25%。",
+    "d": "τ-bench是測試零售與航空場景AI代理人的基準論文，提出pass^k衡量代理人多次試驗的可靠度；GPT-4o代理人成功率不到五成，零售場景pass^8低於25%。",
     "evidence_spans": [
       {
         "clause": "τ-bench是測試零售與航空場景AI代理人的基準論文",
@@ -14,9 +14,14 @@
         "from": "work/sources/handoff-content.json，quotes"
       },
       {
-        "clause": "GPT-4o代理人成功率不到五成，pass^8低於25%",
-        "source_text": "even state-of-the-art function calling agents (gpt-4o) succeed on <50% of the tasks, and are terribly inconsistent (pass^8 < 25% in retail)",
-        "from": "work/sources/handoff-content.json，quotes"
+        "clause": "GPT-4o代理人成功率不到五成",
+        "source_text": "even state-of-the-art function calling agents (gpt-4o) succeed on <50% of the tasks",
+        "from": "work/sources/handoff-content.json，quotes（跨基準的一般性結果，未限定單一場域）"
+      },
+      {
+        "clause": "零售場景pass^8低於25%",
+        "source_text": "are terribly inconsistent (pass^8 < 25% in retail)",
+        "from": "work/sources/handoff-content.json，quotes；orchestrator 2026-07-29 回饋：論文將此數字限定於零售場域，卡片補上「零售場景」限定詞，避免讀成跨整個benchmark的數字"
       }
     ]
   },
@@ -301,17 +306,22 @@
   },
   "https://martinfowler.com/articles/harness-engineering.html": {
     "t": "Böckeler——Coding Agent的Harness工程",
-    "d": "Thoughtworks的Böckeler提出「harness」框架——結合指引（guides）與感測器（sensors）——作為AI時代守住程式碼可維護性的高價值工作方式。",
+    "d": "Thoughtworks的Böckeler提出「harness」框架：指引（guides，前饋）與感測器（sensors，回饋），調控coding agent朝程式碼內部品質與可維護性。",
     "evidence_spans": [
       {
-        "clause": "Thoughtworks的Böckeler提出「harness」框架——結合指引（guides）與感測器（sensors）",
+        "clause": "Thoughtworks的Böckeler提出「harness」框架",
         "source_text": "author (Birgitta Böckeler), publisher (martinfowler.com / Thoughtworks); mental model of a coding agent harness as a system of guides and sensors",
-        "from": "work/sources/handoff-content.json，matched_fields與notes"
+        "from": "work/sources/handoff-content.json，matched_fields與notes；獨立覆核見 work/sources/orchestrator-reverify.json「Guides（feed-forward）＋ Sensors（feedback）的框架」"
       },
       {
-        "clause": "作為AI時代守住程式碼可維護性的高價值工作方式",
-        "source_text": "AI 時代的高價值工作是設計「harness」——指引加上感測器——並守住可維護性",
-        "from": "work/bootstrap/article.md，正文段落；延伸文章 sensors-for-coding-agents.html 涵蓋可維護性後半句"
+        "clause": "指引（guides，前饋）與感測器（sensors，回饋）",
+        "source_text": "Böckeler's piece presents the harness as a cybernetic governor — guides (feed-forward) plus sensors (feedback) — regulating a codebase toward internal quality and maintainability",
+        "from": "orchestrator 2026-07-29 回饋訊息（依martinfowler.com原文重新核實）"
+      },
+      {
+        "clause": "調控coding agent朝程式碼內部品質與可維護性",
+        "source_text": "regulating a codebase toward internal quality and maintainability",
+        "from": "orchestrator 2026-07-29 回饋訊息（依martinfowler.com原文重新核實）；卡片只復述框架如何運作，不複述essay對其「高價值工作」的排序判斷，該判斷是essay自身論點而非本文主張（C-06 overreach clause）"
       }
     ]
   },
@@ -354,7 +364,7 @@
   },
   "https://www.media.mit.edu/groups/nanda/overview/": {
     "t": "MIT NANDA研究群組官方總覽頁",
-    "d": "此頁為MIT Media Lab NANDA研究群組官方總覽頁，報告全文需再點一層；其GenAI Divide報告發現僅約5%整合型AI試點產出數百萬價值。",
+    "d": "此頁為MIT Media Lab NANDA研究群組官方總覽頁，報告全文需再點一層；其GenAI Divide為初步報告（未經同儕審查），發現僅約5%整合型AI試點產出數百萬價值。",
     "evidence_spans": [
       {
         "clause": "此頁為MIT Media Lab NANDA研究群組官方總覽頁",
@@ -367,7 +377,12 @@
         "from": "work/sources/MERGED.json，該筆的 g4_note 欄位"
       },
       {
-        "clause": "其GenAI Divide報告發現僅約5%整合型AI試點產出數百萬價值",
+        "clause": "其GenAI Divide為初步報告（未經同儕審查）",
+        "source_text": "the report self-describes as preliminary and not peer-reviewed",
+        "from": "orchestrator 2026-07-29 回饋訊息（blind reviewer確認並提出的hardening建議）"
+      },
+      {
+        "clause": "發現僅約5%整合型AI試點產出數百萬價值",
         "source_text": "core finding: \"Just 5% of integrated AI pilots are extracting millions in value, while the vast majority remain stuck with no measurable P&L impact\"",
         "from": "work/sources/batch-c.json，matched_fields／notes；獨立覆核見 work/sources/orchestrator-reverify.json"
       }
