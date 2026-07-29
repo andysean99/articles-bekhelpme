@@ -1,0 +1,145 @@
+{
+  "https://arxiv.org/pdf/2406.12045": {
+    "what_the_source_says": "τ-bench (Yao et al., 2024) is a benchmark for tool-agent-user interaction in two real-world domains (retail and airline), where a simulated user and an LLM agent with domain-specific API tools and policy guidelines converse, and success is judged by comparing the end-of-conversation database state to an annotated goal state. The paper's stated concern is that it is not enough to build agents with high average, one-shot success (pass^1) — it also proposes pass^k as a new metric for measuring reliability/consistency across repeated trials on the same task, distinct from the pre-existing pass@k metric (probability of at least one success across k attempts). The paper reports that even GPT-4o-based function-calling agents succeed on under 50% of tasks and are 'terribly inconsistent' (pass^8 < 25% in retail), which is offered as evidence that capability and reliability are different things.",
+    "quotes": [
+      "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+      "proposes a new metric (pass^k) to evaluate the reliability of agent behavior over multiple trials",
+      "not just... high average success (pass^1), but with more robustness and consistency (pass^k trend)",
+      "even state-of-the-art function calling agents (gpt-4o) succeed on <50% of the tasks, and are terribly inconsistent (pass^8 < 25% in retail)"
+    ],
+    "source_type": "preprint",
+    "verb_strength_notes": "The paper reports empirical results and proposes/defines a metric; it does not 'prove' or 'establish' general claims about agents beyond its own two domains. Search results describe pass^k as the paper's own new contribution, and pass@k as the pre-existing metric it is contrasted against — this matches the essay's usage but note the essay/card's phrasing 'pass@k... 衡量能力上限' (upper bound on capability) is the searcher's/summariser's gloss, not a phrase confirmed verbatim from the paper text itself in these searches.",
+    "confidence": "high",
+    "queries": [
+      "tau-bench Yao 2024 benchmark pass^k pass@k definition tool-agent-user interaction",
+      "tau-bench benchmark real-world domains airline retail agent reliability metric"
+    ]
+  },
+  "https://dora.dev/guides/dora-metrics/": {
+    "what_the_source_says": "DORA's official metrics guide (dora.dev) frames the four/five DORA metrics as diagnostic tools for continuous improvement, not as a scorecard. Search results that hit the dora.dev page directly describe named anti-patterns including 'making disparate comparisons' (metrics 'are meant to be applied at the application or service level'; comparing e.g. a mobile app to a mainframe system is misleading), 'competing' (the guide frames the goal as improving your own team over time, not competing against other teams — i.e., not for cross-team comparison), and 'having siloed ownership'. The guide also frames metrics as identifying constraints in the delivery workflow rather than being targets to hit or game.",
+    "quotes": [
+      "meant to be applied at the application or service level",
+      "making disparate comparisons",
+      "having siloed ownership",
+      "competing"
+    ],
+    "source_type": "vendor/official documentation",
+    "verb_strength_notes": "This is prescriptive guidance ('recommends', 'warns against'), not an empirical finding. I was not able to retrieve a verbatim quoted sentence for the 'don't set as targets' anti-pattern specifically as it appears on dora.dev (multiple third-party sites paraphrase this point consistently, but only the application/service-level point and the named anti-pattern headings came back as content clearly sourced to dora.dev itself in these searches). Treat the 'not as targets' framing as medium-confidence paraphrase within an otherwise high-confidence entry.",
+    "confidence": "high",
+    "queries": [
+      "DORA metrics guide anti-patterns application service level not for comparing teams not targets",
+      "dora.dev guides dora-metrics \"anti-patterns\" \"individual\" application service level heading text"
+    ]
+  },
+  "https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2": {
+    "what_the_source_says": "This is Part 2 of Kent Beck and Gergely Orosz's two-part response to McKinsey's 2023 article 'Yes, you can measure software developer productivity,' co-published on both the Pragmatic Engineer newsletter and Kent Beck's newsletter. Part 2's distinctive content, per search results, is the observation that McKinsey's report mentions profit or revenue zero times, and Beck/Orosz's counter-argument that measurement should start by correlating engineering effort to revenue and profit; it also offers an 'effort-output-outcome-impact' mental model for what to measure at each level. The two authors' voices reportedly diverge on some points within the piece, each giving their own answer.",
+    "quotes": [
+      "Measuring developer productivity? A response to McKinsey, Part 2",
+      "the McKinsey report mentions profits or revenue zero times",
+      "effort-output-outcome-impact"
+    ],
+    "source_type": "newsletter",
+    "verb_strength_notes": "IMPORTANT DIVERGENCE: the widely-quoted line 'we believe that introducing such a framework is wrong-headed and certain to backfire' appears, per search results, in the OPENING SUMMARY of Part 1 (newsletter.pragmaticengineer.com/p/measuring-developer-productivity), not in Part 2, which is the URL actually confirmed for this essay. Part 2 continues the same argument (and both parts share the same overall thesis), but if the essay's guide card attributes that specific quote to the Part-2 URL, that is a source-identity mismatch worth flagging upstream (this agent does not edit the article per C-07/E1 — flagging only). Confidence on the general thesis (McKinsey framework criticized as harmful) is high; confidence that this exact phrase lives on the Part-2 page specifically is medium.",
+    "confidence": "medium",
+    "queries": [
+      "Kent Beck Gergely Orosz McKinsey developer productivity response newsletter",
+      "\"Measuring developer productivity\" \"Part 2\" McKinsey Beck Orosz content revenue profit argument summary",
+      "\"measuring developer productivity\" McKinsey response \"Part 1\" OR \"Part One\" wrong-headed certain to backfire opening summary"
+    ]
+  },
+  "https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance": {
+    "what_the_source_says": "Laura Tacho's blog post (published Feb 28, 2023, per search results) argues against using metrics like lines of code, story points, or deployment frequency to evaluate individual developers. Her core reasoning is systemic: an individual's code depends on systems built by others, so an individual 'cannot fully control their performance within a system where they are just one contributor,' and metrics that originated from research into team/organizational DevOps maturity (DORA, SPACE-type frameworks) are being misapplied when pointed at individuals. She argues problems surfaced by unsatisfactory metrics should be addressed at team or system level, not individual level.",
+    "quotes": [
+      "Applying them to individuals is unfair at best.",
+      "This is the main reason why applying team-level metrics to an individual is unfair.",
+      "An individual cannot fully control their performance within a system where they are just one contributor."
+    ],
+    "source_type": "personal blog",
+    "verb_strength_notes": "This is Tacho's personal argued opinion/position (she 'argues', 'emphasizes') on her own blog, not an institutional research finding — despite her DX/Core-4 affiliation, this specific piece should be treated as a personal-blog opinion source, not vendor research.",
+    "confidence": "high",
+    "queries": [
+      "Laura Tacho individual developer performance metrics blog engineering leadership opinion",
+      "Laura Tacho blog quote \"the system\" OR \"not fair\" individual metrics developer performance direct quote"
+    ]
+  },
+  "https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/": {
+    "what_the_source_says": "Hillel Wayne's newsletter post distinguishes a 'weak version' of Goodhart's law (people have perverse incentives to game a metric once it's a target — e.g., if the metric is 'number of bugs in the bug tracker,' people start spuriously closing bugs, splitting a bug into multiple tickets to inflate closure counts, or prioritizing trivial bugs over complex ones) from a 'strong version' (even fully honest pursuit of a metric, taken far enough, becomes harmful — illustrated with the biological example of peahen plumage becoming a sexual-selection target at the cost of overall bird fitness). On test coverage specifically, the post's point (per search results) is that a target of e.g. 95% coverage causes trivial tests that don't validate real logic, and that coverage alone is close to meaningless as a quality signal. Wayne also cites a counter-example he considers hard to game: Keith Braithwaite's metric of the slope of method-complexity vs. number-of-methods, which correlated with whether a codebase had real unit-test/TDD discipline.",
+    "quotes": [
+      "When a measure becomes a target, it ceases to be a good measure.",
+      "number of bugs in the bug tracker",
+      "Even 100% honest pursuit of a metric, taken far enough, is harmful to your goals"
+    ],
+    "source_type": "personal blog",
+    "verb_strength_notes": "Wayne is making an argued/illustrative case using a real economics law plus his own worked examples, not reporting an empirical study. The exact wording 'closed-bug count led to tickets being split into five' from the essay's card was not independently confirmed as verbatim text from this specific page in these searches — the splitting-tickets detail appeared in search summaries but I could not confirm it is Wayne's own phrasing versus a summarizer's elaboration. Treat that specific numeric detail (e.g., 'split into five tickets') as unconfirmed even though the general open/closed-bug-count and test-coverage examples are well confirmed.",
+    "confidence": "high",
+    "queries": [
+      "Hillel Wayne Goodhart's law software engineering open bug count closed bug count test coverage examples",
+      "Hillel Wayne buttondown \"Goodhart's Law in Software Engineering\" newsletter examples metrics",
+      "buttondown hillelwayne Goodhart's law \"closed bugs\" OR \"test coverage\" example split tickets meaningless tests"
+    ]
+  },
+  "https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87": {
+    "what_the_source_says": "Palantir's official engineering blog post 'Dev versus Delta: Demystifying engineering roles at Palantir' defines two engineering tracks: 'Dev,' whose focus is 'one capability, many customers,' and 'Delta' (forward-deployed software engineers embedded in Business Development), whose focus is 'one customer, many capabilities.' The post states that Delta engineers' success is measured in terms of impact on the customer's own goal — the worked example given is a manufacturer that wants to reduce defective products coming off the assembly line, where a Delta's job is to use Palantir products, various languages, open-source and industry-standard tooling to 'move the needle on that metric.'",
+    "quotes": [
+      "one capability, many customers",
+      "one customer, many capabilities",
+      "move the needle on that metric"
+    ],
+    "source_type": "company blog",
+    "verb_strength_notes": "This is Palantir describing its own internal role definitions and stated evaluation philosophy — it is self-description by the company, not an independently audited account of how performance reviews actually happen. Treat 'success is measured by impact on the customer's goal' as Palantir's own claim about itself, worth stating as 'Palantir says/defines' rather than as a verified external fact.",
+    "confidence": "high",
+    "queries": [
+      "Palantir Dev versus Delta engineer role blog post definition success measured customer objectives",
+      "Palantir Delta engineer forward deployed role blog \"impact\" \"customer\" success metric"
+    ]
+  },
+  "https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/": {
+    "what_the_source_says": "This exact OpenAI careers page (search hit the URL directly) is a job posting for a 'Technical Deployment Lead, Forward Deployed Engineering (FDE)' role in NYC, described as a founding position on the FDE Platform team accountable for making early design-partner deployments successful 'from initial scoping and success criteria through production adoption and demonstrated value.' Per the search results, the posting states the role is responsible for 'setting impact hypotheses, baselines, and KPIs; running pre-/post-deployment measurement and reporting to exec sponsors,' alongside running day-to-day engineering execution across FDE/customer teams and communicating with executive presence to align sponsors.",
+    "quotes": [
+      "setting impact hypotheses, baselines, and KPIs",
+      "running pre-/post-deployment measurement and reporting to exec sponsors",
+      "from initial scoping and success criteria through production adoption and demonstrated value"
+    ],
+    "source_type": "job posting",
+    "verb_strength_notes": "This is a job posting describing role requirements and responsibilities — it describes what the role holder is expected to do, not a study finding or a guarantee those practices are followed. Language like 'setting impact hypotheses, baselines, and KPIs' should be read as job-requirement phrasing, not as OpenAI 'proving' or 'demonstrating' anything.",
+    "confidence": "high",
+    "queries": [
+      "OpenAI Forward Deployed Engineering technical deployment lead job posting impact hypothesis baseline KPI sponsor",
+      "OpenAI careers \"Forward Deployed Engineering\" FDE technical deployment lead responsibilities measure results"
+    ]
+  },
+  "https://philschmid.de/agents-pass-at-k-pass-power-k": {
+    "what_the_source_says": "Philipp Schmid's personal blog post 'Pass@k vs Pass^k: Understanding Agent Reliability' explains, in plain language, that pass@k measures 'the probability that at least one of k independent solution attempts will succeed' (a standard metric already used in code-generation benchmarks), while pass^k ('pass power k') measures the probability that ALL k attempts succeed, and falls as k increases — his framing is that pass@k describes peak/best-case capability while pass^k describes production reliability/consistency. He illustrates the practical stakes with a customer-support/airline-rebooking example (three consecutive rebooking requests only succeeding together 34.3% of the time) and gives a decision rule: use pass@k when a human reviews every output (human-in-the-loop), use pass^k when output is consumed automatically (e.g. merging code, sending messages, modifying databases) because consistency across all attempts matters there.",
+    "quotes": [
+      "Pass@k vs Pass^k: Understanding Agent Reliability",
+      "the probability that at least one of k independent solution attempts will succeed",
+      "estimates the probability that an agent would succeed on all k independent attempts",
+      "pronounced \"pass power k\""
+    ],
+    "source_type": "personal blog",
+    "verb_strength_notes": "This is an explanatory/pedagogical post ('explains', 'illustrates') by an individual practitioner (a Google DeepMind developer relations figure at the time of writing, based on the domain), not a peer-reviewed or vendor-institutional source — should be treated as a personal blog restating/popularizing the τ-bench pass^k concept, not as an independent research contribution.",
+    "confidence": "high",
+    "queries": [
+      "Philipp Schmid blog pass@k pass^k agents explanation plain language reliability",
+      "philschmid.de \"agents pass at k pass power k\" blog post"
+    ]
+  },
+  "https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/": {
+    "what_the_source_says": "DX's Core 4 framework (from getdx.com, DX being Laura Tacho and Abi Noda's company) defines four counterbalanced dimensions — Speed, Effectiveness, Quality, Impact — combining ideas from DORA, SPACE, and DevEx research. 'Diffs per engineer' (or PRs per engineer) is the primary Speed metric, explicitly intended as an aggregate/team/organizational-level snapshot of flow, not a per-person score; search results describe an explicit caveat/asterisk in the framework reading approximately 'not to measure this at the individual level' and state it should never be tied to performance evaluations. Effectiveness is measured via the Developer Experience Index (DXI), a 14-item Likert-scale survey score, which the framework uses as a counterbalance so that a focus on raw throughput (diffs) doesn't dominate the picture; Quality uses Change Failure Rate, and Impact uses percentage of time spent on new capabilities.",
+    "quotes": [
+      "Diffs per Engineer",
+      "It is critical that this metric is never used at the individual level or tied to performance evaluations.",
+      "Not to measure this at the individual level.",
+      "These metrics are not tracked at the individual level."
+    ],
+    "source_type": "vendor/official documentation",
+    "verb_strength_notes": "This is DX's own prescriptive framework documentation/research report about its own product methodology — it recommends and warns ('should never', 'critical that... never'), it does not report an independent audit of whether companies actually comply. The 'not to measure at the individual level' and 'never tied to... evaluations' phrasing came back consistently across independent searches, giving reasonably high confidence, but exact verbatim wording on the getdx.com research page itself (vs. companion newsletter/blog posts by DX) was not confirmed word-for-word.",
+    "confidence": "high",
+    "queries": [
+      "DX Core 4 diffs per engineer individual level tracking developer experience index caveat rewards",
+      "getdx.com research \"DX Core 4\" speed effectiveness quality impact metrics framework hedge individual",
+      "DX Core 4 \"should not be tied to\" OR \"not be used for\" compensation performance reviews individual rewards",
+      "Abi Noda DX Core 4 diffs per engineer team level aggregate not individual warning misuse"
+    ]
+  }
+}

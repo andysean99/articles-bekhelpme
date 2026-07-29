@@ -1,4 +1,4 @@
-<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pkTitle pkDesc" class="viz-pk">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="pkTitle pkDesc" class="viz-pk">
   <title id="pkTitle">pass@k 與 pass^k：同一組執行結果，兩種判定規則</title>
   <desc id="pkDesc">pass@k 是「跑 k 次至少成功一次」的機率，衡量能力上限；pass^k 是「跑 k 次全部成功」的機率，衡量可靠度下限。同一組 5 次執行結果，套用兩種規則會得到相反的結論。</desc>
   <style>
@@ -46,7 +46,7 @@
       <path d="M162,0 L168,6 L179,-8" class="check"/>
     </g>
     <!-- run2: fail (dimmed, irrelevant to OR verdict) -->
-    <g opacity="0.4"><title>第 2 次：失敗（對 pass@k 判定無影響）</title>
+    <g opacity="0.3"><title>第 2 次：失敗（對 pass@k 判定無影響）</title>
       <circle cx="230" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
       <path d="M223,-7 L237,7 M237,-7 L223,7" class="cross"/>
     </g>
@@ -61,7 +61,7 @@
       <path d="M342,0 L348,6 L359,-8" class="check"/>
     </g>
     <!-- run5: fail (dimmed) -->
-    <g opacity="0.4"><title>第 5 次：失敗（對 pass@k 判定無影響）</title>
+    <g opacity="0.3"><title>第 5 次：失敗（對 pass@k 判定無影響）</title>
       <circle cx="410" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
       <path d="M403,-7 L417,7 M417,-7 L403,7" class="cross"/>
     </g>

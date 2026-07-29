@@ -65,11 +65,12 @@
   <!-- 39-point gap bracket between "recalled" and "actual" -->
   <g>
     <title>39 個百分點的落差：事後回想（+20%）與實測結果（−19%）之間</title>
-    <line x1="397" y1="110" x2="409" y2="110" class="bracket"/>
-    <line x1="403" y1="110" x2="403" y2="305" class="bracket"/>
-    <line x1="397" y1="305" x2="409" y2="305" class="bracket"/>
-    <text x="415" y="203" class="val" font-size="15">39</text>
-    <text x="415" y="221" class="val2">個百分點</text>
-    <text x="415" y="237" class="val2">的落差</text>
+    <line x1="386" y1="110" x2="398" y2="110" class="bracket"/>
+    <line x1="392" y1="110" x2="392" y2="305" class="bracket"/>
+    <line x1="386" y1="305" x2="398" y2="305" class="bracket"/>
+    <text x="404" y="212" class="val" font-size="15">39</text>
   </g>
+
+  <!-- caption -->
+  <text x="320" y="382" text-anchor="middle" class="val2">感受與事實相差 39 個百分點</text>
 </svg>
