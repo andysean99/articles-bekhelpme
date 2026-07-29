@@ -1,0 +1,119 @@
+<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pkTitle pkDesc" class="viz-pk">
+  <title id="pkTitle">pass@k 與 pass^k：同一組執行結果，兩種判定規則</title>
+  <desc id="pkDesc">pass@k 是「跑 k 次至少成功一次」的機率，衡量能力上限；pass^k 是「跑 k 次全部成功」的機率，衡量可靠度下限。同一組 5 次執行結果，套用兩種規則會得到相反的結論。</desc>
+  <style>
+    .viz-pk{
+      --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F; --hair:#E3DED2; --surface:#FFFFFF;
+      --s1:#177A5B; --s2:#4661C2;
+    }
+    @media (prefers-color-scheme: dark){
+      :root:where(:not([data-theme="light"])) .viz-pk{
+        --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+        --s1:#2FA079; --s2:#6B7FE0;
+      }
+    }
+    :root[data-theme="dark"] .viz-pk{
+      --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+      --s1:#2FA079; --s2:#6B7FE0;
+    }
+    .viz-pk text{font-family:"Noto Sans TC","PingFang TC",system-ui,-apple-system,sans-serif}
+    .viz-pk .ax{fill:var(--ink-3); font-size:12px}
+    .viz-pk .val{fill:var(--ink); font-size:16px; font-weight:700}
+    .viz-pk .val2{fill:var(--ink-2); font-size:12.5px}
+    .viz-pk .legend-text{fill:var(--ink-2); font-size:12.5px}
+    .viz-pk .divider{stroke:var(--hair); stroke-width:1}
+    .viz-pk .check{stroke:#FFFFFF; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; fill:none}
+    .viz-pk .cross{stroke:var(--ink-3); stroke-width:2; stroke-linecap:round; fill:none}
+  </style>
+
+  <!-- shared legend: success / fail -->
+  <g>
+    <circle cx="266" cy="20" r="6" fill="var(--s1)"/>
+    <text x="278" y="24" class="legend-text">單次執行成功</text>
+    <circle cx="386" cy="20" r="6" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+    <text x="398" y="24" class="legend-text">單次執行失敗</text>
+  </g>
+
+  <!-- ============ row 1: pass@k (OR) ============ -->
+  <text x="40" y="88" class="val">pass@k</text>
+  <text x="40" y="106" class="val2">能力上限</text>
+
+  <!-- 5 run icons, row 1: fails dimmed because OR only needs one success -->
+  <g transform="translate(0,90)">
+    <!-- run1: success -->
+    <g><title>第 1 次：成功</title>
+      <circle cx="170" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M162,0 L168,6 L179,-8" class="check"/>
+    </g>
+    <!-- run2: fail (dimmed, irrelevant to OR verdict) -->
+    <g opacity="0.4"><title>第 2 次：失敗（對 pass@k 判定無影響）</title>
+      <circle cx="230" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+      <path d="M223,-7 L237,7 M237,-7 L223,7" class="cross"/>
+    </g>
+    <!-- run3: success -->
+    <g><title>第 3 次：成功</title>
+      <circle cx="290" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M282,0 L288,6 L299,-8" class="check"/>
+    </g>
+    <!-- run4: success -->
+    <g><title>第 4 次：成功</title>
+      <circle cx="350" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M342,0 L348,6 L359,-8" class="check"/>
+    </g>
+    <!-- run5: fail (dimmed) -->
+    <g opacity="0.4"><title>第 5 次：失敗（對 pass@k 判定無影響）</title>
+      <circle cx="410" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+      <path d="M403,-7 L417,7 M417,-7 L403,7" class="cross"/>
+    </g>
+  </g>
+
+  <!-- verdict chip row 1 -->
+  <g>
+    <title>至少 1 次成功，pass@5 判定：通過</title>
+    <circle cx="500" cy="90" r="12" fill="var(--s1)"/>
+    <path d="M494,90 L499,95 L508,84" class="check"/>
+    <text x="520" y="95" class="val" font-size="14">通過</text>
+  </g>
+  <text x="320" y="128" text-anchor="middle" class="val2">至少 1 次成功，就算 pass@5 通過</text>
+
+  <line x1="30" y1="152" x2="610" y2="152" class="divider"/>
+
+  <!-- ============ row 2: pass^k (AND) ============ -->
+  <text x="40" y="212" class="val">pass^k</text>
+  <text x="40" y="230" class="val2">可靠度下限</text>
+
+  <!-- 5 run icons, row 2: nothing dimmed, every run matters for AND -->
+  <g transform="translate(0,214)">
+    <g><title>第 1 次：成功</title>
+      <circle cx="170" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M162,0 L168,6 L179,-8" class="check"/>
+    </g>
+    <g><title>第 2 次：失敗（單一失敗即拉低 pass^k 判定）</title>
+      <circle cx="230" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+      <path d="M223,-7 L237,7 M237,-7 L223,7" class="cross"/>
+    </g>
+    <g><title>第 3 次：成功</title>
+      <circle cx="290" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M282,0 L288,6 L299,-8" class="check"/>
+    </g>
+    <g><title>第 4 次：成功</title>
+      <circle cx="350" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M342,0 L348,6 L359,-8" class="check"/>
+    </g>
+    <g><title>第 5 次：失敗（單一失敗即拉低 pass^k 判定）</title>
+      <circle cx="410" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+      <path d="M403,-7 L417,7 M417,-7 L403,7" class="cross"/>
+    </g>
+  </g>
+
+  <!-- verdict chip row 2 -->
+  <g>
+    <title>並非 5 次全部成功，pass^5 判定：未過關</title>
+    <circle cx="500" cy="214" r="12" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+    <path d="M494,208 L506,220 M506,208 L494,220" class="cross"/>
+    <text x="520" y="219" class="val" font-size="14">未過關</text>
+  </g>
+  <text x="320" y="252" text-anchor="middle" class="val2">要 5 次全部成功，pass^5 才算通過</text>
+
+  <text x="320" y="284" text-anchor="middle" class="ax">同一組 5 次執行結果，套用兩種判定規則，得到相反的結論</text>
+</svg>
