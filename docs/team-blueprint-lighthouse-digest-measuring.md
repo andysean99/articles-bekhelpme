@@ -109,7 +109,7 @@ M6 push 完成、兩條 route 線上可讀、scoreboard append 檔產出、stale
                       │ 導覽卡不可機器驗證的部分
                       ▼
         ┌─────────────────────────────┐
-        │ M-06 盲測複核官  Sonnet      │ 只看成品，不看任何自我回報
+        │ M-06 盲測複核官  Opus 5      │ 只看成品，不看任何自我回報
         └─────────────────────────────┘
 ```
 
@@ -194,7 +194,11 @@ M6 push 完成、兩條 route 線上可讀、scoreboard append 檔產出、stale
 ### M-06 — 盲測複核官
 
 - **職責**：對導覽卡做盲測事實複核（唯一無法機器驗證的一層）
-- **模型**：**Sonnet**，但以**不同 effort 檔位**執行且**輸入完全剝離**（只收卡片文字 ＋ 來源查詢結果，不收 M-02 自述、不收 orchestrator 的判定）
+- **模型**：**Opus 5**（`claude-opus-5`）— Bek 於 2026-07-29 裁示升檔。
+  原設計為 Sonnet ＋ 輸入剝離，但 M-02 也是 Sonnet，違反憲章「grader ≠ worker 模型」的硬要求，
+  剝離只是代償而非滿足。改 Opus 後該條真正成立；**輸入剝離照舊執行**（只收卡片文字 ＋ 來源證據，
+  不收 M-02 自述、不收 orchestrator 判定），從唯一保險降級為第二道保險。
+  成本：約 +3–4 萬 token。換到的是導覽卡這一層——全案唯一無法機器驗證的部分——有真正的異模型複核
 - **檔案 territory**：`work/checks/blind-review.json`
 - **Deliverable**：每張抽樣卡的判定 `{card_key, verdict: "send_to_human" | "reject", offending_clauses:[…]}`
 - **收件人**：orchestrator
@@ -224,7 +228,7 @@ G4 是 SP review 指出的缺口——「20 個來源」是估計值不是清單
 
 ## 8. 風險與預算
 
-**Token 預估**：M-01 ×3 ≈ 230k｜M-02 ≈ 80k｜M-03 ≈ 300k｜M-04 ≈ 40k｜M-05 ≈ 100k｜M-06 ≈ 50k｜orchestrator ≈ 200k → **約 1.0M tokens**
+**Token 預估**：M-01 ×3 ≈ 230k｜M-02 ≈ 80k｜M-03 ≈ 300k｜M-04 ≈ 40k｜M-05 ≈ 100k｜M-06 ≈ 85k（Opus 升檔）｜orchestrator ≈ 200k → **約 1.05M tokens**
 
 | # | 風險 | 緩解 |
 |---|---|---|
@@ -234,7 +238,7 @@ G4 是 SP review 指出的缺口——「20 個來源」是估計值不是清單
 | R4 | **簡體版 URL 被 OpenCC 轉字**（原型踩過：含日文的網址） | C-12 佔位符保護 ＋ URL 集合 diff 為空的二元檢查 |
 | R5 | **scoreboard 無法在地回寫**（Drive `create_file` 無 fileId，只能新建 → 會造成同名 stale fork） | 改產 `work/eval-scoreboard-append-2026-07-29.json` ＋ 手動合併步驟。**這是 Phase 5 的已知未通過項，不掩飾** |
 
-**降檔方案**（預算超標時依序砍）：① 砍 M-06 盲測複核（改 orchestrator 單人校對）② 導覽卡只做九個已確認來源 ③ 簡體版延後為第二批 ④ 圖表砍到 1 張。**不砍**：M-01 的兩次獨立查詢、M-05 的反作弊抽查。
+**降檔方案**（預算超標時依序砍）：① M-06 降回 Sonnet ＋ 輸入剝離（不砍掉複核本身）② 導覽卡只做九個已確認來源 ③ 簡體版延後為第二批 ④ 圖表砍到 1 張。**不砍**：M-01 的兩次獨立查詢、M-05 的反作弊抽查。
 
 **Eval 條款**
 - 全域 scoreboard：`Obsidian Vault / 00_System / AI / eval-scoreboard.json`（Drive `1ISyGXhj5quUNxjghHrqwxnR9G29MGW99`，14 列，mtime 2026-07-25）
