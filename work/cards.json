@@ -383,5 +383,26 @@
         "from": "work/sources/batch-c.json，matched_fields／notes（guest: Bob McGrew, former OpenAI Head of Research / Chief Research Officer）"
       }
     ]
+  },
+  "https://arxiv.org/abs/2107.03374": {
+    "t": "Chen et al. 2021預印本——Codex／HumanEval論文",
+    "d": "此arXiv預印本提出Codex模型（後來驅動初代GitHub Copilot）與HumanEval基準，並確立並普及現今通用的pass@k指標：n個候選解中只要至少一個通過單元測試即算解出。",
+    "evidence_spans": [
+      {
+        "clause": "此arXiv預印本提出Codex模型（後來驅動初代GitHub Copilot）與HumanEval基準",
+        "source_text": "Chen et al. 2021, 'Evaluating Large Language Models Trained on Code' (arXiv 2107.03374). Introduced Codex (a GPT model fine-tuned on public GitHub code, which powered the original GitHub Copilot), the HumanEval benchmark, and the pass@k metric in the form now widely used.",
+        "from": "orchestrator 獨立查證 2026-07-29（arXiv 2107.03374）"
+      },
+      {
+        "clause": "並確立並普及現今通用的pass@k指標",
+        "source_text": "pass@k was first proposed by Kulal et al. 2019; Chen et al. established the form that got adopted... the pass@k metric in the form now widely used",
+        "from": "orchestrator 獨立查證 2026-07-29（arXiv 2107.03374）；用詞刻意採「確立並普及」而非「提出」或「首次提出」，因pass@k首次由Kulal et al. 2019提出，Chen et al. 2021確立的是後續被廣泛採用的形式"
+      },
+      {
+        "clause": "n個候選解中只要至少一個通過單元測試即算解出",
+        "source_text": "sample n candidate solutions per problem, and the problem counts as solved if any of k sampled solutions passes the unit tests. The paper gives an unbiased estimator, pass@k := E[1 − C(n−c,k)/C(n,k)]",
+        "from": "orchestrator 獨立查證 2026-07-29（arXiv 2107.03374）"
+      }
+    ]
   }
 }
