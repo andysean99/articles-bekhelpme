@@ -343,22 +343,17 @@
   },
   "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027": {
     "t": "Gartner新聞稿——預測Agentic AI專案取消率",
-    "d": "Gartner根據2025年1月一場網路研討會3,412名與會者的民調，預測到2027年底將有超過四成agentic AI專案因成本失控、商業價值不明、風險控制不足而遭取消。",
+    "d": "Gartner新聞稿預測，到2027年底將有超過四成agentic AI專案因成本失控、商業價值不明、風險控制不足遭取消；此預測未揭露樣本與計算方式。",
     "evidence_spans": [
       {
-        "clause": "根據2025年1月一場網路研討會3,412名與會者的民調",
-        "source_text": "January 2025 poll of 3,412 webinar attendees",
-        "from": "work/sources/batch-c.json，matched_fields"
+        "clause": "到2027年底將有超過四成agentic AI專案因成本失控、商業價值不明、風險控制不足遭取消",
+        "source_text": "over 40% of agentic AI projects will be canceled by end of 2027... reasons: escalating costs, unclear business value, inadequate risk controls",
+        "from": "work/sources/batch-c.json，matched_fields；title本身"
       },
       {
-        "clause": "預測到2027年底將有超過四成agentic AI專案",
-        "source_text": "40%+ cancelled by end of 2027",
-        "from": "work/sources/batch-c.json，matched_fields"
-      },
-      {
-        "clause": "因成本失控、商業價值不明、風險控制不足而遭取消",
-        "source_text": "reasons: escalating costs, unclear business value, inadequate risk controls",
-        "from": "work/sources/batch-c.json，matched_fields"
+        "clause": "此預測未揭露樣本與計算方式",
+        "source_text": "The '>40% canceled by end of 2027' figure has no sample and no calculation disclosed anywhere in the release. It is an analyst prediction, argued separately via the 'agent washing' observation.",
+        "from": "orchestrator 2026-07-29 回饋訊息（兩次獨立查詢確認）；essay文末證據等級附註對應句：「Gartner 的 40% 預測：新聞稿未揭露樣本與計算方式，屬分析師預測。」卡片刻意不提3,412名與會者民調——該民調測的是投資態度而非取消率，與此預測無關，混用會把民調的權威性錯誤地借給這個預測"
       }
     ]
   },
