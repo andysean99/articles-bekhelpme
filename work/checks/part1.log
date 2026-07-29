@@ -1,0 +1,20 @@
+=== C-08: entity link counts ===
+--- work/digest.html ---
+class="ent" => 48
+data-url => 48
+class="ent" href= => 48
+--- work/digest-cn.html ---
+class="ent" => 48
+data-url => 48
+class="ent" href= => 48
+
+=== C-01: verbatim check ===
+PASS — 108 句全數逐字保留，差異數 0
+exit code: 0
+
+=== C-12: URL set diff between editions ===
+diff exit code: 0
+
+lang=zh-Hans check:
+FOUND
+lang="zh-Hans"
