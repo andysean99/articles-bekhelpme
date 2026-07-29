@@ -141,6 +141,6 @@ OpenAI 在其 Forward Deployed Engineering 的職缺描述裡，把這件事寫�
 - Gartner 的 40% 預測：基於 2025 年 1 月一場網路研討會 3,412 名與會者的民調，非嚴格抽樣。
 - RAND 報告（RR-A2680-1）提及的「超過八成 AI 專案失敗」屬引述性估計，宜讀作「大多數失敗」而非精確比例。
 - MIT Project NANDA 研究基於 52 場高階主管訪談、153 份調查與 300 個公開部署分析。
-- pass@k / pass^k 的定義出自 τ-bench（Yao et al., 2024），後續多篇論文沿用，可靠度高。
+- pass^k 的定義出自 τ-bench（Yao et al., 2024）；pass@k 早於它，出自 Chen et al. 2021（Codex／HumanEval），後續多篇論文沿用，可靠度高。
 - 「採用率造成三到四倍淨現值差異」出自顧問業的投資報酬框架，屬供應商內容，方向可信但具體倍數宜審慎。
 - Palantir 未公布量化的 FDE 成效案例，其官方說法為質化描述。

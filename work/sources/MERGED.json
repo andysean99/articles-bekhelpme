@@ -148,5 +148,14 @@
     "驗證方式": "M-01c ＋ orchestrator 獨立覆核",
     "卡": "是",
     "claim_in_article": "前 OpenAI 研究長 Bob McGrew 在描述 agentic 軟體工程能做什麼時說得很直白：修一個 bug、做一次重構——這類工作需要的品味相對少，而且結果明確。"
+  },
+  {
+    "來源": "Chen et al. 2021 — Codex / HumanEval（pass@k 出處）",
+    "status": "verified",
+    "url": "https://arxiv.org/abs/2107.03374",
+    "驗證方式": "orchestrator 2026-07-29 兩次獨立查詢；G4-b 裁示 A 後新增",
+    "卡": "是",
+    "claim_in_article": "pass@k 早於它，出自 Chen et al. 2021（Codex／HumanEval）",
+    "g4b_note": "E1 裁示 A 的產物。原附註把 pass@k 與 pass^k 都歸給 τ-bench，查證顯示 pass@k 最早由 Kulal et al. 2019 提出、由 Chen et al. 2021 （Codex/HumanEval，arXiv 2107.03374）確立普及，比 τ-bench 早三到五年；τ-bench 論文是拿既有的 pass@k 對照以凸顯 pass^k。附註已修正並新增本來源。"
   }
 ]

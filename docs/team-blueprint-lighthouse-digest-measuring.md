@@ -249,11 +249,12 @@ G4 是 SP review 指出的缺口——「20 個來源」是估計值不是清單
 
 ## 9. Assumptions ／ Exception Log
 
-**Exception Log（本文唯一授權改動）**
+**Exception Log（本文授權改動，共 2 筆）**
 
 | 位置 | 原文 | 改為 | 授權 | 證據 |
 |---|---|---|---|---|
 | 第 35 行 | 「從 **2021** 年的約 25%」 | 「從 **2020** 年的約 25%」 | Bek 2026-07-29「用真實的／正確的數字」 | 兩次獨立 WebSearch 一致回報 24.1%(2020)→9.5%(2024)；文章同句括號已寫 2020–2024，內部先矛盾 |
+| 第 144 行（證據等級附註） | 「pass@k / pass^k 的定義出自 τ-bench（Yao et al., 2024）」 | 「pass^k 的定義出自 τ-bench（Yao et al., 2024）；pass@k 早於它，出自 Chen et al. 2021（Codex／HumanEval）」 | Bek 2026-07-29 裁示 E1 選項 A | pass@k 最早由 Kulal et al. 2019 提出、Chen et al. 2021（arXiv 2107.03374）確立普及，早於 τ-bench 三到五年；τ-bench 論文是拿既有 pass@k 對照以凸顯 pass^k。兩次獨立查詢一致。由 M-02 於卡片重新接地時發現並上報 |
 
 **Assumptions**
 

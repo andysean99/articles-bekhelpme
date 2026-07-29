@@ -24,7 +24,9 @@
     {
       "source": "SPACE framework",
       "prior_state": "兩筆證據 URL 不同（queue.acm.org vs dl.acm.org DOI 鏡像），且第二筆誘導式",
-      "queries": ["\"The SPACE of Developer Productivity\" Forsgren Storey Zimmermann article where was it published"],
+      "queries": [
+        "\"The SPACE of Developer Productivity\" Forsgren Storey Zimmermann article where was it published"
+      ],
       "result": "PASS",
       "url": "https://queue.acm.org/detail.cfm?id=3454124",
       "notes": "純內容查詢獨立回傳 queue.acm.org/detail.cfm?id=3454124。原先的 URL 不一致屬同一 DOI（3454122.3454124）的兩個 ACM 官方介面，M-01a 判定為佐證非衝突，成立。\n\nM-01a 另主動剔除了搜尋結果中的 spawn-queue.acm.org 假網域，判定為索引雜訊。我的獨立查詢中該假網域再次出現在第一位——**agent 的判斷是對的**，這是一次應該被記錄的正確拒絕。"
@@ -32,7 +34,9 @@
     {
       "source": "Anthropic — Demystifying evals for AI agents",
       "prior_state": "Q1 為引號包住的 URL 字串，屬誘導式",
-      "queries": ["Anthropic article evals force product teams to define what success means agents edge cases spec"],
+      "queries": [
+        "Anthropic article evals force product teams to define what success means agents edge cases spec"
+      ],
       "result": "PASS",
       "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
       "notes": "純內容查詢獨立回傳同一 URL，且回傳內容含近乎逐字的原句：「two engineers reading the same spec often interpret edge cases differently. Evals resolve this ambiguity.」與文章「兩位工程師讀同一份規格，對邊界情況會有不同解讀；eval 套件消解這個歧義」逐點對應。"
@@ -40,7 +44,9 @@
     {
       "source": "Birgitta Böckeler — harness engineering",
       "prior_state": "Q1 為引號包住的 URL 字串，屬誘導式",
-      "queries": ["Böckeler Thoughtworks harness engineering coding agents guides and sensors maintainability martin fowler"],
+      "queries": [
+        "Böckeler Thoughtworks harness engineering coding agents guides and sensors maintainability martin fowler"
+      ],
       "result": "PASS",
       "url": "https://martinfowler.com/articles/harness-engineering.html",
       "notes": "純內容查詢獨立回傳同一 URL。Guides（feed-forward）＋ Sensors（feedback）的框架與文章「指引加上感測器」對應。M-01b 指出的後續篇〈Maintainability sensors for coding agents〉（martinfowler.com/articles/sensors-for-coding-agents.html）獨立查詢中同樣浮現，可作為次要引用，涵蓋文章「並守住可維護性」的後半句。"
@@ -48,7 +54,9 @@
     {
       "source": "RAND RR-A2680-1",
       "prior_state": "Q2 誘導式",
-      "queries": ["RAND research report root causes of failure artificial intelligence projects 65 engineers data scientists interviewed"],
+      "queries": [
+        "RAND research report root causes of failure artificial intelligence projects 65 engineers data scientists interviewed"
+      ],
       "result": "PASS",
       "url": "https://www.rand.org/pubs/research_reports/RRA2680-1.html",
       "notes": "純內容查詢獨立回傳同一 URL。65 人訪談基礎確認。根因語言（誤解／誤傳要解決什麼問題、被最佳化到錯誤指標、不符整體業務流程）與文章對應。\n\n【微小差異，不足以構成 E1】來源說的是「65 experienced data scientists and engineers」，文章寫「65 名工程師」。文章的證據等級附註已正確標示「超過八成失敗」為引述性估計，與來源「By some estimates」一致。"
@@ -56,7 +64,9 @@
     {
       "source": "Gartner 新聞稿",
       "prior_state": "兩筆皆誘導式（其一使用 site: 限定）",
-      "queries": ["Gartner predicts over 40 percent agentic AI projects canceled end of 2027 escalating costs unclear business value"],
+      "queries": [
+        "Gartner predicts over 40 percent agentic AI projects canceled end of 2027 escalating costs unclear business value"
+      ],
       "result": "PASS",
       "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
       "notes": "純內容查詢獨立回傳 gartner.com 官方新聞稿為第一位。三個理由（成本失控、商業價值不明、風險控制不足）逐字對應。證據等級附註的「2025 年 1 月網路研討會 3,412 名與會者民調」在新聞稿內文獲得確認。"
@@ -72,6 +82,17 @@
       "url_claimed_by_m01c": "https://nanda.media.mit.edu/ai_report_2025.pdf",
       "url_independently_surfaced": "https://www.media.mit.edu/groups/nanda/overview/",
       "notes": "**兩次查詢都沒有回傳 M-01c 記錄的 PDF 網址。**該網址只在 site: 限定查詢中出現過，那是確認式而非獨立查詢。依 C-04 這一列不合格。\n\n獨立浮現的官方 MIT 網域頁面是 media.mit.edu/groups/nanda/overview/（NANDA 研究群組總覽頁）。其餘獨立浮現的都是鏡像（mlq.ai、Scribd、GitHub nandapapers、aigl.blog），依 C-05 一律不得頂替。\n\n**研究內容本身完全確認**：300+ 個公開部署、52 場結構化訪談、153 份調查、「Just 5% of integrated AI pilots are extracting millions in value」——與文章正文及證據等級附註逐點相符。有問題的只是「該指向哪個 URL」。\n\n→ 送 G4 由 Bek 裁示，見交付摘要。"
+    },
+    {
+      "source": "pass@k 的真實出處（E1 裁示 A）",
+      "prior_state": "文章附註宣稱 pass@k 與 pass^k 皆出自 τ-bench",
+      "queries": [
+        "pass@k metric origin Codex HumanEval Chen 2021 evaluating large language models trained on code",
+        "tau-bench Yao 2024 introduces pass^k new metric reliability contrasted with existing pass@k"
+      ],
+      "result": "E1 CONFIRMED — 附註過度歸屬，已由 Bek 裁示修正",
+      "url": "https://arxiv.org/abs/2107.03374",
+      "notes": "查詢一：pass@k 最早由 Kulal et al. (2019) 提出，Chen et al. 2021 的 Codex 論文（arXiv 2107.03374，同時提出 HumanEval）確立其形式與普及。\n查詢二：pass^k 確為 τ-bench（Yao et al. 2024）的新指標，論文明確拿 pass@k 作對照（pass@k 衡量能力上限並隨 k 飽和，pass^k 衡量可靠度並隨 k 劇降）。\n\n→ 附註原句把兩者都歸給 τ-bench，一半不正確。Bek 2026-07-29 裁示選項 A：拆開歸屬並補上 Chen et al. 2021。文章第 144 行為本案第二個授權改動。\n→ 正文未受影響：正文只描述兩者的區分，未宣稱出處。"
     }
   ]
 }
