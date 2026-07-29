@@ -1,0 +1,1 @@
+{"task_type": "i18n-convert", "model": "haiku", "model_version": "claude-haiku-4-5-20251001", "status": "success", "checks": {"check_1_urls_identical": "PASS", "check_2_lang_attribute": "PASS", "check_3_no_language_switch": "PASS", "check_4_copy_button_label": "PASS", "check_5_self_contained": "PASS"}, "timestamp": "2026-07-29"}
