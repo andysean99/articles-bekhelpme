@@ -1,0 +1,24 @@
+[
+  {
+    "claim_in_article": "GitClear 分析了 2.11 億行程式碼變更（2020–2024，涵蓋 Google、微軟、Meta 等專案），發現重構碼的佔比從 2020 年的約 25% 掉到 2024 年的不到 10%，複製貼上的程式碼首度超過搬移的程式碼，重複的程式碼區塊在 2024 年增加約八倍",
+    "identifier": "GitClear, AI Copilot Code Quality 2025 (second-annual report), 211M changed lines, 2020-2024",
+    "status": "verified",
+    "url": "https://www.gitclear.com/ai_assistant_code_quality_2025_research",
+    "secondary_url": "https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf",
+    "verified_by": "orchestrator",
+    "date": "2026-07-29",
+    "evidence": [
+      {
+        "query": "GitClear \"AI Copilot Code Quality\" 2025 report moved lines percentage 2020 2024 refactoring",
+        "url": "https://www.gitclear.com/ai_assistant_code_quality_2025_research",
+        "matched_fields": ["publisher", "year", "211M lines", "moved lines 24.1% (2020) -> 9.5% (2024)", "copy/paste first exceeded moved code in 2024", "eightfold duplicate blocks"]
+      },
+      {
+        "query": "GitClear report \"24.1%\" OR \"9.5%\" moved code refactoring decline 2024",
+        "url": "https://www.gitclear.com/ai_assistant_code_quality_2025_research",
+        "matched_fields": ["moved lines 24.1% (2020) -> 9.5% (2024)", "copy/paste 8.3% -> 12.3%", "211M changed lines 2020-2024"]
+      }
+    ],
+    "notes": "E1 已觸發並由 Bek 裁示解決：文章原文寫「從 2021 年的約 25%」，來源實際為 2020 年 24.1%。五個數字（2.11 億行、約 25%、不到 10%、首度超過、約八倍）全部相符，僅起始年份錯一年；且文章同句括號已寫「2020–2024」，內部先矛盾，判定為筆誤。Bek 2026-07-29 授權改為 2020，記於藍圖 §9 exception log，為本案唯一授權的本文改動。\n\n尚未證實：「涵蓋 Google、微軟、Meta 等專案」。兩次查詢的來源說法皆為「匿名私有 repo ＋ 25 個最大的開源專案」，未點名這三家。此項留給 M-05 覆核；若無法證實則觸發 E1 上報，不得自行修改本文。"
+  }
+]
