@@ -1,0 +1,142 @@
+[
+  {
+    "來源": "τ-bench（pass@k / pass^k 定義出處，Yao et al. 2024）",
+    "status": "verified",
+    "url": "https://arxiv.org/pdf/2406.12045",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "DORA 官方反模式說明",
+    "status": "verified",
+    "url": "https://dora.dev/guides/dora-metrics/",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "Pragmatic Engineer — Beck ＋ Orosz 反駁 McKinsey",
+    "status": "verified",
+    "url": "https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "Laura Tacho — 個人層級指標",
+    "status": "verified",
+    "url": "https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "Goodhart 法則的工程案例",
+    "status": "verified",
+    "url": "https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "Palantir — Dev vs Delta 工程角色",
+    "status": "verified",
+    "url": "https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "OpenAI — Forward Deployed Engineering 職缺",
+    "status": "verified",
+    "url": "https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "philschmid — pass^k 白話解釋",
+    "status": "verified",
+    "url": "https://philschmid.de/agents-pass-at-k-pass-power-k",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "DX Core 4",
+    "status": "verified",
+    "url": "https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "GitClear — AI Copilot Code Quality 2025（2.11 億行）",
+    "status": "verified",
+    "url": "https://www.gitclear.com/ai_assistant_code_quality_2025_research",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "GitClear — 報告 PDF 原文",
+    "status": "verified",
+    "url": "https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "arXiv 2507.09089",
+    "status": "verified",
+    "url": "https://arxiv.org/abs/2507.09089",
+    "驗證方式": "M-01a ＋ orchestrator 獨立覆核",
+    "卡": "是"
+  },
+  {
+    "來源": "METR 官方公告（2026年2月）",
+    "status": "verified",
+    "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+    "驗證方式": "M-01a ＋ orchestrator 獨立覆核",
+    "卡": "是"
+  },
+  {
+    "來源": "SPACE framework, ACM Queue 2021, Forsgren et a",
+    "status": "verified",
+    "url": "https://queue.acm.org/detail.cfm?id=3454124",
+    "驗證方式": "M-01a ＋ orchestrator 獨立覆核",
+    "卡": "是"
+  },
+  {
+    "來源": "Anthropic, Demystifying evals for AI agents, A",
+    "status": "verified",
+    "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+    "驗證方式": "M-01b ＋ orchestrator 獨立覆核",
+    "卡": "是"
+  },
+  {
+    "來源": "Birgitta Böckeler, martinfowler.com, piece on ",
+    "status": "verified",
+    "url": "https://martinfowler.com/articles/harness-engineering.html",
+    "驗證方式": "M-01b ＋ orchestrator 獨立覆核",
+    "卡": "是"
+  },
+  {
+    "來源": "RAND report RR-A2680-1",
+    "status": "verified",
+    "url": "https://www.rand.org/pubs/research_reports/RRA2680-1.html",
+    "驗證方式": "M-01b ＋ orchestrator 獨立覆核",
+    "卡": "是"
+  },
+  {
+    "來源": "Gartner press release, gartner.com/en/newsroom",
+    "status": "verified",
+    "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+    "驗證方式": "M-01c ＋ orchestrator 獨立覆核",
+    "卡": "是"
+  },
+  {
+    "來源": "MIT Project NANDA, \"The GenAI Divide: State of",
+    "status": "UNVERIFIED — 待 Bek 裁示",
+    "url": "https://nanda.media.mit.edu/ai_report_2025.pdf",
+    "驗證方式": "M-01c 記錄，orchestrator 兩次獨立查詢皆無法重現",
+    "卡": "暫緩"
+  },
+  {
+    "來源": "Sequoia Capital \"Training Data\" podcast, Bob M",
+    "status": "verified",
+    "url": "https://sequoiacap.com/podcast/training-data-bob-mcgrew/",
+    "驗證方式": "M-01c ＋ orchestrator 獨立覆核",
+    "卡": "是"
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "claim_in_article": "Anthropic 在談 agent evals 時給了一個很好的答案：eval 的價值在於「迫使產品團隊明確定義什麼叫成功」。兩位工程師讀同一份規格，對邊界情況會有不同解讀；eval 套件消解這個歧義。",
+    "identifier": "Anthropic, Demystifying evals for AI agents, Anthropic Engineering blog, 2026-01",
+    "status": "verified",
+    "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+    "evidence": [
+      {
+        "query": "\"anthropic.com/engineering/demystifying-evals-for-ai-agents\"",
+        "url": "https://anthropic.com/engineering/demystifying-evals-for-ai-agents",
+        "matched_fields": ["title", "publisher", "url-slug"]
+      },
+      {
+        "query": "Anthropic engineering blog eval suite disambiguate edge cases two engineers same spec",
+        "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+        "matched_fields": ["title", "publisher", "year (2026, per AnthropicAI tweet 'New on the Anthropic Engineering Blog')", "content: 'two engineers reading the same initial spec could come away with different interpretations on how the AI should handle edge cases' -- near-verbatim match to article's claim"]
+      }
+    ],
+    "notes": "Strong match. Both queries converge on the same canonical URL (www vs non-www variants are the same page). A supplementary query (\"Anthropic 'demystifying evals' AI agents 2026\") independently surfaced a GitHub paper-notes issue titled 'Demystifying evals for AI agents, Anthropic, 2026.01' and an AnthropicAI tweet announcing the post, corroborating the 2026-01 publish date given in the assignment identifier. Content on edge-case interpretation ambiguity between two engineers matches the article's claim almost word for word -- no E1 concern."
+  },
+  {
+    "claim_in_article": "Thoughtworks 的 Birgitta Böckeler 從另一個方向指到同一點：AI 時代的高價值工作是設計「harness」——指引加上感測器——並守住可維護性。",
+    "identifier": "Birgitta Böckeler, martinfowler.com, piece on harnesses (guidance + sensors), 2026",
+    "status": "verified",
+    "url": "https://martinfowler.com/articles/harness-engineering.html",
+    "evidence": [
+      {
+        "query": "\"martinfowler.com/articles/harness-engineering.html\" Böckeler author date",
+        "url": "https://martinfowler.com/articles/harness-engineering.html",
+        "matched_fields": ["title (Harness engineering for coding agent users)", "author (Birgitta Böckeler)", "publisher (martinfowler.com / Thoughtworks)", "year (2026)"]
+      },
+      {
+        "query": "Birgitta Böckeler \"Harness engineering for coding agent users\" guides sensors maintainability publish date 2026",
+        "url": "https://martinfowler.com/articles/harness-engineering.html",
+        "matched_fields": ["title", "author", "publisher", "year (2026)", "content: mental model of a coding agent harness as a system of guides and sensors"]
+      }
+    ],
+    "notes": "Both queries return the same URL. Third-party summaries put the publish date anywhere from March 13 to April 5, 2026 depending on when the citing source picked it up -- minor date noise across secondary sources, but all agree on 2026 and on Böckeler/martinfowler.com as author/publisher, so not treated as an E2 conflict (the canonical URL itself never varied). Note there is a closely related follow-up piece, 'Maintainability sensors for coding agents' (https://martinfowler.com/articles/sensors-for-coding-agents.html, published 2026-05-27), which covers the 'maintainability' half of the article's claim in more practical depth. I selected harness-engineering.html as the primary citation because it is the piece that introduces the guides+sensors harness framing the article's sentence is built around ('harness -- 指引加上感測器'); the maintainability sensors article is a narrower follow-on. If the orchestrator wants the maintainability clause pinned more tightly, the sensors article is the better secondary link -- flagging for their judgment rather than substituting it myself."
+  },
+  {
+    "claim_in_article": "RAND 訪談了 65 名工程師後把首要原因寫得很清楚：業界關係人經常誤解或誤傳「要用 AI 解決的是什麼問題」，導致部署出來的模型被最佳化到錯誤的指標上，或根本不符合整體業務流程。",
+    "identifier": "RAND report RR-A2680-1",
+    "status": "verified",
+    "url": "https://www.rand.org/pubs/research_reports/RRA2680-1.html",
+    "evidence": [
+      {
+        "query": "RAND RR-A2680-1 report",
+        "url": "https://www.rand.org/pubs/research_reports/RRA2680-1.html",
+        "matched_fields": ["title (The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed: Avoiding the Anti-Patterns of AI)", "publisher (RAND Corporation)", "identifier (RRA2680-1 matches RR-A2680-1)", "65 interviewees", "root cause: misunderstood/miscommunicated problem -> wrong metrics / doesn't fit business workflow"]
+      },
+      {
+        "query": "rand.org \"RR-A2680-1\" 65 engineers interviews AI project failure",
+        "url": "https://www.rand.org/pubs/research_reports/RRA2680-1.html",
+        "matched_fields": ["publisher", "identifier", "65 data scientists/engineers interviewed", "content: 'Industry stakeholders often misunderstand-or miscommunicate-what problem needs to be solved using AI, with trained AI models being deployed that have been optimized for the wrong metrics or do not fit into the overall business workflow and context' -- near-verbatim match to article's claim"]
+      }
+    ],
+    "notes": "Both queries converge on the same URL; PDF mirror also found at https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2600/RRA2680-1/RAND_RRA2680-1.pdf (same report, not used as primary link). URL slug drops the hyphen (RRA2680-1 vs RR-A2680-1) but this is RAND's own URL convention, not a different report -- authors James Ryseff, Brandon De Bruhl, Sydne J. Newberry; publisher RAND. The 65-engineer interview basis and the specific root-cause language (misunderstood problem -> wrong metrics / doesn't fit business workflow) match the article's claim almost verbatim -- confirmed. Per the assignment's standing note, the 'over 80% of AI projects fail' figure is a separately-flagged quoted-estimate issue already handled in the article's own evidence appendix (line 142); I did not touch that and it is out of scope for this claim sentence. One secondary source in my search results also described '84% of industry interviewees cited leadership-driven issues as the primary cause' -- this is a different framing/statistic from the same report (leadership failing to communicate the problem, which is consistent with the article's 'misunderstood/miscommunicated problem' framing) and does not contradict the article's claim, so not escalated as E1."
+  }
+]

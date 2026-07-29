@@ -1,0 +1,59 @@
+[
+  {
+    "claim_in_article": "Gartner 預測到 2027 年底會有超過四成的 agentic AI 專案被取消，理由是成本失控、商業價值不明、風險控制不足。",
+    "identifier": "Gartner press release, gartner.com/en/newsroom, >40% of agentic AI projects canceled by end of 2027",
+    "status": "verified",
+    "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+    "evidence": [
+      {
+        "query": "Gartner press release \"agentic AI\" projects cancelled by 2027 40 percent gartner.com/en/newsroom",
+        "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+        "matched_fields": ["publisher (Gartner newsroom)", "title", "year (published 2025-06-25)", "40%+ cancelled by end of 2027", "reasons: escalating costs, unclear business value, inadequate risk controls"]
+      },
+      {
+        "query": "site:gartner.com/en/newsroom over 40% of agentic AI projects abandoned by end of 2027",
+        "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+        "matched_fields": ["publisher (Gartner newsroom)", "title", "year", "same URL as query 1", "January 2025 poll of 3,412 webinar attendees (matches evidence appendix)"]
+      }
+    ],
+    "notes": "Primary Gartner newsroom URL confirmed by both queries (not secondary coverage). Content matches article claim closely on all three points: >40% cancellation figure, end-of-2027 timeframe, and the three reasons (cost overruns / unclear business value / inadequate risk controls -> 成本失控、商業價值不明、風險控制不足). Evidence-appendix detail (Jan 2025 webinar poll of 3,412 attendees) also confirmed directly in the press release content returned by query 2. No E1/E2/E3."
+  },
+  {
+    "claim_in_article": "MIT 的 Project NANDA 研究則發現，只有約 5% 的整合型 AI 試點真的產出數百萬等級的價值，絕大多數沒有可衡量的損益影響。",
+    "identifier": "MIT Project NANDA, \"The GenAI Divide: State of AI in Business 2025\", 2025-07, based on 52 executive interviews, 153 surveys, 300 public deployments analysis",
+    "status": "verified",
+    "url": "https://nanda.media.mit.edu/ai_report_2025.pdf",
+    "evidence": [
+      {
+        "query": "NANDA MIT Media Lab publications GenAI Divide state of ai business 2025 (domain-restricted to media.mit.edu)",
+        "url": "https://nanda.media.mit.edu/ai_report_2025.pdf",
+        "matched_fields": ["publisher (MIT Media Lab / Project NANDA, nanda.media.mit.edu subdomain)", "title (\"The GenAI Divide - STATE OF AI IN BUSINESS 2025\")", "year (2025)"]
+      },
+      {
+        "query": "site:nanda.media.mit.edu ai_report_2025",
+        "url": "https://nanda.media.mit.edu/ai_report_2025.pdf",
+        "matched_fields": ["same URL reproduced independently", "title", "publisher", "methodology: 300+ public initiatives reviewed, 52 structured interviews, 153 survey responses (matches evidence appendix exactly)", "core finding: \"Just 5% of integrated AI pilots are extracting millions in value, while the vast majority remain stuck with no measurable P&L impact\" (matches article claim verbatim in substance)"]
+      }
+    ],
+    "notes": "Confirmed the official MIT project domain (nanda.media.mit.edu) hosts the PDF directly at /ai_report_2025.pdf; this domain corresponds to the official MIT Media Lab NANDA project (cross-checked against media.mit.edu/projects/mit-nanda/ pages). This is the primary source, not a secondary report -- both queries independently reproduced the identical URL. Note: some secondary sources (e.g. a GitHub mirror at github.com/aidecentralized/nandapapers, and third-party PDF hosts like mlq.ai) also carry copies of this report; those were NOT used since the official nanda.media.mit.edu URL was directly confirmed. No E1/E2/E3."
+  },
+  {
+    "claim_in_article": "前 OpenAI 研究長 Bob McGrew 在描述 agentic 軟體工程能做什麼時說得很直白：修一個 bug、做一次重構——這類工作需要的品味相對少，而且結果明確。",
+    "identifier": "Sequoia Capital \"Training Data\" podcast, Bob McGrew episode (former OpenAI Chief Research Officer / Head of Research)",
+    "status": "verified",
+    "url": "https://sequoiacap.com/podcast/training-data-bob-mcgrew/",
+    "evidence": [
+      {
+        "query": "Bob McGrew Sequoia \"Training Data\" podcast episode agentic software engineering taste bug fix refactor",
+        "url": "https://sequoiacap.com/podcast/training-data-bob-mcgrew/",
+        "matched_fields": ["publisher (Sequoia Capital, Training Data podcast)", "guest (Bob McGrew, former OpenAI Head of Research / Chief Research Officer)", "episode title (\"The Breakthroughs Needed for AGI Have Already Been Made\", June 2025)", "topic: agentic software engineering, bug fix / refactor as low-taste, clear-outcome tasks"]
+      },
+      {
+        "query": "Bob McGrew software engineering agents \"less taste\" clear success quote interview",
+        "url": "https://sequoiacap.com/podcast/training-data-bob-mcgrew/",
+        "matched_fields": ["same episode URL reproduced independently", "direct quote text: \"the things that your agentic software engineers can do, you can say, 'Well, fix a bug, do a refactor,' something that you know requires relatively little taste and has a clear outcome\" -- matches article claim almost word for word"]
+      }
+    ],
+    "notes": "Both queries independently confirmed the same primary episode page AND surfaced the specific quote text matching the article's paraphrase closely (fix a bug / do a refactor / relatively little taste / clear outcome). This is stronger than the E3 fallback anticipated in the brief -- the specific claim was traced to the primary episode itself, not merely a secondary write-up. No E1/E2/E3."
+  }
+]
