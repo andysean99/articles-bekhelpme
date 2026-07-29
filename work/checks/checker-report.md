@@ -302,3 +302,111 @@ Homepage (`.next/server/app/index.html`) contains both article titles, both exce
 1. **digest-cn.html must be regenerated/fixed**: global find-replace `指针`→`指标` (verify no genuine CS-pointer usage exists elsewhere in the article before blanket-replacing — none was found in this article, all 15 occurrences are in the "metric" sense).
 2. **constitution.md C-01 clause** should be updated to name all three authorized article.md changes (GitClear year, Gartner caveat, pass@k/pass^k attribution), each with its dated ruling reference, or an appeal should be filed to reconcile the mismatch.
 3. **Row 14 (SPACE framework / ACM Queue URL) and the orchestrator's own reverify claim about it** should go to Bek/ESCALATE for a documented decision — either accept the DOI-based indirect corroboration explicitly as sufficient (and say so in the record), or treat the card/appendix note for this source per C-05 (unverified span, not a broken link since the source itself is well-attested elsewhere, but the specific URL's reproducibility is unresolved).
+
+---
+
+## Addendum — post-fix re-verification (orchestrator round-trip)
+
+Orchestrator response: confirmed my `指標→指針` finding as correct and the project's most important catch; fixed the Simplified edition (protected 5 genuinely-wrong terms with placeholders, kept 7 correct Taiwan→Mainland vocabulary substitutions); re-ran the SPACE-framework URL query independently and got a third, positive retrieval, recording row 14 as verified with no failure against this checker; corrected `constitution.md` C-01 to list all three authorized article.md edits; and flagged a sequencing bug of its own — I had generated `app/measuring-the-half-ai-does-better-cn/route.ts` from the **pre-fix** `work/digest-cn.html`, so the deployable route still carried all 28 (not 15 — see count-method correction below) instances of the 指针 defect even after the source file was fixed.
+
+**Count-method correction, on the record:** my Part 3 finding used `grep -c '指標'` / `grep -c '指针'`, which counts *matching lines*, not *occurrences* — both terms happen to appear more than once on some lines. The true occurrence count (via `grep -o | wc -l`) was **28** in both `work/digest.html` (指標) and the pre-fix `work/digest-cn.html` (指针), not 15. The underlying finding (100% of occurrences wrong, 0% correct) was unaffected by this counting error, but the raw number I reported was wrong and is corrected here.
+
+### Task 1 — regenerate the CN route from the fixed source
+```
+python3 .claude/skills/lighthouse-digest/scripts/make_digest_route.py \
+  --html work/digest-cn.html --slug measuring-the-half-ai-does-better-cn \
+  --title "我们正在衡量 AI 已经做得比人好的那一半" --date 2026-07-29 \
+  --excerpt "我们想拿来衡量工程师的那些指标——bug 数、修复速度、缺陷率——描述的正好是 agent 已经做得不错的那一半工作。" \
+  --lang zh-Hans --deploy-dir /home/user/articles-bekhelpme
+```
+Raw output:
+```
+wrote /home/user/articles-bekhelpme/app/measuring-the-half-ai-does-better-cn/route.ts
+url:   https://articles.bekhelpme.com/measuring-the-half-ai-does-better-cn
+mode:  PUBLIC — next steps: ...
+```
+Exit 0. Same slug/title/date/excerpt/lang as the original invocation — no drift in metadata.
+
+### Task 2 — Traditional route left untouched
+`work/digest.html` was not modified by the orchestrator's fix (only the CN file was). Not regenerated. Confirmed unchanged and still valid by the C-11 proof below (Task 4), which re-derives byte-equality straight from the current `work/digest.html` on disk — if that file had drifted from what the existing route embeds, the proof would have failed.
+
+### Task 3 — rebuild
+```
+npx next build 2>&1 | grep -E '○ /measuring'
+```
+Raw output:
+```
+├ ○ /measuring-the-half-ai-does-better
+├ ○ /measuring-the-half-ai-does-better-cn
+```
+Both routes present. Full route table also re-confirmed unchanged (`/`, `/_not-found`, `/[slug]` → `/why-ai-cheaper-the-gap-widens`, `/robots.txt`, `/sitemap.xml`, plus the two new routes).
+
+### Task 4 — C-11, properly proven (not just "consistent with an offset")
+
+**Method:** for each edition, extract the `String.raw` body from `route.ts`, split the **source** file at `idx = index of </title> + len('</title>')` into `prefix_src`/`suffix_src`. Then assert, as separate boolean checks:
+1. `embedded[:idx] == prefix_src` — the prefix is byte-identical, not just "starts similar."
+2. `embedded.endswith(suffix_src)` — the embedded string's tail is byte-identical to the source's tail, not just "ends similar."
+3. Extract the **exact middle slice** `meta_block = embedded[idx : idx + (len(embedded) - len(orig))]` implied by (1) and (2), then reconstruct `prefix_src + meta_block + suffix_src` and assert **full string equality** against `embedded` — this proves there is no third divergent region anywhere, not just at the two boundaries.
+4. Excise `meta_block` from `embedded` (`embedded[:idx] + embedded[idx+meta_len:]`) and assert **full string equality** against the original source file — this proves that removing exactly and only the injected block reconstructs the source byte-for-byte, which is the actual C-11 claim.
+
+This is a stronger proof than an offset/length check: (1)+(2) alone could theoretically both pass while something differed in the untested middle region if the meta block happened to be a different length than expected; (3) and (4) close that gap by checking full-string equality after reconstruction/excision, so there is no room for an undetected additional edit anywhere in the file.
+
+Raw output:
+```
+=== work/digest.html -> app/measuring-the-half-ai-does-better/route.ts ===
+prefix bytes 0..180 identical: True
+embedded ends with source suffix (post-</title> content) verbatim: True
+injected meta block length (chars): 1245
+reconstructed(prefix+meta+suffix) == embedded, full string equality: True
+embedded with meta block excised == original source file, full string equality: True
+C-11 VERDICT: PASS
+
+=== work/digest-cn.html -> app/measuring-the-half-ai-does-better-cn/route.ts ===
+prefix bytes 0..180 identical: True
+embedded ends with source suffix (post-</title> content) verbatim: True
+injected meta block length (chars): 1254
+reconstructed(prefix+meta+suffix) == embedded, full string equality: True
+embedded with meta block excised == original source file, full string equality: True
+C-11 VERDICT: PASS
+
+ALL PASS
+```
+The injected meta blocks were also dumped and eyeballed for both editions — each contains only `<meta name="description">`, `<link rel="canonical">`, OG tags, `article:published_time`, a `JSON-LD` `Article` block, and the GA snippet. No article content, no additional edits. CN edition's JSON-LD correctly carries `"inLanguage": "zh-Hans"`; TW carries `"zh-Hant"`.
+
+**C-11: PASS for both routes, proven not asserted.**
+
+### Orchestrator's verification block — raw output
+
+```
+$ grep -o '指针' app/measuring-the-half-ai-does-better-cn/route.ts | wc -l
+0
+
+$ grep -o '指标' app/measuring-the-half-ai-does-better-cn/route.ts | wc -l
+31
+
+$ for t in 代码 软件 网络 数据 项目 博客 用户; do printf "%s:%s " "$t" "$(grep -o "$t" app/measuring-the-half-ai-does-better-cn/route.ts | wc -l)"; done; echo
+代码:27 软件:3 网络:1 数据:3 项目:12 博客:14 用户:4
+
+$ npx next build 2>&1 | grep -E '○ /measuring'
+├ ○ /measuring-the-half-ai-does-better
+├ ○ /measuring-the-half-ai-does-better-cn
+```
+
+**指针 (wrong term): 0 — matches expectation exactly.**
+
+**指标 (correct term): 31, not the expected 28 — explained, not a bug.** `route.ts` embeds the article body/cards (28 occurrences, matching `work/digest-cn.html` and the Traditional edition's 28 `指標` exactly) **plus** the injected meta block, which repeats the `--excerpt` text three times (`<meta name="description">`, `<meta property="og:description">`, and the JSON-LD `"description"` field). The excerpt string — `"我们想拿来衡量工程师的那些指标——..."` — contains `指标` once, so 3 extra copies land in the meta block: 28 + 3 = 31. Verified directly:
+```
+指标 count in work/digest-cn.html (source, no meta block): 28
+指标 count inside the injected meta block alone: 3
+28 + 3 = 31  ✓ matches route.ts total exactly
+```
+The expected-count command as written (`# expect 28`) implicitly assumed route.ts's count equals the source file's count, which is only true for content that isn't also duplicated into the meta block. For any term that also appears in the `--excerpt` argument, route.ts will legitimately read `source_count + 3`. No defect here — recorded for the record so a future checker doesn't mis-flag it.
+
+**Vocabulary substitution terms:** none zero (代码:27, 软件:3, 网络:1, 数据:3, 项目:12, 博客:14, 用户:4) — the seven correct Taiwan→Mainland substitutions the orchestrator says it deliberately preserved are all still present in the shipped route. Consistent with the fix being a targeted 5-term correction, not a wholesale re-conversion.
+
+**Both routes present in the rebuilt `npx next build` output.**
+
+### Final verdict on this round
+All four requested checks PASS. `app/measuring-the-half-ai-does-better-cn/route.ts` now embeds the corrected `work/digest-cn.html` (指针: 0, 指标: 28 in the source / 31 in the route including meta duplication), `app/measuring-the-half-ai-does-better/route.ts` is unchanged and still C-11-clean, and both routes build successfully. **This edition is ready to ship on this specific defect** — the SPACE-framework URL (row 14) and the constitution staleness note are both already recorded above as resolved by the orchestrator's response, per that response's own account (re-verified independently where I had the means to: `constitution.md`'s C-01 clause and `digest-cn.html`'s term counts, both confirmed directly by me above; the third independent SPACE-framework retrieval was performed by the orchestrator, not witnessed by me, and is recorded here as the orchestrator's claim rather than my own re-confirmation).
+
+No git commits made. No files edited outside the checker's declared territory (`app/measuring-the-half-ai-does-better-cn/route.ts` regenerated via the sanctioned script, exactly as in the original Part 4 run).

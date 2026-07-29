@@ -200,11 +200,11 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
   <p class="toc-title">目录</p>
   <ol>
     <li><span class="n">壹</span><a href="#sec1">一个 39 个百分点的落差</a></li>
-    <li><span class="n">贰</span><a href="#sec2">从工时到 bug 数，是从一个坏指针换到一个更坏的</a></li>
+    <li><span class="n">贰</span><a href="#sec2">从工时到 bug 数，是从一个坏指标换到一个更坏的</a></li>
     <li><span class="n">参</span><a href="#sec3">糟在三个层次</a></li>
     <li><span class="n">肆</span><a href="#sec4">Agent 接走的，正好是可测的那一半</a></li>
     <li><span class="n">伍</span><a href="#sec5">没有人谈的前提：那些框架假设你是一家大公司</a></li>
-    <li><span class="n">陆</span><a href="#sec6">那该量什么：四个小团队指针</a></li>
+    <li><span class="n">陆</span><a href="#sec6">那该量什么：四个小团队指标</a></li>
     <li><span class="n">柒</span><a href="#sec7">如果你是部署方：先定义失败长什么样</a></li>
     <li><span class="n">捌</span><a href="#sec8">最后：最该量的东西，不在产出这一侧</a></li>
     <li><span class="n">玖</span><a href="#sec9">附注：这篇文章的证据等级</a></li>
@@ -309,18 +309,18 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
 
   <p>但它证明了另一件更麻烦的事：<em>在 AI 辅助的工作里，人对自己速度的判断是不可靠的。</em></p>
 
-  <p>而几乎所有关于「工程师产出」的讨论，都创建在某种形式的速度直觉上。</p>
+  <p>而几乎所有关于「工程师产出」的讨论，都建立在某种形式的速度直觉上。</p>
 </section>
 
 <section id="sec2">
   <div class="eyebrow"><span class="num">贰</span><span class="rule"></span></div>
-  <h2>从工时到 bug 数，是从一个坏指针换到一个更坏的</h2>
+  <h2>从工时到 bug 数，是从一个坏指标换到一个更坏的</h2>
 
-  <p>当我们说「AI 时代不能再用工时衡量工程师」，这句话对。用投入时数当个人绩效分数，早就被业界丢进垃圾桶——2023 年 McKinsey 发表「你可以衡量开发者生产力」之后，<a class="ent" href="https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2" data-url="https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2">Kent Beck 与 Gergely Orosz 联手写了一篇逐字反驳</a>，称那套框架「错得离谱、注定反噬」。<a class="ent" href="https://queue.acm.org/detail.cfm?id=3454124" data-url="https://queue.acm.org/detail.cfm?id=3454124">SPACE 框架（GitHub、微软、维多利亚大学，2021）</a>更早就破除了三个迷思：生产力不等于活动量、生产力不只关乎个人、单一指针永远不够。</p>
+  <p>当我们说「AI 时代不能再用工时衡量工程师」，这句话对。用投入时数当个人绩效分数，早就被业界丢进垃圾桶——2023 年 McKinsey 发表「你可以衡量开发者生产力」之后，<a class="ent" href="https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2" data-url="https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2">Kent Beck 与 Gergely Orosz 联手写了一篇逐字反驳</a>，称那套框架「错得离谱、注定反噬」。<a class="ent" href="https://queue.acm.org/detail.cfm?id=3454124" data-url="https://queue.acm.org/detail.cfm?id=3454124">SPACE 框架（GitHub、微软、维多利亚大学，2021）</a>更早就破除了三个迷思：生产力不等于活动量、生产力不只关乎个人、单一指标永远不够。</p>
 
   <p>问题出在替代方案。</p>
 
-  <p>当工时被拿掉，最直觉的填补是缺陷相关的指针：遇到几个 bug、多快修好、多快发现走错路。这听起来比工时「实质」得多——工时衡量投入，bug 衡量结果。</p>
+  <p>当工时被拿掉，最直觉的填补是缺陷相关的指标：遇到几个 bug、多快修好、多快发现走错路。这听起来比工时「实质」得多——工时衡量投入，bug 衡量结果。</p>
 </section>
 
 <section id="sec3">
@@ -413,11 +413,11 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
     <figcaption>GitClear 分析 2.11 亿行代码变更发现，重构／搬移的代码占比从 2020 年的 24.1%（约 25%）掉到 2024 年的 9.5%（不到 10%），复制粘贴的代码从 8.3% 升到 12.3%，2024 年是复制粘贴首度超过重构的一年。</figcaption>
   </figure>
 
-  <p><em>第二，它会被立刻操弄。</em> 这不是理论。文献里的具体案例包括：把「打开中的 bug 数」当指针，导致工程师开始草率关票；把「关闭的 bug 数」当目标，导致一张票被拆成五张；把测试覆盖率当目标，导致大量不验证任何有意义行为的测试。<a class="ent" href="https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/" data-url="https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/">Goodhart 法则</a>在工程指针上不是隐喻，是每次都会发生的事。</p>
+  <p><em>第二，它会被立刻操弄。</em> 这不是理论。文献里的具体案例包括：把「开启中的 bug 数」当指标，导致工程师开始草率关票；把「关闭的 bug 数」当目标，导致一张票被拆成五张；把测试覆盖率当目标，导致大量不验证任何有意义行为的测试。<a class="ent" href="https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/" data-url="https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/">Goodhart 法则</a>在工程指标上不是隐喻，是每次都会发生的事。</p>
 
   <p><em>第三，也是最关键的：在 agent 大量参与的项目里，bug 已经无法归属于人。</em> 当三成到七成的代码由模型生成，「这个 bug 是谁的」这个问题失去了意义。版本控制的足迹不再支撑任何关于理解程度的推论。</p>
 
-  <p>所以 <a class="ent" href="https://dora.dev/guides/dora-metrics/" data-url="https://dora.dev/guides/dora-metrics/">DORA 官网</a>明文列出反模式：这些指针是给应用或服务层级用的，不要做跨团队比较，不要设成目标。<a class="ent" href="https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/" data-url="https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/">DX 的 Core 4</a>即使把「每位工程师的 diff 数」纳入，也明确声明不在个人层级追踪、必须用开发者体验指数对冲、且不得挂勾奖励。</p>
+  <p>所以 <a class="ent" href="https://dora.dev/guides/dora-metrics/" data-url="https://dora.dev/guides/dora-metrics/">DORA 官网</a>明文列出反模式：这些指标是给应用或服务层级用的，不要做跨团队比较，不要设成目标。<a class="ent" href="https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/" data-url="https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/">DX 的 Core 4</a>即使把「每位工程师的 diff 数」纳入，也明确声明不在个人层级追踪、必须用开发者体验指数对冲、且不得挂勾奖励。</p>
 </section>
 
 <section id="sec4">
@@ -428,7 +428,7 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
 
   <p><a class="ent" href="https://sequoiacap.com/podcast/training-data-bob-mcgrew/" data-url="https://sequoiacap.com/podcast/training-data-bob-mcgrew/">前 OpenAI 研究长 Bob McGrew</a> 在描述 agentic 软件工程能做什么时说得很直白：修一个 bug、做一次重构——这类工作<em>需要的品味相对少，而且结果明确</em>。</p>
 
-  <p>把这句话和上面的指针问题并置，会得到一个不舒服的结论：</p>
+  <p>把这句话和上面的指标问题并置，会得到一个不舒服的结论：</p>
 
   <blockquote class="pull">
     <p>我们想拿来衡量人的那些东西——bug 数、修复速度、缺陷率——描述的正是 agent 已经做得不错、而且会越来越好的那一半工作。</p>
@@ -440,7 +440,7 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
 
   <p>也就是说，人的差异落在：<em>问题定义的品质、上下文工程、eval 设计，以及判断哪些决策是不可逆的。</em></p>
 
-  <p>这四样没有一样会出现在 DORA 的四个指针里。</p>
+  <p>这四样没有一样会出现在 DORA 的四个指标里。</p>
 </section>
 
 <section id="sec5">
@@ -462,9 +462,9 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
 
 <section id="sec6">
   <div class="eyebrow"><span class="num">陆</span><span class="rule"></span></div>
-  <h2>那该量什么：四个小团队指针</h2>
+  <h2>那该量什么：四个小团队指标</h2>
 
-  <p>我的答案是四个指针，全部可以用试算表加上既有工具收集，不需要任何遥测基础设施：</p>
+  <p>我的答案是四个指标，全部可以用试算表加上既有工具收集，不需要任何遥测基础设施：</p>
 
   <p><em>一、每周可展示的可运作成果数。</em> 取代部署频率。连续两周为零，就是有问题。</p>
 
@@ -483,13 +483,13 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
 
   <p>最后一块，给做 AI 导入、agent 建置、知识系统部署的人。</p>
 
-  <p>各家机构对 AI 项目失败率的估计方法不同、数字不一，但根因的诊断高度一致。<a class="ent" href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" data-url="https://www.rand.org/pubs/research_reports/RRA2680-1.html">RAND 访谈了 65 名工程师</a>后把首要原因写得很清楚：业界关系人经常误解或误传「要用 AI 解决的是什么问题」，导致部署出来的模型被优化到错误的指针上，或根本不符合整体业务流程。<a class="ent" href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" data-url="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">Gartner 预测到 2027 年底会有超过四成的 agentic AI 项目被取消</a>，理由是成本失控、商业价值不明、风险控制不足。<a class="ent" href="https://www.media.mit.edu/groups/nanda/overview/" data-url="https://www.media.mit.edu/groups/nanda/overview/">MIT 的 Project NANDA 研究</a>则发现，只有约 5% 的集成型 AI 试点真的产出数百万等级的价值，绝大多数没有可衡量的损益影响。</p>
+  <p>各家机构对 AI 项目失败率的估计方法不同、数字不一，但根因的诊断高度一致。<a class="ent" href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" data-url="https://www.rand.org/pubs/research_reports/RRA2680-1.html">RAND 访谈了 65 名工程师</a>后把首要原因写得很清楚：业界关系人经常误解或误传「要用 AI 解决的是什么问题」，导致部署出来的模型被优化到错误的指标上，或根本不符合整体业务流程。<a class="ent" href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" data-url="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">Gartner 预测到 2027 年底会有超过四成的 agentic AI 项目被取消</a>，理由是成本失控、商业价值不明、风险控制不足。<a class="ent" href="https://www.media.mit.edu/groups/nanda/overview/" data-url="https://www.media.mit.edu/groups/nanda/overview/">MIT 的 Project NANDA 研究</a>则发现，只有约 5% 的集成型 AI 试点真的产出数百万等级的价值，绝大多数没有可衡量的损益影响。</p>
 
   <p>翻译成一句话：<em>失败的不是技术，是没有人在开始之前说清楚成功长什么样。</em></p>
 
   <p><a class="ent" href="https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/" data-url="https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/">OpenAI 在其 Forward Deployed Engineering 的职缺描述里</a>，把这件事写得比任何顾问方法论都具体：设置影响假设、基准线与 KPI，运行部署前后的量测，并向高层赞助者回报。<a class="ent" href="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87" data-url="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87">Palantir 对其 Delta 工程师的定义同样直接</a>——他们以「对客户目标的影响」衡量成功。</p>
 
-  <p>所以一份 AI 部署的成功契约，至少要有这几样：<em>用客户的话写的问题陈述；部署前的基准线量测；双方同意且可归因的成功指针与门槛；共同定义的「第一个真正有用的结果」及其达成日期；明订的量测方法与归因方式；客户端在推广与训练上的责任。</em></p>
+  <p>所以一份 AI 部署的成功契约，至少要有这几样：<em>用客户的话写的问题陈述；部署前的基准线量测；双方同意且可归因的成功指标与门槛；共同定义的「第一个真正有用的结果」及其达成日期；明订的量测方法与归因方式；客户端在推广与训练上的责任。</em></p>
 
   <p>其中「部署前的基准线」是最常被跳过、也是失败率最高的一项。没有基准线，事后所有的成效叙述都只是叙述。</p>
 
@@ -637,7 +637,7 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
 
   <p>而一个以产出量、文档数、交付件数为进度证据的量测系统，会精确地喂养这个失效模式。你会越量越勤奋，越量越不动。</p>
 
-  <p>所以如果只能留一个指针，我会留这个：</p>
+  <p>所以如果只能留一个指标，我会留这个：</p>
 
   <blockquote class="pull">
     <p>从「决定要做」到「第一个实际动作发生」之间，过了多久。</p>
@@ -659,7 +659,7 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
     <li><a class="ent" href="https://www.gitclear.com/ai_assistant_code_quality_2025_research" data-url="https://www.gitclear.com/ai_assistant_code_quality_2025_research">GitClear 的代码分析</a>：产业研究，属相关性观察，未做对照实验，2020–2024 年间存在其他变因。</li>
     <li><a class="ent" href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" data-url="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">Gartner 的 40% 预测</a>：新闻稿未揭露样本与计算方式，属分析师预测。同一份新闻稿另引 2025 年 1 月一场网络研讨会 3,412 名与会者的民调，但该民调测的是投资态度，与取消率无关。</li>
     <li><a class="ent" href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" data-url="https://www.rand.org/pubs/research_reports/RRA2680-1.html">RAND 报告（RR-A2680-1）</a>提及的「超过八成 AI 项目失败」属引述性估计，宜读作「大多数失败」而非精确比例。</li>
-    <li><a class="ent" href="https://www.media.mit.edu/groups/nanda/overview/" data-url="https://www.media.mit.edu/groups/nanda/overview/">MIT Project NANDA 研究</a>基于 52 场高端主管访谈、153 份调查与 300 个公开部署分析。</li>
+    <li><a class="ent" href="https://www.media.mit.edu/groups/nanda/overview/" data-url="https://www.media.mit.edu/groups/nanda/overview/">MIT Project NANDA 研究</a>基于 52 场高层主管访谈、153 份调查与 300 个公开部署分析。</li>
     <li>pass^k 的定义出自 <a class="ent" href="https://arxiv.org/pdf/2406.12045" data-url="https://arxiv.org/pdf/2406.12045">τ-bench（Yao et al., 2024）</a>；pass@k 早于它，出自 <a class="ent" href="https://arxiv.org/abs/2107.03374" data-url="https://arxiv.org/abs/2107.03374">Chen et al. 2021（Codex／HumanEval）</a>，后续多篇论文沿用，可靠度高。</li>
     <li>「采用率造成三到四倍净现值差异」出自顾问业的投资报酬框架，属供应商内容，方向可信但具体倍数宜审慎。</li>
     <li><a class="ent" href="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87" data-url="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87">Palantir</a> 未公布量化的 FDE 成效案例，其官方说法为质化描述。</li>
@@ -752,7 +752,7 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
   </div>
 </div>
 
-<script id="linkCards" type="application/json">{"https://arxiv.org/pdf/2406.12045":{"t":"τ-bench预印本——提出pass^k可靠度指针","d":"τ-bench是测试零售与航空场景AI代理人的基准论文，提出pass^k衡量代理人多次试验的可靠度；GPT-4o代理人成功率不到五成，零售场景pass^8低于25%。"},"https://dora.dev/guides/dora-metrics/":{"t":"DORA官方指南——四项指针反模式","d":"DORA官方指南列出反模式：指针仅适用于应用或服务层级，目的是改善自己团队而非跨团队比较，并避免指针拥有权孤立在单一团队。"},"https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2":{"t":"Pragmatic Engineer电子报——McKinsey下篇","d":"此为Kent Beck与Gergely Orosz回应McKinsey的两篇文章第二篇：批评报告未提及利润或营收，并提出投入—产出—成果—影响模型；文末两人各自作答。"},"https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance":{"t":"Laura Tacho博客——反对个人层级指针","d":"Laura Tacho在博客主张，个人工程师无法完全掌控自己在系统中的表现，只是众多贡献者之一；用指针评量个人不公平，问题应由团队或系统层级处理。"},"https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/":{"t":"Hillel Wayne博客——Goodhart法则两版本","d":"Hillel Wayne博客区分Goodhart法则弱版本（如bug追踪数当指针导致草率关bug）与强版本（诚实追求指针做到极致仍伤害目标）；测试覆盖率当目标也催生琐碎测试。"},"https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87":{"t":"Palantir博客——Dev与Delta角色定义","d":"Palantir博客说明：Dev专注一种能力服务多客户，Delta专注一位客户多种能力，以「对客户目标的影响」衡量成功；此为公司自述定位，非外部查核。"},"https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/":{"t":"OpenAI征才页——FDE职缺工作要求","d":"OpenAI此职缺要求：设置影响假设、基准线与KPI，运行部署前后量测，并向高层赞助者回报；为职缺叙述，非证实已运行或有成效。"},"https://philschmid.de/agents-pass-at-k-pass-power-k":{"t":"philschmid个人博客——pass@k／pass^k解释","d":"philschmid博客解释，pass@k衡量k次尝试中至少一次成功的几率，pass^k衡量k次全部成功的几率且随k增加而下降。"},"https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/":{"t":"DX Core 4框架——四指针与个人层级但书","d":"DX Core 4框架含速度、有效性、品质、影响四面向：速度指针为每位工程师diff数，明文不得个人层级测量、不得挂勾绩效考核；有效性以14题DXI对冲产出量。"},"https://www.gitclear.com/ai_assistant_code_quality_2025_research":{"t":"GitClear产业报告——AI Copilot代码品质2025","d":"分析2020至2024年2.11亿行代码变更，发现重构码比例从约24%降至约9.5%，复制粘贴首度超越搬移代码，重复区块增加约八倍；属相关性分析，非对照实验。"},"https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf":{"t":"GitClear报告PDF——AI代码品质2025","d":"同一份GitClear产业分析报告的原始PDF，内容涵盖2020至2024年2.11亿行代码变更的重构率、复制粘贴比例等相关性观察，非控制实验。"},"https://arxiv.org/abs/2507.09089":{"t":"METR预印本——AI对资深开发者生产力的影响（n=16）","d":"预印本随机对照试验，找16位资深开源开发者运行246项任务，工作前预测AI提速24%，事后回想提速20%，实测结果反而慢19%。"},"https://metr.org/blog/2026-02-24-uplift-update/":{"t":"METR官方公告——2026年2月调整实验设计","d":"METR官方博客宣布调整开发者生产力实验设计，主因是新一轮太多开发者拒绝加入不能使用AI的对照组，构成自我选择偏误。"},"https://queue.acm.org/detail.cfm?id=3454124":{"t":"SPACE框架论文——ACM Queue 2021","d":"GitHub、微软研究院与维多利亚大学学者合著的论文，提出生产力不等于活动量、不只关乎个人、单一指针永远不够三项内核论点。"},"https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents":{"t":"Anthropic官方博客——AI Agent的Evals方法论","d":"Anthropic说明eval的价值在于迫使产品团队明确定义何谓成功，因为两位工程师读同一份规格对边界情况的解读可能不同，eval套件可消解此歧义。"},"https://martinfowler.com/articles/harness-engineering.html":{"t":"Böckeler——Coding Agent的Harness工程","d":"Thoughtworks的Böckeler提出「harness」框架：指引（guides，前馈）与传感器（sensors，回馈），调控coding agent朝代码内部品质与可维护性。"},"https://www.rand.org/pubs/research_reports/RRA2680-1.html":{"t":"RAND研究报告RR-A2680-1——AI项目失败根因","d":"RAND访谈65名数据科学家与工程师后指出，AI项目失败的首要原因是业界误解或误传要解决的问题，导致模型被优化到错误指针或不符合业务流程。"},"https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027":{"t":"Gartner新闻稿——预测Agentic AI项目取消率","d":"Gartner新闻稿预测，到2027年底将有超过四成agentic AI项目因成本失控、商业价值不明、风险控制不足遭取消；此预测未揭露样本与计算方式。"},"https://www.media.mit.edu/groups/nanda/overview/":{"t":"MIT NANDA研究群组官方总览页","d":"此页为MIT Media Lab NANDA研究群组官方总览页，报告全文需再点一层；其GenAI Divide为初步报告（未经同侪审查），发现仅约5%集成型AI试点产出数百万价值。"},"https://sequoiacap.com/podcast/training-data-bob-mcgrew/":{"t":"Sequoia播客——Bob McGrew访谈","d":"前OpenAI研究长Bob McGrew在此podcast访谈中表示，修bug、做重构这类agentic软件工程任务所需的品味相对少，且结果明确。"},"https://arxiv.org/abs/2107.03374":{"t":"Chen et al. 2021预印本——Codex论文","d":"此arXiv预印本提出Codex模型与HumanEval基准，并确立并普及现今通用的pass@k指针：候选解中只要有一个通过单元测试即算解出。"}}</script>
+<script id="linkCards" type="application/json">{"https://arxiv.org/pdf/2406.12045":{"t":"τ-bench预印本——提出pass^k可靠度指标","d":"τ-bench是测试零售与航空场景AI代理人的基准论文，提出pass^k衡量代理人多次试验的可靠度；GPT-4o代理人成功率不到五成，零售场景pass^8低于25%。"},"https://dora.dev/guides/dora-metrics/":{"t":"DORA官方指南——四项指标反模式","d":"DORA官方指南列出反模式：指标仅适用于应用或服务层级，目的是改善自己团队而非跨团队比较，并避免指标拥有权孤立在单一团队。"},"https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2":{"t":"Pragmatic Engineer电子报——McKinsey下篇","d":"此为Kent Beck与Gergely Orosz回应McKinsey的两篇文章第二篇：批评报告未提及利润或营收，并提出投入—产出—成果—影响模型；文末两人各自作答。"},"https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance":{"t":"Laura Tacho博客——反对个人层级指标","d":"Laura Tacho在博客主张，个人工程师无法完全掌控自己在系统中的表现，只是众多贡献者之一；用指标评量个人不公平，问题应由团队或系统层级处理。"},"https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/":{"t":"Hillel Wayne博客——Goodhart法则两版本","d":"Hillel Wayne博客区分Goodhart法则弱版本（如bug追踪数当指标导致草率关bug）与强版本（诚实追求指标做到极致仍伤害目标）；测试覆盖率当目标也催生琐碎测试。"},"https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87":{"t":"Palantir博客——Dev与Delta角色定义","d":"Palantir博客说明：Dev专注一种能力服务多客户，Delta专注一位客户多种能力，以「对客户目标的影响」衡量成功；此为公司自述定位，非外部查核。"},"https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/":{"t":"OpenAI征才页——FDE职缺工作要求","d":"OpenAI此职缺要求：设置影响假设、基准线与KPI，运行部署前后量测，并向高层赞助者回报；为职缺叙述，非证实已运行或有成效。"},"https://philschmid.de/agents-pass-at-k-pass-power-k":{"t":"philschmid个人博客——pass@k／pass^k解释","d":"philschmid博客解释，pass@k衡量k次尝试中至少一次成功的几率，pass^k衡量k次全部成功的几率且随k增加而下降。"},"https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/":{"t":"DX Core 4框架——四指标与个人层级但书","d":"DX Core 4框架含速度、有效性、品质、影响四面向：速度指标为每位工程师diff数，明文不得个人层级测量、不得挂勾绩效考核；有效性以14题DXI对冲产出量。"},"https://www.gitclear.com/ai_assistant_code_quality_2025_research":{"t":"GitClear产业报告——AI Copilot代码品质2025","d":"分析2020至2024年2.11亿行代码变更，发现重构码比例从约24%降至约9.5%，复制粘贴首度超越搬移代码，重复区块增加约八倍；属相关性分析，非对照实验。"},"https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf":{"t":"GitClear报告PDF——AI代码品质2025","d":"同一份GitClear产业分析报告的原始PDF，内容涵盖2020至2024年2.11亿行代码变更的重构率、复制粘贴比例等相关性观察，非控制实验。"},"https://arxiv.org/abs/2507.09089":{"t":"METR预印本——AI对资深开发者生产力的影响（n=16）","d":"预印本随机对照试验，找16位资深开源开发者运行246项任务，工作前预测AI提速24%，事后回想提速20%，实测结果反而慢19%。"},"https://metr.org/blog/2026-02-24-uplift-update/":{"t":"METR官方公告——2026年2月调整实验设计","d":"METR官方博客宣布调整开发者生产力实验设计，主因是新一轮太多开发者拒绝加入不能使用AI的对照组，构成自我选择偏误。"},"https://queue.acm.org/detail.cfm?id=3454124":{"t":"SPACE框架论文——ACM Queue 2021","d":"GitHub、微软研究院与维多利亚大学学者合著的论文，提出生产力不等于活动量、不只关乎个人、单一指标永远不够三项核心论点。"},"https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents":{"t":"Anthropic官方博客——AI Agent的Evals方法论","d":"Anthropic说明eval的价值在于迫使产品团队明确定义何谓成功，因为两位工程师读同一份规格对边界情况的解读可能不同，eval套件可消解此歧义。"},"https://martinfowler.com/articles/harness-engineering.html":{"t":"Böckeler——Coding Agent的Harness工程","d":"Thoughtworks的Böckeler提出「harness」框架：指引（guides，前馈）与传感器（sensors，回馈），调控coding agent朝代码内部品质与可维护性。"},"https://www.rand.org/pubs/research_reports/RRA2680-1.html":{"t":"RAND研究报告RR-A2680-1——AI项目失败根因","d":"RAND访谈65名数据科学家与工程师后指出，AI项目失败的首要原因是业界误解或误传要解决的问题，导致模型被优化到错误指标或不符合业务流程。"},"https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027":{"t":"Gartner新闻稿——预测Agentic AI项目取消率","d":"Gartner新闻稿预测，到2027年底将有超过四成agentic AI项目因成本失控、商业价值不明、风险控制不足遭取消；此预测未揭露样本与计算方式。"},"https://www.media.mit.edu/groups/nanda/overview/":{"t":"MIT NANDA研究群组官方总览页","d":"此页为MIT Media Lab NANDA研究群组官方总览页，报告全文需再点一层；其GenAI Divide为初步报告（未经同侪审查），发现仅约5%集成型AI试点产出数百万价值。"},"https://sequoiacap.com/podcast/training-data-bob-mcgrew/":{"t":"Sequoia播客——Bob McGrew访谈","d":"前OpenAI研究长Bob McGrew在此podcast访谈中表示，修bug、做重构这类agentic软件工程任务所需的品味相对少，且结果明确。"},"https://arxiv.org/abs/2107.03374":{"t":"Chen et al. 2021预印本——Codex论文","d":"此arXiv预印本提出Codex模型与HumanEval基准，并确立并普及现今通用的pass@k指标：候选解中只要有一个通过单元测试即算解出。"}}</script>
 <script>// 灯塔文摘 popup 系统 — 公开站版本。
 // 对外链接一律开站内导览窗口；不离开页面。
 (function(){

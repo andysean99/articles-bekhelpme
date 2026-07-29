@@ -1,0 +1,112 @@
+[
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "research-web",
+    "model": "sonnet",
+    "model_version": "claude-sonnet-5",
+    "first_try_pass": true,
+    "retries": 0,
+    "cost_estimate": "~56k tokens",
+    "failure_mode": "三個平行查證官之一。9 件產出全數取回可重現 URL。orchestrator 覆核發現 12 筆證據中 5 筆為誘導式查詢（含預期網域），但 spec 只寫『independently-worded』，字面已滿足 → 判為 spec 缺陷，不記 worker 失誤。主動剔除假冒網域 spawn-queue.acm.org，判斷正確。",
+    "date": "2026-07-29"
+  },
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "research-web",
+    "model": "sonnet",
+    "model_version": "claude-sonnet-5",
+    "first_try_pass": true,
+    "retries": 0,
+    "cost_estimate": "~60k tokens",
+    "failure_mode": "同上，batch-b。",
+    "date": "2026-07-29"
+  },
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "research-web",
+    "model": "sonnet",
+    "model_version": "claude-sonnet-5",
+    "first_try_pass": true,
+    "retries": 0,
+    "cost_estimate": "~77k tokens",
+    "failure_mode": "同上，batch-c。預期會有 unverified 的兩個難來源（Gartner／McGrew）皆取回原始出處。但 MIT NANDA 的 PDF 網址僅在 site: 限定查詢中出現，覆核時未能重現 → 改指官方群組頁。",
+    "date": "2026-07-29"
+  },
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "source-content-capture",
+    "model": "sonnet",
+    "model_version": "claude-sonnet-5",
+    "first_try_pass": true,
+    "retries": 0,
+    "cost_estimate": "~100k tokens",
+    "failure_mode": "新 task_type。補抓九個 handoff 已確認 URL 的實際頁面內容，破除卡片『循環接地』。順帶發現 Pragmatic Engineer 引文出自 Part 1 而非確認的 Part 2（經覆核判為非誤植）。",
+    "date": "2026-07-29"
+  },
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "card-writing",
+    "model": "sonnet",
+    "model_version": "claude-sonnet-5",
+    "first_try_pass": false,
+    "retries": 5,
+    "cost_estimate": "~202k tokens（含五輪修訂）",
+    "failure_mode": "新 task_type。首輪 8/20 張卡接地於文章自述而非來源本身（循環接地）——根因是 orchestrator 未為那九個來源準備內容證據，但 worker 應走 E3 不寫卡而非以文章頂替，計為部分失誤。盲測（Opus）另打回 3/21 張事實問題（14% 事實退件率），其中 Gartner 一張為真實的『預測借用民調權威』錯誤。修訂表現良好：主動捨棄 RAND 的引述性八成數字、拒寫 GitClear 未證實的公司名單、用來源原話取代文章簡化說法。",
+    "date": "2026-07-29"
+  },
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "chart-svg",
+    "model": "sonnet",
+    "model_version": "claude-sonnet-5",
+    "first_try_pass": true,
+    "retries": 0,
+    "cost_estimate": "~157k tokens",
+    "failure_mode": "新 task_type。三張 SVG 皆過雙主題 validator 與數字溯源。但自行驗證時用的底色（#FFFFFF／#1C1F1C）不是設計系統的實際底色（#FAF7F0／#141715）——orchestrator 用正確底色重跑仍全過，不需返工，但它跑的檢查不是該跑的檢查。",
+    "date": "2026-07-29"
+  },
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "html-assembly",
+    "model": "sonnet",
+    "model_version": "claude-sonnet-5",
+    "first_try_pass": true,
+    "retries": 3,
+    "cost_estimate": "~302k tokens（含三次上游同步）",
+    "failure_mode": "新 task_type。三次重跑全為上游變更（文章兩次、卡片一次），非自身失誤。主動發現 orchestrator 寫在 popup.js 檔頭的警告註解本身含 data-url 字面字串、會使 C-08 三數失衡，改用 dataset API 修正。找不到 Laura Tacho 的自然內文錨點時選擇回報而非硬掛。",
+    "date": "2026-07-29"
+  },
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "i18n-convert",
+    "model": "haiku",
+    "model_version": "claude-haiku-4-5-20251001",
+    "first_try_pass": true,
+    "retries": 2,
+    "cost_estimate": "~51k tokens",
+    "failure_mode": "AUDITION。合約檢查首輪全過（21 個 URL 逐字一致，含原型曾轉壞的含日文網址）。兩次重跑：一次為上游卡片變更，一次為 orchestrator 指定的 tw2sp 配置把「指標」誤譯為「指针」（pointer）——spec 缺陷非 worker 失誤，worker 照指定配置執行無誤。加上五詞保護表後修復。成本約為 Sonnet 同類工作的三分之一。**結論：機械性、檢查完全機器化的任務可路由給 Haiku。**",
+    "date": "2026-07-29"
+  },
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "verification",
+    "model": "sonnet",
+    "model_version": "claude-sonnet-5",
+    "first_try_pass": true,
+    "retries": 1,
+    "cost_estimate": "~168k tokens",
+    "failure_mode": "抓到全案最重要的缺陷（簡體版核心詞誤譯，所有既有機器檢查均通過）。另糾正 orchestrator 兩處：憲章條文過期、以及拒絕因『orchestrator 已驗過』而放行 SPACE URL（最終判為誤報，但記為正確行為——會服從 orchestrator 的 checker 不是第二意見）。一處不精確：以 grep -c（行數）回報 15 處，實為 28 處，自行更正。",
+    "date": "2026-07-29"
+  },
+  {
+    "project": "lighthouse-digest-measuring",
+    "task_type": "blind-review",
+    "model": "opus",
+    "model_version": "claude-opus-5",
+    "first_try_pass": true,
+    "retries": 0,
+    "cost_estimate": "~115k tokens",
+    "failure_mode": "新 task_type。Bek 指示由 Sonnet 升級為 Opus，以滿足憲章「grader ≠ worker 模型」硬要求。21 張全審不抽樣，打回 3 張，其中 Gartner 一張同時揭露文章附註的第三個歸屬錯誤。另主動澄清一項自己初判為錯、查證後認定卡片正確的案例（DORA）。**升檔值得：三個 E1 中最後一個由它發現。**",
+    "date": "2026-07-29"
+  }
+]

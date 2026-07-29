@@ -1,19 +1,31 @@
 #!/usr/bin/env python3
 """
-Convert Traditional Chinese HTML to Simplified Chinese while preserving URLs.
+Convert Traditional Chinese HTML to Simplified Chinese while preserving URLs and critical terms.
 
 This script:
 1. Protects all URLs with unique placeholders
-2. Converts remaining text using OpenCC (tw2sp config)
-3. Restores URLs byte-for-byte from the map
-4. Fixes copy-button label
-5. Sets lang="zh-Hans"
-6. Removes language-switch links
+2. Protects critical terminology that tw2sp mistranslates
+3. Converts remaining text using OpenCC (tw2sp config)
+4. Restores URLs and terms byte-for-byte from their maps
+5. Fixes copy-button label
+6. Sets lang="zh-Hans"
+7. Removes language-switch links
 """
 
 import re
 import sys
 from opencc import OpenCC
+
+# Term protection map: Traditional forms that tw2sp converts incorrectly
+# Each entry is: Traditional -> (tw2sp_wrong_form, correct_simplified_form, reason)
+# Ordered by length (longest first) to handle overlapping matches correctly
+TERM_PROTECT_MAP = [
+    ('開啟中', '打开中', '开启中', 'tw2sp mistranslates "opening" verb to "opened", loses progressive aspect'),
+    ('高階', '高端', '高层', 'tw2sp uses "high-end" (商业术语), should be "high-level" (管理术语)'),
+    ('建立', '创建', '建立', 'tw2sp uses "create" (coding jargon), should be "establish" (process verb)'),
+    ('核心', '内核', '核心', 'tw2sp uses "kernel" (OS term), should be "core" (conceptual term)'),
+    ('指標', '指针', '指标', 'tw2sp uses "pointer" (programming construct), should be "metric" — this essay is about metrics'),
+]
 
 def convert_traditional_to_simplified():
     # Read the input file
@@ -37,23 +49,47 @@ def convert_traditional_to_simplified():
 
     html_with_placeholders = re.sub(url_pattern, replace_url, html_content)
 
-    # Step 2: Convert text using OpenCC (tw2sp)
+    # Step 2: Protect critical terms that tw2sp would mistranslate
+    term_map = {}
+    term_counter = [0]
+
+    def replace_term(traditional_form):
+        def replacer(match):
+            placeholder = f'__TERM_PLACEHOLDER_{term_counter[0]}__'
+            term_map[placeholder] = traditional_form  # Store the correct simplified form to restore later
+            term_counter[0] += 1
+            return placeholder
+        return replacer
+
+    # Protect each term (already ordered longest-first to avoid overlapping matches)
+    for traditional, wrong_form, correct_form, reason in TERM_PROTECT_MAP:
+        html_with_placeholders = re.sub(
+            re.escape(traditional),
+            replace_term(correct_form),
+            html_with_placeholders
+        )
+
+    # Step 3: Convert text using OpenCC (tw2sp)
     converter = OpenCC('tw2sp')
     html_converted = converter.convert(html_with_placeholders)
 
-    # Step 3: Restore URLs byte-for-byte
+    # Step 4: Restore URLs byte-for-byte
     for placeholder, url in url_map.items():
         html_converted = html_converted.replace(placeholder, url)
 
-    # Step 4: Fix copy-button label: 拷贝 → 复制
+    # Step 5: Restore protected terms byte-for-byte (they were protected as Traditional, now restore as correct Simplified)
+    for placeholder, correct_form in term_map.items():
+        html_converted = html_converted.replace(placeholder, correct_form)
+
+    # Step 6: Fix copy-button label: 拷贝 → 复制
     # The original should have 複製 in Traditional, which converts to 拷贝 in Simplified
     # We need to replace it with 复制
     html_converted = html_converted.replace('拷贝', '复制')
 
-    # Step 5: Set lang="zh-Hans" on the <html> element
+    # Step 7: Set lang="zh-Hans" on the <html> element
     html_converted = html_converted.replace('lang="zh-Hant"', 'lang="zh-Hans"')
 
-    # Step 6: Remove language-switch link
+    # Step 8: Remove language-switch link
     # Remove any link that contains digest.html, 語言切換, 繁體版, or measuring-the-half-ai-does-better
     # The pattern to remove could be a full link tag or partial text
     # We'll be conservative and look for common patterns
@@ -93,6 +129,7 @@ def convert_traditional_to_simplified():
 
     print(f"✓ Conversion complete: {output_path}")
     print(f"✓ Protected and restored {len(url_map)} URLs")
+    print(f"✓ Protected and restored {len(term_map)} critical terms")
     print(f"✓ Language set to zh-Hans")
     print(f"✓ Copy-button label fixed")
 
