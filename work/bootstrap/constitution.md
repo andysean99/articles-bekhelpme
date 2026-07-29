@@ -7,7 +7,11 @@
 
 - **C-01** 本文每個論點句與數字逐字出現在成品。
   檢查：`python3 scripts/verify_verbatim.py work/bootstrap/article.md <成品>` 差異數 0。
-  唯一授權改動：GitClear 起始年份 2021 → 2020（已套用於 `article.md`，見藍圖 §9）。
+  授權改動共 **3 筆**，全部已套用於 `article.md`，逐筆記於藍圖 §9 exception log：
+  (1) GitClear 起始年份 2021 → 2020；
+  (2) 附註 pass@k 歸屬拆開，補上 Chen et al. 2021；
+  (3) 附註 Gartner 40% 預測改為「未揭露樣本與計算方式」，並說明 3,412 人民調測的是投資態度。
+  三筆皆由 Bek 於 2026-07-29 逐案裁示。此清單即為授權範圍，未列於此者一律走 E1。
 - **C-02** CoffeeCopy 的「開頭場景鉤子」與「一貫核心比喻」兩條**明文豁免**。
   理由：METR 的 39 個百分點落差本身即是鉤子，改寫成場景故事會弱化。
   豁免**不擴及**其他 CoffeeCopy 條款——敘事段落零 bullet、專有名詞首次出現給一句白話、
