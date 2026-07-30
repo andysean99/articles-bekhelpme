@@ -16,7 +16,22 @@ read / metadata / permissions / search / list_recent），**沒有 delete、沒�
 ---
 
 ```
-幫我做三件收尾。全部自動，做完給我一份驗證報告。
+幫我做四件收尾。全部自動，做完給我一份驗證報告。
+
+## 任務 0 — 先驗證兩個網址真的活著（最重要，先做）
+
+curl 或開瀏覽器抓這兩個網址，帶 ?x=1 避開 CDN 快取：
+  https://articles.bekhelpme.com/measuring-the-half-ai-does-better?x=1
+  https://articles.bekhelpme.com/measuring-the-half-ai-does-better-cn?x=1
+
+每個確認四件事，用抓回來的 HTML 檢查，不要憑感覺：
+1. HTTP 200
+2. 內容含「我們正在衡量」（繁體版）或「我们正在衡量」（簡體版）
+3. `grep -o 'class="ent"' | wc -l` 應為 48，且 `class="ent" href=` 同樣是 48
+4. 簡體版額外檢查：`grep -c '指针'` 必須是 0，`grep -o '指标' | wc -l` 應為 31
+
+如果 HTTP 404：等 60 秒重試一次。第二次仍 404 就停下來告訴我，
+那代表 Vercel 專案沒接到 main（commit 0282715）或建置失敗，先不要做後面三件。
 
 ## 背景
 我的 Obsidian Vault 同步在 Google Drive Desktop。先找到 vault 根目錄——
@@ -78,6 +93,7 @@ read / metadata / permissions / search / list_recent），**沒有 delete、沒�
 
 ## 最後給我驗證報告
 
+- 兩個網址的 HTTP 狀態碼、.ent 計數、簡體版的 指针/指标 計數
 - vault 絕對路徑
 - eval-scoreboard.json：合併前後列數、檔案大小、備份檔路徑
 - 兩個被刪的檔：完整路徑 ＋ 刪除前的大小與修改日
