@@ -1,0 +1,161 @@
+[
+  {
+    "來源": "τ-bench（pass@k / pass^k 定義出處，Yao et al. 2024）",
+    "status": "verified",
+    "url": "https://arxiv.org/pdf/2406.12045",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "DORA 官方反模式說明",
+    "status": "verified",
+    "url": "https://dora.dev/guides/dora-metrics/",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "Pragmatic Engineer — Beck ＋ Orosz 反駁 McKinsey",
+    "status": "verified",
+    "url": "https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "Laura Tacho — 個人層級指標",
+    "status": "verified",
+    "url": "https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "Goodhart 法則的工程案例",
+    "status": "verified",
+    "url": "https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "Palantir — Dev vs Delta 工程角色",
+    "status": "verified",
+    "url": "https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "OpenAI — Forward Deployed Engineering 職缺",
+    "status": "verified",
+    "url": "https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "philschmid — pass^k 白話解釋",
+    "status": "verified",
+    "url": "https://philschmid.de/agents-pass-at-k-pass-power-k",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "DX Core 4",
+    "status": "verified",
+    "url": "https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "GitClear — AI Copilot Code Quality 2025（2.11 億行）",
+    "status": "verified",
+    "url": "https://www.gitclear.com/ai_assistant_code_quality_2025_research",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "GitClear — 報告 PDF 原文",
+    "status": "verified",
+    "url": "https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf",
+    "驗證方式": "Bek handoff v2 / orchestrator 直查",
+    "卡": "是"
+  },
+  {
+    "來源": "arXiv 2507.09089",
+    "status": "verified",
+    "url": "https://arxiv.org/abs/2507.09089",
+    "驗證方式": "M-01a ＋ orchestrator 獨立覆核",
+    "卡": "是",
+    "claim_in_article": "2025 年，METR 做了一件簡單的事：找 16 位資深開源開發者，在他們自己平均待了五年的成熟專案裡，隨機指派 246 個任務——一半可以用 AI 工具，一半不行。開工前，開發者預測 AI 會讓他們快 24%。做完之後，他們回想，覺得自己快了 20%。實測結果是慢了 19%。"
+  },
+  {
+    "來源": "METR 官方公告（2026年2月）",
+    "status": "verified",
+    "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+    "驗證方式": "M-01a ＋ orchestrator 獨立覆核",
+    "卡": "是",
+    "claim_in_article": "METR 自己在 2026 年 2 月宣布要改實驗設計，因為新一輪出現了嚴重的自我選擇偏誤——太多開發者拒絕參加「不能用 AI」的那一組。"
+  },
+  {
+    "來源": "SPACE framework, ACM Queue 2021, Forsgren et a",
+    "status": "verified",
+    "url": "https://queue.acm.org/detail.cfm?id=3454124",
+    "驗證方式": "M-01a ＋ orchestrator 獨立覆核",
+    "卡": "是",
+    "claim_in_article": "SPACE 框架（GitHub、微軟、維多利亞大學，2021）更早就破除了三個迷思：生產力不等於活動量、生產力不只關乎個人、單一指標永遠不夠。"
+  },
+  {
+    "來源": "Anthropic, Demystifying evals for AI agents, A",
+    "status": "verified",
+    "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+    "驗證方式": "M-01b ＋ orchestrator 獨立覆核",
+    "卡": "是",
+    "claim_in_article": "Anthropic 在談 agent evals 時給了一個很好的答案：eval 的價值在於「迫使產品團隊明確定義什麼叫成功」。兩位工程師讀同一份規格，對邊界情況會有不同解讀；eval 套件消解這個歧義。"
+  },
+  {
+    "來源": "Birgitta Böckeler, martinfowler.com, piece on ",
+    "status": "verified",
+    "url": "https://martinfowler.com/articles/harness-engineering.html",
+    "驗證方式": "M-01b ＋ orchestrator 獨立覆核",
+    "卡": "是",
+    "claim_in_article": "Thoughtworks 的 Birgitta Böckeler 從另一個方向指到同一點：AI 時代的高價值工作是設計「harness」——指引加上感測器——並守住可維護性。"
+  },
+  {
+    "來源": "RAND report RR-A2680-1",
+    "status": "verified",
+    "url": "https://www.rand.org/pubs/research_reports/RRA2680-1.html",
+    "驗證方式": "M-01b ＋ orchestrator 獨立覆核",
+    "卡": "是",
+    "claim_in_article": "RAND 訪談了 65 名工程師後把首要原因寫得很清楚：業界關係人經常誤解或誤傳「要用 AI 解決的是什麼問題」，導致部署出來的模型被最佳化到錯誤的指標上，或根本不符合整體業務流程。"
+  },
+  {
+    "來源": "Gartner press release, gartner.com/en/newsroom",
+    "status": "verified",
+    "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+    "驗證方式": "M-01c ＋ orchestrator 獨立覆核",
+    "卡": "是",
+    "claim_in_article": "Gartner 預測到 2027 年底會有超過四成的 agentic AI 專案被取消，理由是成本失控、商業價值不明、風險控制不足。"
+  },
+  {
+    "來源": "MIT Project NANDA, \"The GenAI Divide: State of",
+    "status": "verified",
+    "url": "https://www.media.mit.edu/groups/nanda/overview/",
+    "驗證方式": "G4 裁示 A（Bek 2026-07-29）：改指獨立浮現的 MIT 官方 NANDA 群組頁",
+    "卡": "是",
+    "claim_in_article": "MIT 的 Project NANDA 研究則發現，只有約 5% 的整合型 AI 試點真的產出數百萬等級的價值，絕大多數沒有可衡量的損益影響。",
+    "g4_note": "原記錄的報告 PDF 網址無法獨立重現（只在 site: 限定查詢中出現），依 C-05 不得用 mlq.ai／Scribd／GitHub 鏡像頂替。改指官方群組總覽頁。研究內容（300+ 部署、52 訪談、153 調查、5% 產出數百萬價值）已完全確認。導覽卡須說明此頁為研究群組頁，報告本身需再點一層。"
+  },
+  {
+    "來源": "Sequoia Capital \"Training Data\" podcast, Bob M",
+    "status": "verified",
+    "url": "https://sequoiacap.com/podcast/training-data-bob-mcgrew/",
+    "驗證方式": "M-01c ＋ orchestrator 獨立覆核",
+    "卡": "是",
+    "claim_in_article": "前 OpenAI 研究長 Bob McGrew 在描述 agentic 軟體工程能做什麼時說得很直白：修一個 bug、做一次重構——這類工作需要的品味相對少，而且結果明確。"
+  },
+  {
+    "來源": "Chen et al. 2021 — Codex / HumanEval（pass@k 出處）",
+    "status": "verified",
+    "url": "https://arxiv.org/abs/2107.03374",
+    "驗證方式": "orchestrator 2026-07-29 兩次獨立查詢；G4-b 裁示 A 後新增",
+    "卡": "是",
+    "claim_in_article": "pass@k 早於它，出自 Chen et al. 2021（Codex／HumanEval）",
+    "g4b_note": "E1 裁示 A 的產物。原附註把 pass@k 與 pass^k 都歸給 τ-bench，查證顯示 pass@k 最早由 Kulal et al. 2019 提出、由 Chen et al. 2021 （Codex/HumanEval，arXiv 2107.03374）確立普及，比 τ-bench 早三到五年；τ-bench 論文是拿既有的 pass@k 對照以凸顯 pass^k。附註已修正並新增本來源。"
+  }
+]

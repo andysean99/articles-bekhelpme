@@ -1,0 +1,69 @@
+=== C-08: entity link counts ===
+--- work/digest.html ---
+class="ent" => 48
+data-url => 48
+class="ent" href= => 48
+--- work/digest-cn.html ---
+class="ent" => 48
+data-url => 48
+class="ent" href= => 48
+
+=== C-01: verbatim check ===
+PASS — 108 句全數逐字保留，差異數 0
+exit code: 0
+
+=== C-12: URL set diff between editions ===
+diff exit code: 0
+
+lang=zh-Hans check:
+FOUND
+lang="zh-Hans"
+
+=== C-12 extra: 拷贝 should not appear in CN, 复制 should ===
+拷贝 count in digest-cn.html:
+0
+复制 count in digest-cn.html:
+17
+拷貝 (traditional) count in digest.html (should exist if used):
+0
+
+=== C-12 extra: language switch links between editions ===
+(no output above other than nothing = pass, unless links found)
+
+=== C-09: canEmbed allowlist ===
+bekhelpme\.com$|^localhost$|^127\.|^$
+-- full canEmbed regex context --
+778:  var canEmbed = /(^|\.)bekhelpme\.com$|^localhost$|^127\.|^$/.test(location.hostname);
+808:    if(canEmbed){
+
+=== C-10: dark theme definitions ===
+--- work/digest.html ---
+:root
+[data-theme="dark"]
+prefers-color-scheme: dark
+count: 3
+--- work/digest-cn.html ---
+:root
+[data-theme="dark"]
+prefers-color-scheme: dark
+count: 3
+
+=== C-03: evidence appendix location ===
+appendix in details: False | appendix present: True
+
+=== Cards inlined vs cards.json ===
+work/digest.html 21 ['d', 't'] False
+work/digest-cn.html 21 ['d', 't'] False
+
+=== cards.json structure ===
+<class 'dict'> 21
+keys sample: ['https://arxiv.org/pdf/2406.12045', 'https://dora.dev/guides/dora-metrics/', 'https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2']
+https://arxiv.org/pdf/2406.12045 -> {'t': 'τ-bench預印本——提出pass^k可靠度指標', 'd': 'τ-bench是測試零售與航空場景AI代理人的基準論文，提出pass^k衡量代理人多次試驗的可靠度；GPT-4o代理人成功率不到五成，零售場景pass^8低於25%。', 'evidence_spans': [{'clause': 'τ-bench是測試零售與航空場景AI代理人的基準論文', 'source_text': 'τ-bench (Yao et al., 2024) is a benchmark for tool-agent-user interaction in two real-world domains (retail and airline)', 'from': 'work/sources/handoff-content.json，what_the_source_says'}, {'clause': '提出pass^k衡量代理人多次試驗的可靠度', 'source_text': 'proposes a new metric (pass^k) to evaluate the reliability of agent behavior over multiple trials', 'from': 'work/sources/handoff-content.json，quotes'}, {'clause': 'GPT-4o代理人成功率不到五成', 'source_text': 'even state-of-the-art function calling agents (gpt-4o) succeed on <50% of the tasks', 'from': 'work/sources/handoff-content.json，quotes（跨基準的一般性結果，未限定單一場域）'}, {'clause': '零售場景pass^8低於25%', 'source_text': 'are terribly inconsistent (pass^8 < 25% in retail)', 'from': 'work/sources/handoff-content.json，quotes；orchestrator 2026-07-29 回饋：論文將此數字限定於零售場域，卡片補上「零售場景」限定詞，避免讀成跨整個benchmark的數字'}]}
+
+=== C-12 / anti-cheat: 指標→指针 mistranslation check ===
+occurrences of correct term 指标 in digest-cn.html:
+0
+occurrences of WRONG term 指针 (pointer) in digest-cn.html:
+15
+occurrences of 指標 in digest.html (TW source):
+15

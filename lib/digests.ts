@@ -9,7 +9,8 @@ import { getAllPosts, type PostMeta } from "./posts";
 export type DigestMeta = PostMeta;
 
 export const digests: DigestMeta[] = [
-  // { title: "…", date: "YYYY-MM-DD", slug: "…", excerpt: "…" },
+  { title: "我們正在衡量 AI 已經做得比人好的那一半", date: "2026-07-29", slug: "measuring-the-half-ai-does-better", excerpt: "我們想拿來衡量工程師的那些指標——bug 數、修復速度、缺陷率——描述的正好是 agent 已經做得不錯的那一半工作。" },
+  { title: "我们正在衡量 AI 已经做得比人好的那一半", date: "2026-07-29", slug: "measuring-the-half-ai-does-better-cn", excerpt: "我们想拿来衡量工程师的那些指标——bug 数、修复速度、缺陷率——描述的正好是 agent 已经做得不错的那一半工作。" },
 ];
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;

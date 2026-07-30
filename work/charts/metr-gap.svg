@@ -1,0 +1,76 @@
+<svg viewBox="0 0 640 400" role="img" aria-labelledby="metrTitle metrDesc" class="viz-metr">
+  <title id="metrTitle">METR 研究：開發者對 AI 速度提升的判斷 vs 實測結果</title>
+  <desc id="metrDesc">開工前預測快 24%，事後回想快 20%，實測結果卻慢 19%，感受與事實相差 39 個百分點。</desc>
+  <style>
+    .viz-metr{
+      --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F; --hair:#E3DED2; --surface:#FFFFFF;
+      --s1:#177A5B; --s2:#4661C2; --axis:#C9C3B2;
+    }
+    @media (prefers-color-scheme: dark){
+      :root:where(:not([data-theme="light"])) .viz-metr{
+        --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+        --s1:#2FA079; --s2:#6B7FE0; --axis:#3A3F3A;
+      }
+    }
+    :root[data-theme="dark"] .viz-metr{
+      --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+      --s1:#2FA079; --s2:#6B7FE0; --axis:#3A3F3A;
+    }
+    .viz-metr text{font-family:"Noto Sans TC","PingFang TC",system-ui,-apple-system,sans-serif}
+    .viz-metr .ax{fill:var(--ink-3); font-size:12.5px}
+    .viz-metr .axn{fill:var(--ink-3); font-size:12px; font-variant-numeric:tabular-nums}
+    .viz-metr .val{fill:var(--ink); font-size:16px; font-weight:700; font-variant-numeric:tabular-nums}
+    .viz-metr .val2{fill:var(--ink-2); font-size:12px}
+    .viz-metr .legend-text{fill:var(--ink-2); font-size:12.5px}
+    .viz-metr .bracket{fill:none; stroke:var(--ink-3); stroke-width:1.5; stroke-dasharray:3,3}
+    .viz-metr .baseline{stroke:var(--axis); stroke-width:1}
+  </style>
+
+  <!-- legend -->
+  <g>
+    <rect x="60" y="21" width="12" height="12" rx="3" fill="var(--s2)"/>
+    <text x="78" y="31" class="legend-text">開發者主觀判斷</text>
+    <rect x="220" y="21" width="12" height="12" rx="3" fill="var(--s1)"/>
+    <text x="238" y="31" class="legend-text">實測結果</text>
+  </g>
+
+  <!-- zero baseline -->
+  <line x1="60" y1="210" x2="590" y2="210" class="baseline"/>
+  <text x="52" y="214" text-anchor="end" class="axn">0%</text>
+
+  <!-- predicted bar: +24% -->
+  <g>
+    <title>開工前預測：AI 會讓自己快 24%</title>
+    <path d="M100,210 L100,94 Q100,90 104,90 L206,90 Q210,90 210,94 L210,210 Z" fill="var(--s2)"/>
+    <text x="155" y="76" text-anchor="middle" class="val">+24%</text>
+    <text x="155" y="352" text-anchor="middle" class="ax">開工前預測</text>
+  </g>
+
+  <!-- recalled bar: +20% -->
+  <g>
+    <title>事後回想：開發者覺得自己快了 20%</title>
+    <path d="M265,210 L265,114 Q265,110 269,110 L371,110 Q375,110 375,114 L375,210 Z" fill="var(--s2)"/>
+    <text x="320" y="96" text-anchor="middle" class="val">+20%</text>
+    <text x="320" y="352" text-anchor="middle" class="ax">事後回想</text>
+  </g>
+
+  <!-- actual bar: -19% -->
+  <g>
+    <title>實測結果：開發者實際上慢了 19%</title>
+    <path d="M430,210 L430,301 Q430,305 434,305 L526,305 Q530,305 530,301 L530,210 Z" fill="var(--s1)"/>
+    <text x="485" y="325" text-anchor="middle" class="val">−19%</text>
+    <text x="485" y="352" text-anchor="middle" class="ax">實測結果</text>
+  </g>
+
+  <!-- 39-point gap bracket between "recalled" and "actual" -->
+  <g>
+    <title>39 個百分點的落差：事後回想（+20%）與實測結果（−19%）之間</title>
+    <line x1="386" y1="110" x2="398" y2="110" class="bracket"/>
+    <line x1="392" y1="110" x2="392" y2="305" class="bracket"/>
+    <line x1="386" y1="305" x2="398" y2="305" class="bracket"/>
+    <text x="404" y="212" class="val" font-size="15">39</text>
+  </g>
+
+  <!-- caption -->
+  <text x="320" y="382" text-anchor="middle" class="val2">感受與事實相差 39 個百分點</text>
+</svg>

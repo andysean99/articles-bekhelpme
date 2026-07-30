@@ -1,0 +1,120 @@
+{
+  "reviewer": "orchestrator",
+  "date": "2026-07-29",
+  "trigger": "結構檢查發現 M-01 的 12 筆證據中有 5 筆為誘導式查詢（查詢字串已內含預期網域或路徑），另 batch-c 有 2 筆使用 site: 限定。此類查詢預設了答案，不構成 C-04 要求的獨立確認。",
+  "spec_defect": {
+    "clause": "C-04",
+    "written": "兩次獨立措辭的 WebSearch 交叉驗證",
+    "problem": "「獨立措辭」被合理地讀成「兩句話不一樣」。agent 的兩筆查詢措辭確實不同，字面上合格。我要表達的是「不得預設答案」，這點沒寫出來。",
+    "verdict": "spec 缺陷，非 worker 失誤。依申訴路徑，worker 在此爭議上成立，不記 failure_mode，不計入 first_try_pass=false。",
+    "fix": "C-04 補上：查詢字串不得包含預期的網域、路徑片段或 site: 限定詞。至少一筆須為純內容式查詢。"
+  },
+  "reverification": [
+    {
+      "source": "METR 2026-02 改設計公告",
+      "prior_state": "兩筆皆誘導式，零獨立確認",
+      "queries": [
+        "METR changing developer productivity experiment design self-selection bias participants refused non-AI arm",
+        "METR uplift study update 2026 why they are redesigning the RCT developers declining control group"
+      ],
+      "result": "PASS",
+      "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+      "notes": "兩筆純內容查詢皆回傳同一 metr.org URL。內容確認自我選擇偏誤為 METR 自述的主因（primarily due to higher expectation of AI-driven uplift）。\n\n【給 G4 的判斷題，非 E1】公告列出的原因不只一個：另有 30–50% 受試者選擇性不提交任務、時薪從 $150 降到 $50 造成的選擇效應、以及多 agent 併用時工時量測不可靠。文章只寫了自我選擇偏誤。這是**省略而非矛盾**——自我選擇確實是 METR 自己標示的主因。兩位 agent 獨立指出同一件事。"
+    },
+    {
+      "source": "SPACE framework",
+      "prior_state": "兩筆證據 URL 不同（queue.acm.org vs dl.acm.org DOI 鏡像），且第二筆誘導式",
+      "queries": [
+        "\"The SPACE of Developer Productivity\" Forsgren Storey Zimmermann article where was it published"
+      ],
+      "result": "PASS",
+      "url": "https://queue.acm.org/detail.cfm?id=3454124",
+      "notes": "純內容查詢獨立回傳 queue.acm.org/detail.cfm?id=3454124。原先的 URL 不一致屬同一 DOI（3454122.3454124）的兩個 ACM 官方介面，M-01a 判定為佐證非衝突，成立。\n\nM-01a 另主動剔除了搜尋結果中的 spawn-queue.acm.org 假網域，判定為索引雜訊。我的獨立查詢中該假網域再次出現在第一位——**agent 的判斷是對的**，這是一次應該被記錄的正確拒絕。"
+    },
+    {
+      "source": "Anthropic — Demystifying evals for AI agents",
+      "prior_state": "Q1 為引號包住的 URL 字串，屬誘導式",
+      "queries": [
+        "Anthropic article evals force product teams to define what success means agents edge cases spec"
+      ],
+      "result": "PASS",
+      "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+      "notes": "純內容查詢獨立回傳同一 URL，且回傳內容含近乎逐字的原句：「two engineers reading the same spec often interpret edge cases differently. Evals resolve this ambiguity.」與文章「兩位工程師讀同一份規格，對邊界情況會有不同解讀；eval 套件消解這個歧義」逐點對應。"
+    },
+    {
+      "source": "Birgitta Böckeler — harness engineering",
+      "prior_state": "Q1 為引號包住的 URL 字串，屬誘導式",
+      "queries": [
+        "Böckeler Thoughtworks harness engineering coding agents guides and sensors maintainability martin fowler"
+      ],
+      "result": "PASS",
+      "url": "https://martinfowler.com/articles/harness-engineering.html",
+      "notes": "純內容查詢獨立回傳同一 URL。Guides（feed-forward）＋ Sensors（feedback）的框架與文章「指引加上感測器」對應。M-01b 指出的後續篇〈Maintainability sensors for coding agents〉（martinfowler.com/articles/sensors-for-coding-agents.html）獨立查詢中同樣浮現，可作為次要引用，涵蓋文章「並守住可維護性」的後半句。"
+    },
+    {
+      "source": "RAND RR-A2680-1",
+      "prior_state": "Q2 誘導式",
+      "queries": [
+        "RAND research report root causes of failure artificial intelligence projects 65 engineers data scientists interviewed"
+      ],
+      "result": "PASS",
+      "url": "https://www.rand.org/pubs/research_reports/RRA2680-1.html",
+      "notes": "純內容查詢獨立回傳同一 URL。65 人訪談基礎確認。根因語言（誤解／誤傳要解決什麼問題、被最佳化到錯誤指標、不符整體業務流程）與文章對應。\n\n【微小差異，不足以構成 E1】來源說的是「65 experienced data scientists and engineers」，文章寫「65 名工程師」。文章的證據等級附註已正確標示「超過八成失敗」為引述性估計，與來源「By some estimates」一致。"
+    },
+    {
+      "source": "Gartner 新聞稿",
+      "prior_state": "兩筆皆誘導式（其一使用 site: 限定）",
+      "queries": [
+        "Gartner predicts over 40 percent agentic AI projects canceled end of 2027 escalating costs unclear business value"
+      ],
+      "result": "PASS",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+      "notes": "純內容查詢獨立回傳 gartner.com 官方新聞稿為第一位。三個理由（成本失控、商業價值不明、風險控制不足）逐字對應。證據等級附註的「2025 年 1 月網路研討會 3,412 名與會者民調」在新聞稿內文獲得確認。"
+    },
+    {
+      "source": "MIT Project NANDA",
+      "prior_state": "兩筆皆誘導式（其一使用 site: 限定）",
+      "queries": [
+        "MIT NANDA GenAI Divide state of AI in business 2025 report 5 percent pilots 52 interviews 153 surveys",
+        "\"nanda.media.mit.edu\" OR \"media.mit.edu\" NANDA project GenAI Divide report PDF official download"
+      ],
+      "result": "FAIL — URL 無法獨立確認",
+      "url_claimed_by_m01c": "https://nanda.media.mit.edu/ai_report_2025.pdf",
+      "url_independently_surfaced": "https://www.media.mit.edu/groups/nanda/overview/",
+      "notes": "**兩次查詢都沒有回傳 M-01c 記錄的 PDF 網址。**該網址只在 site: 限定查詢中出現過，那是確認式而非獨立查詢。依 C-04 這一列不合格。\n\n獨立浮現的官方 MIT 網域頁面是 media.mit.edu/groups/nanda/overview/（NANDA 研究群組總覽頁）。其餘獨立浮現的都是鏡像（mlq.ai、Scribd、GitHub nandapapers、aigl.blog），依 C-05 一律不得頂替。\n\n**研究內容本身完全確認**：300+ 個公開部署、52 場結構化訪談、153 份調查、「Just 5% of integrated AI pilots are extracting millions in value」——與文章正文及證據等級附註逐點相符。有問題的只是「該指向哪個 URL」。\n\n→ 送 G4 由 Bek 裁示，見交付摘要。"
+    },
+    {
+      "source": "pass@k 的真實出處（E1 裁示 A）",
+      "prior_state": "文章附註宣稱 pass@k 與 pass^k 皆出自 τ-bench",
+      "queries": [
+        "pass@k metric origin Codex HumanEval Chen 2021 evaluating large language models trained on code",
+        "tau-bench Yao 2024 introduces pass^k new metric reliability contrasted with existing pass@k"
+      ],
+      "result": "E1 CONFIRMED — 附註過度歸屬，已由 Bek 裁示修正",
+      "url": "https://arxiv.org/abs/2107.03374",
+      "notes": "查詢一：pass@k 最早由 Kulal et al. (2019) 提出，Chen et al. 2021 的 Codex 論文（arXiv 2107.03374，同時提出 HumanEval）確立其形式與普及。\n查詢二：pass^k 確為 τ-bench（Yao et al. 2024）的新指標，論文明確拿 pass@k 作對照（pass@k 衡量能力上限並隨 k 飽和，pass^k 衡量可靠度並隨 k 劇降）。\n\n→ 附註原句把兩者都歸給 τ-bench，一半不正確。Bek 2026-07-29 裁示選項 A：拆開歸屬並補上 Chen et al. 2021。文章第 144 行為本案第二個授權改動。\n→ 正文未受影響：正文只描述兩者的區分，未宣稱出處。"
+    },
+    {
+      "source": "Gartner 40% 預測的真實依據（E1 #3，裁示 A）",
+      "prior_state": "文章附註稱 40% 預測「基於」2025-01 網路研討會 3,412 人民調，並批評其「非嚴格抽樣」",
+      "queries": [
+        "Gartner 40% agentic AI canceled 2027 what is the basis of this prediction methodology sample analyst forecast",
+        "Gartner January 2025 webinar poll 3412 attendees agentic AI what question did it ask investment levels"
+      ],
+      "result": "E1 CONFIRMED — 附註歸屬錯誤且對來源過度寬容，已修正",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+      "notes": "由 M-06 盲測（Opus 5）發現，orchestrator 兩次獨立查詢確認。\n\n那份 2025-01 民調（3,412 名網路研討會與會者）量的是**投資態度**：19% 重大投資、42% 保守投資、8% 無投資、31% 觀望或不確定。與取消率無關。\n>40% 取消率則**未揭露任何樣本或計算方式**，屬分析師預測，新聞稿另以「agent washing」（號稱 agentic 的供應商中僅約 130 家為真）作論證支撐。有報導標題即為「Nobody Can Show the Math」。\n\n→ 附註錯了兩層：(1) 預測不是基於該民調；(2)「非嚴格抽樣」這個批評**太寬容**——真實狀況不是抽樣不嚴謹，而是根本沒有揭露依據。一份用來校準讀者信任的附註，在此條上假設了一個不存在的方法論基礎。\n→ 正文未受影響（三個理由的描述完全正確）。文章第 141 行為本案第三個授權改動。\n\n【機制觀察】卡片會複製這個錯誤，是因為它忠實照著文章寫。前兩輪查的是 URL 通不通，第三輪重新接地才第一次讀到來源說了什麼——三個 E1 全部在這一輪掉出來，且全部位於證據等級附註。"
+    },
+    {
+      "source": "SPACE framework URL — M-05 抽查 FAIL 的裁定",
+      "prior_state": "M-05 跑五次查詢（含逐字重跑 orchestrator 記錄的那句）皆未取回 queue.acm.org/detail.cfm?id=3454124，判為 FAIL",
+      "queries": [
+        "ACM Queue volume 19 issue 1 2021 developer productivity SPACE framework five dimensions article page",
+        "Forsgren Storey Maddila Zimmermann Houck Butler SPACE developer productivity more to it than you think official article link"
+      ],
+      "result": "RESOLVED — URL 成立，維持不變",
+      "url": "https://queue.acm.org/detail.cfm?id=3454124",
+      "notes": "第二次查詢明確回傳該 URL 並標示為「ACM Queue publication」。連同先前一次，共三次獨立的純內容查詢取回過它。\n→ 判定：URL 真實且可重現，M-05 未取回屬檢索排序變異，非記錄錯誤。\n→ **M-05 報這個 FAIL 是正確行為**，不因『orchestrator 說過了』而放行——這正是 C-14 反向抽查要的東西，不記為 checker 失誤。\n→ 已知次要來源：dl.acm.org/doi/10.1145/3454122.3454124（同一 DOI，浮現較穩定）與 CACM 版 dl.acm.org/doi/10.1145/3453928。文章引用的是「ACM Queue 2021」，故主 URL 維持 queue.acm.org。\n\n【檢索環境觀察，建議寫入 handoff】假冒網域 `spawn-queue.acm.org` 在本次兩次查詢中再度出現（其一為第五位），累計已第三次浮現於 SPACE 相關查詢。M-01a 當初主動判定為索引雜訊並剔除，判斷正確。任何未來查 ACM 資料的 agent 都可能踩到，值得在 skill 或 handoff 裡明文列為已知假網域。"
+    }
+  ]
+}

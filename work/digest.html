@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我們正在衡量 AI 已經做得比人好的那一半 — 燈塔文摘</title>
+<meta name="description" content="AI／Agentic 時代的工程產出衡量，錯在哪，以及小團隊該怎麼做。">
+<style>
+:root{
+  --bg:#FAF7F0; --surface:#FFFFFF; --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F;
+  --accent:#177A5B; --accent-dim:#0F5C44; --s1:#177A5B; --s2:#4661C2;
+  --hair:#E3DED2; --hair-2:#EDE9DE; --card:#F3EFE5;
+  --heat-1:#DDEDE5; --heat-2:#AFD7C4; --heat-3:#75BA9D; --heat-4:#3F9877; --heat-5:#177A5B;
+  --grid:#E7E2D5; --axis:#C9C3B2; --btn-ink:#FFFFFF;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    --bg:#141715; --surface:#1C1F1C; --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078;
+    --accent:#2FA079; --accent-dim:#45B58D; --s1:#2FA079; --s2:#6B7FE0;
+    --hair:#2A2E2A; --hair-2:#232723; --card:#1E221E;
+    --heat-1:#1C2B24; --heat-2:#1E4233; --heat-3:#206046; --heat-4:#278159; --heat-5:#2FA079;
+    --grid:#262A26; --axis:#3A3F3A; --btn-ink:#0E1512;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141715; --surface:#1C1F1C; --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078;
+  --accent:#2FA079; --accent-dim:#45B58D; --s1:#2FA079; --s2:#6B7FE0;
+  --hair:#2A2E2A; --hair-2:#232723; --card:#1E221E;
+  --heat-1:#1C2B24; --heat-2:#1E4233; --heat-3:#206046; --heat-4:#278159; --heat-5:#2FA079;
+  --grid:#262A26; --axis:#3A3F3A; --btn-ink:#0E1512;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Hiragino Sans","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  font-size:17px; line-height:1.95; letter-spacing:.015em;
+}
+.wrap{max-width:740px; margin:0 auto; padding:0 20px 96px}
+.serif{font-family:"Noto Serif TC","Songti TC","Yu Mincho","Hiragino Mincho ProN",serif}
+
+/* ---------- masthead ---------- */
+header.masthead{padding:72px 0 40px; border-bottom:1px solid var(--hair)}
+.kicker{font-size:12.5px; letter-spacing:.32em; color:var(--accent); text-transform:uppercase; margin:0 0 18px}
+h1{font-family:"Noto Serif TC","Songti TC","Yu Mincho",serif; font-weight:700; font-size:clamp(30px,6vw,44px); line-height:1.35; margin:0 0 14px; text-wrap:balance}
+.standfirst{color:var(--ink-2); font-size:16.5px; margin:0; max-width:36em}
+.meta-line{margin-top:26px; font-size:13px; color:var(--ink-3); letter-spacing:.06em}
+
+/* ---------- toc ---------- */
+nav.toc{margin:40px 0 8px; padding:26px 28px; background:var(--card); border-radius:10px}
+nav.toc p.toc-title{margin:0 0 12px; font-size:12.5px; letter-spacing:.28em; color:var(--ink-3)}
+nav.toc ol{margin:0; padding:0; list-style:none; column-gap:36px}
+@media(min-width:620px){nav.toc ol{columns:2}}
+nav.toc li{break-inside:avoid; padding:5px 0; font-size:15px}
+nav.toc a{color:var(--ink); text-decoration:none; border-bottom:none}
+nav.toc a:hover{color:var(--accent)}
+nav.toc .n{font-family:"Noto Serif TC",serif; color:var(--accent); margin-right:10px; font-size:13.5px}
+
+/* ---------- sections ---------- */
+section{margin-top:76px}
+.eyebrow{display:flex; align-items:baseline; gap:14px; margin-bottom:10px}
+.eyebrow .num{font-family:"Noto Serif TC","Songti TC",serif; font-size:15px; color:var(--accent); letter-spacing:.1em}
+.eyebrow .rule{flex:1; height:1px; background:var(--hair)}
+h2{font-family:"Noto Serif TC","Songti TC","Yu Mincho",serif; font-weight:700; font-size:clamp(23px,4vw,29px); line-height:1.5; margin:0 0 26px; text-wrap:balance}
+h3{font-family:"Noto Serif TC","Songti TC",serif; font-weight:700; font-size:18.5px; margin:44px 0 14px}
+p{margin:0 0 1.5em}
+em{font-style:normal; color:var(--accent-dim); font-weight:600}
+.unverified{font-size:12px; color:var(--ink-3); border:1px solid var(--hair); border-radius:4px; padding:1px 7px; margin:0 3px; white-space:nowrap; vertical-align:.12em}
+
+/* entity popup links */
+a.ent{color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent); cursor:pointer; transition:border-color .15s}
+a.ent:hover{border-bottom-style:solid}
+a.ent:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:2px}
+
+/* pull quote */
+blockquote.pull{margin:40px 0; padding:6px 0 6px 26px; border-left:3px solid var(--accent);
+  font-family:"Noto Serif TC","Songti TC",serif; font-size:20px; line-height:1.85; color:var(--ink)}
+blockquote.pull cite{display:block; margin-top:10px; font-size:13px; font-style:normal; color:var(--ink-3)}
+
+/* ---------- figures / charts ---------- */
+figure.viz{margin:44px 0; padding:28px 26px 22px; background:var(--surface); border:1px solid var(--hair); border-radius:12px}
+figure.viz .viz-title{font-weight:700; font-size:15.5px; margin:0 0 2px}
+figure.viz .viz-sub{font-size:12.5px; color:var(--ink-3); margin:0 0 20px}
+figure.viz svg{display:block; width:100%; height:auto}
+figure.viz figcaption{margin-top:16px; padding-top:14px; border-top:1px solid var(--hair-2); font-size:14px; color:var(--ink-2); line-height:1.8}
+figure.viz figcaption b{color:var(--ink)}
+.legend{display:flex; flex-wrap:wrap; gap:18px; margin:0 0 14px; font-size:12.5px; color:var(--ink-2)}
+.legend .key{display:inline-flex; align-items:center; gap:7px}
+.legend .sw{width:12px; height:12px; border-radius:3px; display:inline-block}
+svg text{font-family:"Noto Sans TC","PingFang TC",system-ui,sans-serif}
+.ax{fill:var(--ink-3); font-size:11.5px}
+.axn{fill:var(--ink-3); font-size:11.5px; font-variant-numeric:tabular-nums}
+.val{fill:var(--ink); font-size:12.5px; font-weight:600; font-variant-numeric:tabular-nums}
+.val2{fill:var(--ink-2); font-size:11.5px}
+.inbar{fill:#FFFFFF; font-size:12px; font-weight:600}
+.gridline{stroke:var(--grid); stroke-width:1}
+.axisline{stroke:var(--axis); stroke-width:1}
+.note-flag{fill:var(--ink-2); font-size:11.5px}
+
+/* heatmap table */
+.tablewrap{overflow-x:auto}
+table.heat{border-collapse:separate; border-spacing:3px; width:100%; min-width:560px; font-size:13px}
+table.heat th{font-weight:600; color:var(--ink-2); padding:8px 6px; text-align:center; font-size:12.5px; line-height:1.4}
+table.heat th.rowh{text-align:left; color:var(--ink); min-width:9.5em; font-size:13px}
+table.heat td{text-align:center; padding:11px 6px; border-radius:6px; font-weight:700; font-variant-numeric:tabular-nums}
+table.heat td.h1{background:var(--heat-1); color:var(--ink)}
+table.heat td.h2{background:var(--heat-2); color:var(--ink)}
+table.heat td.h3{background:var(--heat-3); color:#fff}
+table.heat td.h4{background:var(--heat-4); color:#fff}
+table.heat td.h5{background:var(--heat-5); color:#fff}
+:root[data-theme="dark"] table.heat td.h1, :root[data-theme="dark"] table.heat td.h2{color:var(--ink)}
+
+/* ---------- appendix cards ---------- */
+.cards{display:grid; gap:14px; margin-top:30px}
+details.card{background:var(--surface); border:1px solid var(--hair); border-radius:10px; padding:0}
+details.card summary{list-style:none; cursor:pointer; padding:18px 22px; font-weight:700; font-size:15.5px; display:flex; align-items:center; gap:12px}
+details.card summary::-webkit-details-marker{display:none}
+details.card summary .tag{font-size:11px; font-weight:600; letter-spacing:.14em; color:var(--accent); border:1px solid var(--accent); border-radius:99px; padding:1px 10px; white-space:nowrap}
+details.card summary::after{content:"＋"; margin-left:auto; color:var(--ink-3); font-weight:400}
+details.card[open] summary::after{content:"－"}
+details.card .card-body{padding:2px 22px 22px; font-size:14px; line-height:1.85; color:var(--ink-2)}
+details.card .card-body b{color:var(--ink)}
+details.card .card-body ul{margin:8px 0; padding-left:20px}
+details.card .card-body li{margin:6px 0}
+details.card .card-body table{border-collapse:collapse; width:100%; font-size:13px; margin:10px 0}
+details.card .card-body table th, details.card .card-body table td{border:1px solid var(--hair); padding:8px 10px; text-align:left; vertical-align:top; line-height:1.6}
+details.card .card-body table th{background:var(--card); color:var(--ink); font-weight:600}
+details.card .card-body .tablewrap{overflow-x:auto}
+details.card .card-body table{min-width:520px}
+
+/* ---------- sources ---------- */
+#sources .src-group{margin-top:34px}
+#sources h3{margin-top:0}
+#sources ol{margin:10px 0 0; padding-left:0; list-style:none; counter-reset:src}
+#sources li{counter-increment:src; font-size:12.5px; line-height:1.7; padding:5px 0 5px 44px; position:relative; border-bottom:1px solid var(--hair-2); word-break:break-all}
+#sources li::before{content:counter(src,decimal-leading-zero); position:absolute; left:0; top:6px; color:var(--ink-3); font-variant-numeric:tabular-nums; font-size:11px}
+#sources a.ent{border-bottom:none; color:var(--accent)}
+#sources a.ent:hover{text-decoration:underline}
+
+/* ---------- modal ---------- */
+.modal-backdrop{position:fixed; inset:0; background:rgba(15,15,12,.55); display:none; z-index:60; -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px)}
+.modal-backdrop.open{display:flex; align-items:center; justify-content:center; padding:18px}
+.modal{background:var(--surface); width:min(920px,100%); height:min(640px,88vh); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 24px 70px rgba(0,0,0,.35); border:1px solid var(--hair)}
+.modal-bar{display:flex; align-items:center; gap:8px; padding:10px 12px; background:var(--card); border-bottom:1px solid var(--hair); flex-wrap:wrap}
+.modal-bar .dots{display:flex; gap:5px; margin-right:4px}
+.modal-bar .dots i{width:10px; height:10px; border-radius:50%; background:var(--hair); display:block}
+.url-box{flex:1 1 200px; min-width:0; display:flex; align-items:center; background:var(--bg); border:1px solid var(--hair); border-radius:8px; padding:6px 12px}
+.url-box input{flex:1; min-width:0; border:0; background:transparent; color:var(--ink-2); font-size:12.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; outline:none}
+.mbtn{border:1px solid var(--hair); background:var(--surface); color:var(--ink); font-size:12.5px; padding:6px 12px; border-radius:8px; cursor:pointer; white-space:nowrap; font-family:inherit; text-decoration:none; display:inline-flex; align-items:center; gap:4px; line-height:1.4}
+.mbtn:hover{border-color:var(--accent); color:var(--accent)}
+.mbtn.copied{border-color:var(--accent); color:var(--accent)}
+#btnCardView{background:var(--accent); border-color:var(--accent); color:var(--btn-ink,#fff); font-weight:700; box-shadow:0 2px 8px rgba(23,122,91,.35)}
+#btnCardView:hover{background:var(--accent-dim); border-color:var(--accent-dim); color:var(--btn-ink,#fff)}
+.mbtn.close{font-weight:700}
+.modal-stage{flex:1; background:var(--bg); display:flex; flex-direction:column; min-height:0}
+.stage-hint{font-size:12px; color:var(--ink-3); padding:7px 14px; border-bottom:1px solid var(--hair); background:var(--card); line-height:1.7}
+.stage-inner{position:relative; flex:1; min-height:0}
+.iframe-fallback{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; color:var(--ink-2); font-size:14px; padding:30px; line-height:1.9}
+.iframe-fallback .glyph{font-size:30px; opacity:.5}
+.modal-stage iframe{position:absolute; inset:0; width:100%; height:100%; border:0; background:transparent; visibility:hidden}
+.modal-stage iframe.loaded{visibility:visible; background:#fff}
+.stage-inner.has-card iframe{visibility:hidden}
+.stage-inner.has-card.show-frame iframe.loaded{visibility:visible; z-index:3}
+.link-card{position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; gap:14px; padding:40px min(9%,64px); overflow-y:auto; background:var(--bg); z-index:2}
+.link-card.show{display:flex}
+.link-card .lc-host{font-size:12.5px; letter-spacing:.14em; color:var(--accent); text-transform:uppercase; font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.link-card .lc-title{font-family:"Noto Serif TC","Songti TC",serif; font-weight:700; font-size:21px; line-height:1.6; color:var(--ink); text-wrap:balance}
+.link-card .lc-desc{font-size:15px; line-height:2; color:var(--ink-2); max-width:34em}
+.link-card .lc-note{margin-top:10px; padding-top:14px; border-top:1px solid var(--hair); font-size:12.5px; color:var(--ink-3); line-height:1.8}
+
+/* footer */
+footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--hair); font-size:12.5px; color:var(--ink-3); line-height:1.9}
+
+@media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+@media (max-width:560px){
+  body{font-size:16px}
+  figure.viz{padding:20px 14px 16px; margin-left:-6px; margin-right:-6px}
+  .modal{height:min(560px,92vh)}
+}
+
+
+.evidence-grade{margin:0 0 1.5em; padding-left:1.4em}
+.evidence-grade li{margin:10px 0; padding-left:6px}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="masthead">
+  <p class="kicker">燈塔文摘 · LIGHTHOUSE DIGEST</p>
+  <h1>我們正在衡量 AI 已經做得比人好的那一半</h1>
+  <p class="standfirst">*——AI／Agentic 時代的工程產出衡量，錯在哪，以及小團隊該怎麼做*</p>
+  <p class="meta-line">2026 年 7 月 29 日　·　衡量與方法</p>
+</header>
+
+<nav class="toc" aria-label="目錄">
+  <p class="toc-title">目錄</p>
+  <ol>
+    <li><span class="n">壹</span><a href="#sec1">一個 39 個百分點的落差</a></li>
+    <li><span class="n">貳</span><a href="#sec2">從工時到 bug 數，是從一個壞指標換到一個更壞的</a></li>
+    <li><span class="n">參</span><a href="#sec3">糟在三個層次</a></li>
+    <li><span class="n">肆</span><a href="#sec4">Agent 接走的，正好是可測的那一半</a></li>
+    <li><span class="n">伍</span><a href="#sec5">沒有人談的前提：那些框架假設你是一家大公司</a></li>
+    <li><span class="n">陸</span><a href="#sec6">那該量什麼：四個小團隊指標</a></li>
+    <li><span class="n">柒</span><a href="#sec7">如果你是部署方：先定義失敗長什麼樣</a></li>
+    <li><span class="n">捌</span><a href="#sec8">最後：最該量的東西，不在產出這一側</a></li>
+    <li><span class="n">玖</span><a href="#sec9">附註：這篇文章的證據等級</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="eyebrow"><span class="num">壹</span><span class="rule"></span></div>
+  <h2>一個 39 個百分點的落差</h2>
+
+  <p>2025 年，<a class="ent" href="https://arxiv.org/abs/2507.09089" data-url="https://arxiv.org/abs/2507.09089">METR 做了一件簡單的事：找 16 位資深開源開發者，在他們自己平均待了五年的成熟專案裡，隨機指派 246 個任務</a>——一半可以用 AI 工具，一半不行。</p>
+
+  <p>開工前，開發者預測 AI 會讓他們快 24%。做完之後，他們回想，覺得自己快了 20%。</p>
+
+  <p>實測結果是<em>慢了 19%</em>。</p>
+
+  <p>感覺與事實之間差了將近 40 個百分點。而這些人不是新手，是在自己最熟的程式碼裡工作的資深工程師。</p>
+
+  <figure class="viz">
+    <div class="viz-title">METR：39 個百分點的落差</div>
+    <div class="viz-sub">開發者主觀判斷 vs 實測結果</div>
+    <svg viewBox="0 0 640 400" role="img" aria-labelledby="metrTitle metrDesc" class="viz-metr">
+  <title id="metrTitle">METR 研究：開發者對 AI 速度提升的判斷 vs 實測結果</title>
+  <desc id="metrDesc">開工前預測快 24%，事後回想快 20%，實測結果卻慢 19%，感受與事實相差 39 個百分點。</desc>
+  <style>
+    .viz-metr{
+      --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F; --hair:#E3DED2; --surface:#FFFFFF;
+      --s1:#177A5B; --s2:#4661C2; --axis:#C9C3B2;
+    }
+    @media (prefers-color-scheme: dark){
+      :root:where(:not([data-theme="light"])) .viz-metr{
+        --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+        --s1:#2FA079; --s2:#6B7FE0; --axis:#3A3F3A;
+      }
+    }
+    :root[data-theme="dark"] .viz-metr{
+      --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+      --s1:#2FA079; --s2:#6B7FE0; --axis:#3A3F3A;
+    }
+    .viz-metr text{font-family:"Noto Sans TC","PingFang TC",system-ui,-apple-system,sans-serif}
+    .viz-metr .ax{fill:var(--ink-3); font-size:12.5px}
+    .viz-metr .axn{fill:var(--ink-3); font-size:12px; font-variant-numeric:tabular-nums}
+    .viz-metr .val{fill:var(--ink); font-size:16px; font-weight:700; font-variant-numeric:tabular-nums}
+    .viz-metr .val2{fill:var(--ink-2); font-size:12px}
+    .viz-metr .legend-text{fill:var(--ink-2); font-size:12.5px}
+    .viz-metr .bracket{fill:none; stroke:var(--ink-3); stroke-width:1.5; stroke-dasharray:3,3}
+    .viz-metr .baseline{stroke:var(--axis); stroke-width:1}
+  </style>
+
+  <!-- legend -->
+  <g>
+    <rect x="60" y="21" width="12" height="12" rx="3" fill="var(--s2)"/>
+    <text x="78" y="31" class="legend-text">開發者主觀判斷</text>
+    <rect x="220" y="21" width="12" height="12" rx="3" fill="var(--s1)"/>
+    <text x="238" y="31" class="legend-text">實測結果</text>
+  </g>
+
+  <!-- zero baseline -->
+  <line x1="60" y1="210" x2="590" y2="210" class="baseline"/>
+  <text x="52" y="214" text-anchor="end" class="axn">0%</text>
+
+  <!-- predicted bar: +24% -->
+  <g>
+    <title>開工前預測：AI 會讓自己快 24%</title>
+    <path d="M100,210 L100,94 Q100,90 104,90 L206,90 Q210,90 210,94 L210,210 Z" fill="var(--s2)"/>
+    <text x="155" y="76" text-anchor="middle" class="val">+24%</text>
+    <text x="155" y="352" text-anchor="middle" class="ax">開工前預測</text>
+  </g>
+
+  <!-- recalled bar: +20% -->
+  <g>
+    <title>事後回想：開發者覺得自己快了 20%</title>
+    <path d="M265,210 L265,114 Q265,110 269,110 L371,110 Q375,110 375,114 L375,210 Z" fill="var(--s2)"/>
+    <text x="320" y="96" text-anchor="middle" class="val">+20%</text>
+    <text x="320" y="352" text-anchor="middle" class="ax">事後回想</text>
+  </g>
+
+  <!-- actual bar: -19% -->
+  <g>
+    <title>實測結果：開發者實際上慢了 19%</title>
+    <path d="M430,210 L430,301 Q430,305 434,305 L526,305 Q530,305 530,301 L530,210 Z" fill="var(--s1)"/>
+    <text x="485" y="325" text-anchor="middle" class="val">−19%</text>
+    <text x="485" y="352" text-anchor="middle" class="ax">實測結果</text>
+  </g>
+
+  <!-- 39-point gap bracket between "recalled" and "actual" -->
+  <g>
+    <title>39 個百分點的落差：事後回想（+20%）與實測結果（−19%）之間</title>
+    <line x1="386" y1="110" x2="398" y2="110" class="bracket"/>
+    <line x1="392" y1="110" x2="392" y2="305" class="bracket"/>
+    <line x1="386" y1="305" x2="398" y2="305" class="bracket"/>
+    <text x="404" y="212" class="val" font-size="15">39</text>
+  </g>
+
+  <!-- caption -->
+  <text x="320" y="382" text-anchor="middle" class="val2">感受與事實相差 39 個百分點</text>
+</svg>
+    <figcaption>METR 的隨機對照試驗發現，開發者事前預測 AI 會讓自己快 24%、事後回想覺得快了 20%，但實測結果卻慢了 19%，感受與事實之間相差 39 個百分點。</figcaption>
+  </figure>
+
+  <p>這個研究後來被過度引用，也被過度反駁。它的邊界很清楚：樣本只有 16 人、工具是 2025 年初的版本、任務都在成熟程式庫裡。它不能證明「AI 讓人變慢」。<a class="ent" href="https://metr.org/blog/2026-02-24-uplift-update/" data-url="https://metr.org/blog/2026-02-24-uplift-update/">METR 自己在 2026 年 2 月宣布要改實驗設計</a>，因為新一輪出現了嚴重的自我選擇偏誤——太多開發者拒絕參加「不能用 AI」的那一組。</p>
+
+  <p>但它證明了另一件更麻煩的事：<em>在 AI 輔助的工作裡，人對自己速度的判斷是不可靠的。</em></p>
+
+  <p>而幾乎所有關於「工程師產出」的討論，都建立在某種形式的速度直覺上。</p>
+</section>
+
+<section id="sec2">
+  <div class="eyebrow"><span class="num">貳</span><span class="rule"></span></div>
+  <h2>從工時到 bug 數，是從一個壞指標換到一個更壞的</h2>
+
+  <p>當我們說「AI 時代不能再用工時衡量工程師」，這句話對。用投入時數當個人績效分數，早就被業界丟進垃圾桶——2023 年 McKinsey 發表「你可以衡量開發者生產力」之後，<a class="ent" href="https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2" data-url="https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2">Kent Beck 與 Gergely Orosz 聯手寫了一篇逐字反駁</a>，稱那套框架「錯得離譜、註定反噬」。<a class="ent" href="https://queue.acm.org/detail.cfm?id=3454124" data-url="https://queue.acm.org/detail.cfm?id=3454124">SPACE 框架（GitHub、微軟、維多利亞大學，2021）</a>更早就破除了三個迷思：生產力不等於活動量、生產力不只關乎個人、單一指標永遠不夠。</p>
+
+  <p>問題出在替代方案。</p>
+
+  <p>當工時被拿掉，最直覺的填補是缺陷相關的指標：遇到幾個 bug、多快修好、多快發現走錯路。這聽起來比工時「實質」得多——工時衡量投入，bug 衡量結果。</p>
+</section>
+
+<section id="sec3">
+  <div class="eyebrow"><span class="num">參</span><span class="rule"></span></div>
+  <h2>糟在三個層次</h2>
+
+  <p>但它更糟，而且糟在三個不同的層次。</p>
+
+  <p><em>第一，缺陷數與能力沒有穩定關係，有時甚至反向。</em> <a class="ent" href="https://www.gitclear.com/ai_assistant_code_quality_2025_research" data-url="https://www.gitclear.com/ai_assistant_code_quality_2025_research">GitClear</a> 分析了 <a class="ent" href="https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf" data-url="https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf">2.11 億行程式碼變更（2020–2024，涵蓋 Google、微軟、Meta 等專案）</a>，發現重構碼的佔比從 2020 年的約 25% 掉到 2024 年的不到 10%，複製貼上的程式碼首度超過搬移的程式碼，重複的程式碼區塊在 2024 年增加約八倍，而「兩週內被改掉或回退」的churn 較 AI 普及前約翻倍。這是一個結構性的結果，不是個別工程師能力差。做探索性工作的人、碰新穎問題的人、寫得多的人，bug 本來就多。</p>
+
+  <figure class="viz">
+    <div class="viz-title">GitClear：重構與複製貼上的交叉</div>
+    <div class="viz-sub">2020–2024，2.11 億行程式碼變更</div>
+    <svg viewBox="0 0 640 400" role="img" aria-labelledby="gcTitle gcDesc" class="viz-gc">
+  <title id="gcTitle">GitClear：重構程式碼佔比下滑，複製貼上程式碼佔比上升</title>
+  <desc id="gcDesc">重構／搬移的程式碼從 2020 年的 24.1% 掉到 2024 年的 9.5%；複製貼上的程式碼從 8.3% 升到 12.3%，2024 年是複製貼上首度超過重構的一年。</desc>
+  <style>
+    .viz-gc{
+      --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F; --hair:#E3DED2; --surface:#FFFFFF;
+      --s1:#177A5B; --s2:#4661C2; --grid:#E7E2D5; --axis:#C9C3B2;
+    }
+    @media (prefers-color-scheme: dark){
+      :root:where(:not([data-theme="light"])) .viz-gc{
+        --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+        --s1:#2FA079; --s2:#6B7FE0; --grid:#262A26; --axis:#3A3F3A;
+      }
+    }
+    :root[data-theme="dark"] .viz-gc{
+      --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+      --s1:#2FA079; --s2:#6B7FE0; --grid:#262A26; --axis:#3A3F3A;
+    }
+    .viz-gc text{font-family:"Noto Sans TC","PingFang TC",system-ui,-apple-system,sans-serif}
+    .viz-gc .ax{fill:var(--ink-3); font-size:12.5px}
+    .viz-gc .axn{fill:var(--ink-3); font-size:12px; font-variant-numeric:tabular-nums}
+    .viz-gc .val{fill:var(--ink); font-size:13.5px; font-weight:700; font-variant-numeric:tabular-nums}
+    .viz-gc .val2{fill:var(--ink-2); font-size:12.5px}
+    .viz-gc .legend-text{fill:var(--ink-2); font-size:12.5px}
+    .viz-gc .gridline{stroke:var(--grid); stroke-width:1}
+    .viz-gc .baseline{stroke:var(--axis); stroke-width:1}
+    .viz-gc .yeargrid{stroke:var(--grid); stroke-width:1; stroke-dasharray:2,3}
+  </style>
+
+  <!-- legend -->
+  <g>
+    <rect x="60" y="21" width="12" height="12" rx="3" fill="var(--s1)"/>
+    <text x="78" y="31" class="legend-text">重構／搬移的程式碼</text>
+    <rect x="260" y="21" width="12" height="12" rx="3" fill="var(--s2)"/>
+    <text x="278" y="31" class="legend-text">複製貼上的程式碼</text>
+  </g>
+
+  <!-- horizontal gridlines + y labels: 0%, 10%, 20% -->
+  <line x1="100" y1="300" x2="560" y2="300" class="baseline"/>
+  <text x="90" y="304" text-anchor="end" class="axn">0%</text>
+  <line x1="100" y1="214.3" x2="560" y2="214.3" class="gridline"/>
+  <text x="90" y="218.3" text-anchor="end" class="axn">10%</text>
+  <line x1="100" y1="128.6" x2="560" y2="128.6" class="gridline"/>
+  <text x="90" y="132.6" text-anchor="end" class="axn">20%</text>
+
+  <!-- year gridlines -->
+  <line x1="140" y1="60" x2="140" y2="300" class="yeargrid"/>
+  <line x1="520" y1="60" x2="520" y2="300" class="yeargrid"/>
+
+  <!-- moved / refactored line: 24.1% (2020) -> 9.5% (2024) -->
+  <g>
+    <title>重構／搬移的程式碼：2020 年 24.1% → 2024 年 9.5%</title>
+    <line x1="140" y1="93.4" x2="520" y2="218.6" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="140" cy="93.4" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+    <circle cx="520" cy="218.6" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+    <text x="128" y="80" text-anchor="end" class="val">24.1%</text>
+    <text x="532" y="228" text-anchor="start" class="val">9.5%</text>
+  </g>
+
+  <!-- copy-pasted line: 8.3% (2020) -> 12.3% (2024) -->
+  <g>
+    <title>複製貼上的程式碼：2020 年 8.3% → 2024 年 12.3%</title>
+    <line x1="140" y1="228.9" x2="520" y2="194.6" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="140" cy="228.9" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+    <circle cx="520" cy="194.6" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+    <text x="128" y="246" text-anchor="end" class="val">8.3%</text>
+    <text x="532" y="184" text-anchor="start" class="val">12.3%</text>
+  </g>
+
+  <!-- year labels -->
+  <text x="140" y="330" text-anchor="middle" class="ax">2020</text>
+  <text x="520" y="330" text-anchor="middle" class="ax">2024</text>
+
+  <!-- crossover callout -->
+  <text x="320" y="368" text-anchor="middle" class="val2">2024 年：複製貼上的程式碼首度超過重構的程式碼</text>
+</svg>
+    <figcaption>GitClear 分析 2.11 億行程式碼變更發現，重構／搬移的程式碼佔比從 2020 年的 24.1%（約 25%）掉到 2024 年的 9.5%（不到 10%），複製貼上的程式碼從 8.3% 升到 12.3%，2024 年是複製貼上首度超過重構的一年。</figcaption>
+  </figure>
+
+  <p><em>第二，它會被立刻操弄。</em> 這不是理論。文獻裡的具體案例包括：把「開啟中的 bug 數」當指標，導致工程師開始草率關票；把「關閉的 bug 數」當目標，導致一張票被拆成五張；把測試覆蓋率當目標，導致大量不驗證任何有意義行為的測試。<a class="ent" href="https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/" data-url="https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/">Goodhart 法則</a>在工程指標上不是隱喻，是每次都會發生的事。</p>
+
+  <p><em>第三，也是最關鍵的：在 agent 大量參與的專案裡，bug 已經無法歸屬於人。</em> 當三成到七成的程式碼由模型生成，「這個 bug 是誰的」這個問題失去了意義。版本控制的足跡不再支撐任何關於理解程度的推論。</p>
+
+  <p>所以 <a class="ent" href="https://dora.dev/guides/dora-metrics/" data-url="https://dora.dev/guides/dora-metrics/">DORA 官網</a>明文列出反模式：這些指標是給應用或服務層級用的，不要做跨團隊比較，不要設成目標。<a class="ent" href="https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/" data-url="https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/">DX 的 Core 4</a>即使把「每位工程師的 diff 數」納入，也明確聲明不在個人層級追蹤、必須用開發者體驗指數對衝、且不得掛勾獎勵。</p>
+</section>
+
+<section id="sec4">
+  <div class="eyebrow"><span class="num">肆</span><span class="rule"></span></div>
+  <h2>Agent 接走的，正好是可測的那一半</h2>
+
+  <p>這裡是我認為多數討論沒有走到的地方。</p>
+
+  <p><a class="ent" href="https://sequoiacap.com/podcast/training-data-bob-mcgrew/" data-url="https://sequoiacap.com/podcast/training-data-bob-mcgrew/">前 OpenAI 研究長 Bob McGrew</a> 在描述 agentic 軟體工程能做什麼時說得很直白：修一個 bug、做一次重構——這類工作<em>需要的品味相對少，而且結果明確</em>。</p>
+
+  <p>把這句話和上面的指標問題並置，會得到一個不舒服的結論：</p>
+
+  <blockquote class="pull">
+    <p>我們想拿來衡量人的那些東西——bug 數、修復速度、缺陷率——描述的正是 agent 已經做得不錯、而且會越來越好的那一半工作。</p>
+  </blockquote>
+
+  <p>那另一半是什麼？</p>
+
+  <p><a class="ent" href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" data-url="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">Anthropic 在談 agent evals 時給了一個很好的答案</a>：eval 的價值在於「迫使產品團隊明確定義什麼叫成功」。兩位工程師讀同一份規格，對邊界情況會有不同解讀；eval 套件消解這個歧義。<a class="ent" href="https://martinfowler.com/articles/harness-engineering.html" data-url="https://martinfowler.com/articles/harness-engineering.html">Thoughtworks 的 Birgitta Böckeler</a> 從另一個方向指到同一點：AI 時代的高價值工作是設計「harness」——指引加上感測器——並守住可維護性。</p>
+
+  <p>也就是說，人的差異落在：<em>問題定義的品質、上下文工程、eval 設計，以及判斷哪些決策是不可逆的。</em></p>
+
+  <p>這四樣沒有一樣會出現在 DORA 的四個指標裡。</p>
+</section>
+
+<section id="sec5">
+  <div class="eyebrow"><span class="num">伍</span><span class="rule"></span></div>
+  <h2>沒有人談的前提：那些框架假設你是一家大公司</h2>
+
+  <p>還有一個更基本的問題，而它幾乎不被提起。</p>
+
+  <p>DORA、SPACE、DX Core 4 都很好。但它們的資料要從 CI/CD 管線、事件追蹤系統、部署遙測、工單系統裡撈出來，而且需要足夠的樣本數才有統計意義。</p>
+
+  <p>台灣一家八人的設計工程公司，這些一項都沒有。一家精品顧問公司沒有。一個帶著 agent 群工作的獨立開發者沒有。</p>
+
+  <p>而這些不是邊緣案例——在 AI 大幅降低了「一個人能做多少事」的門檻之後，世界上有大量的軟體與系統工作正在這個信封之外發生。</p>
+
+  <p>對他們來說，主流的量測文獻不只是用不上，而是<em>會誤導</em>。強行套用一個為三百人工程組織設計的框架到八個人身上，得到的數字沒有意義，但看起來很有意義——這比沒有數字更危險。</p>
+
+  <p>那該量什麼？</p>
+</section>
+
+<section id="sec6">
+  <div class="eyebrow"><span class="num">陸</span><span class="rule"></span></div>
+  <h2>那該量什麼：四個小團隊指標</h2>
+
+  <p>我的答案是四個指標，全部可以用試算表加上既有工具收集，不需要任何遙測基礎設施：</p>
+
+  <p><em>一、每週可展示的可運作成果數。</em> 取代部署頻率。連續兩週為零，就是有問題。</p>
+
+  <p><em>二、重工率。</em> 交付後被打回、返修，或上線七天內需要修正的比例。這是小公司版的變更失敗率，用人工標記就能做。</p>
+
+  <p><em>三、客戶回報問題的趨勢。</em> 不看絕對值，看趨勢，特別看「同一個問題重複回報」——那是根因未解的訊號。</p>
+
+  <p><em>四、採用率與可追溯性。</em> 目標使用者裡有多少人真的在用，以及系統的回答能不能追溯到來源。</p>
+
+  <p>第四項是四個裡面最重要的，理由值得說清楚。在 AI 導入專案裡，採用率幾乎是投資報酬的最大槓桿——40% 採用率與 85% 採用率之間，淨現值可以差三到四倍。而採用率下滑最常見的原因不是功能不好，是<em>使用者無法確認答案從哪來，於是恢復手動核對</em>。這個模式很好認：導入後前兩週使用量衝高，然後掉下來。</p>
+</section>
+
+<section id="sec7">
+  <div class="eyebrow"><span class="num">柒</span><span class="rule"></span></div>
+  <h2>如果你是部署方：先定義失敗長什麼樣</h2>
+
+  <p>最後一塊，給做 AI 導入、agent 建置、知識系統部署的人。</p>
+
+  <p>各家機構對 AI 專案失敗率的估計方法不同、數字不一，但根因的診斷高度一致。<a class="ent" href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" data-url="https://www.rand.org/pubs/research_reports/RRA2680-1.html">RAND 訪談了 65 名工程師</a>後把首要原因寫得很清楚：業界關係人經常誤解或誤傳「要用 AI 解決的是什麼問題」，導致部署出來的模型被最佳化到錯誤的指標上，或根本不符合整體業務流程。<a class="ent" href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" data-url="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">Gartner 預測到 2027 年底會有超過四成的 agentic AI 專案被取消</a>，理由是成本失控、商業價值不明、風險控制不足。<a class="ent" href="https://www.media.mit.edu/groups/nanda/overview/" data-url="https://www.media.mit.edu/groups/nanda/overview/">MIT 的 Project NANDA 研究</a>則發現，只有約 5% 的整合型 AI 試點真的產出數百萬等級的價值，絕大多數沒有可衡量的損益影響。</p>
+
+  <p>翻譯成一句話：<em>失敗的不是技術，是沒有人在開始之前說清楚成功長什麼樣。</em></p>
+
+  <p><a class="ent" href="https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/" data-url="https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/">OpenAI 在其 Forward Deployed Engineering 的職缺描述裡</a>，把這件事寫得比任何顧問方法論都具體：設定影響假設、基準線與 KPI，執行部署前後的量測，並向高層贊助者回報。<a class="ent" href="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87" data-url="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87">Palantir 對其 Delta 工程師的定義同樣直接</a>——他們以「對客戶目標的影響」衡量成功。</p>
+
+  <p>所以一份 AI 部署的成功契約，至少要有這幾樣：<em>用客戶的話寫的問題陳述；部署前的基準線量測；雙方同意且可歸因的成功指標與門檻；共同定義的「第一個真正有用的結果」及其達成日期；明訂的量測方法與歸因方式；客戶端在推廣與訓練上的責任。</em></p>
+
+  <p>其中「部署前的基準線」是最常被跳過、也是失敗率最高的一項。沒有基準線，事後所有的成效敘述都只是敘述。</p>
+
+  <p>如果部署的是 agent 系統，還要多一條：<em>驗收不能用單次成功率。</em> 學術上有一個好用的區分——<a class="ent" href="https://philschmid.de/agents-pass-at-k-pass-power-k" data-url="https://philschmid.de/agents-pass-at-k-pass-power-k">pass@k 是「跑 k 次至少成功一次」的機率，衡量能力上限；pass^k 是「跑 k 次全部成功」的機率，衡量可靠度下限</a>。使用者對一個要被信任的系統，期待的是每次都對，不是五次裡有一次對。pass@5 很高但 pass^5 很低的系統，是「會做但不穩定」——對信任而言，那比不會做更糟。</p>
+
+  <figure class="viz">
+    <div class="viz-title">pass@k vs pass^k</div>
+    <div class="viz-sub">能力上限 vs 可靠度下限</div>
+    <svg viewBox="0 0 640 300" role="img" aria-labelledby="pkTitle pkDesc" class="viz-pk">
+  <title id="pkTitle">pass@k 與 pass^k：同一組執行結果，兩種判定規則</title>
+  <desc id="pkDesc">pass@k 是「跑 k 次至少成功一次」的機率，衡量能力上限；pass^k 是「跑 k 次全部成功」的機率，衡量可靠度下限。同一組 5 次執行結果，套用兩種規則會得到相反的結論。</desc>
+  <style>
+    .viz-pk{
+      --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F; --hair:#E3DED2; --surface:#FFFFFF;
+      --s1:#177A5B; --s2:#4661C2;
+    }
+    @media (prefers-color-scheme: dark){
+      :root:where(:not([data-theme="light"])) .viz-pk{
+        --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+        --s1:#2FA079; --s2:#6B7FE0;
+      }
+    }
+    :root[data-theme="dark"] .viz-pk{
+      --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C;
+      --s1:#2FA079; --s2:#6B7FE0;
+    }
+    .viz-pk text{font-family:"Noto Sans TC","PingFang TC",system-ui,-apple-system,sans-serif}
+    .viz-pk .ax{fill:var(--ink-3); font-size:12px}
+    .viz-pk .val{fill:var(--ink); font-size:16px; font-weight:700}
+    .viz-pk .val2{fill:var(--ink-2); font-size:12.5px}
+    .viz-pk .legend-text{fill:var(--ink-2); font-size:12.5px}
+    .viz-pk .divider{stroke:var(--hair); stroke-width:1}
+    .viz-pk .check{stroke:#FFFFFF; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; fill:none}
+    .viz-pk .cross{stroke:var(--ink-3); stroke-width:2; stroke-linecap:round; fill:none}
+  </style>
+
+  <!-- shared legend: success / fail -->
+  <g>
+    <circle cx="266" cy="20" r="6" fill="var(--s1)"/>
+    <text x="278" y="24" class="legend-text">單次執行成功</text>
+    <circle cx="386" cy="20" r="6" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+    <text x="398" y="24" class="legend-text">單次執行失敗</text>
+  </g>
+
+  <!-- ============ row 1: pass@k (OR) ============ -->
+  <text x="40" y="88" class="val">pass@k</text>
+  <text x="40" y="106" class="val2">能力上限</text>
+
+  <!-- 5 run icons, row 1: fails dimmed because OR only needs one success -->
+  <g transform="translate(0,90)">
+    <!-- run1: success -->
+    <g><title>第 1 次：成功</title>
+      <circle cx="170" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M162,0 L168,6 L179,-8" class="check"/>
+    </g>
+    <!-- run2: fail (dimmed, irrelevant to OR verdict) -->
+    <g opacity="0.3"><title>第 2 次：失敗（對 pass@k 判定無影響）</title>
+      <circle cx="230" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+      <path d="M223,-7 L237,7 M237,-7 L223,7" class="cross"/>
+    </g>
+    <!-- run3: success -->
+    <g><title>第 3 次：成功</title>
+      <circle cx="290" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M282,0 L288,6 L299,-8" class="check"/>
+    </g>
+    <!-- run4: success -->
+    <g><title>第 4 次：成功</title>
+      <circle cx="350" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M342,0 L348,6 L359,-8" class="check"/>
+    </g>
+    <!-- run5: fail (dimmed) -->
+    <g opacity="0.3"><title>第 5 次：失敗（對 pass@k 判定無影響）</title>
+      <circle cx="410" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+      <path d="M403,-7 L417,7 M417,-7 L403,7" class="cross"/>
+    </g>
+  </g>
+
+  <!-- verdict chip row 1 -->
+  <g>
+    <title>至少 1 次成功，pass@5 判定：通過</title>
+    <circle cx="500" cy="90" r="12" fill="var(--s1)"/>
+    <path d="M494,90 L499,95 L508,84" class="check"/>
+    <text x="520" y="95" class="val" font-size="14">通過</text>
+  </g>
+  <text x="320" y="128" text-anchor="middle" class="val2">至少 1 次成功，就算 pass@5 通過</text>
+
+  <line x1="30" y1="152" x2="610" y2="152" class="divider"/>
+
+  <!-- ============ row 2: pass^k (AND) ============ -->
+  <text x="40" y="212" class="val">pass^k</text>
+  <text x="40" y="230" class="val2">可靠度下限</text>
+
+  <!-- 5 run icons, row 2: nothing dimmed, every run matters for AND -->
+  <g transform="translate(0,214)">
+    <g><title>第 1 次：成功</title>
+      <circle cx="170" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M162,0 L168,6 L179,-8" class="check"/>
+    </g>
+    <g><title>第 2 次：失敗（單一失敗即拉低 pass^k 判定）</title>
+      <circle cx="230" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+      <path d="M223,-7 L237,7 M237,-7 L223,7" class="cross"/>
+    </g>
+    <g><title>第 3 次：成功</title>
+      <circle cx="290" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M282,0 L288,6 L299,-8" class="check"/>
+    </g>
+    <g><title>第 4 次：成功</title>
+      <circle cx="350" cy="0" r="18" fill="var(--s1)"/>
+      <path d="M342,0 L348,6 L359,-8" class="check"/>
+    </g>
+    <g><title>第 5 次：失敗（單一失敗即拉低 pass^k 判定）</title>
+      <circle cx="410" cy="0" r="18" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+      <path d="M403,-7 L417,7 M417,-7 L403,7" class="cross"/>
+    </g>
+  </g>
+
+  <!-- verdict chip row 2 -->
+  <g>
+    <title>並非 5 次全部成功，pass^5 判定：未過關</title>
+    <circle cx="500" cy="214" r="12" fill="var(--surface)" stroke="var(--hair)" stroke-width="2"/>
+    <path d="M494,208 L506,220 M506,208 L494,220" class="cross"/>
+    <text x="520" y="219" class="val" font-size="14">未過關</text>
+  </g>
+  <text x="320" y="252" text-anchor="middle" class="val2">要 5 次全部成功，pass^5 才算通過</text>
+
+  <text x="320" y="284" text-anchor="middle" class="ax">同一組 5 次執行結果，套用兩種判定規則，得到相反的結論</text>
+</svg>
+    <figcaption>pass@k 是「跑 k 次至少成功一次」的機率，衡量能力上限；pass^k 是「跑 k 次全部成功」的機率，衡量可靠度下限，pass@5 很高但 pass^5 很低的系統是「會做但不穩定」。</figcaption>
+  </figure>
+</section>
+
+<section id="sec8">
+  <div class="eyebrow"><span class="num">捌</span><span class="rule"></span></div>
+  <h2>最後：最該量的東西，不在產出這一側</h2>
+
+  <p>寫完這些，我要說一個和上面所有內容方向相反、但我認為更重要的觀察。</p>
+
+  <p>在小團隊與個人的實務裡，我看到最頑固的失效模式不是 bug，不是速度，也不是品質。</p>
+
+  <p>是<em>計畫寫完了，第一個動作沒有發生</em>。</p>
+
+  <p>完整的網站規格，站是空的。建好的社群基礎建設，零個成員。寫給投資人的一頁紙，錯過的里程碑。十三項交付清單，當週一項未啟動。完整的系統架構，五個關鍵設計問題懸著沒答。</p>
+
+  <p>失效點永遠落在「計畫存在」與「第一個動作發生」之間。這不是思考能力的問題，是交接的問題——<em>計畫變成了一個令人滿足的終點，而不是發射台。</em></p>
+
+  <p>而一個以產出量、文件數、交付件數為進度證據的量測系統，會精確地餵養這個失效模式。你會越量越勤奮，越量越不動。</p>
+
+  <p>所以如果只能留一個指標，我會留這個：</p>
+
+  <blockquote class="pull">
+    <p>從「決定要做」到「第一個實際動作發生」之間，過了多久。</p>
+  </blockquote>
+
+  <p>以及更有價值的那一欄：<em>超過期限沒動的時候，寫下一行「為什麼沒動」。</em></p>
+
+  <p>累積十筆，你會看到自己真正的阻塞在哪裡。通常不是能力，不是時間，是某個沒被寫出來的猶豫。</p>
+
+  <p>那一行字，比任何儀表板都準。</p>
+</section>
+
+<section id="sec9">
+  <div class="eyebrow"><span class="num">玖</span><span class="rule"></span></div>
+  <h2>附註：這篇文章的證據等級</h2>
+
+  <ul class="evidence-grade">
+    <li><a class="ent" href="https://arxiv.org/abs/2507.09089" data-url="https://arxiv.org/abs/2507.09089">METR 的隨機對照試驗（arXiv 2507.09089）</a>：一手研究，但 n=16、工具為 2025 年初版本、任務限於成熟程式庫。<a class="ent" href="https://metr.org/blog/2026-02-24-uplift-update/" data-url="https://metr.org/blog/2026-02-24-uplift-update/">METR 已於 2026 年 2 月宣布改變實驗設計</a>，並指出後續數據受自我選擇偏誤影響。不可外推為「AI 使人變慢」。</li>
+    <li><a class="ent" href="https://www.gitclear.com/ai_assistant_code_quality_2025_research" data-url="https://www.gitclear.com/ai_assistant_code_quality_2025_research">GitClear 的程式碼分析</a>：產業研究，屬相關性觀察，未做對照實驗，2020–2024 年間存在其他變因。</li>
+    <li><a class="ent" href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" data-url="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">Gartner 的 40% 預測</a>：新聞稿未揭露樣本與計算方式，屬分析師預測。同一份新聞稿另引 2025 年 1 月一場網路研討會 3,412 名與會者的民調，但該民調測的是投資態度，與取消率無關。</li>
+    <li><a class="ent" href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" data-url="https://www.rand.org/pubs/research_reports/RRA2680-1.html">RAND 報告（RR-A2680-1）</a>提及的「超過八成 AI 專案失敗」屬引述性估計，宜讀作「大多數失敗」而非精確比例。</li>
+    <li><a class="ent" href="https://www.media.mit.edu/groups/nanda/overview/" data-url="https://www.media.mit.edu/groups/nanda/overview/">MIT Project NANDA 研究</a>基於 52 場高階主管訪談、153 份調查與 300 個公開部署分析。</li>
+    <li>pass^k 的定義出自 <a class="ent" href="https://arxiv.org/pdf/2406.12045" data-url="https://arxiv.org/pdf/2406.12045">τ-bench（Yao et al., 2024）</a>；pass@k 早於它，出自 <a class="ent" href="https://arxiv.org/abs/2107.03374" data-url="https://arxiv.org/abs/2107.03374">Chen et al. 2021（Codex／HumanEval）</a>，後續多篇論文沿用，可靠度高。</li>
+    <li>「採用率造成三到四倍淨現值差異」出自顧問業的投資報酬框架，屬供應商內容，方向可信但具體倍數宜審慎。</li>
+    <li><a class="ent" href="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87" data-url="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87">Palantir</a> 未公布量化的 FDE 成效案例，其官方說法為質化描述。</li>
+  </ul>
+</section>
+
+<section id="sources">
+  <div class="eyebrow"><span class="rule"></span></div>
+  <h2>來源庫</h2>
+  <p class="standfirst">全部 21 件來源，依支持的段落分組，逐一可點開檢視原文。</p>
+
+  <div class="src-group">
+    <h3>壹 · 39 個百分點的落差</h3>
+    <ol>
+      <li><a class="ent" href="https://arxiv.org/abs/2507.09089" data-url="https://arxiv.org/abs/2507.09089">METR — Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity（arXiv 2507.09089）</a></li>
+      <li><a class="ent" href="https://metr.org/blog/2026-02-24-uplift-update/" data-url="https://metr.org/blog/2026-02-24-uplift-update/">METR 官方部落格 — We are Changing our Developer Productivity Experiment Design（2026-02-24）</a></li>
+    </ol>
+  </div>
+
+  <div class="src-group">
+    <h3>貳 · 參 · 從工時到 bug 數，糟在三個層次</h3>
+    <ol>
+      <li><a class="ent" href="https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2" data-url="https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2">Pragmatic Engineer — Kent Beck ＋ Gergely Orosz 回應 McKinsey（下篇）</a></li>
+      <li><a class="ent" href="https://queue.acm.org/detail.cfm?id=3454124" data-url="https://queue.acm.org/detail.cfm?id=3454124">ACM Queue 2021 — SPACE framework（Forsgren et al.）</a></li>
+      <li><a class="ent" href="https://www.gitclear.com/ai_assistant_code_quality_2025_research" data-url="https://www.gitclear.com/ai_assistant_code_quality_2025_research">GitClear — AI Copilot Code Quality 2025 研究報告</a></li>
+      <li><a class="ent" href="https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf" data-url="https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf">GitClear — 報告 PDF 原文</a></li>
+      <li><a class="ent" href="https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/" data-url="https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/">Hillel Wayne 部落格 — Goodhart's Law in Software Engineering</a></li>
+      <li><a class="ent" href="https://dora.dev/guides/dora-metrics/" data-url="https://dora.dev/guides/dora-metrics/">DORA 官方指南 — DORA metrics</a></li>
+      <li><a class="ent" href="https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/" data-url="https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/">DX — Measuring Developer Productivity with the DX Core 4</a></li>
+      <li><a class="ent" href="https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance" data-url="https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance">Laura Tacho 部落格 — Using Metrics to Measure Individual Developer Performance</a></li>
+    </ol>
+  </div>
+
+  <div class="src-group">
+    <h3>肆 · Agent 接走的那一半</h3>
+    <ol>
+      <li><a class="ent" href="https://sequoiacap.com/podcast/training-data-bob-mcgrew/" data-url="https://sequoiacap.com/podcast/training-data-bob-mcgrew/">Sequoia Capital「Training Data」podcast — Bob McGrew 訪談</a></li>
+      <li><a class="ent" href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" data-url="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">Anthropic — Demystifying evals for AI agents</a></li>
+      <li><a class="ent" href="https://martinfowler.com/articles/harness-engineering.html" data-url="https://martinfowler.com/articles/harness-engineering.html">Birgitta Böckeler, martinfowler.com — harness engineering</a></li>
+    </ol>
+  </div>
+
+  <div class="src-group">
+    <h3>柒 · 如果你是部署方</h3>
+    <ol>
+      <li><a class="ent" href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" data-url="https://www.rand.org/pubs/research_reports/RRA2680-1.html">RAND — Research Report RR-A2680-1</a></li>
+      <li><a class="ent" href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" data-url="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">Gartner 新聞稿 — Agentic AI 專案取消率預測</a></li>
+      <li><a class="ent" href="https://www.media.mit.edu/groups/nanda/overview/" data-url="https://www.media.mit.edu/groups/nanda/overview/">MIT Media Lab — Project NANDA 研究群組總覽頁</a></li>
+      <li><a class="ent" href="https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/" data-url="https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/">OpenAI 徵才頁 — Forward Deployed Engineering</a></li>
+      <li><a class="ent" href="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87" data-url="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87">Palantir 部落格 — Dev versus Delta</a></li>
+      <li><a class="ent" href="https://philschmid.de/agents-pass-at-k-pass-power-k" data-url="https://philschmid.de/agents-pass-at-k-pass-power-k">philschmid — pass@k / pass^k 解釋</a></li>
+      <li><a class="ent" href="https://arxiv.org/pdf/2406.12045" data-url="https://arxiv.org/pdf/2406.12045">τ-bench（Yao et al., 2024）— pass^k 定義出處</a></li>
+      <li><a class="ent" href="https://arxiv.org/abs/2107.03374" data-url="https://arxiv.org/abs/2107.03374">Chen et al. 2021 — Codex／HumanEval（arXiv 2107.03374，pass@k 出處）</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="colophon">
+  <p>燈塔文摘（Lighthouse Digest）· articles.bekhelpme.com</p>
+  <p>正文逐字保留自來源手稿；引用連結一律可點開檢視原文。附註九條標明每項來源的證據等級與邊界。</p>
+</footer>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="網站預覽視窗">
+    <div class="modal-bar">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="url-box"><input id="modalUrl" type="text" readonly value="" aria-label="網址"></span>
+      <button class="mbtn" id="btnCardView" type="button" hidden>看導覽卡</button>
+      <button class="mbtn" id="btnCopy" type="button">複製網址</button>
+      <a class="mbtn" id="btnOpen" href="#" target="_blank" rel="noopener noreferrer">開新分頁 ↗</a>
+      <button class="mbtn close" id="btnClose" type="button" aria-label="關閉">✕</button>
+    </div>
+    <div class="modal-stage">
+      <div class="stage-hint">多數網站不允許被內嵌預覽——若下方空白或出現錯誤頁，請改用上方「複製網址」或「開新分頁 ↗」。</div>
+      <div class="stage-inner">
+        <div class="iframe-fallback">
+          <span class="glyph">◫</span>
+          <span>此網站不允許內嵌預覽——<br>用上方按鈕複製網址，或開新分頁前往。</span>
+        </div>
+        <iframe id="modalFrame" title="網站預覽" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <div class="link-card" id="linkCard">
+          <div class="lc-host" id="lcHost"></div>
+          <div class="lc-title" id="lcTitle"></div>
+          <div class="lc-desc" id="lcDesc"></div>
+          <div class="lc-note">外部網站基於安全政策無法在此內嵌顯示。上方「複製網址」可分享，「開新分頁 ↗」直達原文。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="linkCards" type="application/json">{"https://arxiv.org/pdf/2406.12045":{"t":"τ-bench預印本——提出pass^k可靠度指標","d":"τ-bench是測試零售與航空場景AI代理人的基準論文，提出pass^k衡量代理人多次試驗的可靠度；GPT-4o代理人成功率不到五成，零售場景pass^8低於25%。"},"https://dora.dev/guides/dora-metrics/":{"t":"DORA官方指南——四項指標反模式","d":"DORA官方指南列出反模式：指標僅適用於應用或服務層級，目的是改善自己團隊而非跨團隊比較，並避免指標擁有權孤立在單一團隊。"},"https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2":{"t":"Pragmatic Engineer電子報——McKinsey下篇","d":"此為Kent Beck與Gergely Orosz回應McKinsey的兩篇文章第二篇：批評報告未提及利潤或營收，並提出投入—產出—成果—影響模型；文末兩人各自作答。"},"https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance":{"t":"Laura Tacho部落格——反對個人層級指標","d":"Laura Tacho在部落格主張，個人工程師無法完全掌控自己在系統中的表現，只是眾多貢獻者之一；用指標評量個人不公平，問題應由團隊或系統層級處理。"},"https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/":{"t":"Hillel Wayne部落格——Goodhart法則兩版本","d":"Hillel Wayne部落格區分Goodhart法則弱版本（如bug追蹤數當指標導致草率關bug）與強版本（誠實追求指標做到極致仍傷害目標）；測試覆蓋率當目標也催生瑣碎測試。"},"https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87":{"t":"Palantir部落格——Dev與Delta角色定義","d":"Palantir部落格說明：Dev專注一種能力服務多客戶，Delta專注一位客戶多種能力，以「對客戶目標的影響」衡量成功；此為公司自述定位，非外部查核。"},"https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/":{"t":"OpenAI徵才頁——FDE職缺工作要求","d":"OpenAI此職缺要求：設定影響假設、基準線與KPI，執行部署前後量測，並向高層贊助者回報；為職缺敘述，非證實已執行或有成效。"},"https://philschmid.de/agents-pass-at-k-pass-power-k":{"t":"philschmid個人部落格——pass@k／pass^k解釋","d":"philschmid部落格解釋，pass@k衡量k次嘗試中至少一次成功的機率，pass^k衡量k次全部成功的機率且隨k增加而下降。"},"https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/":{"t":"DX Core 4框架——四指標與個人層級但書","d":"DX Core 4框架含速度、有效性、品質、影響四面向：速度指標為每位工程師diff數，明文不得個人層級測量、不得掛勾績效考核；有效性以14題DXI對衝產出量。"},"https://www.gitclear.com/ai_assistant_code_quality_2025_research":{"t":"GitClear產業報告——AI Copilot程式碼品質2025","d":"分析2020至2024年2.11億行程式碼變更，發現重構碼比例從約24%降至約9.5%，複製貼上首度超越搬移程式碼，重複區塊增加約八倍；屬相關性分析，非對照實驗。"},"https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf":{"t":"GitClear報告PDF——AI程式碼品質2025","d":"同一份GitClear產業分析報告的原始PDF，內容涵蓋2020至2024年2.11億行程式碼變更的重構率、複製貼上比例等相關性觀察，非控制實驗。"},"https://arxiv.org/abs/2507.09089":{"t":"METR預印本——AI對資深開發者生產力的影響（n=16）","d":"預印本隨機對照試驗，找16位資深開源開發者執行246項任務，工作前預測AI提速24%，事後回想提速20%，實測結果反而慢19%。"},"https://metr.org/blog/2026-02-24-uplift-update/":{"t":"METR官方公告——2026年2月調整實驗設計","d":"METR官方部落格宣布調整開發者生產力實驗設計，主因是新一輪太多開發者拒絕加入不能使用AI的對照組，構成自我選擇偏誤。"},"https://queue.acm.org/detail.cfm?id=3454124":{"t":"SPACE框架論文——ACM Queue 2021","d":"GitHub、微軟研究院與維多利亞大學學者合著的論文，提出生產力不等於活動量、不只關乎個人、單一指標永遠不夠三項核心論點。"},"https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents":{"t":"Anthropic官方部落格——AI Agent的Evals方法論","d":"Anthropic說明eval的價值在於迫使產品團隊明確定義何謂成功，因為兩位工程師讀同一份規格對邊界情況的解讀可能不同，eval套件可消解此歧義。"},"https://martinfowler.com/articles/harness-engineering.html":{"t":"Böckeler——Coding Agent的Harness工程","d":"Thoughtworks的Böckeler提出「harness」框架：指引（guides，前饋）與感測器（sensors，回饋），調控coding agent朝程式碼內部品質與可維護性。"},"https://www.rand.org/pubs/research_reports/RRA2680-1.html":{"t":"RAND研究報告RR-A2680-1——AI專案失敗根因","d":"RAND訪談65名資料科學家與工程師後指出，AI專案失敗的首要原因是業界誤解或誤傳要解決的問題，導致模型被最佳化到錯誤指標或不符合業務流程。"},"https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027":{"t":"Gartner新聞稿——預測Agentic AI專案取消率","d":"Gartner新聞稿預測，到2027年底將有超過四成agentic AI專案因成本失控、商業價值不明、風險控制不足遭取消；此預測未揭露樣本與計算方式。"},"https://www.media.mit.edu/groups/nanda/overview/":{"t":"MIT NANDA研究群組官方總覽頁","d":"此頁為MIT Media Lab NANDA研究群組官方總覽頁，報告全文需再點一層；其GenAI Divide為初步報告（未經同儕審查），發現僅約5%整合型AI試點產出數百萬價值。"},"https://sequoiacap.com/podcast/training-data-bob-mcgrew/":{"t":"Sequoia播客——Bob McGrew訪談","d":"前OpenAI研究長Bob McGrew在此podcast訪談中表示，修bug、做重構這類agentic軟體工程任務所需的品味相對少，且結果明確。"},"https://arxiv.org/abs/2107.03374":{"t":"Chen et al. 2021預印本——Codex論文","d":"此arXiv預印本提出Codex模型與HumanEval基準，並確立並普及現今通用的pass@k指標：候選解中只要有一個通過單元測試即算解出。"}}</script>
+<script>// 燈塔文摘 popup 系統 — 公開站版本。
+// 對外連結一律開站內導覽視窗；不離開頁面。
+(function(){
+  var backdrop = document.getElementById('modalBackdrop');
+  var urlInput = document.getElementById('modalUrl');
+  var btnCopy  = document.getElementById('btnCopy');
+  var btnOpen  = document.getElementById('btnOpen');
+  var btnClose = document.getElementById('btnClose');
+  var frame    = document.getElementById('modalFrame');
+  var copyTimer = null;
+  var frameBlocked = false;
+  var linkCard = document.getElementById('linkCard');
+  var lcHost = document.getElementById('lcHost');
+  var lcTitle = document.getElementById('lcTitle');
+  var lcDesc = document.getElementById('lcDesc');
+  var stageHint = document.querySelector('.stage-hint');
+  var stageInner = document.querySelector('.stage-inner');
+  var btnCardView = document.getElementById('btnCardView');
+  var HINT_IFRAME = '多數網站不允許被內嵌預覽——若下方空白或出現錯誤頁，請改用上方「複製網址」或「開新分頁 ↗」。';
+  var HINT_CARD = '嘗試載入原網頁中——若該網站拒絕被內嵌，會停留在導覽卡；「開新分頁 ↗」可直達原文。';
+  var HINT_NOEMBED = '此閱讀環境不支援內嵌網頁預覽——「複製網址」可分享，「開新分頁 ↗」直達原文。';
+  // 內嵌預覽只在自家網域或本機測試時嘗試；其他宿主一律停留在導覽卡。
+  var canEmbed = /(^|\.)bekhelpme\.com$|^localhost$|^127\.|^$/.test(location.hostname);
+  var cards = {};
+  try{ cards = JSON.parse(document.getElementById('linkCards').textContent); }catch(e){}
+
+  function hostOf(url){
+    try{ return new URL(url).hostname.replace(/^www\./,''); }catch(e){ return url.split('/')[2] || url; }
+  }
+  function openModal(url){
+    urlInput.value = url;
+    btnOpen.href = url;
+    frameBlocked = false;
+    frame.classList.remove('loaded');
+    frame.removeAttribute('src');
+    var card = cards[url];
+    stageInner.classList.remove('show-frame');
+    btnCardView.hidden = true;
+    if(card){
+      // 有導覽卡：卡片為主畫面；原網頁在背景嘗試載入，載好後出現按鈕由使用者手動切換
+      stageInner.classList.add('has-card');
+      lcHost.textContent = hostOf(url);
+      lcTitle.textContent = card.t;
+      lcDesc.textContent = card.d;
+      linkCard.classList.add('show');
+      stageHint.textContent = HINT_CARD;
+    } else {
+      // 無卡：直接嘗試 iframe
+      stageInner.classList.remove('has-card');
+      linkCard.classList.remove('show');
+      stageHint.textContent = HINT_IFRAME;
+    }
+    if(canEmbed){
+      frame.src = url;
+    } else {
+      stageHint.textContent = HINT_NOEMBED;
+    }
+    backdrop.classList.add('open');
+    backdrop.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    btnClose.focus();
+  }
+  function closeModal(){
+    backdrop.classList.remove('open');
+    backdrop.setAttribute('aria-hidden','true');
+    frame.classList.remove('loaded');
+    frame.removeAttribute('src');
+    stageInner.classList.remove('show-frame');
+    stageInner.classList.remove('has-card');
+    btnCardView.hidden = true;
+    document.body.style.overflow = '';
+    resetCopy();
+  }
+  function resetCopy(){
+    if(copyTimer){ clearTimeout(copyTimer); copyTimer = null; }
+    btnCopy.textContent = '複製網址';
+    btnCopy.classList.remove('copied');
+  }
+  function copyUrl(){
+    var url = urlInput.value;
+    function ok(){
+      btnCopy.textContent = '已複製 ✓';
+      btnCopy.classList.add('copied');
+      copyTimer = setTimeout(resetCopy, 1800);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(ok).catch(function(){ fallbackCopy(url, ok); });
+    } else {
+      fallbackCopy(url, ok);
+    }
+  }
+  function fallbackCopy(text, done){
+    urlInput.focus();
+    urlInput.select();
+    try{ document.execCommand('copy'); done(); }catch(e){}
+    urlInput.setSelectionRange(0,0);
+    urlInput.blur();
+  }
+
+  // iframe 僅在真正載入成功後顯示；被 CSP／X-Frame-Options 擋下時維持隱藏，露出底層提示。
+  function setCardBtn(){
+    btnCardView.textContent = stageInner.classList.contains('show-frame') ? '看導覽卡' : '看網頁';
+  }
+  btnCardView.addEventListener('click', function(){
+    stageInner.classList.toggle('show-frame');
+    setCardBtn();
+    stageHint.textContent = stageInner.classList.contains('show-frame')
+      ? '原網頁預覽中。若畫面空白，代表該網站阻擋被內嵌顯示——點「看導覽卡」返回，或「開新分頁 ↗」看原文。'
+      : '原網頁已就緒——點上方「看網頁」可切換預覽；若顯示異常，「開新分頁 ↗」直達原文。';
+  });
+  frame.addEventListener('load', function(){
+    if(frame.getAttribute('src') && backdrop.classList.contains('open') && !frameBlocked){
+      frame.classList.add('loaded');
+      if(stageInner.classList.contains('has-card')){
+        btnCardView.hidden = false;
+        setCardBtn();
+        stageHint.textContent = '原網頁已就緒——點上方「看網頁」可切換預覽；若顯示異常，「開新分頁 ↗」直達原文。';
+      }
+    }
+  });
+  document.addEventListener('securitypolicyviolation', function(){
+    frameBlocked = true;
+    frame.classList.remove('loaded');
+  });
+
+  // event delegation：所有站內引用連結一律開 popup，不離開視窗。
+  // 要求 href 存在、且對應的來源網址屬性也存在，兩者缺一就安靜地不開 popup
+  // （方便驗證時立刻看出漏寫，而不是默默退化成一般外連）。
+  document.addEventListener('click', function(ev){
+    var a = ev.target && ev.target.closest ? ev.target.closest('a.ent[href]') : null;
+    if(a && a.dataset && a.dataset.url){
+      ev.preventDefault();
+      ev.stopPropagation();
+      openModal(a.dataset.url);
+    }
+  });
+  // 注意：這裡沒有 Enter 鍵 handler，這是刻意的——真正的 <a href> 已經從瀏覽器
+  // 免費取得 focus 與 Enter→click 的行為；重複處理會讓 openModal 觸發兩次。
+
+  btnCopy.addEventListener('click', copyUrl);
+  btnClose.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', function(ev){
+    if(ev.target === backdrop) closeModal();
+  });
+  document.addEventListener('keydown', function(ev){
+    if(ev.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
+  });
+})();
+</script>
+
+</body>
+</html>

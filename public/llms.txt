@@ -6,6 +6,10 @@
 ## 文章
 - 為什麼 AI 越便宜，差距越大: https://articles.bekhelpme.com/why-ai-cheaper-the-gap-widens
   市場把「54% 沒成效」誤讀成「AI 沒效」。它真正的意思是：價值從來不在 AI，而在你有沒有把公司本身，編譯成 AI 能執行的東西。
+- 我們正在衡量 AI 已經做得比人好的那一半: https://articles.bekhelpme.com/measuring-the-half-ai-does-better
+  我們想拿來衡量工程師的那些指標——bug 數、修復速度、缺陷率——描述的正好是 agent 已經做得不錯的那一半工作。
+- 我们正在衡量 AI 已经做得比人好的那一半: https://articles.bekhelpme.com/measuring-the-half-ai-does-better-cn
+  我们想拿来衡量工程师的那些指标——bug 数、修复速度、缺陷率——描述的正好是 agent 已经做得不错的那一半工作。
 
 ## 相關站點
 - Bek 主站: https://www.bekhelpme.com

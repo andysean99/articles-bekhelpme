@@ -1,0 +1,59 @@
+[
+  {
+    "claim_in_article": "2025 年，METR 做了一件簡單的事：找 16 位資深開源開發者，在他們自己平均待了五年的成熟專案裡，隨機指派 246 個任務——一半可以用 AI 工具，一半不行。開工前，開發者預測 AI 會讓他們快 24%。做完之後，他們回想，覺得自己快了 20%。實測結果是慢了 19%。",
+    "identifier": "arXiv 2507.09089",
+    "status": "verified",
+    "url": "https://arxiv.org/abs/2507.09089",
+    "evidence": [
+      {
+        "query": "arXiv 2507.09089 METR AI developer productivity randomized controlled trial",
+        "url": "https://arxiv.org/abs/2507.09089",
+        "matched_fields": ["title", "identifier", "publisher", "year", "n_developers=16", "n_tasks=246", "predicted=+24%", "recalled=+20%", "measured=-19%"]
+      },
+      {
+        "query": "METR study \"16\" experienced open source developers \"246\" tasks AI slower",
+        "url": "https://arxiv.org/abs/2507.09089",
+        "matched_fields": ["title", "publisher", "n_developers=16", "n_tasks=246", "avg_tenure=5 years", "predicted=+24%", "recalled=+20%", "measured=-19%"]
+      }
+    ],
+    "notes": "Title: 'Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity' (METR, arXiv:2507.09089). Both queries independently and consistently confirm all four numbers cited in the article: 16 developers, 246 tasks, +24% predicted speedup, +20% recalled speedup, -19% actual (i.e., slower) measured outcome. Also cross-published at metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/ (official METR mirror of the same paper) — not used as the primary link since the article's identifier is the arXiv ID, but corroborates. No mismatch with the article's claim."
+  },
+  {
+    "claim_in_article": "METR 自己在 2026 年 2 月宣布要改實驗設計，因為新一輪出現了嚴重的自我選擇偏誤——太多開發者拒絕參加「不能用 AI」的那一組。",
+    "identifier": "METR 官方公告（2026年2月）",
+    "status": "verified",
+    "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+    "evidence": [
+      {
+        "query": "METR.org February 2026 announcement study design self-selection bias developers refuse no-AI group",
+        "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+        "matched_fields": ["title", "publisher", "year=2026", "month=February", "self-selection bias reasoning"]
+      },
+      {
+        "query": "metr.org blog 2026-02-24 uplift update developer productivity experiment design",
+        "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+        "matched_fields": ["title", "publisher", "date=2026-02-24", "self-selection bias reasoning"]
+      }
+    ],
+    "notes": "Title: 'We are Changing our Developer Productivity Experiment Design' (METR blog, dated 2026-02-24, i.e. February 2026 — matches article). Both queries independently return the same metr.org URL. Content matches the article's claim: METR reports a significant increase in developers declining to participate specifically because they did not want to work without AI (i.e. refusing the no-AI arm), which they say biases the AI-speedup estimate downward — this is the self-selection bias the article describes. One search result also surfaced a secondary detail (pay rate reduced from $150/hr to $50/hr as an additional contributing factor to selection effects) which the article does not mention; this is an omission, not a contradiction, so not escalated as E1. Also mirrored verbatim at metr.substack.com/p/2026-02-24-uplift-update, corroborating but not used as primary link since metr.org is the org's own site as specified in the assignment."
+  },
+  {
+    "claim_in_article": "SPACE 框架（GitHub、微軟、維多利亞大學，2021）更早就破除了三個迷思：生產力不等於活動量、生產力不只關乎個人、單一指標永遠不夠。",
+    "identifier": "SPACE framework, ACM Queue 2021, Forsgren et al.",
+    "status": "verified",
+    "url": "https://queue.acm.org/detail.cfm?id=3454124",
+    "evidence": [
+      {
+        "query": "SPACE framework developer productivity Forsgren ACM Queue 2021 GitHub Microsoft University of Victoria",
+        "url": "https://dl.acm.org/doi/pdf/10.1145/3454122.3454124",
+        "matched_fields": ["title", "publisher=ACM Queue", "year=2021", "author=Nicole Forsgren (GitHub)", "author=Margaret-Anne Storey (University of Victoria)", "authors at Microsoft Research", "core claims: productivity != activity, not just individual, single metric never sufficient"]
+      },
+      {
+        "query": "queue.acm.org \"SPACE of developer productivity\" detail.cfm",
+        "url": "https://queue.acm.org/detail.cfm?id=3454124",
+        "matched_fields": ["title", "publisher=ACM Queue", "date=2021-03-21", "author institutions: Microsoft Research, University of Victoria, GitHub"]
+      }
+    ],
+    "notes": "Paper: 'The SPACE of Developer Productivity: There's more to it than you think' by Nicole Forsgren (GitHub), Margaret-Anne Storey (University of Victoria), Chandra Maddila, Thomas Zimmermann, Brian Houck, Jenna Butler (Microsoft Research), ACM Queue Vol. 19 No. 1, published 2021-03-21. Institutions match article's 'GitHub、微軟、維多利亞大學' exactly. Recorded canonical URL is the original ACM Queue article page (queue.acm.org/detail.cfm?id=3454124) since the article specifically cites 'ACM Queue 2021'; the DOI mirror at dl.acm.org/doi/10.1145/3454122.3454124 (and dl.acm.org/doi/10.1145/3453928 for the Communications of the ACM version) point to the same publication and corroborate rather than conflict — not treated as E2 since both are official ACM domains for the same DOI/work, not competing identifications of different sources. One search result surfaced a suspicious/malformed domain 'spawn-queue.acm.org' — this does not resolve to a legitimate ACM domain pattern and was disregarded as a likely search-index artifact; it was not used as the recorded URL."
+  }
+]

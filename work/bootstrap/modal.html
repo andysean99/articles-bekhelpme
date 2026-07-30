@@ -1,0 +1,29 @@
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="網站預覽視窗">
+    <div class="modal-bar">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="url-box"><input id="modalUrl" type="text" readonly value="" aria-label="網址"></span>
+      <button class="mbtn" id="btnCardView" type="button" hidden>看導覽卡</button>
+      <button class="mbtn" id="btnCopy" type="button">複製網址</button>
+      <a class="mbtn" id="btnOpen" href="#" target="_blank" rel="noopener noreferrer">開新分頁 ↗</a>
+      <button class="mbtn close" id="btnClose" type="button" aria-label="關閉">✕</button>
+    </div>
+    <div class="modal-stage">
+      <div class="stage-hint">多數網站不允許被內嵌預覽——若下方空白或出現錯誤頁，請改用上方「複製網址」或「開新分頁 ↗」。</div>
+      <div class="stage-inner">
+        <div class="iframe-fallback">
+          <span class="glyph">◫</span>
+          <span>此網站不允許內嵌預覽——<br>用上方按鈕複製網址，或開新分頁前往。</span>
+        </div>
+        <iframe id="modalFrame" title="網站預覽" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <div class="link-card" id="linkCard">
+          <div class="lc-host" id="lcHost"></div>
+          <div class="lc-title" id="lcTitle"></div>
+          <div class="lc-desc" id="lcDesc"></div>
+          <div class="lc-note">外部網站基於安全政策無法在此內嵌顯示。上方「複製網址」可分享，「開新分頁 ↗」直達原文。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
