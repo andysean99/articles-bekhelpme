@@ -1,7 +1,8 @@
 # 燈塔文摘 · 〈我們正在衡量 AI 已經做得比人好的那一半〉 — Agentic Team Blueprint
 
-> 版本：v1.0 ｜ 日期：2026-07-29 ｜ 環境：Claude Code on the web（remote container）｜ 確定度：96%
-> 狀態：待 G3 批准
+> 版本：v1.1 ｜ 日期：2026-07-29 ｜ 環境：Claude Code on the web（remote container）
+> 狀態：**已交付並上線**。G1／G3／G4／G5 全數批准，main `6fb3e32`。
+> 未完成項：scoreboard 回寫 Drive 正本（工具無就地更新能力）、兩份 stale 檔刪除（工具無刪除能力）——皆需人工。
 
 ---
 
@@ -11,7 +12,7 @@
 - **成功標準**
   1. `/measuring-the-half-ai-does-better` 與 `/measuring-the-half-ai-does-better-cn` 兩條 route 上線可讀，並進入首頁、`sitemap.xml`、`llms.txt`
   2. 文中所有外部來源全數列出；查證通過者可點且掛導覽卡，未通過者明標 `unverified` — **沒有第三種狀態**
-  3. 文章本體逐句 diff = 0（唯一例外：GitClear 起始年份 2021 → 2020，見 §9 exception log）
+  3. 文章本體逐句 diff = 0（授權例外 3 筆，見 §9 exception log）
 - **交付物**：`app/<slug>/route.ts`、`app/<slug>-cn/route.ts`、`lib/digests.ts` 兩筆登記、`public/llms.txt` 兩行、源檔 `digest.html` / `digest-cn.html`、本藍圖、spawn prompts。
 - **最終讀者**：一位讀完文章後打算引用其中某個數字去說服自己老闆的工程主管。他做的第一件事是點開來源核對。**這篇文章的全部價值，在他點下去的那一秒結算。**
 - **硬限制**：文章逐字鎖定；禁止生成 URL；素材只有文章 ＋ 外部來源（兩份研究報告與 doT 案例明確排除）；本環境對外 HTTP 全數 403，只能用 WebSearch 查證；Google Drive 工具無刪除、無就地更新能力。
@@ -272,3 +273,40 @@ G4 是 SP review 指出的缺口——「20 個來源」是估計值不是清單
 ## 附錄 B — swarm.json
 
 不適用：本環境無 Ringer runtime。驗證合約依 3b 由 orchestrator 手動執行 checks。建議未來安裝 Ringer（github.com/NateBJones-Projects/ringer）以取得免費的機器驗證與 eval log。
+
+
+---
+
+## 10. 交付結果（v1.1 補記）
+
+| 項目 | 結果 |
+|---|---|
+| 兩條 route | `○ /measuring-the-half-ai-does-better`、`○ /measuring-the-half-ai-does-better-cn`，main `6fb3e32` |
+| 來源 | 21 條，每條 URL 由兩次獨立**內容式**查詢重現 |
+| 導覽卡 | 21 張，Opus 5 盲測全審，打回 3 張全數修復 |
+| 圖表 | 3 張 inline SVG，過 dataviz 雙主題 validator（以實際底色 #FAF7F0／#141715 覆核） |
+| 逐句比對 | 108 句差異數 0 |
+| C-11 | 切除注入 meta 後與源檔逐位元組相等，兩版皆通過 |
+| 打回稽核 | 7 項 FAIL，全部有明確下場，無懸置 |
+
+### 三個 E1 全部位於證據等級附註
+
+| # | 錯誤 | 發現者 |
+|---|---|---|
+| 1 | GitClear 起始年份 2021 → 2020 | orchestrator |
+| 2 | pass@k 誤歸 τ-bench（實為 Chen et al. 2021） | 卡片重新接地時 |
+| 3 | Gartner 40% 預測誤稱「基於民調」 | **Opus 盲測** |
+
+正文 107 句零錯誤。錯誤集中在附註，因為附註寫的是「這個證據多可靠」——那是關於來源方法論的二階陳述，最容易憑印象寫、最少被回頭核對。
+
+### orchestrator 的五個失誤（供下次改進 spec）
+
+1. **C-04 措辭**「independently-worded」被合理讀成「措辭不同」→ 24 筆查詢 7 筆誘導式
+2. **卡片長度 40–70 字**：連原型自己都達不到（實測中位數 63、上限 94）
+3. **`grep -c` 算行數不算次數**：C-08 讀到 39，真值 48
+4. **漏派 Gartner 打回**：分類為「文章層級」後未回頭修卡片
+5. **CN route 用舊 HTML 產生**：源檔對、部署檔錯，所有源檔檢查都會通過
+
+失誤 4、5 同一類：**上游改了、下游沒重生成**。每個 agent 的產出都有檢查，但沒有任何檢查在看依賴鏈（article → digest → digest-cn → route ×2）是否全部重跑。**下次的 spec 要加一條 propagation check。**
+
+失誤 1、2 同一類：把判斷壓縮成一個看起來精確的數字或詞，agent 照字面執行，字面與意圖分岔。
