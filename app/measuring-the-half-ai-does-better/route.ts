@@ -845,6 +845,7 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
     var card = cards[url];
     stageInner.classList.remove('show-frame');
     btnCardView.hidden = true;
+    setCardBtn();
     if(card){
       // 有導覽卡：卡片為主畫面；原網頁在背景嘗試載入，載好後出現按鈕由使用者手動切換
       stageInner.classList.add('has-card');
@@ -911,6 +912,7 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
     stageInner.classList.remove('show-frame');
     stageInner.classList.remove('has-card');
     btnCardView.hidden = true;
+    setCardBtn();
     stageInner.classList.remove('has-shot');
     lcShot.hidden = true;
     lcShotImg.removeAttribute('src');
@@ -1003,7 +1005,7 @@ export async function GET() {
   return new Response(html, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
-      "Cache-Control": "public, max-age=3600",
+      "Cache-Control": "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400",
     },
   });
 }
