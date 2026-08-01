@@ -33,6 +33,15 @@
 - [ ] 一篇文章一個條目；翻譯版縮排在主條目底下標「简体中文版（同文翻譯，hreflang 配對）」，
       不另立條目
 
+## Popup 來源預覽（防 blocked 畫面）
+
+- [ ] 頁面含 `previewShots` 與 `noframeHosts` 兩個 JSON 區塊（模板見 work/bootstrap/modal.html + popup.js）
+- [ ] PDF 來源（含 arxiv.org/pdf/ 這種無副檔名路徑）走 `<object>` 內嵌，不走 sandboxed iframe
+      （Chrome 的 PDF 檢視器拒絕在 sandbox 裡執行）
+- [ ] 發佈後在有網路的機器跑一次 `npm run previews`（腳本：scripts/capture-previews.mjs），
+      拍來源截圖＋探測拒嵌名單並回寫；雲端 session 拍不了（出口封鎖），
+      本機 prompt 在 work/prompts/capture-previews-local.md
+
 ## 憲章不變式（重申）
 
 - 正文一字不動：以上全部是 head/masthead/註冊表層的整合，touching `<nav class="toc">`

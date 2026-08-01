@@ -32,14 +32,26 @@
   var HINT_IFRAME = '多數網站不允許被內嵌預覽——若下方空白或出現錯誤頁，請改用上方「複製網址」或「開新分頁 ↗」。';
   var HINT_CARD = '嘗試載入原網頁中——若該網站拒絕被內嵌，會停留在導覽卡；「開新分頁 ↗」可直達原文。';
   var HINT_NOEMBED = '此閱讀環境不支援內嵌網頁預覽——「複製網址」可分享，「開新分頁 ↗」直達原文。';
+  var HINT_SHOT = '導覽卡＋來源截圖——點「看網頁」看截圖，點截圖或「開新分頁 ↗」直達原文。';
+  var HINT_BLOCKED = '該網站不允許被內嵌預覽——導覽卡說明來源重點，「開新分頁 ↗」直達原文。';
   // 憲章 C-09：內嵌預覽只在自家網域或本機測試時嘗試。其他宿主環境對外部網址設 iframe src
   // 會被攔截成「Open external link」確認視窗，所以一律停留在導覽卡。此正規表示式不得放寬。
   var canEmbed = /(^|\.)bekhelpme\.com$|^localhost$|^127\.|^$/.test(location.hostname);
   var cards = {};
   try{ cards = JSON.parse(document.getElementById('linkCards').textContent); }catch(e){}
+  var shots = {};
+  try{ shots = JSON.parse(document.getElementById('previewShots').textContent); }catch(e){}
+  var noframe = [];
+  try{ noframe = JSON.parse(document.getElementById('noframeHosts').textContent); }catch(e){}
+  var lcShot = document.getElementById('lcShot');
+  var lcShotImg = document.getElementById('lcShotImg');
+  var pdfObject = null;
 
   function hostOf(url){
     try{ return new URL(url).hostname.replace(/^www\./,''); }catch(e){ return url.split('/')[2] || url; }
+  }
+  function removePdf(){
+    if(pdfObject){ pdfObject.remove(); pdfObject = null; }
   }
   function openModal(url){
     urlInput.value = url;
@@ -64,10 +76,40 @@
       linkCard.classList.remove('show');
       stageHint.textContent = HINT_IFRAME;
     }
-    if(canEmbed){
-      frame.src = url;
-    } else {
+    stageInner.classList.remove('has-shot');
+    lcShot.hidden = true;
+    removePdf();
+    var shot = shots[url];
+    var isPdf = /\.pdf($|[?#])/i.test(url) || /arxiv\.org\/pdf\//i.test(url);
+    if(shot){
+      // 截圖預覽取代活頁內嵌：永遠顯示得出來，不會被對方網站拒絕
+      stageInner.classList.add('has-shot');
+      lcShot.hidden = false;
+      lcShot.href = url;
+      lcShotImg.src = shot;
+      btnCardView.hidden = false;
+      setCardBtn();
+      stageHint.textContent = HINT_SHOT;
+    } else if(!canEmbed){
       stageHint.textContent = HINT_NOEMBED;
+    } else if(noframe.indexOf(hostOf(url)) !== -1){
+      // 已知拒絕內嵌（X-Frame-Options／CSP）：不嘗試，避免露出瀏覽器錯誤頁
+      stageHint.textContent = HINT_BLOCKED;
+    } else if(isPdf){
+      // PDF 不能用 sandboxed iframe（Chrome 內建檢視器拒跑）——改用 <object>
+      pdfObject = document.createElement('object');
+      pdfObject.type = 'application/pdf';
+      pdfObject.className = 'pdf-object';
+      pdfObject.data = url;
+      pdfObject.addEventListener('load', function(){
+        if(pdfObject && backdrop.classList.contains('open')){
+          pdfObject.classList.add('loaded');
+          if(stageInner.classList.contains('has-card')){ btnCardView.hidden = false; setCardBtn(); }
+        }
+      });
+      stageInner.appendChild(pdfObject);
+    } else {
+      frame.src = url;
     }
     backdrop.classList.add('open');
     backdrop.setAttribute('aria-hidden','false');
@@ -82,6 +124,10 @@
     stageInner.classList.remove('show-frame');
     stageInner.classList.remove('has-card');
     btnCardView.hidden = true;
+    stageInner.classList.remove('has-shot');
+    lcShot.hidden = true;
+    lcShotImg.removeAttribute('src');
+    removePdf();
     document.body.style.overflow = '';
     resetCopy();
   }

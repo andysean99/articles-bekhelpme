@@ -188,6 +188,12 @@ details.card .card-body table{min-width:520px}
 .modal-stage iframe.loaded{visibility:visible; background:#fff}
 .stage-inner.has-card iframe{visibility:hidden}
 .stage-inner.has-card.show-frame iframe.loaded{visibility:visible; z-index:3}
+.lc-shot{position:absolute; inset:0; display:none; z-index:3; background:#fff; overflow:auto; text-decoration:none}
+.lc-shot img{width:100%; height:auto; display:block}
+.lc-shot-tag{position:sticky; bottom:12px; float:right; margin:0 12px 12px 0; background:rgba(33,31,26,.85); color:#fff; font-size:12px; padding:6px 10px; border-radius:8px}
+.stage-inner.has-shot.show-frame .lc-shot{display:block}
+.pdf-object{position:absolute; inset:0; width:100%; height:100%; border:0; background:#fff; visibility:hidden; z-index:3}
+.stage-inner.show-frame .pdf-object.loaded{visibility:visible}
 .link-card{position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; gap:14px; padding:40px min(9%,64px); overflow-y:auto; background:var(--bg); z-index:2}
 .link-card.show{display:flex}
 .link-card .lc-host{font-size:12.5px; letter-spacing:.14em; color:var(--accent); text-transform:uppercase; font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
@@ -767,6 +773,10 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
           <span>此网站不允许内嵌预览——<br>用上方按钮复制网址，或开新分页前往。</span>
         </div>
         <iframe id="modalFrame" title="网站预览" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <a class="lc-shot" id="lcShot" href="#" target="_blank" rel="noopener noreferrer" hidden>
+          <img id="lcShotImg" alt="来源网页截图（点击开新分页看原文）" loading="lazy">
+          <span class="lc-shot-tag">截图预览 · 点击开新分页 ↗</span>
+        </a>
         <div class="link-card" id="linkCard">
           <div class="lc-host" id="lcHost"></div>
           <div class="lc-title" id="lcTitle"></div>
@@ -779,6 +789,8 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
 </div>
 
 <script id="linkCards" type="application/json">{"https://arxiv.org/pdf/2406.12045":{"t":"τ-bench预印本——提出pass^k可靠度指标","d":"τ-bench是测试零售与航空场景AI代理人的基准论文，提出pass^k衡量代理人多次试验的可靠度；GPT-4o代理人成功率不到五成，零售场景pass^8低于25%。"},"https://dora.dev/guides/dora-metrics/":{"t":"DORA官方指南——四项指标反模式","d":"DORA官方指南列出反模式：指标仅适用于应用或服务层级，目的是改善自己团队而非跨团队比较，并避免指标拥有权孤立在单一团队。"},"https://newsletter.pragmaticengineer.com/p/measuring-developer-productivity-part-2":{"t":"Pragmatic Engineer电子报——McKinsey下篇","d":"此为Kent Beck与Gergely Orosz回应McKinsey的两篇文章第二篇：批评报告未提及利润或营收，并提出投入—产出—成果—影响模型；文末两人各自作答。"},"https://lauratacho.com/blog/using-metrics-to-measure-individual-developer-performance":{"t":"Laura Tacho博客——反对个人层级指标","d":"Laura Tacho在博客主张，个人工程师无法完全掌控自己在系统中的表现，只是众多贡献者之一；用指标评量个人不公平，问题应由团队或系统层级处理。"},"https://buttondown.com/hillelwayne/archive/goodharts-law-in-software-engineering/":{"t":"Hillel Wayne博客——Goodhart法则两版本","d":"Hillel Wayne博客区分Goodhart法则弱版本（如bug追踪数当指标导致草率关bug）与强版本（诚实追求指标做到极致仍伤害目标）；测试覆盖率当目标也催生琐碎测试。"},"https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87":{"t":"Palantir博客——Dev与Delta角色定义","d":"Palantir博客说明：Dev专注一种能力服务多客户，Delta专注一位客户多种能力，以「对客户目标的影响」衡量成功；此为公司自述定位，非外部查核。"},"https://openai.com/careers/technical-deployment-lead-forward-deployed-engineering-(fde)-nyc-new-york-city/":{"t":"OpenAI征才页——FDE职缺工作要求","d":"OpenAI此职缺要求：设置影响假设、基准线与KPI，运行部署前后量测，并向高层赞助者回报；为职缺叙述，非证实已运行或有成效。"},"https://philschmid.de/agents-pass-at-k-pass-power-k":{"t":"philschmid个人博客——pass@k／pass^k解释","d":"philschmid博客解释，pass@k衡量k次尝试中至少一次成功的几率，pass^k衡量k次全部成功的几率且随k增加而下降。"},"https://getdx.com/research/measuring-developer-productivity-with-the-dx-core-4/":{"t":"DX Core 4框架——四指标与个人层级但书","d":"DX Core 4框架含速度、有效性、品质、影响四面向：速度指标为每位工程师diff数，明文不得个人层级测量、不得挂勾绩效考核；有效性以14题DXI对冲产出量。"},"https://www.gitclear.com/ai_assistant_code_quality_2025_research":{"t":"GitClear产业报告——AI Copilot代码品质2025","d":"分析2020至2024年2.11亿行代码变更，发现重构码比例从约24%降至约9.5%，复制粘贴首度超越搬移代码，重复区块增加约八倍；属相关性分析，非对照实验。"},"https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf":{"t":"GitClear报告PDF——AI代码品质2025","d":"同一份GitClear产业分析报告的原始PDF，内容涵盖2020至2024年2.11亿行代码变更的重构率、复制粘贴比例等相关性观察，非控制实验。"},"https://arxiv.org/abs/2507.09089":{"t":"METR预印本——AI对资深开发者生产力的影响（n=16）","d":"预印本随机对照试验，找16位资深开源开发者运行246项任务，工作前预测AI提速24%，事后回想提速20%，实测结果反而慢19%。"},"https://metr.org/blog/2026-02-24-uplift-update/":{"t":"METR官方公告——2026年2月调整实验设计","d":"METR官方博客宣布调整开发者生产力实验设计，主因是新一轮太多开发者拒绝加入不能使用AI的对照组，构成自我选择偏误。"},"https://queue.acm.org/detail.cfm?id=3454124":{"t":"SPACE框架论文——ACM Queue 2021","d":"GitHub、微软研究院与维多利亚大学学者合著的论文，提出生产力不等于活动量、不只关乎个人、单一指标永远不够三项核心论点。"},"https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents":{"t":"Anthropic官方博客——AI Agent的Evals方法论","d":"Anthropic说明eval的价值在于迫使产品团队明确定义何谓成功，因为两位工程师读同一份规格对边界情况的解读可能不同，eval套件可消解此歧义。"},"https://martinfowler.com/articles/harness-engineering.html":{"t":"Böckeler——Coding Agent的Harness工程","d":"Thoughtworks的Böckeler提出「harness」框架：指引（guides，前馈）与传感器（sensors，回馈），调控coding agent朝代码内部品质与可维护性。"},"https://www.rand.org/pubs/research_reports/RRA2680-1.html":{"t":"RAND研究报告RR-A2680-1——AI项目失败根因","d":"RAND访谈65名数据科学家与工程师后指出，AI项目失败的首要原因是业界误解或误传要解决的问题，导致模型被优化到错误指标或不符合业务流程。"},"https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027":{"t":"Gartner新闻稿——预测Agentic AI项目取消率","d":"Gartner新闻稿预测，到2027年底将有超过四成agentic AI项目因成本失控、商业价值不明、风险控制不足遭取消；此预测未揭露样本与计算方式。"},"https://www.media.mit.edu/groups/nanda/overview/":{"t":"MIT NANDA研究群组官方总览页","d":"此页为MIT Media Lab NANDA研究群组官方总览页，报告全文需再点一层；其GenAI Divide为初步报告（未经同侪审查），发现仅约5%集成型AI试点产出数百万价值。"},"https://sequoiacap.com/podcast/training-data-bob-mcgrew/":{"t":"Sequoia播客——Bob McGrew访谈","d":"前OpenAI研究长Bob McGrew在此podcast访谈中表示，修bug、做重构这类agentic软件工程任务所需的品味相对少，且结果明确。"},"https://arxiv.org/abs/2107.03374":{"t":"Chen et al. 2021预印本——Codex论文","d":"此arXiv预印本提出Codex模型与HumanEval基准，并确立并普及现今通用的pass@k指标：候选解中只要有一个通过单元测试即算解出。"}}</script>
+<script id="previewShots" type="application/json">{}</script>
+<script id="noframeHosts" type="application/json">[]</script>
 <script>// 灯塔文摘 popup 系统 — 公开站版本。
 // 对外链接一律开站内导览窗口；不离开页面。
 (function(){
@@ -800,13 +812,25 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
   var HINT_IFRAME = '多数网站不允许被内嵌预览——若下方空白或出现错误页，请改用上方「复制网址」或「开新分页 ↗」。';
   var HINT_CARD = '尝试加载原网页中——若该网站拒绝被内嵌，会停留在导览卡；「开新分页 ↗」可直达原文。';
   var HINT_NOEMBED = '此阅读环境不支持内嵌网页预览——「复制网址」可分享，「开新分页 ↗」直达原文。';
+  var HINT_SHOT = '导览卡＋来源截图——点「看网页」看截图，点截图或「开新分页 ↗」直达原文。';
+  var HINT_BLOCKED = '该网站不允许被内嵌预览——导览卡说明来源重点，「开新分页 ↗」直达原文。';
   // 内嵌预览只在自家网域或本机测试时尝试；其他宿主一律停留在导览卡。
   var canEmbed = /(^|\.)bekhelpme\.com$|^localhost$|^127\.|^$/.test(location.hostname);
   var cards = {};
   try{ cards = JSON.parse(document.getElementById('linkCards').textContent); }catch(e){}
+  var shots = {};
+  try{ shots = JSON.parse(document.getElementById('previewShots').textContent); }catch(e){}
+  var noframe = [];
+  try{ noframe = JSON.parse(document.getElementById('noframeHosts').textContent); }catch(e){}
+  var lcShot = document.getElementById('lcShot');
+  var lcShotImg = document.getElementById('lcShotImg');
+  var pdfObject = null;
 
   function hostOf(url){
     try{ return new URL(url).hostname.replace(/^www\./,''); }catch(e){ return url.split('/')[2] || url; }
+  }
+  function removePdf(){
+    if(pdfObject){ pdfObject.remove(); pdfObject = null; }
   }
   function openModal(url){
     urlInput.value = url;
@@ -831,10 +855,40 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
       linkCard.classList.remove('show');
       stageHint.textContent = HINT_IFRAME;
     }
-    if(canEmbed){
-      frame.src = url;
-    } else {
+    stageInner.classList.remove('has-shot');
+    lcShot.hidden = true;
+    removePdf();
+    var shot = shots[url];
+    var isPdf = /\.pdf($|[?#])/i.test(url) || /arxiv\.org\/pdf\//i.test(url);
+    if(shot){
+      // 截圖預覽取代活頁內嵌：永遠顯示得出來，不會被對方網站拒絕
+      stageInner.classList.add('has-shot');
+      lcShot.hidden = false;
+      lcShot.href = url;
+      lcShotImg.src = shot;
+      btnCardView.hidden = false;
+      setCardBtn();
+      stageHint.textContent = HINT_SHOT;
+    } else if(!canEmbed){
       stageHint.textContent = HINT_NOEMBED;
+    } else if(noframe.indexOf(hostOf(url)) !== -1){
+      // 已知拒絕內嵌（X-Frame-Options／CSP）：不嘗試，避免露出瀏覽器錯誤頁
+      stageHint.textContent = HINT_BLOCKED;
+    } else if(isPdf){
+      // PDF 不能用 sandboxed iframe（Chrome 內建檢視器拒跑）——改用 <object>
+      pdfObject = document.createElement('object');
+      pdfObject.type = 'application/pdf';
+      pdfObject.className = 'pdf-object';
+      pdfObject.data = url;
+      pdfObject.addEventListener('load', function(){
+        if(pdfObject && backdrop.classList.contains('open')){
+          pdfObject.classList.add('loaded');
+          if(stageInner.classList.contains('has-card')){ btnCardView.hidden = false; setCardBtn(); }
+        }
+      });
+      stageInner.appendChild(pdfObject);
+    } else {
+      frame.src = url;
     }
     backdrop.classList.add('open');
     backdrop.setAttribute('aria-hidden','false');
@@ -849,6 +903,10 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
     stageInner.classList.remove('show-frame');
     stageInner.classList.remove('has-card');
     btnCardView.hidden = true;
+    stageInner.classList.remove('has-shot');
+    lcShot.hidden = true;
+    lcShotImg.removeAttribute('src');
+    removePdf();
     document.body.style.overflow = '';
     resetCopy();
   }
