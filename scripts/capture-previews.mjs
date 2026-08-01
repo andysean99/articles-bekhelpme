@@ -109,6 +109,7 @@ async function main() {
 
   const shots = {}; // url -> /previews/<hash>.jpg
   const noframeHosts = new Set();
+  const frameOkHosts = new Set(); // 驗證過允許內嵌——popup 只對這份白名單嘗試 iframe
   const failures = [];
 
   for (const url of allUrls) {
@@ -116,6 +117,7 @@ async function main() {
     try {
       const { blocked } = await probe(url);
       if (blocked) noframeHosts.add(hostOf(url));
+      else frameOkHosts.add(hostOf(url));
     } catch (e) {
       failures.push(`probe ${url}: ${e.message}`);
     }
@@ -147,10 +149,13 @@ async function main() {
   for (const f of files) {
     const mine = extractUrls(f.source);
     const myShots = Object.fromEntries(mine.filter((u) => shots[u]).map((u) => [u, shots[u]]));
+    // 同網域不同 URL 的探測結果衝突時，一律當拒嵌處理
+    const okHosts = [...frameOkHosts].filter((h) => !noframeHosts.has(h)).sort();
     let out = rewriteBlock(f.source, "previewShots", myShots);
     out = rewriteBlock(out, "noframeHosts", [...noframeHosts].sort());
+    out = rewriteBlock(out, "frameOkHosts", okHosts);
     fs.writeFileSync(f.abs, out);
-    console.log(`wrote ${f.rel}: ${Object.keys(myShots).length} shots, ${noframeHosts.size} noframe hosts`);
+    console.log(`wrote ${f.rel}: ${Object.keys(myShots).length} shots, ${noframeHosts.size} noframe, ${okHosts.length} frame-ok`);
   }
 
   // 沒有靜默截斷：漏掉哪些一定列出來

@@ -34,6 +34,7 @@
   var HINT_NOEMBED = '此閱讀環境不支援內嵌網頁預覽——「複製網址」可分享，「開新分頁 ↗」直達原文。';
   var HINT_SHOT = '導覽卡＋來源截圖——點「看網頁」看截圖，點截圖或「開新分頁 ↗」直達原文。';
   var HINT_BLOCKED = '該網站不允許被內嵌預覽——導覽卡說明來源重點，「開新分頁 ↗」直達原文。';
+  var HINT_UNVERIFIED = '此來源尚未驗證能否內嵌——導覽卡說明重點，「開新分頁 ↗」直達原文。';
   // 憲章 C-09：內嵌預覽只在自家網域或本機測試時嘗試。其他宿主環境對外部網址設 iframe src
   // 會被攔截成「Open external link」確認視窗，所以一律停留在導覽卡。此正規表示式不得放寬。
   var canEmbed = /(^|\.)bekhelpme\.com$|^localhost$|^127\.|^$/.test(location.hostname);
@@ -43,6 +44,8 @@
   try{ shots = JSON.parse(document.getElementById('previewShots').textContent); }catch(e){}
   var noframe = [];
   try{ noframe = JSON.parse(document.getElementById('noframeHosts').textContent); }catch(e){}
+  var frameOk = [];
+  try{ frameOk = JSON.parse(document.getElementById('frameOkHosts').textContent); }catch(e){}
   var lcShot = document.getElementById('lcShot');
   var lcShotImg = document.getElementById('lcShotImg');
   var pdfObject = null;
@@ -108,8 +111,12 @@
         }
       });
       stageInner.appendChild(pdfObject);
-    } else {
+    } else if(frameOk.indexOf(hostOf(url)) !== -1){
+      // 白名單制：只有 header 探測驗證過允許內嵌的網站才嘗試即時預覽
       frame.src = url;
+    } else {
+      // 未驗證來源一律停在導覽卡——寧可少一個活預覽，不露一次錯誤頁
+      stageHint.textContent = HINT_UNVERIFIED;
     }
     backdrop.classList.add('open');
     backdrop.setAttribute('aria-hidden','false');

@@ -35,7 +35,8 @@
 
 ## Popup 來源預覽（防 blocked 畫面）
 
-- [ ] 頁面含 `previewShots` 與 `noframeHosts` 兩個 JSON 區塊（模板見 work/bootstrap/modal.html + popup.js）
+- [ ] 頁面含 `previewShots`、`noframeHosts`、`frameOkHosts` 三個 JSON 區塊（模板見 work/bootstrap/modal.html + popup.js）
+- [ ] 即時 iframe 預覽是**白名單制**：只對 `frameOkHosts` 裡驗證過的網域嘗試，未驗證來源停在導覽卡——瀏覽器錯誤頁在任何狀態下都不該出現
 - [ ] PDF 來源（含 arxiv.org/pdf/ 這種無副檔名路徑）走 `<object>` 內嵌，不走 sandboxed iframe
       （Chrome 的 PDF 檢視器拒絕在 sandbox 裡執行）
 - [ ] 發佈後在有網路的機器跑一次 `npm run previews`（腳本：scripts/capture-previews.mjs），
