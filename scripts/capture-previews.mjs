@@ -104,7 +104,13 @@ async function main() {
   }
 
   fs.mkdirSync(PREVIEW_DIR, { recursive: true });
-  const browser = await chromium.launch();
+  let browser;
+  try {
+    browser = await chromium.launch();
+  } catch {
+    // 雲端容器：瀏覽器預裝在固定路徑，版本資料夾對不上 playwright 預設
+    browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+  }
   const ctx = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: 1 });
 
   const shots = {}; // url -> /previews/<hash>.jpg
