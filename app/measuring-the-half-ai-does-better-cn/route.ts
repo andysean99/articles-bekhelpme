@@ -8,16 +8,20 @@ const html = String.raw`<!doctype html>
 <title>我们正在衡量 AI 已经做得比人好的那一半 — 灯塔文摘</title>
 <meta name="description" content="我们想拿来衡量工程师的那些指标——bug 数、修复速度、缺陷率——描述的正好是 agent 已经做得不错的那一半工作。">
 <link rel="canonical" href="https://articles.bekhelpme.com/measuring-the-half-ai-does-better-cn">
+<link rel="alternate" hreflang="zh-Hant" href="https://articles.bekhelpme.com/measuring-the-half-ai-does-better">
+<link rel="alternate" hreflang="zh-Hans" href="https://articles.bekhelpme.com/measuring-the-half-ai-does-better-cn">
+<link rel="alternate" hreflang="x-default" href="https://articles.bekhelpme.com/measuring-the-half-ai-does-better">
+<meta property="og:site_name" content="Bek 文章">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我们正在衡量 AI 已经做得比人好的那一半">
 <meta property="og:description" content="我们想拿来衡量工程师的那些指标——bug 数、修复速度、缺陷率——描述的正好是 agent 已经做得不错的那一半工作。">
 <meta property="og:url" content="https://articles.bekhelpme.com/measuring-the-half-ai-does-better-cn">
-<meta property="og:locale" content="zh_TW">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="zh_TW">
 <meta property="article:published_time" content="2026-07-29">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "我们正在衡量 AI 已经做得比人好的那一半", "description": "我们想拿来衡量工程师的那些指标——bug 数、修复速度、缺陷率——描述的正好是 agent 已经做得不错的那一半工作。", "datePublished": "2026-07-29", "inLanguage": "zh-Hans", "author": {"@type": "Person", "name": "Bek"}, "mainEntityOfPage": "https://articles.bekhelpme.com/measuring-the-half-ai-does-better-cn"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "我们正在衡量 AI 已经做得比人好的那一半", "description": "我们想拿来衡量工程师的那些指标——bug 数、修复速度、缺陷率——描述的正好是 agent 已经做得不错的那一半工作。", "datePublished": "2026-07-29", "inLanguage": "zh-Hans", "author": {"@type": "Person", "name": "Bek Tsai", "alternateName": ["蔡奇峯", "Andy Tsai", "Bek"], "sameAs": ["https://www.bekhelpme.com"]}, "mainEntityOfPage": "https://articles.bekhelpme.com/measuring-the-half-ai-does-better-cn"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLVESXBBMR"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NLVESXBBMR');</script>
-<meta name="description" content="AI／Agentic 时代的工程产出衡量，错在哪，以及小团队该怎么做。">
 <style>
 :root{
   --bg:#FAF7F0; --surface:#FFFFFF; --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F;
@@ -57,6 +61,13 @@ body{
 
 /* ---------- masthead ---------- */
 header.masthead{padding:72px 0 40px; border-bottom:1px solid var(--hair)}
+.site-brand{margin:0 0 14px; font-family:var(--sans, inherit); font-size:14px; letter-spacing:.04em}
+.site-brand a{color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--hair)}
+.site-brand a:hover{color:var(--accent)}
+.lang-alt{margin-top:10px; font-size:13px}
+.lang-alt a{color:var(--ink-3); text-decoration:none; border-bottom:1px dotted var(--hair)}
+.lang-alt a:hover{color:var(--accent)}
+
 .kicker{font-size:12.5px; letter-spacing:.32em; color:var(--accent); text-transform:uppercase; margin:0 0 18px}
 h1{font-family:"Noto Serif TC","Songti TC","Yu Mincho",serif; font-weight:700; font-size:clamp(30px,6vw,44px); line-height:1.35; margin:0 0 14px; text-wrap:balance}
 .standfirst{color:var(--ink-2); font-size:16.5px; margin:0; max-width:36em}
@@ -203,10 +214,12 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
 <body>
 <div class="wrap">
 <header class="masthead">
+  <p class="site-brand"><a href="/">Bek 文章</a></p>
   <p class="kicker">灯塔文摘 · LIGHTHOUSE DIGEST</p>
   <h1>我们正在衡量 AI 已经做得比人好的那一半</h1>
   <p class="standfirst">*——AI／Agentic 时代的工程产出衡量，错在哪，以及小团队该怎么做*</p>
-  <p class="meta-line">2026 年 7 月 29 日　·　衡量与方法</p>
+  <p class="meta-line">2026 年 7 月 29 日　·　衡量与方法　·　作者 Bek Tsai（蔡奇峯）</p>
+  <p class="lang-alt"><a href="/measuring-the-half-ai-does-better" hreflang="zh-Hant" lang="zh-Hant">繁體中文版 →</a></p>
 </header>
 
 <nav class="toc" aria-label="目录">

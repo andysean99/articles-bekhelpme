@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { site } from "@/lib/site";
+import { site, authorPerson } from "@/lib/site";
 import { safeJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
@@ -38,7 +38,7 @@ export default function RootLayout({
     name: site.name,
     url: site.url,
     inLanguage: "zh-TW",
-    author: { "@type": "Person", name: site.author, alternateName: site.authorRealName },
+    author: authorPerson,
   };
 
   return (

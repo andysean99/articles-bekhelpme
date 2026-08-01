@@ -25,7 +25,7 @@ export default function SiteFooter() {
           {site.phone}
         </p>
         <p className="mt-2">
-          © {new Date().getFullYear()} {site.author}（{site.authorRealName}）
+          © {new Date().getFullYear()} {site.author}（{site.authorZh}）
         </p>
       </div>
     </footer>

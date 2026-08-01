@@ -3,12 +3,15 @@ import Masthead from "@/components/Masthead";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
 import { formatDate } from "@/lib/posts";
-import { getAllEntries } from "@/lib/digests";
-import { site } from "@/lib/site";
+import { getAllEntries, getVisibleEntries } from "@/lib/digests";
+import { site, authorPerson } from "@/lib/site";
 import { safeJsonLd } from "@/lib/jsonld";
 
 export default function HomePage() {
-  const posts = getAllEntries();
+  // Visible list: one card per article. The Blog JSON-LD below still carries
+  // every language version, each tagged with its own inLanguage.
+  const posts = getVisibleEntries();
+  const allPosts = getAllEntries();
 
   const blogJsonLd = {
     "@context": "https://schema.org",
@@ -16,13 +19,14 @@ export default function HomePage() {
     name: site.name,
     url: site.url,
     inLanguage: "zh-TW",
-    author: { "@type": "Person", name: site.author, alternateName: site.authorRealName },
-    blogPost: posts.map((p) => ({
+    author: authorPerson,
+    blogPost: allPosts.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
       datePublished: p.date,
       description: p.excerpt,
       url: `${site.url}/${p.slug}`,
+      inLanguage: p.lang === "zh-Hans" ? "zh-Hans" : "zh-TW",
     })),
   };
 

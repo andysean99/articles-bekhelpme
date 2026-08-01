@@ -6,7 +6,7 @@ import remarkGfm from "remark-gfm";
 import Masthead from "@/components/Masthead";
 import SiteFooter from "@/components/SiteFooter";
 import { getAllSlugs, getPostBySlug, formatDate } from "@/lib/posts";
-import { site } from "@/lib/site";
+import { site, authorPerson } from "@/lib/site";
 import { safeJsonLd } from "@/lib/jsonld";
 
 type Params = { slug: string };
@@ -58,11 +58,7 @@ export default async function ArticlePage({
     dateModified: post.date,
     description: post.excerpt,
     inLanguage: "zh-TW",
-    author: {
-      "@type": "Person",
-      name: site.author,
-      alternateName: site.authorRealName,
-    },
+    author: authorPerson,
     mainEntityOfPage: { "@type": "WebPage", "@id": `${site.url}/${post.slug}` },
   };
 
@@ -82,7 +78,7 @@ export default async function ArticlePage({
             {post.title}
           </h1>
           <p className="mt-3 font-[family-name:var(--font-sans)] text-sm text-[var(--color-ink-faint)]">
-            作者 {site.author}
+            作者 {site.author}（{site.authorZh}）
           </p>
           <hr className="rule-soft my-8" />
           <div className="prose-letter">
