@@ -43,7 +43,16 @@ export async function GET() {
 }
 """
 SITE_URL = "https://articles.bekhelpme.com"
-AUTHOR = "Bek"
+SITE_NAME = "Bek 文章"
+# Mirrors authorPerson in lib/site.ts — the one Person entity every JSON-LD block
+# on the site points at. Keep the two in sync; site-integration-checklist.md
+# asserts this shape on every digest.
+AUTHOR_PERSON = {
+    "@type": "Person",
+    "name": "Bek Tsai",
+    "alternateName": ["蔡奇峯", "Andy Tsai", "Bek"],
+    "sameAs": ["https://www.bekhelpme.com"],
+}
 # Same GA property as app/layout.tsx — digest routes bypass the Next.js layout,
 # so analytics must be injected inline here. No backticks/${ (String.raw-safe).
 GA_ID = "G-NLVESXBBMR"
@@ -67,6 +76,7 @@ def build_meta_block(a) -> str:
         lines.append('<meta name="robots" content="noindex, nofollow">')
     lines += [
         f'<link rel="canonical" href="{url}">',
+        f'<meta property="og:site_name" content="{esc_attr(SITE_NAME)}">',
         '<meta property="og:type" content="article">',
         f'<meta property="og:title" content="{esc_attr(a.title)}">',
         f'<meta property="og:description" content="{esc_attr(a.excerpt)}">',
@@ -81,7 +91,7 @@ def build_meta_block(a) -> str:
         "description": a.excerpt,
         "datePublished": a.date,
         "inLanguage": a.lang,
-        "author": {"@type": "Person", "name": AUTHOR},
+        "author": AUTHOR_PERSON,
         "mainEntityOfPage": url,
     }
     # "</" would close the script tag early inside HTML; escape it.

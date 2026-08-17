@@ -8,13 +8,14 @@ const html = String.raw`<!DOCTYPE html>
 <title>把腦中的判斷，變成公司查得到的資產｜Bek Articles</title>
 <meta name="description" content="全世界的資本正湧向企業 AI 記憶層——但幾乎全押在已數位化的那一半。這篇講另一半：住在老師傅與老闆腦袋裡的判斷力，為什麼大廠結構性做不到，以及判斷層（Judgment Layer）怎麼把它變成公司查得到的資產。">
 <link rel="canonical" href="https://articles.bekhelpme.com/judgment-asset">
+<meta property="og:site_name" content="Bek 文章">
 <meta property="og:type" content="article">
 <meta property="og:title" content="把腦中的判斷，變成公司查得到的資產">
 <meta property="og:description" content="全世界的資本正湧向企業 AI 記憶層——但幾乎全押在已數位化的那一半。這篇講另一半：住在老師傅與老闆腦袋裡的判斷力，為什麼大廠結構性做不到，以及判斷層（Judgment Layer）怎麼把它變成公司查得到的資產。">
 <meta property="og:url" content="https://articles.bekhelpme.com/judgment-asset">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-08-17">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "把腦中的判斷，變成公司查得到的資產", "description": "全世界的資本正湧向企業 AI 記憶層——但幾乎全押在已數位化的那一半。這篇講另一半：住在老師傅與老闆腦袋裡的判斷力，為什麼大廠結構性做不到，以及判斷層（Judgment Layer）怎麼把它變成公司查得到的資產。", "datePublished": "2026-08-17", "inLanguage": "zh-Hant", "author": {"@type": "Person", "name": "Bek"}, "mainEntityOfPage": "https://articles.bekhelpme.com/judgment-asset"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "把腦中的判斷，變成公司查得到的資產", "description": "全世界的資本正湧向企業 AI 記憶層——但幾乎全押在已數位化的那一半。這篇講另一半：住在老師傅與老闆腦袋裡的判斷力，為什麼大廠結構性做不到，以及判斷層（Judgment Layer）怎麼把它變成公司查得到的資產。", "datePublished": "2026-08-17", "inLanguage": "zh-Hant", "author": {"@type": "Person", "name": "Bek Tsai", "alternateName": ["蔡奇峯", "Andy Tsai", "Bek"], "sameAs": ["https://www.bekhelpme.com"]}, "mainEntityOfPage": "https://articles.bekhelpme.com/judgment-asset"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLVESXBBMR"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NLVESXBBMR');</script>
 <style>
@@ -164,7 +165,7 @@ footer.src .note{font-size:13px;color:var(--ink-soft);margin-bottom:24px}
   <div class="kicker">BEK ARTICLES・組織腦</div>
   <h1>把腦中的判斷，<br>變成公司查得到的資產</h1>
   <p class="subtitle">全世界正在為「企業 AI 記憶層」這個新類別命名，資本幾乎全湧向已經數位化的那一半。這篇文章講另一半——住在老師傅與老闆腦袋裡、每天晚上六點走出大門的判斷力——以及為什麼最大的玩家，結構上做不到這件事。</p>
-  <p class="byline">Bek 蔡奇峯・2026 年 8 月 15 日・<a href="https://www.bekhelpme.com">bekhelpme.com</a></p>
+  <p class="byline">Bek 蔡奇峯・2026 年 8 月 17 日・<a href="https://www.bekhelpme.com">bekhelpme.com</a></p>
 </header>
 
 <main>
