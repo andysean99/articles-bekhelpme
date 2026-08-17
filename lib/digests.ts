@@ -17,6 +17,7 @@ export type DigestMeta = PostMeta & {
 };
 
 export const digests: DigestMeta[] = [
+  { title: "把腦中的判斷，變成公司查得到的資產", date: "2026-08-17", slug: "judgment-asset", excerpt: "全世界的資本正湧向企業 AI 記憶層——但幾乎全押在已數位化的那一半。這篇講另一半：住在老師傅與老闆腦袋裡的判斷力，為什麼大廠結構性做不到，以及判斷層（Judgment Layer）怎麼把它變成公司查得到的資產。", lang: "zh-Hant" },
   { title: "我們正在衡量 AI 已經做得比人好的那一半", date: "2026-07-29", slug: "measuring-the-half-ai-does-better", excerpt: "我們想拿來衡量工程師的那些指標——bug 數、修復速度、缺陷率——描述的正好是 agent 已經做得不錯的那一半工作。", lang: "zh-Hant" },
   { title: "我们正在衡量 AI 已经做得比人好的那一半", date: "2026-07-29", slug: "measuring-the-half-ai-does-better-cn", excerpt: "我们想拿来衡量工程师的那些指标——bug 数、修复速度、缺陷率——描述的正好是 agent 已经做得不错的那一半工作。", lang: "zh-Hans", translationOf: "measuring-the-half-ai-does-better" },
 ];
