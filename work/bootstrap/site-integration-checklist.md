@@ -6,6 +6,10 @@
 
 ## Head（自包含 HTML 的 `<head>`）
 
+> 2026-08-18 起，這一節的項目由 `make_digest_route.py` 自動注入，不需要手改 route.ts。
+> （在那之前腳本沒跟上 2d11292，每篇新文章都會靜靜掉回舊版 head——/judgment-asset
+> 上線時就踩到了。改 head 規則時要連同腳本一起改，否則下一篇又會漏。）
+
 - [ ] 恰好 **1 個** `meta name="description"`（grep -c 必須 == 1）
 - [ ] `link rel="canonical"` 絕對 URL
 - [ ] 有翻譯版時：**三行 hreflang**（`zh-Hant`、`zh-Hans`、`x-default` → 繁體），
@@ -39,9 +43,13 @@
 - [ ] 即時 iframe 預覽是**白名單制**：只對 `frameOkHosts` 裡驗證過的網域嘗試，未驗證來源停在導覽卡——瀏覽器錯誤頁在任何狀態下都不該出現
 - [ ] PDF 來源（含 arxiv.org/pdf/ 這種無副檔名路徑）走 `<object>` 內嵌，不走 sandboxed iframe
       （Chrome 的 PDF 檢視器拒絕在 sandbox 裡執行）
+- [ ] 新頁面要**自己加進 `capture-previews.mjs` 的 `ROUTE_FILES`**——那份清單是寫死的，
+      漏了就等於整頁被跳過，而且不會有任何錯誤訊息
 - [ ] 發佈後在有網路的機器跑一次 `npm run previews`（腳本：scripts/capture-previews.mjs），
       拍來源截圖＋探測拒嵌名單並回寫；雲端 session 拍不了（出口封鎖），
       本機 prompt 在 work/prompts/capture-previews-local.md
+- [ ] 從源檔重生 route.ts 會把回寫的三個 JSON 區塊清空——**重生後一定要再跑一次
+      `npm run previews`**，否則截圖靜靜消失
 
 ## 憲章不變式（重申）
 

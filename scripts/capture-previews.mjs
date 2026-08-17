@@ -25,6 +25,7 @@ const PREVIEW_DIR = path.join(ROOT, "public", "previews");
 const ROUTE_FILES = [
   "app/measuring-the-half-ai-does-better/route.ts",
   "app/measuring-the-half-ai-does-better-cn/route.ts",
+  "app/judgment-asset/route.ts",
 ];
 const VIEWPORT = { width: 1280, height: 960 };
 const NAV_TIMEOUT_MS = 30_000;

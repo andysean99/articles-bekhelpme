@@ -60,11 +60,14 @@ body{
 .wrap{max-width:740px;margin:0 auto;padding:0 20px}
 h1,h2,h3,.kicker{font-family:"Noto Serif TC","Songti TC",serif}
 header.masthead{padding:72px 0 40px;border-bottom:1px solid var(--line)}
+.site-brand{margin-bottom:14px;font-size:14px;letter-spacing:.04em}
+.site-brand a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+.site-brand a:hover{color:var(--accent)}
 .kicker{color:var(--accent);font-size:14px;letter-spacing:.35em;margin-bottom:18px}
 h1{font-size:34px;line-height:1.45;font-weight:700;margin-bottom:18px}
 .subtitle{color:var(--ink-soft);font-size:17px;line-height:1.9}
-.byline{margin-top:26px;font-size:13.5px;color:var(--ink-soft);letter-spacing:.06em}
-.byline a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
+.meta-line{margin-top:26px;font-size:13.5px;color:var(--ink-soft);letter-spacing:.06em}
+.meta-line a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
 main{padding:8px 0 40px}
 section{margin-top:64px}
 .secnum{color:var(--accent);font-family:"Noto Serif TC",serif;font-size:14px;letter-spacing:.5em;margin-bottom:10px}
@@ -143,6 +146,8 @@ footer.src .note{font-size:13px;color:var(--ink-soft);margin-bottom:24px}
 .pv-body h3{font-family:"Noto Serif TC",serif;font-size:18px;line-height:1.6;margin-bottom:10px}
 .pv-body p{font-size:14.5px;line-height:1.95;color:var(--ink-soft);margin:0}
 .pv-frame{width:100%;height:52vh;border:none;visibility:hidden}
+.pv-shot{display:none;padding:0 24px 18px}
+.pv-shot img{width:100%;display:block;border:1px solid var(--card-line);border-radius:8px}
 .pv-openrow{padding:12px 24px 20px}
 .pv-openrow a{
   display:inline-block;background:var(--accent);color:var(--btn-ink);border-radius:999px;
@@ -162,10 +167,11 @@ footer.src .note{font-size:13px;color:var(--ink-soft);margin-bottom:24px}
 
 <div class="wrap">
 <header class="masthead">
+  <p class="site-brand"><a href="/">Bek 文章</a></p>
   <div class="kicker">BEK ARTICLES・組織腦</div>
   <h1>把腦中的判斷，<br>變成公司查得到的資產</h1>
   <p class="subtitle">全世界正在為「企業 AI 記憶層」這個新類別命名，資本幾乎全湧向已經數位化的那一半。這篇文章講另一半——住在老師傅與老闆腦袋裡、每天晚上六點走出大門的判斷力——以及為什麼最大的玩家，結構上做不到這件事。</p>
-  <p class="byline">Bek 蔡奇峯・2026 年 8 月 17 日・<a href="https://www.bekhelpme.com">bekhelpme.com</a></p>
+  <p class="meta-line">2026 年 8 月 17 日・作者 Bek Tsai（蔡奇峯）・<a href="https://www.bekhelpme.com">bekhelpme.com</a></p>
 </header>
 
 <main>
@@ -356,6 +362,7 @@ footer.src .note{font-size:13px;color:var(--ink-soft);margin-bottom:24px}
       <h3 id="pvTitle"></h3>
       <p id="pvDesc"></p>
     </div>
+    <a class="pv-shot" id="pvShot" href="#" target="_blank" rel="noopener"><img id="pvShotImg" alt="來源網頁預覽截圖"></a>
     <iframe class="pv-frame" id="pvFrame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" title="preview"></iframe>
     <div class="pv-openrow" id="pvOpenRow" style="display:none">
       <a id="pvGo" href="#" target="_blank" rel="noopener">看網頁</a>
@@ -400,6 +407,12 @@ footer.src .note{font-size:13px;color:var(--ink-soft);margin-bottom:24px}
 }
 </script>
 
+<!-- 由 scripts/capture-previews.mjs 回寫：截圖清單、拒絕內嵌與驗證可內嵌的網域。
+     屬性順序 id 在前是腳本 rewriteBlock 的比對條件，勿調換。 -->
+<script id="previewShots" type="application/json">{"http://www.news.cn/tech/20260319/e76a237bb21645b6a6f9ced193222cdd/c.html":"/previews/30462f94.jpg","https://arxiv.org/abs/2506.05370":"/previews/99787fe0.jpg","https://arxiv.org/abs/2607.03228":"/previews/26f72bbc.jpg","https://atlan.com/know/enterprise-ai-memory-layer/":"/previews/c1d3e67d.jpg","https://atlan.com/know/gartner-context-graphs/":"/previews/d6a6d73c.jpg","https://cloudwars.com/ai/microsoft-debuts-work-iq-fabric-iq-and-foundry-iq-a-unified-intelligence-layer-for-the-ai-powered-enterprise/":"/previews/9a7b963b.jpg","https://cottrillresearch.com/various-survey-statistics-workers-spend-too-much-time-searching-for-information/":"/previews/b659f933.jpg","https://coworker.ai/organizational-memory":"/previews/aba1c5ee.jpg","https://devrev.ai/":"/previews/44d3ae9d.jpg","https://finance.sina.com.cn/tech/roll/2026-02-09/doc-inhmexfr6429203.shtml":"/previews/f375f23d.jpg","https://getperspective.ai/blog/palantir-forward-deployed-engineering-playbook-anthropic-openai-copying":"/previews/9213f5d2.jpg","https://learn.microsoft.com/en-us/fabric/iq/overview":"/previews/980126f8.jpg","https://learn.microsoft.com/en-us/microsoft-iq/":"/previews/2f075885.jpg","https://m.36kr.com/p/3886290704216064":"/previews/2341ad7e.jpg","https://m.bjnews.com.cn/detail/1753782897129598.html":"/previews/c5f65232.jpg","https://tendem.ai/blog/true-cost-ai-hallucinations-business-data":"/previews/96b7b937.jpg","https://venturebeat.com/business/report-employees-spend-3-6-hours-each-day-searching-for-info-increasing-burnout":"/previews/1bcea5cf.jpg","https://www.163.com/dy/article/JG66IJOL05386WWT.html":"/previews/7eca4238.jpg","https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025":"/previews/dc943628.jpg","https://www.getzep.com/":"/previews/fdd1a7db.jpg","https://www.glean.com/resources/guides/glean-knowledge-graph":"/previews/d361838f.jpg","https://www.mininglamp.com/":"/previews/8f5136fc.jpg","https://www.palantir.com/explore/platforms/foundry/ontology/":"/previews/15c5c75c.jpg","https://www.prnewswire.com/news-releases/coworkerai-launches-the-first-ai-agent-with-deep-company-context-backed-by-13m-seed-round-302459262.html":"/previews/51ca2fee.jpg","https://www.prnewswire.com/news-releases/engram-launches-with-98m-to-build-ai-that-actually-knows-your-organization-302807126.html":"/previews/804e3cae.jpg","https://www.prnewswire.com/news-releases/mem0-raises-24m-series-a-to-build-memory-layer-for-ai-agents-302597157.html":"/previews/4d4daa43.jpg","https://www.promptfluent.com/research/state-of-ai-debt-2026":"/previews/fe377dd3.jpg","https://www.sentra.app/":"/previews/6bcd7275.jpg","https://www.sentra.app/articles/what-is-a-company-brain":"/previews/0744b7c6.jpg","https://www.snowflake.com/en/why-snowflake/partners/all-partners/atlan-inc/":"/previews/cb5ba569.jpg","https://www.thepaper.cn/newsDetail_forward_33536469":"/previews/d9c4a624.jpg","https://www.vktr.com/ai-news/engram-launches-with-98m-to-give-enterprise-ai-memory/":"/previews/f04f1c85.jpg"}</script>
+<script id="noframeHosts" type="application/json">["anthropic.com","arxiv.org","atlan.com","blog.palantir.com","coworker.ai","gartner.com","getzep.com","gitclear.com","glean.com","learn.microsoft.com","martinfowler.com","media.mit.edu","newsletter.pragmaticengineer.com","openai.com","palantir.com","prnewswire.com","promptfluent.com","queue.acm.org","snowflake.com","tendem.ai"]</script>
+<script id="frameOkHosts" type="application/json">["163.com","buttondown.com","cloudwars.com","cottrillresearch.com","devrev.ai","dora.dev","finance.sina.com.cn","getdx.com","getperspective.ai","gitclear-public.s3.us-west-2.amazonaws.com","lauratacho.com","m.36kr.com","metr.org","mininglamp.com","news.cn","philschmid.de","rand.org","sentra.app","sequoiacap.com","thepaper.cn","venturebeat.com","vktr.com"]</script>
+
 <script>
 (function(){
   var doc = document;
@@ -419,11 +432,27 @@ footer.src .note{font-size:13px;color:var(--ink-soft);margin-bottom:24px}
   var cspBlocked = false;
   doc.addEventListener('securitypolicyviolation', function(){ cspBlocked = true; });
 
+  var shots = {};
+  try { shots = JSON.parse(doc.getElementById('previewShots').textContent); } catch(e) {}
+  var noframe = [];
+  try { noframe = JSON.parse(doc.getElementById('noframeHosts').textContent); } catch(e) {}
+  var frameOk = [];
+  try { frameOk = JSON.parse(doc.getElementById('frameOkHosts').textContent); } catch(e) {}
+  var shotBox = doc.getElementById('pvShot');
+  var shotImg = doc.getElementById('pvShotImg');
+
+  function hostOf(u){
+    try { return new URL(u).hostname.replace(/^www\./, ''); } catch(e){ return ''; }
+  }
+
+  // 白名單制：只對探測過確定允許內嵌的網域嘗試 iframe。名單空的時候等於全部停在
+  // 導覽卡——寧可少一個預覽，也不要讓瀏覽器的拒絕頁面出現在文章裡。
   function canEmbed(u){
-    try {
-      var h = new URL(u).hostname;
-      return /(^|\.)bekhelpme\.com$|^localhost$|^127\./.test(h) || h === '';
-    } catch(e){ return false; }
+    var h = hostOf(u);
+    if (!h) return false;
+    if (noframe.indexOf(h) !== -1) return false;
+    if (/(^|\.)bekhelpme\.com$/.test(h) || h === 'localhost' || /^127\./.test(h)) return true;
+    return frameOk.indexOf(h) !== -1;
   }
 
   function openPv(u){
@@ -437,7 +466,15 @@ footer.src .note{font-size:13px;color:var(--ink-soft);margin-bottom:24px}
     frame.removeAttribute('src');
     frame.style.visibility = 'hidden';
     goRow.style.display = 'none';
-    if (canEmbed(u)) {
+    shotBox.style.display = 'none';
+    shotImg.removeAttribute('src');
+    if (shots[u]) {
+      // 有截圖就用截圖：永遠顯示得出來，不受對方網站的內嵌政策影響
+      shotBox.style.display = 'block';
+      shotBox.href = u;
+      shotImg.src = shots[u];
+      goRow.style.display = 'block';
+    } else if (canEmbed(u)) {
       cspBlocked = false;
       frame.style.display = 'block';
       frame.onload = function(){
@@ -454,6 +491,7 @@ footer.src .note{font-size:13px;color:var(--ink-soft);margin-bottom:24px}
   function closePv(){
     backdrop.classList.remove('open');
     frame.removeAttribute('src');
+    shotImg.removeAttribute('src');
   }
 
   doc.addEventListener('click', function(ev){
