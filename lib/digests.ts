@@ -8,7 +8,7 @@ import { getAllPosts, type PostMeta } from "./posts";
 // The lighthouse-digest skill appends one entry per published digest.
 export type DigestMeta = PostMeta & {
   // BCP 47 script tag of the digest body. Omitted = the site default (zh-Hant).
-  lang?: "zh-Hant" | "zh-Hans";
+  lang?: "zh-Hant" | "zh-Hans" | "en" | "de" | "fr";
   // Slug of the primary-language digest this entry translates. Entries carrying
   // this field stay in sitemap.xml / llms.txt / JSON-LD (paired via hreflang)
   // but are hidden from the visible homepage list, so readers see one card per
@@ -17,6 +17,11 @@ export type DigestMeta = PostMeta & {
 };
 
 export const digests: DigestMeta[] = [
+  { title: "記憶很便宜，判斷很貴", date: "2026-08-30", slug: "company-brain", excerpt: "當全世界都在給 AI 裝記憶，誰在給公司裝判斷？企業 AI 記憶層正在成為新的基礎類別，資本正瘋狂湧入。這篇從柏林發表會倒數四天的一個早上講起，帶你看懂這個類別的地圖、它共同的盲點，以及資訊層之後正在成形的判斷層。", lang: "zh-Hant" },
+  { title: "Memory Is Cheap. Judgment Is Expensive.", date: "2026-08-30", slug: "company-brain-en", excerpt: "While the world races to give AI a memory, who's giving the company judgment? Enterprise AI memory is congealing into a new infrastructure category, and capital is pouring in.", lang: "en", translationOf: "company-brain" },
+  { title: "Speicher ist billig. Urteilskraft ist teuer.", date: "2026-08-30", slug: "company-brain-de", excerpt: "Während die ganze Welt der KI ein Gedächtnis einbaut – wer baut den Unternehmen ein Urteilsvermögen ein? Die Enterprise-KI-Gedächtnisschicht wird gerade zur neuen Basiskategorie.", lang: "de", translationOf: "company-brain" },
+  { title: "La mémoire ne coûte rien. Le jugement, si.", date: "2026-08-30", slug: "company-brain-fr", excerpt: "Pendant que le monde entier équipe l'IA d'une mémoire, qui équipe l'entreprise d'un jugement ? La couche de mémoire IA en entreprise devient une nouvelle catégorie fondatrice.", lang: "fr", translationOf: "company-brain" },
+  { title: "记忆很便宜，判断很贵", date: "2026-08-30", slug: "company-brain-cn", excerpt: "当全世界都在给AI装记忆，谁在给公司装判断？企业AI记忆层正在成为新的基础类别，资本正疯狂涌入。", lang: "zh-Hans", translationOf: "company-brain" },
   { title: "把腦中的判斷，變成公司查得到的資產", date: "2026-08-17", slug: "judgment-asset", excerpt: "全世界的資本正湧向企業 AI 記憶層——但幾乎全押在已數位化的那一半。這篇講另一半：住在老師傅與老闆腦袋裡的判斷力，為什麼大廠結構性做不到，以及判斷層（Judgment Layer）怎麼把它變成公司查得到的資產。", lang: "zh-Hant" },
   { title: "我們正在衡量 AI 已經做得比人好的那一半", date: "2026-07-29", slug: "measuring-the-half-ai-does-better", excerpt: "我們想拿來衡量工程師的那些指標——bug 數、修復速度、缺陷率——描述的正好是 agent 已經做得不錯的那一半工作。", lang: "zh-Hant" },
   { title: "我们正在衡量 AI 已经做得比人好的那一半", date: "2026-07-29", slug: "measuring-the-half-ai-does-better-cn", excerpt: "我们想拿来衡量工程师的那些指标——bug 数、修复速度、缺陷率——描述的正好是 agent 已经做得不错的那一半工作。", lang: "zh-Hans", translationOf: "measuring-the-half-ai-does-better" },

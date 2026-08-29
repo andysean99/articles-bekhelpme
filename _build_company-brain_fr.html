@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La mémoire ne coûte rien. Le jugement, si. — Digest du Phare</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NLVESXBBMR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NLVESXBBMR');</script>
+<style>
+:root{
+  --bg:#FAF7F0; --surface:#FFFFFF; --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F;
+  --accent:#177A5B; --accent-dim:#0F5C44; --s1:#177A5B; --s2:#4661C2;
+  --hair:#E3DED2; --hair-2:#EDE9DE; --card:#F3EFE5;
+  --grid:#E7E2D5; --axis:#C9C3B2; --btn-ink:#FFFFFF;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    --bg:#141715; --surface:#1C1F1C; --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078;
+    --accent:#2FA079; --accent-dim:#45B58D; --s1:#2FA079; --s2:#6B7FE0;
+    --hair:#2A2E2A; --hair-2:#232723; --card:#1E221E;
+    --grid:#262A26; --axis:#3A3F3A; --btn-ink:#0E1512;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141715; --surface:#1C1F1C; --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078;
+  --accent:#2FA079; --accent-dim:#45B58D; --s1:#2FA079; --s2:#6B7FE0;
+  --hair:#2A2E2A; --hair-2:#232723; --card:#1E221E;
+  --grid:#262A26; --axis:#3A3F3A; --btn-ink:#0E1512;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Hiragino Sans","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  font-size:17px; line-height:1.95; letter-spacing:.015em;
+  overflow-x:hidden;
+}
+.wrap{max-width:740px; margin:0 auto; padding:0 20px 96px}
+.serif{font-family:"Noto Serif TC","Songti TC","Yu Mincho","Hiragino Mincho ProN",serif}
+
+/* ---------- theme toggle ---------- */
+.themebtn{
+  position:fixed; top:16px; right:16px; z-index:70; background:var(--surface); color:var(--ink);
+  border:1px solid var(--hair); border-radius:999px; padding:7px 16px; font-size:13px; cursor:pointer;
+  font-family:"Noto Sans TC","PingFang TC",system-ui,sans-serif;
+}
+.themebtn:hover{border-color:var(--accent); color:var(--accent)}
+
+/* ---------- masthead ---------- */
+header.masthead{padding:72px 0 40px; border-bottom:1px solid var(--hair)}
+.site-brand{margin:0 0 16px; font-size:13.5px}
+.site-brand a{color:var(--ink-3); text-decoration:none; border-bottom:1px solid var(--hair)}
+.site-brand a:hover{color:var(--accent)}
+.kicker{font-size:12.5px; letter-spacing:.32em; color:var(--accent); text-transform:uppercase; margin:0 0 18px}
+h1{font-family:"Noto Serif TC","Songti TC","Yu Mincho",serif; font-weight:700; font-size:clamp(30px,6vw,44px); line-height:1.35; margin:0 0 14px; text-wrap:balance}
+.standfirst{color:var(--ink-2); font-size:16.5px; margin:0; max-width:36em}
+.meta-line{margin-top:26px; font-size:13px; color:var(--ink-3); letter-spacing:.06em}
+
+/* ---------- toc ---------- */
+nav.toc{margin:40px 0 8px; padding:26px 28px; background:var(--card); border-radius:10px}
+nav.toc p.toc-title{margin:0 0 12px; font-size:12.5px; letter-spacing:.28em; color:var(--ink-3)}
+nav.toc ol{margin:0; padding:0; list-style:none; column-gap:36px}
+@media(min-width:620px){nav.toc ol{columns:2}}
+nav.toc li{break-inside:avoid; padding:5px 0; font-size:15px}
+nav.toc a{color:var(--ink); text-decoration:none; border-bottom:none}
+nav.toc a:hover{color:var(--accent)}
+nav.toc .n{font-family:"Noto Serif TC",serif; color:var(--accent); margin-right:10px; font-size:13.5px}
+
+/* ---------- sections ---------- */
+section{margin-top:76px}
+.eyebrow{display:flex; align-items:baseline; gap:14px; margin-bottom:10px}
+.eyebrow .num{font-family:"Noto Serif TC","Songti TC",serif; font-size:15px; color:var(--accent); letter-spacing:.1em}
+.eyebrow .rule{flex:1; height:1px; background:var(--hair)}
+h2{font-family:"Noto Serif TC","Songti TC","Yu Mincho",serif; font-weight:700; font-size:clamp(23px,4vw,29px); line-height:1.5; margin:0 0 26px; text-wrap:balance}
+h3{font-family:"Noto Serif TC","Songti TC",serif; font-weight:700; font-size:18.5px; margin:44px 0 14px}
+p{margin:0 0 1.5em}
+em{font-style:normal; color:var(--accent-dim); font-weight:600}
+strong{font-weight:700; color:var(--ink)}
+.seed{font-style:italic; color:var(--ink-3); font-weight:400}
+
+/* citation superscripts */
+sup.src-ref{font-size:11px; line-height:0; vertical-align:super; margin:0 1px}
+sup.src-ref a.ent{border-bottom:none; padding:0 1px}
+sup.src-ref a.ent:hover{text-decoration:underline}
+
+/* entity popup links */
+a.ent{color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent); cursor:pointer; transition:border-color .15s}
+a.ent:hover{border-bottom-style:solid}
+a.ent:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:2px}
+
+/* pull quote */
+blockquote.pull{margin:40px 0; padding:6px 0 6px 26px; border-left:3px solid var(--accent);
+  font-family:"Noto Serif TC","Songti TC",serif; font-size:20px; line-height:1.85; color:var(--ink)}
+blockquote.pull cite{display:block; margin-top:10px; font-size:13px; font-style:normal; color:var(--ink-3)}
+
+/* ---------- figures / charts ---------- */
+figure.viz{margin:44px 0; padding:28px 26px 22px; background:var(--surface); border:1px solid var(--hair); border-radius:12px}
+figure.viz .viz-title{font-weight:700; font-size:15.5px; margin:0 0 2px}
+figure.viz .viz-sub{font-size:12.5px; color:var(--ink-3); margin:0 0 20px}
+figure.viz svg{display:block; width:100%; height:auto}
+figure.viz figcaption{margin-top:16px; padding-top:14px; border-top:1px solid var(--hair-2); font-size:14px; color:var(--ink-2); line-height:1.8}
+figure.viz figcaption b{color:var(--ink)}
+svg text{font-family:"Noto Sans TC","PingFang TC",system-ui,sans-serif}
+
+/* ---------- Q&A block (chapter 8) ---------- */
+.qa p{margin:0 0 1.3em}
+.qa strong{color:var(--accent-dim)}
+
+/* ---------- CTA ---------- */
+.quiz{margin:36px 0}
+.quiz p{font-family:"Noto Serif TC","Songti TC",serif; font-size:19px; line-height:1.9; color:var(--ink); margin:0 0 22px; text-wrap:balance}
+.cta{margin-top:44px; background:var(--card); border:1px solid var(--hair); border-radius:14px; padding:34px 30px; text-align:center}
+.cta p.lead{color:var(--ink-2); font-size:15.5px; margin-bottom:18px}
+.cta .btn{display:inline-block; background:var(--accent); color:var(--btn-ink); padding:13px 32px; border-radius:999px; text-decoration:none; font-weight:700; font-size:15.5px}
+.cta .btn:hover{background:var(--accent-dim)}
+
+/* ---------- sources ---------- */
+#sources .src-group{margin-top:34px}
+#sources h3{margin-top:0}
+#sources ol{margin:10px 0 0; padding-left:0; list-style:none; counter-reset:src}
+#sources li{counter-increment:src; font-size:12.5px; line-height:1.7; padding:5px 0 5px 44px; position:relative; border-bottom:1px solid var(--hair-2); word-break:break-word}
+#sources li::before{content:counter(src,decimal-leading-zero); position:absolute; left:0; top:6px; color:var(--ink-3); font-variant-numeric:tabular-nums; font-size:11px}
+#sources a.ent{border-bottom:none; color:var(--accent)}
+#sources a.ent:hover{text-decoration:underline}
+
+/* ---------- modal ---------- */
+.modal-backdrop{position:fixed; inset:0; background:rgba(15,15,12,.55); display:none; z-index:60; -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px)}
+.modal-backdrop.open{display:flex; align-items:center; justify-content:center; padding:18px}
+.modal{background:var(--surface); width:min(920px,100%); height:min(640px,88vh); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 24px 70px rgba(0,0,0,.35); border:1px solid var(--hair)}
+.modal-bar{display:flex; align-items:center; gap:8px; padding:10px 12px; background:var(--card); border-bottom:1px solid var(--hair); flex-wrap:wrap}
+.modal-bar .dots{display:flex; gap:5px; margin-right:4px}
+.modal-bar .dots i{width:10px; height:10px; border-radius:50%; background:var(--hair); display:block}
+.url-box{flex:1 1 200px; min-width:0; display:flex; align-items:center; background:var(--bg); border:1px solid var(--hair); border-radius:8px; padding:6px 12px}
+.url-box input{flex:1; min-width:0; border:0; background:transparent; color:var(--ink-2); font-size:12.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; outline:none}
+.mbtn{border:1px solid var(--hair); background:var(--surface); color:var(--ink); font-size:12.5px; padding:6px 12px; border-radius:8px; cursor:pointer; white-space:nowrap; font-family:inherit; text-decoration:none; display:inline-flex; align-items:center; gap:4px; line-height:1.4}
+.mbtn:hover{border-color:var(--accent); color:var(--accent)}
+.mbtn.copied{border-color:var(--accent); color:var(--accent)}
+#btnCardView{background:var(--accent); border-color:var(--accent); color:var(--btn-ink,#fff); font-weight:700; box-shadow:0 2px 8px rgba(23,122,91,.35)}
+#btnCardView:hover{background:var(--accent-dim); border-color:var(--accent-dim); color:var(--btn-ink,#fff)}
+.mbtn.close{font-weight:700}
+.modal-stage{flex:1; background:var(--bg); display:flex; flex-direction:column; min-height:0}
+.stage-hint{font-size:12px; color:var(--ink-3); padding:7px 14px; border-bottom:1px solid var(--hair); background:var(--card); line-height:1.7}
+.stage-inner{position:relative; flex:1; min-height:0}
+.iframe-fallback{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; color:var(--ink-2); font-size:14px; padding:30px; line-height:1.9}
+.iframe-fallback .glyph{font-size:30px; opacity:.5}
+.modal-stage iframe{position:absolute; inset:0; width:100%; height:100%; border:0; background:transparent; visibility:hidden}
+.modal-stage iframe.loaded{visibility:visible; background:#fff}
+.stage-inner.has-card iframe{visibility:hidden}
+.stage-inner.has-card.show-frame iframe.loaded{visibility:visible; z-index:3}
+.link-card{position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; gap:14px; padding:40px min(9%,64px); overflow-y:auto; background:var(--bg); z-index:2}
+.link-card.show{display:flex}
+.link-card .lc-host{font-size:12.5px; letter-spacing:.14em; color:var(--accent); text-transform:uppercase; font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.link-card .lc-title{font-family:"Noto Serif TC","Songti TC",serif; font-weight:700; font-size:21px; line-height:1.6; color:var(--ink); text-wrap:balance}
+.link-card .lc-desc{font-size:15px; line-height:2; color:var(--ink-2); max-width:34em}
+.link-card .lc-note{margin-top:10px; padding-top:14px; border-top:1px solid var(--hair); font-size:12.5px; color:var(--ink-3); line-height:1.8}
+
+/* footer */
+footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--hair); font-size:12.5px; color:var(--ink-3); line-height:1.9}
+
+@media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+@media (max-width:560px){
+  body{font-size:16px}
+  figure.viz{padding:20px 14px 16px; margin-left:-6px; margin-right:-6px}
+  .modal{height:min(560px,92vh)}
+  .cta{padding:26px 18px}
+  .themebtn{padding:6px 12px; font-size:12px; top:12px; right:12px}
+}
+</style>
+</head>
+<body>
+<button class="themebtn" id="themeBtn" type="button">Mode sombre</button>
+
+<div class="wrap">
+<header class="masthead">
+  <p class="site-brand"><a href="https://articles.bekhelpme.com">Bek Articles</a></p>
+  <p class="kicker">DIGEST DU PHARE · LIGHTHOUSE DIGEST</p>
+  <h1>La mémoire ne coûte rien. Le jugement, si.</h1>
+  <p class="standfirst">Pendant que le monde entier équipe l'IA d'une mémoire, qui équipe l'entreprise d'un jugement ? La couche de mémoire IA en entreprise est en train de devenir une nouvelle catégorie fondatrice, et les capitaux s'y précipitent. Cet article part d'un matin à quatre jours du compte à rebours d'une conférence à Berlin, pour vous faire lire la carte de cette catégorie, son angle mort commun, et la couche de jugement qui prend forme après la couche d'information.</p>
+  <p class="meta-line">30 août 2026　·　par Bek Tsai (蔡奇峯)</p>
+</header>
+
+<nav class="toc" aria-label="Table des matières">
+  <p class="toc-title">Table des matières</p>
+  <ol>
+    <li><span class="n">I</span><a href="#sec1">Le matin à quatre jours du compte à rebours</a></li>
+    <li><span class="n">II</span><a href="#sec2">Le monde entier est en train de donner un nom à cette chose</a></li>
+    <li><span class="n">III</span><a href="#sec3">La carte des termes : qui parle quelle langue</a></li>
+    <li><span class="n">IV</span><a href="#sec4">L'angle mort que tout le monde partage</a></li>
+    <li><span class="n">V</span><a href="#sec5">Après la couche d'information vient la couche de jugement</a></li>
+    <li><span class="n">VI</span><a href="#sec6">L'Europe comme terrain d'épreuve</a></li>
+    <li><span class="n">VII</span><a href="#sec7">Chaque renoncement de ces quatre jours</a></li>
+    <li><span class="n">VIII</span><a href="#sec8">Comment distinguer le vrai du faux</a></li>
+    <li><span class="n">IX</span><a href="#sec9">L'actif de jugement produit des intérêts composés</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="sec1">
+  <div class="eyebrow"><span class="num">I</span><span class="rule"></span></div>
+  <h2>Le matin à quatre jours du compte à rebours</h2>
+
+  <h3>Taïwan, à quatre jours</h3>
+  <p>Le matin du 29 août 2026, à Taïwan. Dans quatre jours, la conférence de presse mondiale d'Acer doit s'ouvrir à Berlin — pile pendant les journées médias de l'IFA, ces jours où les médias technologiques du monde entier braquent leurs projecteurs sur l'IA<sup class="src-ref"><a class="ent" href="https://www.gsmaintelligence.com/blogs/ifa-berlin-2026-seven-important-areas-ill-be-watching-what-i-expect-to-see-and-what-will-matter" data-url="https://www.gsmaintelligence.com/blogs/ifa-berlin-2026-seven-important-areas-ill-be-watching-what-i-expect-to-see-and-what-will-matter">15</a></sup>. Les valises ne sont pas encore faites, mais sur la table traîne déjà la même question : si la démo en direct plante, ou si le modèle sort une réponse bizarre en plein direct, faut-il basculer sur une séquence préenregistrée pour sauver la mise ?</p>
+
+  <h3>Une décision autrefois anodine</h3>
+  <p>C'est une pratique standard du secteur depuis des décennies. La séquence préenregistrée de secours, en clair, c'est une assurance : si le direct dérape, on a au moins une prise propre pour se rattraper. Autrefois, c'était du professionnalisme. En 2026, la donne a changé.</p>
+
+  <blockquote class="pull">
+    <p>La séquence de secours, d'assurance professionnelle à mine de réputation</p>
+  </blockquote>
+
+  <p>Ce n'est pas la technologie qui a changé, c'est la marge d'erreur que l'opinion publique tolère. Cette année, la « tromperie IA » et l'« IA washing » sont devenus les expressions préférées des médias et des régulateurs. Se faire prendre une seule fois avec « une image qui ne s'est pas produite en direct », la sanction n'est pas la gêne, c'est la confiance qui tombe à zéro<sup class="src-ref"><a class="ent" href="https://www.forbes.com/councils/forbesagencycouncil/2026/08/18/ai-washing-is-becoming-a-reputation-risk-companies-cant-afford/" data-url="https://www.forbes.com/councils/forbesagencycouncil/2026/08/18/ai-washing-is-becoming-a-reputation-risk-companies-cant-afford/">1</a></sup><sup class="src-ref"><a class="ent" href="https://globalinvestigationsreview.com/review/the-investigations-review-of-the-americas/2026/article/us-enforcement-agencies-intensify-scrutiny-of-ai-washing" data-url="https://globalinvestigationsreview.com/review/the-investigations-review-of-the-americas/2026/article/us-enforcement-agencies-intensify-scrutiny-of-ai-washing">2</a></sup>. Ce matin-là, en y réfléchissant jusqu'au bout, la question n'était plus « faut-il se garder une marge de sécurité », mais « cette entreprise est-elle prête à se placer devant la caméra et à échouer honnêtement devant le monde entier ». Au fond, c'est une question très courte : <span class="seed">ose-t-on recommencer en direct, sur place ?</span></p>
+
+  <h3>La question que cet article veut poser</h3>
+  <p>La décision prise ce matin-là, le chapitre VII la racontera en entier. Mais ce que cet article veut vraiment raconter, ce n'est ni cette démo, ni cette conférence de presse : c'est toute une industrie en train de se former, que cette décision nous a forcés à voir clairement — une nouvelle couche fondatrice que le monde entier se dispute pour nommer, financer, occuper. On l'appelle « cerveau d'entreprise », on l'appelle aussi « Enterprise Context Layer », et elle porte encore une dizaine d'autres noms. Le problème qu'elle veut résoudre tient en une phrase : l'IA sait déjà très bien mémoriser, mais qui lui apprend à juger ?</p>
+  <p>Le chapitre suivant commence par regarder à quoi ressemble cette nouvelle catégorie, et combien d'argent le monde entier y déverse déjà.</p>
+</section>
+
+<section id="sec2">
+  <div class="eyebrow"><span class="num">II</span><span class="rule"></span></div>
+  <h2>Le monde entier est en train de donner un nom à cette chose</h2>
+
+  <h3>Le capital court après une chose qui n'a pas encore de nom</h3>
+  <p>Ces dix-huit derniers mois, une vague de start-ups a répondu, presque au même moment et avec des noms différents, à la même question. Engram, née dans l'orbite de Stanford, a levé 98 millions de dollars dès son lancement, avec pour promesse de « faire enfin connaître votre organisation à l'IA »<sup class="src-ref"><a class="ent" href="https://www.prnewswire.com/news-releases/engram-launches-with-98m-to-build-ai-that-actually-knows-your-organization-302807126.html" data-url="https://www.prnewswire.com/news-releases/engram-launches-with-98m-to-build-ai-that-actually-knows-your-organization-302807126.html">17</a></sup>.</p>
+  <p>Mem0, spécialiste de l'infrastructure de mémoire, a bouclé une série A de 24 millions de dollars et se positionne comme « la couche de mémoire universelle des agents IA » ; Coworker, plus petite, a levé 13 millions de dollars en seed pour vendre « un coéquipier IA doté d'une mémoire organisationnelle intégrée »<sup class="src-ref"><a class="ent" href="https://www.prnewswire.com/news-releases/mem0-raises-24m-series-a-to-build-memory-layer-for-ai-agents-302597157.html" data-url="https://www.prnewswire.com/news-releases/mem0-raises-24m-series-a-to-build-memory-layer-for-ai-agents-302597157.html">18</a></sup><sup class="src-ref"><a class="ent" href="https://www.prnewswire.com/news-releases/coworkerai-launches-the-first-ai-agent-with-deep-company-context-backed-by-13m-seed-round-302459262.html" data-url="https://www.prnewswire.com/news-releases/coworkerai-launches-the-first-ai-agent-with-deep-company-context-backed-by-13m-seed-round-302459262.html">19</a></sup>. Ces sociétés n'emploient pas tout à fait les mêmes mots — couche de mémoire, graphe de contexte, Organization Brain — mais le problème qu'elles veulent résoudre est presque identique : l'IA oublie dès qu'une question est répondue, et repart de zéro à la conversation suivante.</p>
+
+  <figure class="viz">
+    <div class="viz-title">Levées de fonds des principales start-ups de mémoire organisationnelle, 2025–2026</div>
+    <div class="viz-sub">Engram／Mem0／Coworker, en millions de dollars (M USD)</div>
+    <svg viewBox="0 0 640 300" role="img" aria-labelledby="fundTitle fundDesc" class="viz-fund">
+      <title id="fundTitle">Diagramme en barres des levées de fonds des principales start-ups de mémoire organisationnelle, 2025–2026</title>
+      <desc id="fundDesc">Engram a levé 98 millions de dollars, Mem0 24 millions de dollars, Coworker 13 millions de dollars ; à elles trois, plus de 100 millions de dollars en dix-huit mois.</desc>
+      <style>
+        .viz-fund{ --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F; --hair:#E3DED2; --surface:#FFFFFF; --s1:#177A5B; --grid:#E7E2D5; --axis:#C9C3B2; }
+        @media (prefers-color-scheme: dark){
+          :root:where(:not([data-theme="light"])) .viz-fund{ --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C; --s1:#2FA079; --grid:#262A26; --axis:#3A3F3A; }
+        }
+        :root[data-theme="dark"] .viz-fund{ --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C; --s1:#2FA079; --grid:#262A26; --axis:#3A3F3A; }
+        .viz-fund text{font-family:"Noto Sans TC","PingFang TC",system-ui,-apple-system,sans-serif}
+        .viz-fund .ax{fill:var(--ink-3); font-size:12px}
+        .viz-fund .axn{fill:var(--ink-3); font-size:11.5px; font-variant-numeric:tabular-nums}
+        .viz-fund .val{fill:var(--ink); font-size:15px; font-weight:700; font-variant-numeric:tabular-nums}
+        .viz-fund .lab{fill:var(--ink-2); font-size:13.5px; font-weight:600}
+        .viz-fund .gridline{stroke:var(--grid); stroke-width:1; stroke-dasharray:2,3}
+        .viz-fund .baseline{stroke:var(--axis); stroke-width:1}
+      </style>
+
+      <line x1="150" y1="30" x2="150" y2="280" class="baseline"/>
+      <line x1="379.6" y1="30" x2="379.6" y2="280" class="gridline"/>
+      <line x1="609.2" y1="30" x2="609.2" y2="280" class="gridline"/>
+      <text x="150" y="22" text-anchor="middle" class="axn">0</text>
+      <text x="379.6" y="22" text-anchor="middle" class="axn">50M</text>
+      <text x="609.2" y="22" text-anchor="middle" class="axn">100M</text>
+
+      <g>
+        <title>Engram : 98 millions de dollars</title>
+        <path d="M150,50 L596,50 Q600,50 600,54 L600,88 Q600,92 596,92 L150,92 Z" fill="var(--s1)"/>
+        <text x="140" y="76" text-anchor="end" class="lab">Engram</text>
+        <text x="610" y="76" text-anchor="start" class="val">$98M</text>
+      </g>
+
+      <g>
+        <title>Mem0 : 24 millions de dollars</title>
+        <path d="M150,134 L256.2,134 Q260.2,134 260.2,138 L260.2,172 Q260.2,176 256.2,176 L150,176 Z" fill="var(--s1)"/>
+        <text x="140" y="160" text-anchor="end" class="lab">Mem0</text>
+        <text x="270.2" y="160" text-anchor="start" class="val">$24M</text>
+      </g>
+
+      <g>
+        <title>Coworker : 13 millions de dollars</title>
+        <path d="M150,218 L205.7,218 Q209.7,218 209.7,222 L209.7,256 Q209.7,260 205.7,260 L150,260 Z" fill="var(--s1)"/>
+        <text x="140" y="244" text-anchor="end" class="lab">Coworker</text>
+        <text x="219.7" y="244" text-anchor="start" class="val">$13M</text>
+      </g>
+
+      <text x="320" y="294" text-anchor="middle" class="ax">En dix-huit mois, les trois réunies dépassent 100 millions de dollars</text>
+    </svg>
+    <figcaption><b>Takeaway :</b> trois start-ups au positionnement proche ont levé, à elles trois, plus de 100 millions de dollars en dix-huit mois — preuve que le capital a déjà validé la « couche de mémoire IA en entreprise » comme une catégorie à part entière, et non comme la simple fonctionnalité annexe d'un grand groupe.</figcaption>
+  </figure>
+
+  <h3>Les géants aussi se positionnent sur cette même couche</h3>
+  <p>Les start-ups occupent le terrain, les géants ne restent pas les bras croisés. Microsoft a regroupé ses trois lignes de produits Work IQ, Fabric IQ et Foundry IQ sous une « couche IQ » unifiée, que sa documentation officielle qualifie directement de « couche d'intelligence d'entreprise de la pile technologique Microsoft »<sup class="src-ref"><a class="ent" href="https://learn.microsoft.com/en-us/microsoft-iq/" data-url="https://learn.microsoft.com/en-us/microsoft-iq/">20</a></sup>. Dans l'écosystème Snowflake est également apparu un Context Layer au positionnement similaire, situé entre l'entrepôt de données et les agents IA<sup class="src-ref"><a class="ent" href="https://atlan.com/know/context-layer-for-snowflake/" data-url="https://atlan.com/know/context-layer-for-snowflake/">21</a></sup> ; Zep, spécialiste de la mémoire des agents, promet une « mémoire d'agent à l'échelle de l'entreprise »<sup class="src-ref"><a class="ent" href="https://www.getzep.com/" data-url="https://www.getzep.com/">22</a></sup>. Le cabinet d'analyse Gartner a même posé un calendrier sur cet engouement : d'ici 2028, plus de 50 % des systèmes d'agents IA s'appuieront sur une forme ou une autre de graphe de contexte<sup class="src-ref"><a class="ent" href="https://atlan.com/know/gartner-context-graphs/" data-url="https://atlan.com/know/gartner-context-graphs/">23</a></sup>.</p>
+  <p>Qu'il s'agisse des start-ups de la Silicon Valley ou des géants du cloud, tous pointent vers la même chose : le modèle lui-même n'est plus le problème. C'est la couche qui manque en dessous du modèle qui devient le prochain champ de bataille.</p>
+
+  <h3>Pourquoi maintenant, et pas il y a trois ans</h3>
+  <p>Ce qui alimente cet engouement, ce sont des douleurs anciennes que l'IA a rendues impossibles à ignorer. Un travailleur du savoir passe en moyenne près de deux heures par jour à chercher de l'information plutôt qu'à travailler — certaines études l'estiment encore plus élevé<sup class="src-ref"><a class="ent" href="https://cottrillresearch.com/various-survey-statistics-workers-spend-too-much-time-searching-for-information/" data-url="https://cottrillresearch.com/various-survey-statistics-workers-spend-too-much-time-searching-for-information/">24</a></sup><sup class="src-ref"><a class="ent" href="https://www.linkedin.com/pulse/knowledge-workers-information-hunting-problem-keeps-rik-van-bruggen-htede" data-url="https://www.linkedin.com/pulse/knowledge-workers-information-hunting-problem-keeps-rik-van-bruggen-htede">25</a></sup>. Dans le même temps, plus de 40 % des entreprises admettent avoir abandonné au moins un projet IA<sup class="src-ref"><a class="ent" href="https://www.promptfluent.com/research/state-of-ai-debt-2026" data-url="https://www.promptfluent.com/research/state-of-ai-debt-2026">26</a></sup> — la raison n'est généralement pas que le modèle manquait d'intelligence, mais que les données et le contexte étaient dans un désordre total.</p>
+  <p>Cette guerre des noms n'a pas encore de vainqueur, parce que même « à quoi ressemble la ligne d'arrivée » ne fait pas consensus. Mais c'est justement parce que rien n'est arrêté qu'il vaut la peine d'étaler ces noms côte à côte — pour voir s'ils désignent vraiment la même chose, ou des choses différentes.</p>
+</section>
+
+<section id="sec3">
+  <div class="eyebrow"><span class="num">III</span><span class="rule"></span></div>
+  <h2>La carte des termes : qui parle quelle langue</h2>
+
+  <h3>D'abord, en clair</h3>
+  <p>À lire côte à côte les textes des sites web de toutes les entreprises concernées sur la dernière année, on découvre sept ou huit formulations différentes pour désigner, en réalité, la même couche. Pour le lecteur, c'est du bruit. Pour qui veut comprendre cette catégorie, c'est un excellent indice — parce que derrière chaque formulation se cache un interlocuteur différent.</p>
+  <p>La mémoire organisationnelle (Organizational Memory), c'est la somme des décisions prises, des erreurs vécues et des principes tirés par une entreprise dans le passé — en théorie mobilisable par les décisions d'aujourd'hui. Le cerveau d'entreprise (Company Brain／Organizational Brain), c'est le terme marketing qui condense la « mémoire organisationnelle » en une phrase destinée aux dirigeants, en insistant sur cet effet : « l'entreprise n'oublie plus ». Le graphe de contexte (Context Graph), c'est un réseau de nœuds et de liens qui cartographie les personnes, les événements et les décisions d'une entreprise dans une structure interrogeable par l'IA, à la place de documents éparpillés.</p>
+
+  <h3>Qui emploie quel mot</h3>
+  <p>Le choix des mots trahit en réalité l'interlocuteur visé. Des termes directs comme « cerveau d'entreprise » ou « mémoire organisationnelle » apparaissent surtout dans les produits vendus aux fondateurs de PME — le site de Sentra se présente carrément comme « votre cerveau d'entreprise », et son article de définition explique à l'acheteur comment en parler à ses collègues<sup class="src-ref"><a class="ent" href="https://www.sentra.app/articles/what-is-a-company-brain" data-url="https://www.sentra.app/articles/what-is-a-company-brain">27</a></sup> ; Coworker, lui, appelle sa technologie « technologie de mémoire organisationnelle », une infrastructure IA censée « capturer, organiser et retrouver le savoir institutionnel dispersé dans toute l'entreprise »<sup class="src-ref"><a class="ent" href="https://coworker.ai/blog/what-is-organizational-memory-technology" data-url="https://coworker.ai/blog/what-is-organizational-memory-technology">28</a></sup>.</p>
+  <p>Changez d'interlocuteur, et le vocabulaire change avec lui. Les cabinets d'analyse et les géants du cloud n'emploient presque jamais le mot « cerveau » : ils disent « Enterprise Context Layer », « Intelligence Layer », « Context Graph ». Microsoft positionne tout son édifice comme une architecture de contexte d'entreprise unifiée, destinée aux DSI et aux architectes — pas aux PDG<sup class="src-ref"><a class="ent" href="https://infusedinnovations.com/blog/work-iq-fabric-iq-and-foundry-iq-the-new-semantic-architecture-of-agentic-ai" data-url="https://infusedinnovations.com/blog/work-iq-fabric-iq-and-foundry-iq-the-new-semantic-architecture-of-agentic-ai">29</a></sup>.</p>
+
+  <h3>Une carte, deux langues</h3>
+  <p>Il ne s'agit pas de savoir qui a raison : c'est le même bâtiment, mais certains parlent de la couleur de la façade, d'autres de la disposition des armatures. Ce qui décide vraiment si cette catégorie tiendra debout, ce n'est pas la sonorité du terme « cerveau d'entreprise », c'est la solidité des armatures en dessous — ontologie, graphes de connaissances, gouvernance, mémoire temporelle<sup class="src-ref"><a class="ent" href="https://vectorize.io/articles/brain-stack-second-company-single-brain" data-url="https://vectorize.io/articles/brain-stack-second-company-single-brain">30</a></sup>.</p>
+  <p>Une fois la carte comprise, la question suivante est plus redoutable encore : sur le marché, presque tous les acteurs, quel que soit le mot qu'ils emploient, traitent le même type de données — celles qui ont déjà été tapées, téléversées, archivées. La moitié vraiment précieuse, presque personne n'y touche.</p>
+</section>
+
+<section id="sec4">
+  <div class="eyebrow"><span class="num">IV</span><span class="rule"></span></div>
+  <h2>L'angle mort que tout le monde partage</h2>
+
+  <h3>La moitié océan rouge</h3>
+  <p>En étalant ce que font toutes ces entreprises du marché, on découvre un angle mort commun, start-ups et géants confondus. Regardons d'abord la moitié « océan rouge » : le savoir déjà numérisé de l'entreprise, qui dort dans les drives cloud, Slack, le CRM, les tickets et les comptes rendus de réunion<sup class="src-ref"><a class="ent" href="https://atlan.com/know/ai-agent/data-for-ai/enterprise-search-with-ai/" data-url="https://atlan.com/know/ai-agent/data-for-ai/enterprise-search-with-ai/">33</a></sup>. Cette moitié-là est abondante, son format est un fouillis, mais au moins elle « existe » — c'est pourquoi les capitaux s'y ruent. Chacune des entreprises citées au chapitre précédent fait la même chose : rendre cette moitié plus propre, plus interrogeable, plus lisible pour l'IA.</p>
+
+  <figure class="viz">
+    <div class="viz-title">Savoir numérisé vs jugement non numérisé</div>
+    <div class="viz-sub">Vers quel côté le capital et les produits affluent-ils</div>
+    <svg viewBox="0 0 700 320" role="img" aria-labelledby="mapTitle mapDesc" class="viz-brainmap">
+      <title id="mapTitle">Tableau à deux colonnes comparant le savoir numérisé et le jugement non numérisé</title>
+      <desc id="mapDesc">Colonne de gauche : savoir numérisé — documents, cloud, CRM, messages, vers lequel le capital afflue. Colonne de droite : jugement non numérisé — dans la tête des vétérans, logique de devis, papier, conversations WhatsApp, un marché quasi vierge.</desc>
+      <style>
+        .viz-brainmap{ --ink:#211F1A; --ink-2:#6B675C; --ink-3:#98937F; --hair:#E3DED2; --surface:#FFFFFF; --s1:#177A5B; --s2:#4661C2; }
+        @media (prefers-color-scheme: dark){
+          :root:where(:not([data-theme="light"])) .viz-brainmap{ --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C; --s1:#2FA079; --s2:#6B7FE0; }
+        }
+        :root[data-theme="dark"] .viz-brainmap{ --ink:#EDEBE3; --ink-2:#A5A99F; --ink-3:#7C8078; --hair:#2A2E2A; --surface:#1C1F1C; --s1:#2FA079; --s2:#6B7FE0; }
+        .viz-brainmap text{font-family:"Noto Sans TC","PingFang TC",system-ui,-apple-system,sans-serif}
+        .viz-brainmap .hd{font-size:17px; font-weight:700}
+        .viz-brainmap .sub{font-size:12.5px; fill:var(--ink-3)}
+        .viz-brainmap .item{font-size:14px; fill:var(--ink)}
+        .viz-brainmap .item2{font-size:14px; fill:var(--ink-2)}
+        .viz-brainmap .foot{font-size:13px; fill:var(--ink); font-weight:700}
+        .viz-brainmap .foot2{font-size:12px; fill:var(--ink-3)}
+      </style>
+
+      <rect x="10" y="20" width="330" height="260" rx="12" fill="none" stroke="var(--s2)" stroke-width="1.6"/>
+      <text x="30" y="54" class="hd" fill="var(--s2)">Savoir numérisé</text>
+      <text x="30" y="76" class="sub">Océan rouge — le capital afflue</text>
+      <circle cx="36" cy="108" r="4" fill="var(--s2)"/><text x="50" y="113" class="item">Documents</text>
+      <circle cx="36" cy="140" r="4" fill="var(--s2)"/><text x="50" y="145" class="item">Cloud</text>
+      <circle cx="36" cy="172" r="4" fill="var(--s2)"/><text x="50" y="177" class="item">CRM</text>
+      <circle cx="36" cy="204" r="4" fill="var(--s2)"/><text x="50" y="209" class="item">Messages</text>
+      <text x="30" y="256" class="foot" fill="var(--s2)">→ Le capital s'y précipite en masse</text>
+
+      <rect x="360" y="20" width="330" height="260" rx="12" fill="none" stroke="var(--s1)" stroke-width="1.6" stroke-dasharray="5,4" opacity=".85"/>
+      <text x="380" y="54" class="hd" fill="var(--s1)">Jugement non numérisé</text>
+      <text x="380" y="76" class="sub">Marché quasi vierge</text>
+      <circle cx="386" cy="118" r="4" fill="var(--s1)"/><text x="400" y="123" class="item2">Dans la tête des vétérans</text>
+      <circle cx="386" cy="164" r="4" fill="var(--s1)"/><text x="400" y="169" class="item2">Logique de devis</text>
+      <circle cx="386" cy="210" r="4" fill="var(--s1)"/><text x="400" y="215" class="item2">Papier</text>
+      <circle cx="386" cy="256" r="4" fill="var(--s1)"/><text x="400" y="261" class="item2">Conversations WhatsApp</text>
+
+      <text x="350" y="306" text-anchor="middle" class="foot2">Dans la même entreprise, les deux moitiés sont des actifs — l'une organisée, l'autre ignorée</text>
+    </svg>
+    <figcaption><b>Takeaway :</b> capitaux et produits se déversent presque entièrement dans la colonne de gauche, tandis que la colonne de droite reste un marché quasi vierge — alors que c'est elle qui détermine réellement la marge et le risque d'une entreprise.</figcaption>
+  </figure>
+
+  <h3>La moitié vierge</h3>
+  <p>Regardons maintenant la droite. Le jugement qui fait vraiment la valeur d'une entreprise n'est presque jamais couché par écrit : la marge de manœuvre pour accorder une remise sur un devis, la phrase d'un client fidèle qui signale qu'il est sur le point de partir, le seuil de qualité qu'un vétéran fixe au feeling. Rien de tout cela ne figure dans une base de données — cela ne vit que dans la tête de quelques personnes, entretenu par les réunions, la formation des nouveaux et le bouche-à-oreille. La littérature en management le pointe depuis longtemps : l'une des causes principales de l'échec de la mémoire organisationnelle, c'est que le système de connaissance est structurellement coupé du travail réel — la connaissance exige un effort de saisie supplémentaire, au lieu de se déposer naturellement pendant le travail<sup class="src-ref"><a class="ent" href="http://www-sop.inria.fr/acacia/WORKSHOPS/IJCAI2005-OM/KMOM2005-proceedings-fin.pdf" data-url="http://www-sop.inria.fr/acacia/WORKSHOPS/IJCAI2005-OM/KMOM2005-proceedings-fin.pdf">45</a></sup><sup class="src-ref"><a class="ent" href="https://www.jucs.org/jucs_9_12/organisational_memory_information_systems/de_Vasconcelos_J_B.pdf" data-url="https://www.jucs.org/jucs_9_12/organisational_memory_information_systems/de_Vasconcelos_J_B.pdf">47</a></sup>.</p>
+
+  <blockquote class="pull">
+    <p>La base de données la plus précieuse de l'entreprise rentre chez elle tous les soirs à dix-huit heures</p>
+  </blockquote>
+
+  <p>Cette phrase vient d'un autre article de ce site, « L'actif du jugement », qui décrit exactement ce phénomène<sup class="src-ref"><a class="ent" href="https://articles.bekhelpme.com/judgment-asset" data-url="https://articles.bekhelpme.com/judgment-asset">16</a></sup>. Replacée dans ce contexte, elle devient encore plus claire : les entreprises du chapitre précédent, qui lèvent des dizaines de millions, quel que soit le terme technique employé, ne font qu'améliorer l'organisation de la moitié de gauche — aussi puissant que soit le modèle, aussi élégant que soit le graphe construit, ce qu'ils lisent reste « ce qui a déjà été écrit ». La moitié qui détermine vraiment si l'IA est utile ou non n'a jamais été dans les documents. Elle est dans les têtes, et elle disparaît quand les gens partent.</p>
+
+  <h3>Voici le plafond de la couche d'information</h3>
+  <p>Ce n'est le problème d'aucune entreprise en particulier, c'est le plafond de toute l'architecture de la couche d'information : elle sait « retrouver ce qui a déjà été écrit », elle ne sait pas « retenir le jugement qui n'a jamais été écrit ». Et même pour ce qui a été écrit, une question, que peu de gens posent, demeure : <span class="seed">ce savoir traité comme un fait, quelqu'un en répond-il ?</span> Ce plafond est justement le problème que la couche suivante doit traiter.</p>
+</section>
+
+<section id="sec5">
+  <div class="eyebrow"><span class="num">V</span><span class="rule"></span></div>
+  <h2>Après la couche d'information vient la couche de jugement</h2>
+
+  <h3>Ce à quoi répond la mémoire, ce à quoi répond le jugement</h3>
+  <p>Le chapitre IV décrivait le plafond de la couche d'information. Ce chapitre décrit ce qu'il y a au-dessus de ce plafond, une couche de nature totalement différente. La couche de mémoire répond à la question « que savons-nous » — où sont les données, qui a dit quoi la dernière fois, quelle est la version en vigueur de telle politique. La couche de jugement répond à une question différente : « comment déciderions-nous » — sur le même devis, le patron accorde une remise supplémentaire en voyant le nom de tel client ; face au même chiffre anormal, l'ingénieur chevronné juge s'il s'agit d'un capteur défaillant ou d'un vrai problème. Ce sont deux compétences totalement distinctes : l'une consiste à consulter, l'autre à doser.</p>
+  <p>La couche de jugement (Judgment Layer), c'est la couche qui transforme la logique et la mesure de « comment décider » d'une entreprise en un actif que l'entreprise peut elle-même consulter, qu'un départ ne peut pas emporter — plutôt que de le laisser vivre uniquement dans la tête de quelques personnes.</p>
+
+  <h3>Trois choses, à réaliser d'un coup</h3>
+  <p>Une bonne couche de jugement n'a besoin de réussir que trois choses. Consultable : face à une situation similaire, pouvoir retrouver les décisions passées comparables et leurs raisons, sans devoir deviner à chaque fois. Retenue : quand la personne qui portait le jugement part ou prend sa retraite, la logique du jugement reste dans l'entreprise, elle ne s'en va pas avec elle. Verrouillable : les données et la logique de jugement restent sous contrôle des permissions, et le système continue de fonctionner même débranché du réseau, sans devoir rester perpétuellement suspendu au cloud de quelqu'un d'autre. Cette méthode existe déjà : une demande de brevet provisoire a été déposée aux États-Unis pour cette méthode. Mais pour une entreprise, l'essentiel n'a jamais été le terme technique : c'est d'obtenir un résultat consultable, retenu et verrouillable.</p>
+
+  <h3>Les fondations sont posées, qui décide de ce qu'on construit dessus</h3>
+  <p>Le chapitre précédent et celui-ci forment ensemble les deux étages d'un même bâtiment : en bas, les fondations, qui déterminent si les données sont bien rangées ; en haut, qui habite dans la maison et qui a le dernier mot. Presque tout le capital du marché est aujourd'hui investi dans les fondations. Mais aussi solides soient-elles, si personne ne définit clairement « comment cette maison doit décider face à un imprévu », l'IA la plus puissante ne sera qu'un locataire à la mémoire excellente, mais dépourvu de jugement.</p>
+  <p>C'est aussi pourquoi une autre forme d'anxiété a commencé à apparaître sur le marché en 2026 — non plus « l'IA de cette entreprise est-elle assez puissante », mais « ce que dit cette entreprise peut-il être vérifié ». Après tout, même la question la plus élémentaire, presque personne n'ose y répondre : <span class="seed">quand votre IA donne une réponse, peut-elle en citer la source ?</span> Cette anxiété est en train d'être portée à son paroxysme en Europe.</p>
+</section>
+
+<section id="sec6">
+  <div class="eyebrow"><span class="num">VI</span><span class="rule"></span></div>
+  <h2>L'Europe comme terrain d'épreuve</h2>
+
+  <h3>La saison de chasse à l'IA washing</h3>
+  <p>Les chapitres précédents ont montré comment la technologie et le capital nomment cette catégorie ; ce chapitre montre comment l'Europe de 2026 a fixé une nouvelle barre de passage pour toute la catégorie. Cette année, l'« IA washing » (les allégations mensongères sur l'IA) est officiellement passé du sarcasme en ligne à la cible de chasse des régulateurs et des médias. Les autorités boursières et judiciaires américaines ont nettement renforcé leurs enquêtes et leur répression contre les allégations exagérées sur l'IA<sup class="src-ref"><a class="ent" href="https://globalinvestigationsreview.com/review/the-investigations-review-of-the-americas/2026/article/us-enforcement-agencies-intensify-scrutiny-of-ai-washing" data-url="https://globalinvestigationsreview.com/review/the-investigations-review-of-the-americas/2026/article/us-enforcement-agencies-intensify-scrutiny-of-ai-washing">2</a></sup>. Forbes a dressé une liste des « mots déclencheurs de l'IA washing » à l'usage des relations publiques, et des cas comme celui de Klarna sont devenus, en coulisses, des leçons que le secteur se répète entre soi<sup class="src-ref"><a class="ent" href="https://www.forbes.com/councils/forbesagencycouncil/2026/08/18/ai-washing-is-becoming-a-reputation-risk-companies-cant-afford/" data-url="https://www.forbes.com/councils/forbesagencycouncil/2026/08/18/ai-washing-is-becoming-a-reputation-risk-companies-cant-afford/">1</a></sup>. La vague de licenciements et le soupçon que « ces licenciements ne seraient qu'un prétexte à l'IA » se sont produits en même temps, rendant l'opinion publique encore plus nerveuse face à toute allégation liée à l'IA<sup class="src-ref"><a class="ent" href="https://www.newsweek.com/tech-hits-layoff-milestone-concerns-of-ai-washing-11807595" data-url="https://www.newsweek.com/tech-hits-layoff-milestone-concerns-of-ai-washing-11807595">3</a></sup>. Aujourd'hui, en entendant des mots comme « zéro hallucination » ou « disruptif », <span class="seed">votre alarme sonne-t-elle ?</span></p>
+
+  <h3>Le syndrome de lassitude souverainiste</h3>
+  <p>En Allemagne, une autre forme de lassitude se répand. Handelsblatt souligne que presque tous les fournisseurs d'IA se déclarent « souverains » (souverän), au point que le mot commence à perdre son sens — ils appellent cela le « paradoxe de la souveraineté » : la souveraineté ne se décide pas au niveau du modèle, elle se décide dans l'ensemble de la gouvernance et du mode de déploiement<sup class="src-ref"><a class="ent" href="https://live.handelsblatt.com/das-souveraenitaets-paradoxon-der-ki-warum-souveraenitaet-nicht-am-modell-entschieden-wird/" data-url="https://live.handelsblatt.com/das-souveraenitaets-paradoxon-der-ki-warum-souveraenitaet-nicht-am-modell-entschieden-wird/">4</a></sup><sup class="src-ref"><a class="ent" href="https://live.handelsblatt.com/check-liste-fuer-souveraenitaet-neun-fragen-die-sie-ihrem-ki-anbieter-stellen-sollten/" data-url="https://live.handelsblatt.com/check-liste-fuer-souveraenitaet-neun-fragen-die-sie-ihrem-ki-anbieter-stellen-sollten/">5</a></sup>. L'association des fournisseurs cloud CISPE est allée plus loin en forgeant le terme « Sovereignty Washing » (le blanchiment de souveraineté), et a lancé un référentiel de certification « Verifiably Sovereign » pour ramener ce mot à un standard vérifiable<sup class="src-ref"><a class="ent" href="https://www.theregister.com/2026/03/18/cispe_sovereignty_washing/" data-url="https://www.theregister.com/2026/03/18/cispe_sovereignty_washing/">6</a></sup><sup class="src-ref"><a class="ent" href="https://www.cispe.cloud/verifiably-sovereign/" data-url="https://www.cispe.cloud/verifiably-sovereign/">7</a></sup>. Le média technique heise rappelle lui aussi à ses lecteurs que la publication des poids d'un modèle open source n'équivaut pas à la souveraineté des données — ce sont deux choses distinctes<sup class="src-ref"><a class="ent" href="https://www.heise.de/news/c-t-KI-Wissen-2026-So-entkommen-Sie-dem-Raederwerk-der-KI-11372069.html" data-url="https://www.heise.de/news/c-t-KI-Wissen-2026-So-entkommen-Sie-dem-Raederwerk-der-KI-11372069.html">8</a></sup>, et l'Office fédéral allemand de la sécurité informatique (BSI) rédige déjà un projet de catalogue d'audit de fiabilité des systèmes d'IA<sup class="src-ref"><a class="ent" href="https://www.heise.de/news/Vertrauenswuerdigkeit-von-KI-Systemen-BSI-veroeffentlicht-Pruefkatalogsentwurf-11356007.html" data-url="https://www.heise.de/news/Vertrauenswuerdigkeit-von-KI-Systemen-BSI-veroeffentlicht-Pruefkatalogsentwurf-11356007.html">9</a></sup>. Les Allemands ont ramené ce grand mot de souveraineté à une petite question qu'on peut vérifier de ses propres mains : <span class="seed">si on débranche le câble réseau, ça fonctionne encore ?</span></p>
+  <p>En France, la trajectoire est un peu différente — le discours sur la souveraineté monte lui aussi, mais ce que vos médias exigent, c'est du concret, pas des slogans. Maddyness pose la question sans détour : votre souveraineté numérique française « n'existe pas encore », tant que vous n'aurez pas quelque chose de réellement accompli à montrer<sup class="src-ref"><a class="ent" href="https://www.maddyness.com/2026/07/13/cloud-souverain-et-si-le-mythe-devenait-enfin-realite/" data-url="https://www.maddyness.com/2026/07/13/cloud-souverain-et-si-le-mythe-devenait-enfin-realite/">10</a></sup><sup class="src-ref"><a class="ent" href="https://www.maddyness.com/2026/07/01/la-souverainete-numerique-francaise-nexiste-pas-pas-encore/" data-url="https://www.maddyness.com/2026/07/01/la-souverainete-numerique-francaise-nexiste-pas-pas-encore/">11</a></sup>. Au même moment, une nouvelle série de dispositions de l'AI Act européen est entrée en vigueur le 2 août, précisant davantage les sanctions et les obligations de signalisation pour les systèmes d'IA à haut risque<sup class="src-ref"><a class="ent" href="https://consulting.tuv.com/aktuelles/ki-im-fokus/eu-ai-act-august-2-2026-unternehmen" data-url="https://consulting.tuv.com/aktuelles/ki-im-fokus/eu-ai-act-august-2-2026-unternehmen">12</a></sup>, et la CCI de Cologne rappelle elle aussi aux entreprises quelles sorties d'IA doivent impérativement être signalées, sans ambiguïté possible<sup class="src-ref"><a class="ent" href="https://www.ihk.de/koeln/hauptnavigation/digitalisierung-und-innovation/digitalisierung/transparenzpflichten-nach-der-ki-verordnung-7100068" data-url="https://www.ihk.de/koeln/hauptnavigation/digitalisierung-und-innovation/digitalisierung/transparenzpflichten-nach-der-ki-verordnung-7100068">13</a></sup>.</p>
+
+  <h3>Vérifiable : la nouvelle monnaie de la confiance</h3>
+  <p>Cette série d'événements pointe vers une même conclusion : ce qu'on ose affirmer ne vaut plus rien, ce qui vaut quelque chose, c'est d'oser se faire vérifier sur place. À la WWDC de cette année, Apple a au contraire été salué par les médias pour un changement de style dans ses démos IA — appareils réels, rythme ralenti, pas d'esbroufe technique<sup class="src-ref"><a class="ent" href="https://techcrunch.com/2026/06/08/apples-wwdc-ai-demos-looked-more-real-after-250m-false-ad-settlement/" data-url="https://techcrunch.com/2026/06/08/apples-wwdc-ai-demos-looked-more-real-after-250m-false-ad-settlement/">14</a></sup>. C'est en soi un signal : quand la sanction de la « tromperie » devient assez douloureuse, la « lenteur honnête » devient un avantage compétitif.</p>
+  <p>C'est exactement ce dont ce groupe débattait vraiment, quatre jours plus tôt, dans cette salle de réunion à Berlin.</p>
+</section>
+
+<section id="sec7">
+  <div class="eyebrow"><span class="num">VII</span><span class="rule"></span></div>
+  <h2>Chaque renoncement de ces quatre jours</h2>
+
+  <h3>Le préenregistré, entièrement retiré</h3>
+  <p>Retour dans cette salle de réunion du 29 août. En quatre jours, plusieurs décisions ont été prises, toutes dans la même direction. La première est la plus directe : la séquence préenregistrée de secours, entièrement retirée. Comme évoqué plus haut, c'est une pratique professionnelle établie de longue date dans le secteur, pas un calcul opportuniste de qui que ce soit. Mais dans le climat médiatique de 2026, la question « est-ce que cette image s'est vraiment produite en direct » sera examinée à la loupe en elle-même. Plutôt que de prendre ce risque, autant tout faire en direct, avec l'environnement matériel réel d'Acer GPC et d'Altos GB10, et laisser NWD Wisdom Core tourner devant tout le monde.</p>
+
+  <h3>Le temps grammatical de l'honnêteté</h3>
+  <p>La deuxième décision porte sur le langage. Sur scène, seuls deux types de phrases sont autorisés : ce que cette machine peut faire ici et maintenant, et ce que l'équipe fait réellement aujourd'hui pour ses clients — pour ce qui est faisable mais pas sur cette machine précise, il faut préciser clairement où cela se passe ; aucun chiffre qui n'a pas été testé soi-même ne sera prononcé. Cela ressemble à une petite règle, mais elle a forcé à réécrire tout le script de la démo : chaque phrase devait être capable de tenir, si quelqu'un la vérifiait sur-le-champ.</p>
+
+  <h3>Commencer par la fin</h3>
+  <p>La troisième décision est la plus difficile : abandonner le moment le plus spectaculaire de toute la démo. Cette séquence produisait le meilleur effet, mais c'était aussi la plus risquée, la plus difficile à maîtriser entièrement en direct — les détails ne peuvent pas être rendus publics. L'équipe a finalement décidé que, plutôt que de parier sur un point culminant flamboyant mais fragile, il valait mieux revenir à ce que la démo devait vraiment prouver : la fiabilité de ce système ne tient pas à la qualité du spectacle, elle tient à sa capacité à accepter d'être interrompu et recommencé à tout moment.</p>
+
+  <blockquote class="pull">
+    <p>Choisir en connaissant le prix, voilà ce qu'on appelle une décision ; choisir sans en connaître le prix n'est que de la chance</p>
+  </blockquote>
+
+  <p>Mises bout à bout, ces décisions tiennent en une seule phrase : à l'ère de l'IA, ce qui juge une entreprise (et une personne), ce n'est pas ce qu'elle a fait, c'est comment elle a décidé de le faire. Cette phrase est exactement ce que la couche de jugement cherche à retenir : non pas le résultat, mais le processus qui a produit ce résultat. Et pour distinguer une entreprise qui le fait vraiment d'une entreprise qui se contente d'en parler, vous pouvez vous-même disposer d'une méthode de vérification.</p>
+</section>
+
+<section id="sec8">
+  <div class="eyebrow"><span class="num">VIII</span><span class="rule"></span></div>
+  <h2>Comment distinguer le vrai du faux</h2>
+
+  <p>Arrivé ici, vous disposez déjà d'une carte (chapitres II et III), d'un angle mort (chapitre IV), et d'un ensemble de critères pour juger si tout cela fonctionne vraiment (chapitres V, VI et VII). Il reste une question très pratique : la prochaine fois que quelqu'un vous vend un « cerveau d'entreprise », une « couche de mémoire IA » ou une « couche de contexte intelligente », que faut-il demander pour démasquer le vrai du faux, sur-le-champ ? La réponse tient en cinq questions — et vous constaterez qu'en lisant cet article jusqu'ici, vous les avez en réalité déjà toutes croisées.</p>
+
+  <div class="qa">
+    <p><strong>Demandez la source :</strong> d'où vient cette réponse ? Peut-elle pointer vers une origine, citer une source, ou n'est-ce qu'une affirmation pleine d'assurance et rien d'autre ? Seul un système dont on peut retrouver la source a le droit de parler de confiance.</p>
+    <p><strong>Demandez le direct :</strong> ose-t-il refaire la démonstration sur-le-champ, devant vous ? Il ne s'agit pas de regarder une séquence préenregistrée, mais de voir comment il réagit ici, maintenant, face à une question que vous posez à l'improviste.</p>
+    <p><strong>Demandez le débranchement :</strong> les données restent-elles vraiment à l'intérieur ? Si on débranche le câble réseau, ce système fonctionne-t-il encore, peut-il encore retrouver le jugement propre à l'entreprise ? Ou bien envoie-t-il en réalité en permanence des données vers le cloud de quelqu'un d'autre ?</p>
+    <p><strong>Demandez le responsable :</strong> chaque élément de savoir que le système traite comme un « fait » a-t-il une personne réelle qui en répond, qui peut être tenue responsable ? Ou bien personne ne sait qui l'a saisi, qui l'a modifié ?</p>
+    <p><strong>Demandez les mots absolus :</strong> le discours commercial contient-il des mots absolus comme « zéro hallucination », « jamais d'erreur », « disruptif » ? Un système honnête ose généralement reconnaître où se situent ses limites, plutôt que de prétendre ne pas en avoir.</p>
+  </div>
+
+  <p>Ces cinq questions posent en réalité la même chose : ce système ose-t-il se laisser vérifier ? Ce qui ose être vérifié mérite d'être digne de confiance — et la confiance, c'est en fin de compte ce que toute cette nouvelle catégorie cherche à vendre. La technologie se renouvelle par générations ; seule la confiance produit des intérêts composés. C'est aussi ce dont parle le dernier chapitre.</p>
+</section>
+
+<section id="sec9">
+  <div class="eyebrow"><span class="num">IX</span><span class="rule"></span></div>
+  <h2>L'actif de jugement produit des intérêts composés</h2>
+
+  <h3>Plus tôt on commence à en accumuler, plus ça vaut cher</h3>
+  <p>Retour à la question initiale : pendant que le monde entier équipe l'IA d'une mémoire, qui équipe l'entreprise d'un jugement ? La réponse devrait maintenant être claire — ce n'est pas une question de choix, c'est une question de temps. Les fondations de la couche d'information, tout le monde se bat pour les poser ; arriver plus tard coûte tout au plus un peu plus cher, un peu plus lentement. Mais la couche de jugement, c'est différent : elle repose sur le fait d'enregistrer, une à une, les nuances jamais écrites de l'entreprise. Plus on commence tôt, plus l'accumulation s'épaissit, et plus il devient difficile pour ceux qui arrivent après de rattraper le retard — parce qu'un concurrent peut acheter le même modèle, le même service cloud, mais il ne peut pas acheter la logique derrière chacune des décisions prises par votre entreprise au cours des dix dernières années.</p>
+
+  <h3>Ni transportable, ni copiable</h3>
+  <p>C'est aussi ce qui distingue le plus l'actif de jugement de tout autre avantage concurrentiel. On peut copier un prix, imiter un produit, débaucher même toute une équipe — mais la logique de jugement propre à une entreprise, une fois transformée en un actif que l'entreprise peut elle-même consulter et verrouiller, ne se déplace pas, ne se copie pas. Elle ne peut être reconstituée qu'à partir de zéro — et pour la reconstituer, il faut précisément du temps, la seule chose que personne ne peut acheter.</p>
+
+  <blockquote class="pull">
+    <p>Le jour où une entreprise devient vraiment mature, ce n'est pas le jour où son fondateur devient plus important — c'est le jour où le fondateur peut enfin devenir un peu moins important</p>
+  </blockquote>
+
+  <h3>Le fondateur peut enfin devenir un peu moins important</h3>
+  <p>Cette phrase vient de l'article « L'actif du jugement », et elle reste valable ici — plus valable encore<sup class="src-ref"><a class="ent" href="https://articles.bekhelpme.com/judgment-asset" data-url="https://articles.bekhelpme.com/judgment-asset">16</a></sup>. Parce que pendant que toute l'industrie se presse vers la « couche de contexte » et la « couche de mémoire », ce qui est vraiment rare, ce qui mérite vraiment d'être investi, n'a jamais été la taille du modèle de tel ou tel acteur. C'est la volonté de qui accepte, le premier, de sortir honnêtement ce qu'il a dans la tête, pour en faire quelque chose que l'entreprise peut consulter.</p>
+  <p>La décision prise ce matin-là, quatre jours plus tôt, n'était au fond qu'une petite répétition de cette phrase — choisir en connaissant le prix, voilà ce qu'on appelle une décision. C'est aussi ce que NWD Wisdom Core et l'ensemble de l'Organization Brain cherchent à faire : non pas équiper l'entreprise d'une mémoire encore plus douée pour réciter par cœur, mais transformer les jugements jamais écrits de l'entreprise en un actif retenu, verrouillable, et <strong>qui ose être vérifié</strong>.</p>
+
+  <div class="quiz">
+    <h3>À vous de répondre à quatre questions, maintenant</h3>
+<p>Passez-vous l'essentiel de votre temps à éteindre des incendies, à répondre aux mêmes questions que vos employés vous ont déjà posées huit cents fois ?</p>
+    <p>Dans votre entreprise, qui porte le jugement le plus précieux ?</p>
+    <p>L'IA que chacun de vos employés utilise connaît-elle les règles de ces jugements ?</p>
+    <p>Si cette personne ne venait plus travailler demain, votre entreprise pourrait-elle encore décider comme elle l'aurait fait ?</p>
+  </div>
+
+  <div class="cta">
+    <p class="lead">Pour en savoir plus</p>
+    <a class="btn" href="https://wisdomcore.aibud.tw/?utm_source=articles&amp;utm_medium=cta&amp;utm_campaign=company-brain-fr" onclick="gtag('event','cta_click',{campaign:'company-brain-fr'})">wisdomcore.aibud.tw</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Digest du Phare (Lighthouse Digest) · articles.bekhelpme.com</p>
+  <p>Le texte est conservé mot pour mot du manuscrit source ; tous les liens cités peuvent être ouverts pour consulter l'original.</p>
+</footer>
+</div>
+
+<section id="sources" class="wrap">
+  <div class="eyebrow"><span class="rule"></span></div>
+  <h2>Sources</h2>
+  <p class="standfirst">33 sources au total, regroupées selon le fil de l'article ; chacune peut être ouverte pour consulter l'original.</p>
+
+  <div class="src-group">
+    <h3>I · Le matin à quatre jours du compte à rebours</h3>
+    <ol>
+      <li><a class="ent" href="https://www.gsmaintelligence.com/blogs/ifa-berlin-2026-seven-important-areas-ill-be-watching-what-i-expect-to-see-and-what-will-matter" data-url="https://www.gsmaintelligence.com/blogs/ifa-berlin-2026-seven-important-areas-ill-be-watching-what-i-expect-to-see-and-what-will-matter">GSMA Intelligence — Aperçu de l'IFA Berlin 2026</a></li>
+    </ol>
+  </div>
+
+  <div class="src-group">
+    <h3>II · Le monde entier est en train de donner un nom à cette chose</h3>
+    <ol>
+      <li><a class="ent" href="https://www.prnewswire.com/news-releases/engram-launches-with-98m-to-build-ai-that-actually-knows-your-organization-302807126.html" data-url="https://www.prnewswire.com/news-releases/engram-launches-with-98m-to-build-ai-that-actually-knows-your-organization-302807126.html">PRNewswire — Engram lève 98 M$ à son lancement</a></li>
+      <li><a class="ent" href="https://www.prnewswire.com/news-releases/mem0-raises-24m-series-a-to-build-memory-layer-for-ai-agents-302597157.html" data-url="https://www.prnewswire.com/news-releases/mem0-raises-24m-series-a-to-build-memory-layer-for-ai-agents-302597157.html">PRNewswire — Mem0 lève 24 M$ en série A</a></li>
+      <li><a class="ent" href="https://www.prnewswire.com/news-releases/coworkerai-launches-the-first-ai-agent-with-deep-company-context-backed-by-13m-seed-round-302459262.html" data-url="https://www.prnewswire.com/news-releases/coworkerai-launches-the-first-ai-agent-with-deep-company-context-backed-by-13m-seed-round-302459262.html">PRNewswire — Coworker.ai lève 13 M$ en seed</a></li>
+      <li><a class="ent" href="https://learn.microsoft.com/en-us/microsoft-iq/" data-url="https://learn.microsoft.com/en-us/microsoft-iq/">Microsoft Learn — Documentation Microsoft IQ</a></li>
+      <li><a class="ent" href="https://atlan.com/know/context-layer-for-snowflake/" data-url="https://atlan.com/know/context-layer-for-snowflake/">Atlan — Context Layer for Snowflake</a></li>
+      <li><a class="ent" href="https://www.getzep.com/" data-url="https://www.getzep.com/">Zep — La mémoire d'agent à l'échelle de l'entreprise</a></li>
+      <li><a class="ent" href="https://atlan.com/know/gartner-context-graphs/" data-url="https://atlan.com/know/gartner-context-graphs/">Atlan — Gartner sur les Context Graphs</a></li>
+      <li><a class="ent" href="https://cottrillresearch.com/various-survey-statistics-workers-spend-too-much-time-searching-for-information/" data-url="https://cottrillresearch.com/various-survey-statistics-workers-spend-too-much-time-searching-for-information/">Cottrill Research — Le temps passé à chercher l'information</a></li>
+      <li><a class="ent" href="https://www.linkedin.com/pulse/knowledge-workers-information-hunting-problem-keeps-rik-van-bruggen-htede" data-url="https://www.linkedin.com/pulse/knowledge-workers-information-hunting-problem-keeps-rik-van-bruggen-htede">LinkedIn／Rik van Bruggen — Le problème de la « chasse à l'information »</a></li>
+      <li><a class="ent" href="https://www.promptfluent.com/research/state-of-ai-debt-2026" data-url="https://www.promptfluent.com/research/state-of-ai-debt-2026">PromptFluent — Le coût caché de la dette de prompt et de la dette IA</a></li>
+    </ol>
+  </div>
+
+  <div class="src-group">
+    <h3>III · La carte des termes</h3>
+    <ol>
+      <li><a class="ent" href="https://www.sentra.app/articles/what-is-a-company-brain" data-url="https://www.sentra.app/articles/what-is-a-company-brain">Sentra — Qu'est-ce qu'un cerveau d'entreprise ? Le guide 2026</a></li>
+      <li><a class="ent" href="https://coworker.ai/blog/what-is-organizational-memory-technology" data-url="https://coworker.ai/blog/what-is-organizational-memory-technology">Coworker — Qu'est-ce que la technologie de mémoire organisationnelle ?</a></li>
+      <li><a class="ent" href="https://infusedinnovations.com/blog/work-iq-fabric-iq-and-foundry-iq-the-new-semantic-architecture-of-agentic-ai" data-url="https://infusedinnovations.com/blog/work-iq-fabric-iq-and-foundry-iq-the-new-semantic-architecture-of-agentic-ai">Infused Innovations — Work IQ, Fabric IQ et Foundry IQ</a></li>
+      <li><a class="ent" href="https://vectorize.io/articles/brain-stack-second-company-single-brain" data-url="https://vectorize.io/articles/brain-stack-second-company-single-brain">Vectorize — La pile des cerveaux : Second, Company et Single Brain</a></li>
+    </ol>
+  </div>
+
+  <div class="src-group">
+    <h3>IV · L'angle mort que tout le monde partage</h3>
+    <ol>
+      <li><a class="ent" href="https://atlan.com/know/ai-agent/data-for-ai/enterprise-search-with-ai/" data-url="https://atlan.com/know/ai-agent/data-for-ai/enterprise-search-with-ai/">Atlan — Recherche IA en entreprise : le contexte gouverné</a></li>
+      <li><a class="ent" href="http://www-sop.inria.fr/acacia/WORKSHOPS/IJCAI2005-OM/KMOM2005-proceedings-fin.pdf" data-url="http://www-sop.inria.fr/acacia/WORKSHOPS/IJCAI2005-OM/KMOM2005-proceedings-fin.pdf">INRIA — Knowledge Management and Organizational Memories</a></li>
+      <li><a class="ent" href="https://www.jucs.org/jucs_9_12/organisational_memory_information_systems/de_Vasconcelos_J_B.pdf" data-url="https://www.jucs.org/jucs_9_12/organisational_memory_information_systems/de_Vasconcelos_J_B.pdf">JUCS — Organisational Memory Information Systems: An Example</a></li>
+    </ol>
+  </div>
+
+  <div class="src-group">
+    <h3>VI · L'Europe comme terrain d'épreuve</h3>
+    <ol>
+      <li><a class="ent" href="https://www.forbes.com/councils/forbesagencycouncil/2026/08/18/ai-washing-is-becoming-a-reputation-risk-companies-cant-afford/" data-url="https://www.forbes.com/councils/forbesagencycouncil/2026/08/18/ai-washing-is-becoming-a-reputation-risk-companies-cant-afford/">Forbes — Le risque de réputation de l'IA washing</a></li>
+      <li><a class="ent" href="https://globalinvestigationsreview.com/review/the-investigations-review-of-the-americas/2026/article/us-enforcement-agencies-intensify-scrutiny-of-ai-washing" data-url="https://globalinvestigationsreview.com/review/the-investigations-review-of-the-americas/2026/article/us-enforcement-agencies-intensify-scrutiny-of-ai-washing">Global Investigations Review — Répression américaine de l'IA washing</a></li>
+      <li><a class="ent" href="https://www.newsweek.com/tech-hits-layoff-milestone-concerns-of-ai-washing-11807595" data-url="https://www.newsweek.com/tech-hits-layoff-milestone-concerns-of-ai-washing-11807595">Newsweek — Licenciements et IA washing</a></li>
+      <li><a class="ent" href="https://live.handelsblatt.com/das-souveraenitaets-paradoxon-der-ki-warum-souveraenitaet-nicht-am-modell-entschieden-wird/" data-url="https://live.handelsblatt.com/das-souveraenitaets-paradoxon-der-ki-warum-souveraenitaet-nicht-am-modell-entschieden-wird/">Handelsblatt Live — Le paradoxe de la souveraineté</a></li>
+      <li><a class="ent" href="https://live.handelsblatt.com/check-liste-fuer-souveraenitaet-neun-fragen-die-sie-ihrem-ki-anbieter-stellen-sollten/" data-url="https://live.handelsblatt.com/check-liste-fuer-souveraenitaet-neun-fragen-die-sie-ihrem-ki-anbieter-stellen-sollten/">Handelsblatt Live — Neuf questions pour vérifier la souveraineté</a></li>
+      <li><a class="ent" href="https://www.theregister.com/2026/03/18/cispe_sovereignty_washing/" data-url="https://www.theregister.com/2026/03/18/cispe_sovereignty_washing/">The Register — CISPE et le Sovereignty Washing</a></li>
+      <li><a class="ent" href="https://www.cispe.cloud/verifiably-sovereign/" data-url="https://www.cispe.cloud/verifiably-sovereign/">CISPE — Référentiel de certification Verifiably Sovereign</a></li>
+      <li><a class="ent" href="https://www.heise.de/news/c-t-KI-Wissen-2026-So-entkommen-Sie-dem-Raederwerk-der-KI-11372069.html" data-url="https://www.heise.de/news/c-t-KI-Wissen-2026-So-entkommen-Sie-dem-Raederwerk-der-KI-11372069.html">heise — c't KI-Wissen 2026 (poids open source ≠ souveraineté)</a></li>
+      <li><a class="ent" href="https://www.heise.de/news/Vertrauenswuerdigkeit-von-KI-Systemen-BSI-veroeffentlicht-Pruefkatalogsentwurf-11356007.html" data-url="https://www.heise.de/news/Vertrauenswuerdigkeit-von-KI-Systemen-BSI-veroeffentlicht-Pruefkatalogsentwurf-11356007.html">heise — Projet de catalogue d'audit de fiabilité du BSI</a></li>
+      <li><a class="ent" href="https://www.maddyness.com/2026/07/13/cloud-souverain-et-si-le-mythe-devenait-enfin-realite/" data-url="https://www.maddyness.com/2026/07/13/cloud-souverain-et-si-le-mythe-devenait-enfin-realite/">Maddyness — Cloud souverain</a></li>
+      <li><a class="ent" href="https://www.maddyness.com/2026/07/01/la-souverainete-numerique-francaise-nexiste-pas-pas-encore/" data-url="https://www.maddyness.com/2026/07/01/la-souverainete-numerique-francaise-nexiste-pas-pas-encore/">Maddyness — La souveraineté numérique française</a></li>
+      <li><a class="ent" href="https://consulting.tuv.com/aktuelles/ki-im-fokus/eu-ai-act-august-2-2026-unternehmen" data-url="https://consulting.tuv.com/aktuelles/ki-im-fokus/eu-ai-act-august-2-2026-unternehmen">TÜV Rheinland — AI Act européen, 2 août 2026</a></li>
+      <li><a class="ent" href="https://www.ihk.de/koeln/hauptnavigation/digitalisierung-und-innovation/digitalisierung/transparenzpflichten-nach-der-ki-verordnung-7100068" data-url="https://www.ihk.de/koeln/hauptnavigation/digitalisierung-und-innovation/digitalisierung/transparenzpflichten-nach-der-ki-verordnung-7100068">CCI de Cologne (IHK Köln) — Obligations de signalisation de l'IA</a></li>
+      <li><a class="ent" href="https://techcrunch.com/2026/06/08/apples-wwdc-ai-demos-looked-more-real-after-250m-false-ad-settlement/" data-url="https://techcrunch.com/2026/06/08/apples-wwdc-ai-demos-looked-more-real-after-250m-false-ad-settlement/">TechCrunch — Le changement de style des démos IA d'Apple</a></li>
+    </ol>
+  </div>
+
+  <div class="src-group">
+    <h3>Référence interne</h3>
+    <ol>
+      <li><a class="ent" href="https://articles.bekhelpme.com/judgment-asset" data-url="https://articles.bekhelpme.com/judgment-asset">Interne : L'actif du jugement (judgment-asset)</a></li>
+    </ol>
+  </div>
+</section>
+
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Fenêtre d'aperçu du site">
+    <div class="modal-bar">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="url-box"><input id="modalUrl" type="text" readonly value="" aria-label="URL"></span>
+      <button class="mbtn" id="btnCardView" type="button" hidden>Voir la fiche</button>
+      <button class="mbtn" id="btnCopy" type="button">Copier l'URL</button>
+      <a class="mbtn" id="btnOpen" href="#" target="_blank" rel="noopener noreferrer">Nouvel onglet ↗</a>
+      <button class="mbtn close" id="btnClose" type="button" aria-label="Fermer">✕</button>
+    </div>
+    <div class="modal-stage">
+      <div class="stage-hint">La plupart des sites n'autorisent pas l'aperçu intégré — si la zone ci-dessous reste vide ou affiche une erreur, utilisez plutôt « Copier l'URL » ou « Nouvel onglet ↗ » ci-dessus.</div>
+      <div class="stage-inner">
+        <div class="iframe-fallback">
+          <span class="glyph">◫</span>
+          <span>Ce site n'autorise pas l'aperçu intégré —<br>utilisez le bouton ci-dessus pour copier l'URL, ou ouvrez un nouvel onglet.</span>
+        </div>
+        <iframe id="modalFrame" title="Aperçu du site" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <div class="link-card" id="linkCard">
+          <div class="lc-host" id="lcHost"></div>
+          <div class="lc-title" id="lcTitle"></div>
+          <div class="lc-desc" id="lcDesc"></div>
+          <div class="lc-note">Pour des raisons de sécurité, ce site externe ne peut pas être affiché ici. « Copier l'URL » ci-dessus permet de partager, « Nouvel onglet ↗ » mène directement à l'original.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="linkCards" type="application/json">{"https://www.forbes.com/councils/forbesagencycouncil/2026/08/18/ai-washing-is-becoming-a-reputation-risk-companies-cant-afford/":{"t":"Forbes : l'IA washing devient un risque de réputation","d":"Cet article d'opinion sur Forbes recense une liste de mots déclencheurs de l'« IA washing » qui circule dans les milieux des relations publiques, et évoque des cas comme celui de Klarna devenus des leçons que le secteur se répète en privé."},"https://globalinvestigationsreview.com/review/the-investigations-review-of-the-americas/2026/article/us-enforcement-agencies-intensify-scrutiny-of-ai-washing":{"t":"Global Investigations Review : les autorités américaines renforcent leurs enquêtes sur l'IA washing","d":"L'article indique que les autorités boursières et judiciaires américaines ont nettement intensifié leurs enquêtes et leur répression contre les allégations exagérées sur l'IA (IA washing)."},"https://www.newsweek.com/tech-hits-layoff-milestone-concerns-of-ai-washing-11807595":{"t":"Newsweek : vague de licenciements dans la tech et soupçons d'IA washing","d":"L'article rapporte qu'au moment où les licenciements dans la tech atteignent un seuil symbolique, les soupçons que les entreprises utilisent l'IA comme prétexte (IA washing) augmentent en parallèle."},"https://live.handelsblatt.com/das-souveraenitaets-paradoxon-der-ki-warum-souveraenitaet-nicht-am-modell-entschieden-wird/":{"t":"Handelsblatt : le paradoxe de la souveraineté IA","d":"Le média allemand Handelsblatt constate que presque tous les fournisseurs d'IA se déclarent « souverains » (souverän), au point que le mot a perdu presque tout son sens, et propose le concept de « paradoxe de la souveraineté » : la souveraineté ne se décide pas au niveau du modèle, mais dans l'ensemble de la gouvernance et du mode de déploiement."},"https://live.handelsblatt.com/check-liste-fuer-souveraenitaet-neun-fragen-die-sie-ihrem-ki-anbieter-stellen-sollten/":{"t":"Handelsblatt : neuf questions à poser à son fournisseur d'IA sur la souveraineté","d":"Le même dossier propose une liste de neuf questions permettant aux entreprises de vérifier concrètement, lors de l'évaluation d'un fournisseur d'IA, si ses allégations de « souveraineté » résistent à l'examen."},"https://www.theregister.com/2026/03/18/cispe_sovereignty_washing/":{"t":"The Register : CISPE invente le terme Sovereignty Washing","d":"L'article rapporte que l'association européenne des fournisseurs cloud CISPE a forgé le terme « Sovereignty Washing » (blanchiment de souveraineté) pour dénoncer la prolifération d'allégations de souveraineté sans vérification réelle."},"https://www.cispe.cloud/verifiably-sovereign/":{"t":"CISPE : le référentiel de certification Verifiably Sovereign","d":"La page officielle de CISPE présente le référentiel de certification « Verifiably Sovereign » (souverain de manière vérifiable), destiné à ramener le mot « souveraineté » à un standard concret et contrôlable."},"https://www.heise.de/news/c-t-KI-Wissen-2026-So-entkommen-Sie-dem-Raederwerk-der-KI-11372069.html":{"t":"heise : la publication des poids d'un modèle open source n'équivaut pas à la souveraineté des données","d":"Dans sa série sur les connaissances en IA, le média technique allemand heise rappelle à ses lecteurs que la publication en open source des poids d'un modèle et la souveraineté des données sont deux choses distinctes, à ne pas confondre."},"https://www.heise.de/news/Vertrauenswuerdigkeit-von-KI-Systemen-BSI-veroeffentlicht-Pruefkatalogsentwurf-11356007.html":{"t":"heise : le BSI allemand rédige un catalogue d'audit de fiabilité de l'IA","d":"L'article indique que l'Office fédéral allemand de la sécurité des technologies de l'information (BSI) rédige actuellement un projet de catalogue d'audit de fiabilité des systèmes d'IA."},"https://www.maddyness.com/2026/07/13/cloud-souverain-et-si-le-mythe-devenait-enfin-realite/":{"t":"Maddyness : le cloud souverain français, du mythe à la réalité ?","d":"Cet article du média tech français Maddyness interroge si le discours sur la souveraineté du cloud français n'est qu'un slogan, et soutient qu'une allégation de souveraineté ne tient pas sans résultats concrets à l'appui."},"https://www.maddyness.com/2026/07/01/la-souverainete-numerique-francaise-nexiste-pas-pas-encore/":{"t":"Maddyness : la souveraineté numérique française « n'existe pas encore »","d":"Un autre article du même média affirme sans détour que la souveraineté numérique française « n'existe pas encore », et appelle à concrétiser le discours plutôt qu'à en rester aux slogans."},"https://consulting.tuv.com/aktuelles/ki-im-fokus/eu-ai-act-august-2-2026-unternehmen":{"t":"TÜV Rheinland : de nouvelles dispositions de l'AI Act européen entrées en vigueur le 2 août","d":"L'article explicatif de TÜV Rheinland indique qu'une nouvelle série de dispositions de l'AI Act européen est entrée en vigueur le 2 août 2026, précisant davantage les sanctions et les obligations de signalisation pour les systèmes d'IA à haut risque."},"https://www.ihk.de/koeln/hauptnavigation/digitalisierung-und-innovation/digitalisierung/transparenzpflichten-nach-der-ki-verordnung-7100068":{"t":"CCI de Cologne : les obligations de signalisation des sorties d'IA","d":"La page explicative de la CCI de Cologne (IHK Köln) rappelle aux entreprises, en vertu de l'AI Act européen, quelles sorties générées par l'IA doivent impérativement être signalées, sans ambiguïté possible."},"https://techcrunch.com/2026/06/08/apples-wwdc-ai-demos-looked-more-real-after-250m-false-ad-settlement/":{"t":"TechCrunch : le changement de style des démos IA d'Apple à la WWDC","d":"TechCrunch rapporte que les démonstrations de fonctionnalités IA d'Apple lors de la WWDC de cette année ont adopté un style avec appareils réels, rythme ralenti et sans esbroufe technique, perçu comme le signe d'un changement de style dans les démos IA d'Apple."},"https://www.gsmaintelligence.com/blogs/ifa-berlin-2026-seven-important-areas-ill-be-watching-what-i-expect-to-see-and-what-will-matter":{"t":"GSMA Intelligence : aperçu de l'IFA Berlin 2026","d":"Cet article de blog de GSMA Intelligence présente sept points d'observation clés à surveiller lors du salon IFA de Berlin en 2026."},"https://articles.bekhelpme.com/judgment-asset":{"t":"L'actif du jugement (article du site)","d":"Un autre article de ce site, qui soutient que le jugement le plus précieux d'une entreprise ne vit souvent que dans la tête de ses employés et repart avec eux chaque soir, et qui introduit le concept de « couche de jugement » — la source des deux citations phares de cet article."},"https://www.prnewswire.com/news-releases/engram-launches-with-98m-to-build-ai-that-actually-knows-your-organization-302807126.html":{"t":"PRNewswire : Engram se lance avec 98 millions de dollars","d":"Le communiqué de presse officiel annonce le lancement d'Engram, start-up née dans l'orbite de Stanford, avec 98 millions de dollars levés, positionnée comme une couche de mémoire d'entreprise qui « fait enfin connaître votre organisation à l'IA »."},"https://www.prnewswire.com/news-releases/mem0-raises-24m-series-a-to-build-memory-layer-for-ai-agents-302597157.html":{"t":"PRNewswire : Mem0 lève 24 millions de dollars en série A","d":"Le communiqué de presse officiel annonce que Mem0 a bouclé une série A de 24 millions de dollars, destinée à construire une infrastructure de couche de mémoire universelle pour les agents IA."},"https://www.prnewswire.com/news-releases/coworkerai-launches-the-first-ai-agent-with-deep-company-context-backed-by-13m-seed-round-302459262.html":{"t":"PRNewswire : Coworker.ai lève 13 millions de dollars en seed","d":"Le communiqué de presse officiel annonce le lancement de Coworker.ai, présenté comme le premier agent IA doté d'un contexte d'entreprise approfondi, avec 13 millions de dollars levés en seed, appuyé sur sa technologie de mémoire organisationnelle."},"https://learn.microsoft.com/en-us/microsoft-iq/":{"t":"Microsoft Learn : documentation officielle de Microsoft IQ","d":"La documentation officielle de Microsoft positionne Work IQ, Fabric IQ et Foundry IQ ensemble comme « la couche d'intelligence d'entreprise de la pile technologique Microsoft »."},"https://atlan.com/know/context-layer-for-snowflake/":{"t":"Atlan : le Context Layer pour Snowflake","d":"Cet article d'Atlan explique le concept et le positionnement d'un context layer situé entre l'entrepôt de données Snowflake et les agents IA."},"https://www.getzep.com/":{"t":"Zep : la mémoire d'agent à l'échelle de l'entreprise","d":"Le site officiel de Zep se positionne comme un service de « mémoire d'agent à l'échelle de l'entreprise », offrant aux agents IA une couche de mémoire longue durée et interrogeable."},"https://atlan.com/know/gartner-context-graphs/":{"t":"Atlan : la prévision de Gartner sur les Context Graphs","d":"Cette synthèse d'Atlan reprend un point de vue de Gartner selon lequel, d'ici 2028, plus de 50 % des systèmes d'agents IA s'appuieront sur une forme ou une autre de graphe de contexte (context graph) — il s'agit d'une reformulation par Atlan de la prévision de Gartner."},"https://cottrillresearch.com/various-survey-statistics-workers-spend-too-much-time-searching-for-information/":{"t":"Cottrill Research : synthèse des enquêtes sur le temps passé à chercher l'information","d":"Cottrill Research compile plusieurs enquêtes indiquant que les travailleurs du savoir passent en moyenne près de deux heures par jour (dont 1,8 heure selon une estimation de McKinsey) à chercher de l'information plutôt qu'à travailler."},"https://www.linkedin.com/pulse/knowledge-workers-information-hunting-problem-keeps-rik-van-bruggen-htede":{"t":"LinkedIn : le problème de la « chasse à l'information » chez les travailleurs du savoir","d":"Dans son article LinkedIn, Rik van Bruggen cite une autre estimation selon laquelle le temps passé par les travailleurs du savoir à chercher de l'information pourrait atteindre jusqu'à 2,5 heures par jour."},"https://www.promptfluent.com/research/state-of-ai-debt-2026":{"t":"PromptFluent : enquête sur le taux d'abandon des projets IA","d":"Le rapport de recherche de PromptFluent indique que plus de 40 % des entreprises admettent avoir abandonné au moins un projet IA."},"https://www.sentra.app/articles/what-is-a-company-brain":{"t":"Sentra : qu'est-ce qu'un Company Brain ?","d":"Cet article de définition sur le site officiel de Sentra positionne son propre produit comme « votre cerveau d'entreprise », et explique à l'acheteur comment présenter ce concept à ses collègues."},"https://coworker.ai/blog/what-is-organizational-memory-technology":{"t":"Coworker : qu'est-ce que la technologie de mémoire organisationnelle ?","d":"Le blog officiel de Coworker désigne sa propre technologie sous le nom de « technologie de mémoire organisationnelle », une infrastructure IA positionnée pour capturer, organiser et retrouver le savoir institutionnel dispersé dans toute l'entreprise."},"https://infusedinnovations.com/blog/work-iq-fabric-iq-and-foundry-iq-the-new-semantic-architecture-of-agentic-ai":{"t":"Infused Innovations : l'architecture sémantique des produits IQ de Microsoft","d":"Ce blog technique tiers analyse l'architecture sémantique unifiée formée par les trois lignes de produits Work IQ, Fabric IQ et Foundry IQ de Microsoft."},"https://vectorize.io/articles/brain-stack-second-company-single-brain":{"t":"Vectorize : la pile des cerveaux — Second Brain, Company Brain, Single Brain","d":"Cet article de Vectorize propose un cadre de « pile des cerveaux », distinguant trois niveaux de mémoire — personnel, d'entreprise, et d'assistant unique — et souligne l'importance des fondations sous-jacentes : ontologie, graphes de connaissances, gouvernance et mémoire temporelle."},"https://atlan.com/know/ai-agent/data-for-ai/enterprise-search-with-ai/":{"t":"Atlan : la recherche IA en entreprise, le contexte gouverné l'emporte sur la simple récupération","d":"Cet article de la base de connaissances d'Atlan soutient que le défi de la recherche IA en entreprise tient au fait que le savoir déjà numérisé est dispersé entre drives cloud, Slack, CRM et systèmes de tickets — et qu'une architecture de contexte gouvernée compte davantage qu'une simple récupération."},"http://www-sop.inria.fr/acacia/WORKSHOPS/IJCAI2005-OM/KMOM2005-proceedings-fin.pdf":{"t":"INRIA : recueil du colloque sur la gestion des connaissances et la mémoire organisationnelle","d":"Ce recueil compilé par l'INRIA rassemble des travaux de recherche sur la gestion des connaissances et la mémoire organisationnelle, dont l'un souligne qu'une des causes principales de l'échec des systèmes de mémoire organisationnelle est la coupure structurelle entre la saisie des connaissances et le travail réel — les employés devant consacrer un effort de saisie supplémentaire, au lieu que la connaissance se dépose naturellement pendant le travail."},"https://www.jucs.org/jucs_9_12/organisational_memory_information_systems/de_Vasconcelos_J_B.pdf":{"t":"JUCS : étude de cas sur les systèmes d'information de mémoire organisationnelle","d":"Cette étude de cas publiée dans la revue JUCS sur les systèmes d'information de mémoire organisationnelle examine leur conception et leur application en entreprise, et fait écho à l'observation selon laquelle la déconnexion entre la saisie des connaissances et le travail quotidien entraîne l'échec de ces systèmes."}}</script>
+<script>// Digest du Phare — système de popup, version publique en français.
+// Tous les liens externes ouvrent une fenêtre de navigation interne au site ; aucun ne quitte la page.
+(function(){
+  var backdrop = document.getElementById('modalBackdrop');
+  var urlInput = document.getElementById('modalUrl');
+  var btnCopy  = document.getElementById('btnCopy');
+  var btnOpen  = document.getElementById('btnOpen');
+  var btnClose = document.getElementById('btnClose');
+  var frame    = document.getElementById('modalFrame');
+  var copyTimer = null;
+  var frameBlocked = false;
+  var linkCard = document.getElementById('linkCard');
+  var lcHost = document.getElementById('lcHost');
+  var lcTitle = document.getElementById('lcTitle');
+  var lcDesc = document.getElementById('lcDesc');
+  var stageHint = document.querySelector('.stage-hint');
+  var stageInner = document.querySelector('.stage-inner');
+  var btnCardView = document.getElementById('btnCardView');
+  var HINT_IFRAME = "La plupart des sites n'autorisent pas l'aperçu intégré — si la zone ci-dessous reste vide ou affiche une erreur, utilisez plutôt « Copier l'URL » ou « Nouvel onglet ↗ » ci-dessus.";
+  var HINT_CARD = "Tentative de chargement de la page d'origine — si ce site refuse d'être intégré, la fiche reste affichée ; « Nouvel onglet ↗ » mène directement à l'original.";
+  var HINT_NOEMBED = "Cet environnement de lecture ne prend pas en charge l'aperçu de page intégré — « Copier l'URL » permet de partager, « Nouvel onglet ↗ » mène directement à l'original.";
+  // 內嵌預覽只在自家網域或本機測試時嘗試；其他宿主一律停留在導覽卡。
+  var canEmbed = /(^|\.)bekhelpme\.com$|^localhost$|^127\.|^$/.test(location.hostname);
+  var cards = {};
+  try{ cards = JSON.parse(document.getElementById('linkCards').textContent); }catch(e){}
+
+  function hostOf(url){
+    try{ return new URL(url).hostname.replace(/^www\./,''); }catch(e){ return url.split('/')[2] || url; }
+  }
+  function openModal(url){
+    urlInput.value = url;
+    btnOpen.href = url;
+    frameBlocked = false;
+    frame.classList.remove('loaded');
+    frame.removeAttribute('src');
+    var card = cards[url];
+    stageInner.classList.remove('show-frame');
+    btnCardView.hidden = true;
+    if(card){
+      stageInner.classList.add('has-card');
+      lcHost.textContent = hostOf(url);
+      lcTitle.textContent = card.t;
+      lcDesc.textContent = card.d;
+      linkCard.classList.add('show');
+      stageHint.textContent = HINT_CARD;
+    } else {
+      stageInner.classList.remove('has-card');
+      linkCard.classList.remove('show');
+      stageHint.textContent = HINT_IFRAME;
+    }
+    if(canEmbed){
+      frame.src = url;
+    } else {
+      stageHint.textContent = HINT_NOEMBED;
+    }
+    backdrop.classList.add('open');
+    backdrop.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    btnClose.focus();
+  }
+  function closeModal(){
+    backdrop.classList.remove('open');
+    backdrop.setAttribute('aria-hidden','true');
+    frame.classList.remove('loaded');
+    frame.removeAttribute('src');
+    stageInner.classList.remove('show-frame');
+    stageInner.classList.remove('has-card');
+    btnCardView.hidden = true;
+    document.body.style.overflow = '';
+    resetCopy();
+  }
+  function resetCopy(){
+    if(copyTimer){ clearTimeout(copyTimer); copyTimer = null; }
+    btnCopy.textContent = "Copier l'URL";
+    btnCopy.classList.remove('copied');
+  }
+  function copyUrl(){
+    var url = urlInput.value;
+    function ok(){
+      btnCopy.textContent = "Copié ✓";
+      btnCopy.classList.add('copied');
+      copyTimer = setTimeout(resetCopy, 1800);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(ok).catch(function(){ fallbackCopy(url, ok); });
+    } else {
+      fallbackCopy(url, ok);
+    }
+  }
+  function fallbackCopy(text, done){
+    urlInput.focus();
+    urlInput.select();
+    try{ document.execCommand('copy'); done(); }catch(e){}
+    urlInput.setSelectionRange(0,0);
+    urlInput.blur();
+  }
+
+  function setCardBtn(){
+    btnCardView.textContent = stageInner.classList.contains('show-frame') ? "Voir la fiche" : "Voir le site";
+  }
+  btnCardView.addEventListener('click', function(){
+    stageInner.classList.toggle('show-frame');
+    setCardBtn();
+    stageHint.textContent = stageInner.classList.contains('show-frame')
+      ? "Aperçu de la page d'origine en cours. Si l'écran reste vide, ce site bloque l'affichage intégré — cliquez sur « Voir la fiche » pour revenir, ou « Nouvel onglet ↗ » pour voir l'original."
+      : "La page d'origine est prête — cliquez sur « Voir le site » ci-dessus pour basculer l'aperçu ; en cas d'affichage anormal, « Nouvel onglet ↗ » mène directement à l'original.";
+  });
+  frame.addEventListener('load', function(){
+    if(frame.getAttribute('src') && backdrop.classList.contains('open') && !frameBlocked){
+      frame.classList.add('loaded');
+      if(stageInner.classList.contains('has-card')){
+        btnCardView.hidden = false;
+        setCardBtn();
+        stageHint.textContent = "La page d'origine est prête — cliquez sur « Voir le site » ci-dessus pour basculer l'aperçu ; en cas d'affichage anormal, « Nouvel onglet ↗ » mène directement à l'original.";
+      }
+    }
+  });
+  document.addEventListener('securitypolicyviolation', function(){
+    frameBlocked = true;
+    frame.classList.remove('loaded');
+  });
+
+  document.addEventListener('click', function(ev){
+    var a = ev.target && ev.target.closest ? ev.target.closest('a.ent[href]') : null;
+    if(a && a.dataset && a.dataset.url){
+      ev.preventDefault();
+      ev.stopPropagation();
+      openModal(a.dataset.url);
+    }
+  });
+
+  btnCopy.addEventListener('click', copyUrl);
+  btnClose.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', function(ev){
+    if(ev.target === backdrop) closeModal();
+  });
+  document.addEventListener('keydown', function(ev){
+    if(ev.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var doc = document;
+  var themeBtn = doc.getElementById('themeBtn');
+  function applyThemeLabel(){
+    var cur = doc.documentElement.getAttribute('data-theme');
+    var dark = cur === 'dark';
+    themeBtn.textContent = dark ? "Mode clair" : "Mode sombre";
+  }
+  themeBtn.addEventListener('click', function(){
+    var cur = doc.documentElement.getAttribute('data-theme');
+    var dark = cur === 'dark';
+    doc.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    applyThemeLabel();
+  });
+  applyThemeLabel();
+})();
+</script>
+
+</body>
+</html>

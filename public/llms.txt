@@ -4,6 +4,12 @@
 > 版式參考 Stratechery，文字優先、單欄閱讀。語言：zh-TW。
 
 ## 文章
+- 記憶很便宜，判斷很貴: https://articles.bekhelpme.com/company-brain
+  當全世界都在給 AI 裝記憶，誰在給公司裝判斷？企業 AI 記憶層（organization brain／company brain／enterprise context layer）成為新基礎類別的地圖、共同盲點，與資訊層之上的判斷層（Judgment Layer）。
+  English: https://articles.bekhelpme.com/company-brain-en
+  Deutsch: https://articles.bekhelpme.com/company-brain-de
+  Français: https://articles.bekhelpme.com/company-brain-fr
+  简体中文: https://articles.bekhelpme.com/company-brain-cn
 - 把腦中的判斷，變成公司查得到的資產: https://articles.bekhelpme.com/judgment-asset
   企業 AI 記憶層的資本全押在已數位化知識；判斷層（Judgment Layer）處理另一半——未被寫下的判斷力：萃取、治理、地端主權，與組織腦（Organization Brain）的三個承諾。
 - 為什麼 AI 越便宜，差距越大: https://articles.bekhelpme.com/why-ai-cheaper-the-gap-widens
