@@ -171,6 +171,43 @@ footer.colophon{margin-top:90px; padding-top:26px; border-top:1px solid var(--ha
 </style>
 </head>
 <body>
+<div id="langbar" hidden role="note">
+  <a id="langbar-link" href="#"></a>
+  <button id="langbar-x" aria-label="Dismiss">✕</button>
+</div>
+<style>
+#langbar{display:flex;align-items:center;justify-content:center;gap:14px;background:#177A5B;color:#fff;padding:9px 16px;font-size:14.5px;line-height:1.4}
+#langbar[hidden]{display:none}
+#langbar a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:600}
+#langbar button{background:none;border:none;color:#fff;opacity:.75;cursor:pointer;font-size:14px;padding:2px 6px}
+#langbar button:hover{opacity:1}
+</style>
+<script>
+(function(){
+  var fam = {"zh-Hant":"company-brain","en":"company-brain-en","de":"company-brain-de","fr":"company-brain-fr","zh-Hans":"company-brain-cn"};
+  var msg = {"zh-Hant":"改看繁體中文版 →","en":"Read this article in English →","de":"Diesen Artikel auf Deutsch lesen →","fr":"Lire cet article en français →","zh-Hans":"阅读简体中文版 →"};
+  try {
+    if (localStorage.getItem("cb-langbar-off")) return;
+    var cur = document.documentElement.lang;
+    var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || "").toLowerCase();
+    var target;
+    if (nav.indexOf("zh") === 0) { target = (nav === "zh" || nav.indexOf("cn") > -1 || nav.indexOf("hans") > -1 || nav.indexOf("sg") > -1) ? "zh-Hans" : "zh-Hant"; }
+    else if (nav.indexOf("de") === 0) { target = "de"; }
+    else if (nav.indexOf("fr") === 0) { target = "fr"; }
+    else if (nav.indexOf("en") === 0) { target = "en"; }
+    if (!target || target === cur || !fam[target]) return;
+    var bar = document.getElementById("langbar");
+    var link = document.getElementById("langbar-link");
+    link.textContent = msg[target];
+    link.href = "/" + fam[target];
+    document.getElementById("langbar-x").addEventListener("click", function(){
+      bar.hidden = true;
+      try { localStorage.setItem("cb-langbar-off","1"); } catch(e) {}
+    });
+    bar.hidden = false;
+  } catch(e) {}
+})();
+</script>
 <button class="themebtn" id="themeBtn" type="button">切換深色</button>
 
 <div class="wrap">
